@@ -7,12 +7,17 @@ redirect_from:
   - /about.html
 ---
 
-Welcome! I am Yuwen Huang, a postdoc in computer science and engineering (CSE) department at the Chinese University of Hong Kong (CUHK). I obtained my Phd degree at CUHK.
+Welcome! I am Yuwen Huang, a postdoctoral fellow in the Department of Computer Science and Engineering at the Chinese University of Hong Kong (CUHK), working with Prof. John C.S. Lui. I obtained my Ph.D. in Information Engineering at CUHK under the supervision of Prof. Pascal O. Vontobel.
 
-I am a information theorist, with broad interests in classical and quantum information processing, optimization theory, and combinatorics. Some of my current research interests include:
+I am an information theorist with broad interests spanning classical and quantum information processing, optimization theory, and combinatorics. My current projects focus on developing provable models for distributed quantum computing, characterizing Bethe partition functions via graph covers, and understanding graphical model-based characterizations of quantum non-locality.
 
-- Quantum network
-- Graphical model-based characterization of quantum non-locality
-- Belief propagation on graphical models representing classical and quantum information processing systems
-- Bethe approximation of computational problems
+Some of my recent highlights include an ICML 2025 paper on quantum algorithms for finite-horizon Markov decision processes and a 2024 IEEE Transactions on Information Theory paper on Bethe and Sinkhorn permanent bounds. I regularly review for IEEE TCOM, JSTSP, Communications Letters, ISIT, ICC, and WCNC.
 
+Current research interests:
+
+- Quantum information processing and quantum networks
+- Distributed quantum optimization and belief propagation
+- Graphical models, Bethe approximations, and combinatorial inference
+- Optimization theory and information theory foundations
+
+You can reach me at [yuwen.huang@link.cuhk.edu.hk](mailto:yuwen.huang@link.cuhk.edu.hk), or find more about my work on [Google Scholar](https://scholar.google.com/citations?user=9A1utW0AAAAJ) and [ORCID](https://orcid.org/0000-0003-1189-5690).
