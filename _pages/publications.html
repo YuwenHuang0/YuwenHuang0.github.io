@@ -23,14 +23,21 @@ author_profile: true
         <h2>{{ category[1].title }}</h2><hr />
         {% assign title_shown = true %}
       {% endunless %}
+      {% if post.title == "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)" %}
+        <!-- Publication hidden per request -->
+        {% continue %}
+      {% endif %}
       {% include archive-single.html %}
     {% endfor %}
   {% endfor %}
 {% else %}
   {% for post in site.publications reversed %}
+    {% if post.title == "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)" %}
+      <!-- Publication hidden per request -->
+      {% continue %}
+    {% endif %}
     {% include archive-single.html %}
   {% endfor %}
 {% endif %}
-
 
 
