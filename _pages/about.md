@@ -11,8 +11,6 @@ Welcome! I am Yuwen Huang, a postdoctoral fellow in the Department of Computer S
 
 I am an information theorist with broad interests spanning classical and quantum information processing, optimization theory, and combinatorics. My current projects focus on developing provable models for distributed quantum computing, characterizing Bethe partition functions via graph covers, and understanding graphical model-based characterizations of quantum non-locality.
 
-Some of my recent highlights include an ICML 2025 paper on quantum algorithms for finite-horizon Markov decision processes and a 2024 IEEE Transactions on Information Theory paper on Bethe and Sinkhorn permanent bounds. I regularly review for IEEE TCOM, JSTSP, Communications Letters, ISIT, ICC, and WCNC.
-
 Current research interests:
 
 - Quantum information processing
