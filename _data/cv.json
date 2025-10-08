@@ -1,152 +1,338 @@
 {
   "basics": {
-    "name": "Your Sidebar Name",
-    "email": "none@example.org",
-    "phone": "",
-    "website": "https://academicpages.github.io",
-    "summary": "Currently employed at Red Brick University. Short biography for the left-hand sidebar",
+    "name": "Yuwen Huang",
+    "label": "Postdoctoral Fellow",
+    "email": "yuwen.huang@link.cuhk.edu.hk",
+    "phone": "+852 6873 7315",
+    "website": "https://yuwenhuang0.github.io",
+    "summary": "Postdoctoral fellow in the Department of Computer Science and Engineering at The Chinese University of Hong Kong working on quantum information processing, quantum networks, and graphical models.",
     "location": {
-      "address": "",
+      "address": "Department of Computer Science and Engineering, The Chinese University of Hong Kong",
       "postalCode": "",
-      "city": "Earth",
-      "countryCode": "US",
-      "region": ""
+      "city": "Hong Kong",
+      "countryCode": "HK",
+      "region": "Hong Kong SAR"
     },
     "profiles": [
       {
         "network": "Google Scholar",
-        "username": "",
-        "url": "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
+        "username": "9A1utW0AAAAJ",
+        "url": "https://scholar.google.com/citations?user=9A1utW0AAAAJ"
       },
       {
         "network": "ORCID",
-        "username": "",
-        "url": "http://orcid.org/yourorcidurl"
+        "username": "0000-0003-1189-5690",
+        "url": "https://orcid.org/0000-0003-1189-5690"
       },
       {
         "network": "GitHub",
-        "username": "academicpages",
-        "url": "https://github.com/academicpages"
+        "username": "YuwenHuang0",
+        "url": "https://github.com/YuwenHuang0"
       }
     ]
   },
-  "work": [],
-  "education": [
+  "work": [
     {
-      "institution": "GitHub University",
-      "area": "Ph.D in Version Control Theory",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2018",
-      "gpa": null,
-      "courses": []
-    },
-    {
-      "institution": "GitHub University",
-      "area": "M.S. in Jekyll",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2014",
-      "gpa": null,
-      "courses": []
-    },
-    {
-      "institution": "GitHub University",
-      "area": "B.S. in GitHub",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2012",
-      "gpa": null,
-      "courses": []
+      "company": "The Chinese University of Hong Kong",
+      "position": "Postdoctoral Fellow",
+      "url": "https://www.cse.cuhk.edu.hk/",
+      "startDate": "2024-11",
+      "endDate": "2026-11",
+      "summary": "Postdoctoral fellow in the Department of Computer Science and Engineering working with Prof. John C.S. Lui.",
+      "highlights": [
+        "Develop novel models for distributed quantum computing in collaboration with faculty, targeting high-impact journal publications.",
+        "Mentor PhD students through project ideation, execution, and publication at venues such as ICML."
+      ]
     }
   ],
-  "skills": [],
-  "languages": [],
-  "interests": [],
+  "education": [
+    {
+      "institution": "The Chinese University of Hong Kong",
+      "area": "Information Engineering",
+      "studyType": "Ph.D.",
+      "startDate": "2018",
+      "endDate": "2024",
+      "gpa": null,
+      "courses": [
+        "Thesis: Characterizing the Bethe partition function of double-edge factor graphs via graph covers",
+        "Supervisor: Prof. Pascal O. Vontobel"
+      ]
+    },
+    {
+      "institution": "South China University of Technology",
+      "area": "Electronic and Information Engineering",
+      "studyType": "B.Eng.",
+      "startDate": "2014",
+      "endDate": "2018",
+      "gpa": null,
+      "courses": [
+        "Thesis supervisor: Prof. Yuan Liu"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Research Interests",
+      "level": "",
+      "keywords": [
+        "Quantum information processing",
+        "Quantum networks",
+        "Quantum computing",
+        "Optimization theory",
+        "Graphical models",
+        "Information theory"
+      ]
+    },
+    {
+      "name": "Programming",
+      "level": "",
+      "keywords": [
+        "Matlab",
+        "C",
+        "LaTeX"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Cantonese",
+      "fluency": "Native"
+    },
+    {
+      "language": "Mandarin",
+      "fluency": "Native"
+    },
+    {
+      "language": "English",
+      "fluency": "Fluent"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Quantum information processing"
+    },
+    {
+      "name": "Quantum networks"
+    },
+    {
+      "name": "Graphical models"
+    },
+    {
+      "name": "Optimization theory"
+    }
+  ],
   "references": [],
   "publications": [
     {
-      "name": "Paper Title Number 1",
-      "publisher": "Journal 1",
-      "releaseDate": "2009-10-01",
-      "website": "http://academicpages.github.io/files/paper1.pdf",
-      "summary": "This paper is about the number 1. The number 2 is left for future work."
+      "name": "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)",
+      "publisher": "IEEE Transactions on Information Theory",
+      "releaseDate": "2024",
+      "website": "https://arxiv.org/abs/2412.05942",
+      "summary": "Submitted manuscript co-authored with Pascal O. Vontobel."
     },
     {
-      "name": "Paper Title Number 2",
-      "publisher": "Journal 1",
-      "releaseDate": "2010-10-01",
-      "website": "http://academicpages.github.io/files/paper2.pdf",
-      "summary": "This paper is about the number 2. The number 3 is left for future work."
+      "name": "Factor graph-based scalable distributed quantum optimization with provable quadratic-like speedup",
+      "publisher": "IEEE/ACM Transactions on Networking",
+      "releaseDate": "2025",
+      "website": "https://arxiv.org/abs/2506.16250",
+      "summary": "In preparation with Xiaojun Lin, Bin Luo, and John C.S. Lui."
     },
     {
-      "name": "Paper Title Number 3",
-      "publisher": "Journal 1",
-      "releaseDate": "2015-10-01",
-      "website": "http://academicpages.github.io/files/paper3.pdf",
-      "summary": "This paper is about the number 3. The number 4 is left for future work."
+      "name": "On the relationship between the global minimum of the Bethe free energy function of a factor graph and sum-product algorithm fixed points (extended version)",
+      "publisher": "IEEE Transactions on Information Theory",
+      "releaseDate": "2025",
+      "website": "",
+      "summary": "In preparation with Pascal O. Vontobel."
     },
     {
-      "name": "Paper Title Number 4",
-      "publisher": "GitHub Journal of Bugs",
-      "releaseDate": "2024-02-17",
-      "website": "http://academicpages.github.io/files/paper3.pdf",
-      "summary": "This paper is about fixing template issue #693."
+      "name": "Sets of marginals and Pearson-correlation-based CHSH inequalities for a two-qubit system (extended version)",
+      "publisher": "IEEE Transactions on Information Theory",
+      "releaseDate": "2025",
+      "website": "",
+      "summary": "In preparation with Pascal O. Vontobel."
+    },
+    {
+      "name": "Degree-M Bethe and Sinkhorn permanent based bounds on the permanent of a non-negative matrix",
+      "publisher": "IEEE Transactions on Information Theory",
+      "releaseDate": "2024-07",
+      "website": "https://ieeexplore.ieee.org/document/10463076",
+      "summary": "Journal publication with N. Kashyap and Pascal O. Vontobel (vol. 70, no. 4, pp. 5289\u20135308)."
+    },
+    {
+      "name": "NOMA-aided mobile edge computing via user cooperation",
+      "publisher": "IEEE Transactions on Communications",
+      "releaseDate": "2020-04",
+      "website": "",
+      "summary": "Journal publication with Yuan Liu and Feng Chen (vol. 68, no. 4, pp. 2221\u20132235)."
+    },
+    {
+      "name": "Energy efficiency of distributed antenna systems with wireless power transfer",
+      "publisher": "IEEE Journal on Selected Areas in Communications",
+      "releaseDate": "2019-01",
+      "website": "",
+      "summary": "Journal publication with Yuan Liu and Geoffrey Ye Li (vol. 37, no. 1, pp. 89\u201399)."
+    },
+    {
+      "name": "Energy-efficient SWIPT in IoT distributed antenna systems",
+      "publisher": "IEEE Internet of Things Journal",
+      "releaseDate": "2018-08",
+      "website": "",
+      "summary": "Journal publication with Ming Liu and Yuan Liu (vol. 5, no. 4, pp. 2646\u20132656)."
+    },
+    {
+      "name": "Quantum algorithms for finite-horizon Markov decision processes",
+      "publisher": "International Conference on Machine Learning (ICML)",
+      "releaseDate": "2025",
+      "website": "",
+      "summary": "Conference paper with B. Luo (corresponding author), J. Allcock, X. Lin, S. Zhang, and John C.S. Lui."
+    },
+    {
+      "name": "The Bethe partition function and the SPA for factor graphs based on homogeneous real stable polynomials",
+      "publisher": "IEEE International Symposium on Information Theory (ISIT)",
+      "releaseDate": "2024",
+      "website": "",
+      "summary": "Conference paper presented in Athens, Greece (pp. 3029\u20133034)."
+    },
+    {
+      "name": "Bounding the permanent of a non-negative matrix via its degree-M Bethe and Sinkhorn permanents",
+      "publisher": "IEEE International Symposium on Information Theory (ISIT)",
+      "releaseDate": "2023",
+      "website": "",
+      "summary": "Conference paper presented in Taipei, Taiwan (pp. 2774\u20132779)."
+    },
+    {
+      "name": "On the relationship between the global minimum of the Bethe free energy function of a factor graph and sum-product algorithm fixed points",
+      "publisher": "IEEE Information Theory Workshop",
+      "releaseDate": "2022",
+      "website": "",
+      "summary": "Conference paper presented in Mumbai, India (pp. 666\u2013671)."
+    },
+    {
+      "name": "Sets of marginals and Pearson-correlation-based CHSH inequalities for a two-qubit system",
+      "publisher": "IEEE International Symposium on Information Theory (ISIT)",
+      "releaseDate": "2021",
+      "website": "",
+      "summary": "Conference paper presented in Melbourne, Australia (pp. 1338\u20131343)."
+    },
+    {
+      "name": "Characterizing the Bethe partition function of double-edge factor graphs via graph covers",
+      "publisher": "IEEE International Symposium on Information Theory (ISIT)",
+      "releaseDate": "2020",
+      "website": "",
+      "summary": "Conference paper presented in Los Angeles, USA (pp. 1331\u20131336)."
+    },
+    {
+      "name": "User cooperation for NOMA-based mobile edge computing",
+      "publisher": "IEEE International Conference on Communication Systems",
+      "releaseDate": "2018",
+      "website": "",
+      "summary": "Conference paper presented in Chengdu, China (pp. 395\u2013400)."
+    },
+    {
+      "name": "Energy-Efficient SWIPT in Distributed Antenna Systems",
+      "publisher": "IEEE Globecom Workshops",
+      "releaseDate": "2017",
+      "website": "",
+      "summary": "Conference paper presented in Singapore (pp. 1\u20136)."
     }
   ],
   "presentations": [
     {
-      "name": "Talk 1 on Relevant Topic in Your Field",
-      "event": "UC San Francisco, Department of Testing",
-      "date": "2012-03-01",
-      "location": "San Francisco, CA, USA",
-      "description": ""
+      "name": "The Bethe approximation for binary contingency table counting and nonnegative matrix permanents",
+      "event": "Department of Computer Science, TU Dortmund University",
+      "date": "2025-02",
+      "location": "Dortmund, Germany (virtual)",
+      "description": "Seminar talk delivered via Zoom."
     },
     {
-      "name": "Tutorial 1 on Relevant Topic in Your Field",
-      "event": "UC-Berkeley Institute for Testing Science",
-      "date": "2013-03-01",
-      "location": "Berkeley, CA, USA",
-      "description": ""
+      "name": "The Bethe partition function and the SPA for factor graphs based on homogeneous real stable polynomials",
+      "event": "School of Cyber Science and Engineering, Southeast University",
+      "date": "2024-09",
+      "location": "Nanjing, China (virtual)",
+      "description": "Invited seminar talk via Zoom."
     },
     {
-      "name": "Talk 2 on Relevant Topic in Your Field",
-      "event": "London School of Testing",
-      "date": "2014-02-01",
-      "location": "London, UK",
-      "description": ""
+      "name": "Bounding the permanent of a non-negative matrix via its degree-M Bethe and Sinkhorn permanents",
+      "event": "Institute of Theoretical Computer Science and Communications, CUHK",
+      "date": "2023-03",
+      "location": "Hong Kong, China",
+      "description": "Seminar talk."
     },
     {
-      "name": "Conference Proceeding talk 3 on Relevant Topic in Your Field",
-      "event": "Testing Institute of America 2014 Annual Conference",
-      "date": "2014-03-01",
-      "location": "Los Angeles, CA, USA",
-      "description": ""
+      "name": "On the relationship between the minimum of the Bethe free energy function of a factor graph and sum-product algorithm fixed points",
+      "event": "Institute of Theoretical Computer Science and Communications, CUHK",
+      "date": "2022-11",
+      "location": "Hong Kong, China",
+      "description": "Seminar talk."
+    },
+    {
+      "name": "Sets of marginals and Pearson-correlation-based CHSH inequalities for a two-qubit system",
+      "event": "National University of Singapore, Marco Tomamichel's Group",
+      "date": "2022-04",
+      "location": "Singapore (virtual)",
+      "description": "Invited group seminar via Zoom."
     }
   ],
   "teaching": [
     {
-      "course": "Teaching experience 1",
-      "institution": "University 1, Department",
-      "date": "2014-01-01",
-      "role": "Undergraduate course",
-      "description": ""
+      "course": "Electronic Circuit Design Laboratory",
+      "institution": "The Chinese University of Hong Kong",
+      "date": "2022",
+      "role": "Teaching Assistant",
+      "description": "Laboratory sections supporting undergraduate students (2019, 2020, 2022)."
     },
     {
-      "course": "Teaching experience 2",
-      "institution": "University 1, Department",
-      "date": "2015-01-01",
-      "role": "Workshop",
-      "description": ""
+      "course": "Social Media and Human Information Interaction",
+      "institution": "The Chinese University of Hong Kong",
+      "date": "2022",
+      "role": "Teaching Assistant",
+      "description": "Assisted with course delivery and student mentorship."
+    },
+    {
+      "course": "Basic Analog and Digital Circuits",
+      "institution": "The Chinese University of Hong Kong",
+      "date": "2021",
+      "role": "Teaching Assistant",
+      "description": "Supported lectures, tutorials, and grading."
+    },
+    {
+      "course": "Linear Algebra for Engineers",
+      "institution": "The Chinese University of Hong Kong",
+      "date": "2021",
+      "role": "Teaching Assistant",
+      "description": "Conducted tutorials and office hours."
+    },
+    {
+      "course": "Principles of Communication Systems",
+      "institution": "The Chinese University of Hong Kong",
+      "date": "2020",
+      "role": "Teaching Assistant",
+      "description": "Teaching support across multiple offerings (2018, 2019, 2020)."
     }
   ],
-  "portfolio": [
+  "portfolio": [],
+  "service": [
     {
-      "name": "Portfolio item number 1",
-      "category": "portfolio",
-      "date": "",
-      "url": "",
-      "description": "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
+      "name": "Journal Reviewer",
+      "description": "IEEE Communications Magazine; IEEE Transactions on Communications; IEEE Journal of Selected Topics in Signal Processing; IEEE Communications Letters"
+    },
+    {
+      "name": "Conference Reviewer",
+      "description": "IEEE International Symposium on Information Theory; IEEE International Conference on Communications; IEEE Wireless Communications and Networking Conference"
+    }
+  ],
+  "awards": [
+    {
+      "title": "Student Travel Grant",
+      "date": "2024",
+      "awarder": "IEEE International Symposium on Information Theory",
+      "summary": "Travel support for presenting research at ISIT 2024."
+    },
+    {
+      "title": "Bachelor\u2019s Thesis Award",
+      "date": "2018",
+      "awarder": "South China University of Technology",
+      "summary": "Recognized for outstanding bachelor thesis."
     }
   ]
 }
