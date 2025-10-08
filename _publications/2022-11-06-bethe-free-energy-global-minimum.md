@@ -8,6 +8,7 @@ excerpt: Connects Bethe free energy minima with SPA fixed points for factor grap
 date: '2022-11-06'
 venue: IEEE Information Theory Workshop (ITW)
 paperurl: https://ieeexplore.ieee.org/document/9965874/
+slidesurl: /files/slides/its2022.pdf
 # citation: "Y. Huang and P. O. Vontobel, 'On the relationship between the global minimum\
 #   \ of the Bethe free energy function of a factor graph and sum-product algorithm\
 #   \ fixed points,' Proceedings of IEEE Information Theory Workshop (ITW), Mumbai,\
