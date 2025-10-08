@@ -7,7 +7,7 @@ excerpt: Analyzes energy efficiency in distributed antenna systems with wireless
   transfer.
 date: '2019-01-01'
 venue: IEEE Journal on Selected Areas in Communications
-paperurl: https://ieeexplore.ieee.org/document/8476172/
+paperurl: https://arxiv.org/abs/1810.04385
 # citation: "Y. Huang, Y. Liu and G. Y. Li, 'Energy efficiency of distributed antenna\
 #   \ systems with wireless power transfer,' IEEE Journal on Selected Areas in Communications,\
 #   \ vol. 37, no. 1, pp. 89\u201399, Jan. 2019."
