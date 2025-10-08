@@ -23,7 +23,7 @@ repository               : "YuwenHuang0/YuwenHuang0.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "yuwen_photo.jpg"
   name             : "Yuwen Huang"
   pronouns         : # example: "she/her"  
   bio              : "Postdoctoral fellow working on quantum information processing, quantum networks, and graphical models."
