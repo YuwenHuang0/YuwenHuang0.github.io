@@ -15,9 +15,9 @@ Some of my recent highlights include an ICML 2025 paper on quantum algorithms fo
 
 Current research interests:
 
-- Quantum information processing and quantum networks
-- Distributed quantum optimization and belief propagation
-- Graphical models, Bethe approximations, and combinatorial inference
-- Optimization theory and information theory foundations
+- Quantum information processing
+- Quantum network
+- Graphical models and combinatorial inference
+- Optimization theory
 
 You can reach me at [yuwen.huang@link.cuhk.edu.hk](mailto:yuwen.huang@link.cuhk.edu.hk), or find more about my work on [Google Scholar](https://scholar.google.com/citations?user=9A1utW0AAAAJ) and [ORCID](https://orcid.org/0000-0003-1189-5690).
