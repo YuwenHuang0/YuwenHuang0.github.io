@@ -11,38 +11,122 @@ author_profile: true
 
 {% include base_path %}
 
+<style>
+  .pub-section { margin-bottom: 2.5rem; }
+  .pub-subheading { font-size: 1.1rem; font-weight: 600; margin-top: 1.5rem; }
+  .pub-entry { margin-bottom: 1.25rem; line-height: 1.55; }
+  .pub-line { margin: 0; }
+  .pub-label { font-weight: 600; color: #444; margin-right: 0.5rem; display: inline-block; min-width: 3.5rem; }
+  .pub-title { font-weight: 600; }
+  .pub-authors, .pub-venue, .pub-links, .pub-excerpt { margin: 0.15rem 0; color: #555; }
+  .pub-links a { color: #005493; text-decoration: none; }
+  .pub-links a:hover { text-decoration: underline; }
+  .pub-excerpt { font-style: italic; color: #666; }
+</style>
+
 {% assign topic_entries = "graphical-models::Graphical model-based approximation of #-P complete problems.;quantum-info::Quantum information processing.;wireless::Wireless communication systems." | split: ";" %}
 
 {% for topic_entry in topic_entries %}
   {% assign parts = topic_entry | split: "::" %}
   {% assign topic_key = parts[0] | strip %}
   {% assign topic_label = parts[1] | strip %}
-{% assign topic_posts = site.publications | where: "topic", topic_key %}
-{% if topic_posts.size > 0 %}
-  <h2>{{ topic_label }}</h2><hr />
-  {% assign topic_journals = topic_posts | where: "category", "manuscripts" | sort: "date" | reverse %}
-  {% assign topic_conferences = topic_posts | where: "category", "conferences" | sort: "date" | reverse %}
+  {% assign topic_posts = site.publications | where: "topic", topic_key %}
+  {% if topic_posts.size > 0 %}
+    <div class="pub-section">
+      <h2>{{ topic_label }}</h2><hr />
 
-  {% assign journal_counter = 0 %}
-  {% for post in topic_journals %}
-    {% if post.title == "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)" %}
-      <!-- Publication hidden per request -->
-      {% continue %}
-    {% endif %}
-    {% assign journal_counter = journal_counter | plus: 1 %}
-    {% capture item_label %}[j{{ journal_counter }}]{% endcapture %}
-    {% include archive-single.html label=item_label %}
-  {% endfor %}
+      {% assign topic_journals = topic_posts | where: "category", "manuscripts" | sort: "date" | reverse %}
+      {% if topic_journals.size > 0 %}
+        <h3 class="pub-subheading">Journal Papers</h3>
+        {% for post in topic_journals %}
+          {% if post.title == "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)" %}
+            <!-- Publication hidden per request -->
+            {% continue %}
+          {% endif %}
+          <div class="pub-entry">
+            <p class="pub-line">
+              <span class="pub-label">[j{{ forloop.index }}]</span>
+              {% if post.paperurl %}
+                <a href="{{ post.paperurl }}"><span class="pub-title">{{ post.title }}</span></a>
+              {% else %}
+                <span class="pub-title">{{ post.title }}</span>
+              {% endif %}
+            </p>
+            {% if post.authors %}
+              <p class="pub-authors">{{ post.authors | array_to_sentence_string }}.</p>
+            {% endif %}
+            <p class="pub-venue">
+              {% if post.status %}
+                {{ post.status }} in
+              {% else %}
+                Published in
+              {% endif %}
+              <em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}.
+            </p>
+            {% if post.excerpt %}
+              <p class="pub-excerpt">{{ post.excerpt }}</p>
+            {% endif %}
+            {% capture links %}
+              {% if post.paperurl %}<a href="{{ post.paperurl }}">Paper</a>{% endif %}
+              {% if post.slidesurl %}
+                {% if post.paperurl %} | {% endif %}
+                <a href="{{ post.slidesurl }}">Slides</a>
+              {% endif %}
+              {% if post.bibtexurl %}
+                {% if post.paperurl or post.slidesurl %} | {% endif %}
+                <a href="{{ post.bibtexurl }}">BibTeX</a>
+              {% endif %}
+            {% endcapture %}
+            {% if links | strip != "" %}
+              <p class="pub-links">{{ links | strip }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endif %}
 
-  {% assign conference_counter = 0 %}
-  {% for post in topic_conferences %}
-    {% if post.title == "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)" %}
-      <!-- Publication hidden per request -->
-      {% continue %}
-    {% endif %}
-    {% assign conference_counter = conference_counter | plus: 1 %}
-    {% capture item_label %}[c{{ conference_counter }}]{% endcapture %}
-    {% include archive-single.html label=item_label %}
-  {% endfor %}
-{% endif %}
+      {% assign topic_conferences = topic_posts | where: "category", "conferences" | sort: "date" | reverse %}
+      {% if topic_conferences.size > 0 %}
+        <h3 class="pub-subheading">Conference Papers</h3>
+        {% for post in topic_conferences %}
+          {% if post.title == "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)" %}
+            <!-- Publication hidden per request -->
+            {% continue %}
+          {% endif %}
+          <div class="pub-entry">
+            <p class="pub-line">
+              <span class="pub-label">[c{{ forloop.index }}]</span>
+              {% if post.paperurl %}
+                <a href="{{ post.paperurl }}"><span class="pub-title">{{ post.title }}</span></a>
+              {% else %}
+                <span class="pub-title">{{ post.title }}</span>
+              {% endif %}
+            </p>
+            {% if post.authors %}
+              <p class="pub-authors">{{ post.authors | array_to_sentence_string }}.</p>
+            {% endif %}
+            <p class="pub-venue">
+              In <em>{{ post.venue }}</em>, {{ post.date | date: "%B %Y" }}.
+            </p>
+            {% if post.excerpt %}
+              <p class="pub-excerpt">{{ post.excerpt }}</p>
+            {% endif %}
+            {% capture links %}
+              {% if post.paperurl %}<a href="{{ post.paperurl }}">Paper</a>{% endif %}
+              {% if post.slidesurl %}
+                {% if post.paperurl %} | {% endif %}
+                <a href="{{ post.slidesurl }}">Slides</a>
+              {% endif %}
+              {% if post.bibtexurl %}
+                {% if post.paperurl or post.slidesurl %} | {% endif %}
+                <a href="{{ post.bibtexurl }}">BibTeX</a>
+              {% endif %}
+            {% endcapture %}
+            {% if links | strip != "" %}
+              <p class="pub-links">{{ links | strip }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endif %}
 {% endfor %}
