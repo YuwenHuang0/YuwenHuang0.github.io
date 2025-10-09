@@ -1,6 +1,6 @@
 ---
-title: Characterizing the Bethe partition function of double-edge factor graphs via
-  graph covers (extended version)
+title: Graph-Cover-based Characterization of the Bethe Partition Function of Double-Edge
+  Factor Graphs
 authors:
   - Yuwen Huang
   - Pascal O. Vontobel
@@ -13,8 +13,8 @@ venue: submitted to IEEE Transactions on Information Theory
 # citation: Y. Huang and P. O. Vontobel, 'Characterizing the Bethe partition function
 #   of double-edge factor graphs via graph covers (extended version),' submitted to
 #   IEEE Transactions on Information Theory, 2024.
-paperurl: https://arxiv.org/abs/2412.05942
+paperurl: https://arxiv.org/abs/2506.16250
 status: Submitted
-topic: graphical-models
+topic: quantum-info
 ---
 Submitted to IEEE Transactions on Information Theory (T-IT); extended study of Bethe partition functions and graph covers.

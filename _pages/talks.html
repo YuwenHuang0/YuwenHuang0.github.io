@@ -5,12 +5,40 @@ permalink: /talks/
 author_profile: true
 ---
 
-{% if site.talkmap_link == true %}
+{% include base_path %}
 
-<p style="text-decoration:underline;"><a href="/talkmap.html">See a map of all the places I've given a talk!</a></p>
+<style>
+  .list-section { margin-top: 1.2rem; }
+  .list-entry { margin-bottom: 1rem; line-height: 1.5; }
+  .list-line { margin: 0; display: flex; gap: 0.35rem; align-items: baseline; flex-wrap: wrap; font-weight: 600; color: #222; }
+  .list-label { font-weight: 600; color: #444; }
+  .list-meta, .list-links, .list-excerpt { margin: 0.12rem 0; color: #555; }
+  .list-links a { color: #005493; text-decoration: none; }
+  .list-links a:hover { text-decoration: underline; }
+  .list-excerpt { font-style: italic; color: #666; }
+</style>
 
+{% assign talks = site.talks | sort: "date" | reverse %}
+{% if talks.size > 0 %}
+  <div class="list-section">
+    {% for talk in talks %}
+      <div class="list-entry">
+        <p class="list-line">
+          <span class="list-label">[t{{ forloop.index }}]</span>
+          <span class="list-title">{{ talk.title }}</span>
+        </p>
+        <p class="list-meta">{{ talk.date | date: "%B %Y" }} · {{ talk.venue }} · {{ talk.location }}</p>
+        {% assign talk_summary = talk.excerpt | default: talk.content %}
+        {% if talk_summary %}
+          <p class="list-excerpt">{{ talk_summary | strip_html | strip }}</p>
+        {% endif %}
+        {% capture links %}
+          {% if talk.slidesurl %}<a href="{{ talk.slidesurl }}">Slides</a>{% endif %}
+        {% endcapture %}
+        {% if links | strip != "" %}
+          <p class="list-links">{{ links | strip }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
 {% endif %}
-
-{% for post in site.talks reversed %}
-  {% include archive-single-talk.html %}
-{% endfor %}
