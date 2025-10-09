@@ -7,5 +7,6 @@ permalink: /talks/2024-09-01-bethe-partition-stable-polynomials-seu
 venue: School of Cyber Science and Engineering, Southeast University
 date: '2024-09-01'
 location: Nanjing, China (virtual)
+slidesurl: /files/slides/talks_at_seu.pdf
 ---
 Invited seminar delivered via Zoom on Bethe partition functions and stable polynomials.

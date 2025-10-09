@@ -7,5 +7,6 @@ permalink: /talks/2022-04-01-sets-of-marginals-chsh-nus
 venue: National University of Singapore, Marco Tomamichel's Research Group
 date: '2022-04-01'
 location: Singapore (virtual)
+slidesurl: /files/slides/talks_at_nus.pdf
 ---
 Invited virtual seminar on CHSH inequalities and quantum marginals.
