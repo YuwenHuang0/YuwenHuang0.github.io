@@ -38,11 +38,6 @@ Publications
 ### Journal Papers (submitted)
 * Y. Huang and P. O. Vontobel, “Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version),” submitted to *IEEE Transactions on Information Theory*, 2024. [arXiv:2412.05942](https://arxiv.org/abs/2412.05942)
 
-### Journal Papers (in preparation)
-* Y. Huang, X. Lin, B. Luo and J. C.S. Lui, “Factor graph-based scalable distributed quantum optimization with provable quadratic-like speedup,” in preparation for *IEEE/ACM Transactions on Networking*, 2025.
-* Y. Huang and P. O. Vontobel, “On the relationship between the global minimum of the Bethe free energy function of a factor graph and sum-product algorithm fixed points (extended version),” in preparation for *IEEE Transactions on Information Theory*, 2025.
-* Y. Huang and P. O. Vontobel, “Sets of marginals and Pearson-correlation-based CHSH inequalities for a two-qubit system (extended version),” in preparation for *IEEE Transactions on Information Theory*, 2025.
-
 ### Journal Papers
 * Y. Huang, N. Kashyap and P. O. Vontobel, “Degree-M Bethe and Sinkhorn permanent based bounds on the permanent of a non-negative matrix,” *IEEE Transactions on Information Theory*, vol. 70, no. 4, pp. 5289–5308, Jul. 2024. [IEEE Xplore](https://ieeexplore.ieee.org/document/10463076)
 * Y. Huang, Y. Liu and F. Chen, “NOMA-aided mobile edge computing via user cooperation,” *IEEE Transactions on Communications*, vol. 68, no. 4, pp. 2221–2235, Apr. 2020.
