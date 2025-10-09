@@ -27,6 +27,7 @@
     {% endif %}
 
     <h2 class="archive__item-title" itemprop="headline">
+      {% if include.label %}<span class="pub-label">{{ include.label }}</span>{% endif %}
       {% if post.paperurl %}
         <a href="{{ post.paperurl }}">{{ title }}</a>
       {% elsif post.link %}

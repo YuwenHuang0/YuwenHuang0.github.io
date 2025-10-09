@@ -15,5 +15,6 @@ venue: IEEE Transactions on Information Theory
 #   \ based bounds on the permanent of a non-negative matrix,' IEEE Transactions on\
 #   \ Information Theory, vol. 70, no. 4, pp. 5289\u20135308, Jul. 2024."
 paperurl: https://arxiv.org/abs/2306.02280
+topic: graphical-models
 ---
 Tight bounds on matrix permanents using Bethe and Sinkhorn permanents.

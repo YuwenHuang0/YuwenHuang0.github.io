@@ -16,5 +16,6 @@ slidesurl: /files/slides/its2022.pdf
 #   \ of the Bethe free energy function of a factor graph and sum-product algorithm\
 #   \ fixed points,' Proceedings of IEEE Information Theory Workshop (ITW), Mumbai,\
 #   \ India, 2022, pp. 666\u2013671."
+topic: graphical-models
 ---
 Connects Bethe free energy minima with SPA fixed points for factor graphs.

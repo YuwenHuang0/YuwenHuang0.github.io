@@ -11,33 +11,32 @@ author_profile: true
 
 {% include base_path %}
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
+{% assign topic_entries = "graphical-models::Graphical model-based approximation of #-P complete problems.;quantum-info::Quantum information processing.;wireless::Wireless communication systems." | split: ";" %}
+
+{% for topic_entry in topic_entries %}
+  {% assign parts = topic_entry | split: "::" %}
+  {% assign topic_key = parts[0] | strip %}
+  {% assign topic_label = parts[1] | strip %}
+  {% assign topic_posts = site.publications | where: "topic", topic_key | sort: "date" | reverse %}
+  {% if topic_posts.size > 0 %}
+    <h2>{{ topic_label }}</h2><hr />
+    {% assign journal_counter = 0 %}
+    {% assign conference_counter = 0 %}
+    {% for post in topic_posts %}
       {% if post.title == "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)" %}
         <!-- Publication hidden per request -->
         {% continue %}
       {% endif %}
-      {% include archive-single.html %}
+      {% if post.category == "manuscripts" %}
+        {% assign journal_counter = journal_counter | plus: 1 %}
+        {% capture item_label %}[j{{ journal_counter }}]{% endcapture %}
+      {% elsif post.category == "conferences" %}
+        {% assign conference_counter = conference_counter | plus: 1 %}
+        {% capture item_label %}[c{{ conference_counter }}]{% endcapture %}
+      {% else %}
+        {% assign item_label = "" %}
+      {% endif %}
+      {% include archive-single.html label=item_label %}
     {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% if post.title == "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)" %}
-      <!-- Publication hidden per request -->
-      {% continue %}
-    {% endif %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
-
-
+  {% endif %}
+{% endfor %}

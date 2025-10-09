@@ -15,5 +15,6 @@ venue: submitted to IEEE Transactions on Information Theory
 #   IEEE Transactions on Information Theory, 2024.
 paperurl: https://arxiv.org/abs/2412.05942
 status: Submitted
+topic: graphical-models
 ---
 Submitted to IEEE Transactions on Information Theory (T-IT); extended study of Bethe partition functions and graph covers.

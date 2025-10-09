@@ -15,5 +15,6 @@ slidesurl: /files/slides/isit2021.pdf
 # citation: "Y. Huang and P. O. Vontobel, 'Sets of marginals and Pearson-correlation-based\
 #   \ CHSH inequalities for a two-qubit system,' Proceedings of IEEE International Symposium\
 #   \ on Information Theory (ISIT), Melbourne, Australia, 2021, pp. 1338\u20131343."
+topic: quantum-info
 ---
 Studies CHSH inequalities via marginal sets for two-qubit systems.

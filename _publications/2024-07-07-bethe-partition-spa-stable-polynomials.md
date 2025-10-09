@@ -17,5 +17,6 @@ slidesurl: /files/slides/isit2024.pdf
 #   \ for factor graphs based on homogeneous real stable polynomials,' Proceedings of\
 #   \ IEEE International Symposium on Information Theory (ISIT), Athens, Greece, 2024,\
 #   \ pp. 3029\u20133034."
+topic: graphical-models
 ---
 Studies Bethe partition functions for factor graphs with homogeneous real stable polynomials.
