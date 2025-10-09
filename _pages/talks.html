@@ -8,37 +8,45 @@ author_profile: true
 {% include base_path %}
 
 <style>
-  .list-section { margin-top: 1.2rem; }
-  .list-entry { margin-bottom: 1rem; line-height: 1.5; }
-  .list-line { margin: 0; display: flex; gap: 0.35rem; align-items: baseline; flex-wrap: wrap; font-weight: 600; color: #222; }
-  .list-label { font-weight: 600; color: #444; }
-  .list-meta, .list-links, .list-excerpt { margin: 0.12rem 0; color: #555; }
-  .list-links a { color: #005493; text-decoration: none; }
-  .list-links a:hover { text-decoration: underline; }
-  .list-excerpt { font-style: italic; color: #666; }
+  .talk-section { margin-bottom: 2rem; }
+  .talk-subheading { font-size: 1.05rem; font-weight: 600; margin: 1.2rem 0 0.6rem; }
+  .talk-entry { margin-bottom: 1rem; line-height: 1.5; }
+  .talk-line { margin: 0; display: flex; gap: 0.35rem; align-items: baseline; flex-wrap: wrap; font-weight: 600; color: #222; }
+  .talk-label { font-weight: 600; color: #444; }
+  .talk-meta, .talk-links, .talk-excerpt { margin: 0.12rem 0; color: #555; }
+  .talk-links a { color: #005493; text-decoration: none; }
+  .talk-links a:hover { text-decoration: underline; }
+  .talk-excerpt { font-style: italic; color: #666; }
 </style>
 
-{% assign talks = site.talks | sort: "date" | reverse %}
-{% if talks.size > 0 %}
-  <div class="list-section">
-    {% for talk in talks %}
-      <div class="list-entry">
-        <p class="list-line">
-          <span class="list-label">[t{{ forloop.index }}]</span>
-          <span class="list-title">{{ talk.title }}</span>
-        </p>
-        <p class="list-meta">{{ talk.date | date: "%B %Y" }} · {{ talk.venue }} · {{ talk.location }}</p>
-        {% assign talk_summary = talk.excerpt | default: talk.content %}
-        {% if talk_summary %}
-          <p class="list-excerpt">{{ talk_summary | strip_html | strip }}</p>
-        {% endif %}
-        {% capture links %}
-          {% if talk.slidesurl %}<a href="{{ talk.slidesurl }}">Slides</a>{% endif %}
-        {% endcapture %}
-        {% if links | strip != "" %}
-          <p class="list-links">{{ links | strip }}</p>
-        {% endif %}
-      </div>
-    {% endfor %}
-  </div>
-{% endif %}
+{% assign talk_groups = "Invited Seminar::Invited Seminars;Seminar::Seminars" | split: ";" %}
+{% for group in talk_groups %}
+  {% assign parts = group | split: "::" %}
+  {% assign talk_type_key = parts[0] | strip %}
+  {% assign talk_type_label = parts[1] | strip %}
+  {% assign talks = site.talks | where: "type", talk_type_key | sort: "date" | reverse %}
+  {% if talks.size > 0 %}
+    <div class="talk-section">
+      <h2>{{ talk_type_label }}</h2><hr />
+      {% for talk in talks %}
+        <div class="talk-entry">
+          <p class="talk-line">
+            <span class="talk-label">[t{{ forloop.index }}]</span>
+            <span class="talk-title">{{ talk.title }}</span>
+          </p>
+          <p class="talk-meta">{{ talk.date | date: "%B %Y" }} · {{ talk.venue }} · {{ talk.location }}</p>
+          {% assign talk_summary = talk.excerpt | default: talk.content %}
+          {% if talk_summary %}
+            <p class="talk-excerpt">{{ talk_summary | strip_html | strip }}</p>
+          {% endif %}
+          {% capture links %}
+            {% if talk.slidesurl %}<a href="{{ talk.slidesurl }}">Slides</a>{% endif %}
+          {% endcapture %}
+          {% if links | strip != "" %}
+            <p class="talk-links">{{ links | strip }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endfor %}
