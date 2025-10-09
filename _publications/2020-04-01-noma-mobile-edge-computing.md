@@ -1,5 +1,9 @@
 ---
 title: NOMA-aided mobile edge computing via user cooperation
+authors:
+  - Yuwen Huang
+  - Yuan Liu
+  - Fangjiong Chen
 collection: publications
 category: manuscripts
 permalink: /publication/noma-mobile-edge-computing

@@ -1,5 +1,8 @@
 ---
 title: User cooperation for NOMA-based mobile edge computing
+authors:
+  - Yuwen Huang
+  - Yuan Liu
 collection: publications
 category: conferences
 permalink: /publication/user-cooperation-noma-mec

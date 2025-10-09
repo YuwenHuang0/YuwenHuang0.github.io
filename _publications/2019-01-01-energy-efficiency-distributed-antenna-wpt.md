@@ -1,5 +1,9 @@
 ---
 title: Energy efficiency of distributed antenna systems with wireless power transfer
+authors:
+  - Yuwen Huang
+  - Yuan Liu
+  - Geoffrey Ye Li
 collection: publications
 category: manuscripts
 permalink: /publication/energy-efficiency-distributed-antenna-wpt

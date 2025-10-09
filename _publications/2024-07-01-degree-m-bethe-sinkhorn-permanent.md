@@ -1,6 +1,10 @@
 ---
 title: Degree-M Bethe and Sinkhorn permanent based bounds on the permanent of a non-negative
   matrix
+authors:
+  - Yuwen Huang
+  - Navin Kashyap
+  - Pascal O. Vontobel
 collection: publications
 category: manuscripts
 permalink: /publication/degree-m-bethe-sinkhorn-permanent

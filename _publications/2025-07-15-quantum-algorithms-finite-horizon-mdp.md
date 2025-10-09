@@ -1,5 +1,12 @@
 ---
 title: Quantum algorithms for finite-horizon Markov decision processes
+authors:
+  - Bin Luo
+  - Yuwen Huang
+  - Jonathan Allcock
+  - Xiaojun Lin
+  - Shengyu Zhang
+  - John C. S. Lui
 collection: publications
 category: conferences
 permalink: /publication/quantum-algorithms-finite-horizon-mdp

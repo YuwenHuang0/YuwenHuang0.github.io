@@ -1,6 +1,9 @@
 ---
 title: On the relationship between the global minimum of the Bethe free energy function
   of a factor graph and sum-product algorithm fixed points
+authors:
+  - Yuwen Huang
+  - Pascal O. Vontobel
 collection: publications
 category: conferences
 permalink: /publication/bethe-free-energy-global-minimum

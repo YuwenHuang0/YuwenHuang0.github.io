@@ -1,6 +1,9 @@
 ---
 title: Sets of marginals and Pearson-correlation-based CHSH inequalities for a two-qubit
   system
+authors:
+  - Yuwen Huang
+  - Pascal O. Vontobel
 collection: publications
 category: conferences
 permalink: /publication/sets-of-marginals-chsh

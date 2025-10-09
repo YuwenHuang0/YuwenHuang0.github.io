@@ -1,5 +1,8 @@
 ---
 title: Energy-Efficient SWIPT in Distributed Antenna Systems
+authors:
+  - Yuwen Huang
+  - Yuan Liu
 collection: publications
 category: conferences
 permalink: /publication/energy-efficient-swipt-distributed-antenna

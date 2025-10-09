@@ -1,6 +1,9 @@
 ---
 title: The Bethe partition function and the SPA for factor graphs based on homogeneous
   real stable polynomials
+authors:
+  - Yuwen Huang
+  - Pascal O. Vontobel
 collection: publications
 category: conferences
 permalink: /publication/bethe-partition-spa-stable-polynomials

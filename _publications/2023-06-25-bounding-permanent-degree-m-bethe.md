@@ -1,6 +1,9 @@
 ---
 title: Bounding the permanent of a non-negative matrix via its degree-M Bethe and
   Sinkhorn permanents
+authors:
+  - Yuwen Huang
+  - Pascal O. Vontobel
 collection: publications
 category: conferences
 permalink: /publication/bounding-permanent-degree-m-bethe

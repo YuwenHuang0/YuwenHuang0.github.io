@@ -1,5 +1,9 @@
 ---
 title: Energy-efficient SWIPT in IoT distributed antenna systems
+authors:
+  - Yuwen Huang
+  - Mengyu Liu
+  - Yuan Liu
 collection: publications
 category: manuscripts
 permalink: /publication/energy-efficient-swipt-iot-das
