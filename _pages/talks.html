@@ -11,12 +11,12 @@ author_profile: true
   .talk-section { margin-bottom: 2rem; }
   .talk-subheading { font-size: 1.05rem; font-weight: 600; margin: 1.2rem 0 0.6rem; }
   .talk-entry { margin-bottom: 1rem; line-height: 1.5; }
-  .talk-line { margin: 0; display: flex; gap: 0.35rem; align-items: baseline; flex-wrap: wrap; font-weight: 600; color: #222; }
-  .talk-label { font-weight: 600; color: #444; }
-  .talk-meta, .talk-links, .talk-excerpt { margin: 0.12rem 0; color: #555; }
-  .talk-links a { color: #005493; text-decoration: none; }
+  .talk-line { margin: 0; display: flex; gap: 0.35rem; align-items: baseline; flex-wrap: wrap; font-weight: 600;  }
+  .talk-label { font-weight: 600;  }
+  .talk-meta, .talk-links, .talk-excerpt { margin: 0.12rem 0; color: inherit; }
+  .talk-links a { color: var(--link-color); text-decoration: none; }
   .talk-links a:hover { text-decoration: underline; }
-  .talk-excerpt { font-style: italic; color: #666; }
+  .talk-excerpt { font-style: italic; opacity: 0.85; }
 </style>
 
 {% assign talk_groups = "Invited Seminar::Invited Seminars;Seminar::Seminars" | split: ";" %}

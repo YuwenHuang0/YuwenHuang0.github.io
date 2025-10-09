@@ -10,10 +10,10 @@ author_profile: true
 <style>
   .teach-section { margin-top: 1.2rem; }
   .teach-entry { margin-bottom: 1rem; line-height: 1.5; }
-  .teach-line { margin: 0; display: flex; gap: 0.35rem; align-items: baseline; flex-wrap: wrap; font-weight: 600; color: #222; }
-  .teach-label { font-weight: 600; color: #444; }
-  .teach-meta, .teach-excerpt { margin: 0.12rem 0; color: #555; }
-  .teach-excerpt { font-style: italic; color: #666; }
+  .teach-line { margin: 0; display: flex; gap: 0.35rem; align-items: baseline; flex-wrap: wrap; font-weight: 600;  }
+  .teach-label { font-weight: 600;  }
+  .teach-meta, .teach-excerpt { margin: 0.12rem 0; color: inherit; }
+  .teach-excerpt { font-style: italic; opacity: 0.85; }
 </style>
 
 {% assign courses = site.teaching | sort: "date" | reverse %}
