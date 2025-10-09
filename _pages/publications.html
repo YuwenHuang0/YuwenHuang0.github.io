@@ -17,26 +17,32 @@ author_profile: true
   {% assign parts = topic_entry | split: "::" %}
   {% assign topic_key = parts[0] | strip %}
   {% assign topic_label = parts[1] | strip %}
-  {% assign topic_posts = site.publications | where: "topic", topic_key | sort: "date" | reverse %}
-  {% if topic_posts.size > 0 %}
-    <h2>{{ topic_label }}</h2><hr />
-    {% assign journal_counter = 0 %}
-    {% assign conference_counter = 0 %}
-    {% for post in topic_posts %}
-      {% if post.title == "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)" %}
-        <!-- Publication hidden per request -->
-        {% continue %}
-      {% endif %}
-      {% if post.category == "manuscripts" %}
-        {% assign journal_counter = journal_counter | plus: 1 %}
-        {% capture item_label %}[j{{ journal_counter }}]{% endcapture %}
-      {% elsif post.category == "conferences" %}
-        {% assign conference_counter = conference_counter | plus: 1 %}
-        {% capture item_label %}[c{{ conference_counter }}]{% endcapture %}
-      {% else %}
-        {% assign item_label = "" %}
-      {% endif %}
-      {% include archive-single.html label=item_label %}
-    {% endfor %}
-  {% endif %}
+{% assign topic_posts = site.publications | where: "topic", topic_key %}
+{% if topic_posts.size > 0 %}
+  <h2>{{ topic_label }}</h2><hr />
+  {% assign topic_journals = topic_posts | where: "category", "manuscripts" | sort: "date" | reverse %}
+  {% assign topic_conferences = topic_posts | where: "category", "conferences" | sort: "date" | reverse %}
+
+  {% assign journal_counter = 0 %}
+  {% for post in topic_journals %}
+    {% if post.title == "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)" %}
+      <!-- Publication hidden per request -->
+      {% continue %}
+    {% endif %}
+    {% assign journal_counter = journal_counter | plus: 1 %}
+    {% capture item_label %}[j{{ journal_counter }}]{% endcapture %}
+    {% include archive-single.html label=item_label %}
+  {% endfor %}
+
+  {% assign conference_counter = 0 %}
+  {% for post in topic_conferences %}
+    {% if post.title == "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)" %}
+      <!-- Publication hidden per request -->
+      {% continue %}
+    {% endif %}
+    {% assign conference_counter = conference_counter | plus: 1 %}
+    {% capture item_label %}[c{{ conference_counter }}]{% endcapture %}
+    {% include archive-single.html label=item_label %}
+  {% endfor %}
+{% endif %}
 {% endfor %}

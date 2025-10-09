@@ -17,6 +17,6 @@ slidesurl: /files/slides/isit2020.pdf
 #   \ of double-edge factor graphs via graph covers,' Proceedings of IEEE International\
 #   \ Symposium on Information Theory (ISIT), Los Angeles, USA, 2020, pp. 1331\u2013\
 #   1336."
-topic: graphical-models
+topic: quantum-info
 ---
 Characterizes Bethe partition functions of double-edge factor graphs via graph covers.
