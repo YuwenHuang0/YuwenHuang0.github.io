@@ -1,11 +1,11 @@
 {
   "basics": {
     "name": "Yuwen Huang",
-    "label": "Postdoctoral Fellow",
+    "label": "Postdoc",
     "email": "yuwen.huang@link.cuhk.edu.hk",
     "phone": "+852 6873 7315",
     "website": "https://yuwenhuang0.github.io",
-    "summary": "Postdoctoral fellow in the Department of Computer Science and Engineering at The Chinese University of Hong Kong working on quantum information processing, quantum networks, and graphical models.",
+    "summary": "Postdoc in the Department of Computer Science and Engineering at The Chinese University of Hong Kong working on quantum information processing, quantum networks, and graphical models.",
     "location": {
       "address": "Department of Computer Science and Engineering, The Chinese University of Hong Kong",
       "postalCode": "",
@@ -34,11 +34,11 @@
   "work": [
     {
       "company": "The Chinese University of Hong Kong",
-      "position": "Postdoctoral Fellow",
+      "position": "Postdoc",
       "url": "https://www.cse.cuhk.edu.hk/",
       "startDate": "2024-11",
       "endDate": "2026-11",
-      "summary": "Postdoctoral fellow in the Department of Computer Science and Engineering working with Prof. John C.S. Lui.",
+      "summary": "Postdoc in the Department of Computer Science and Engineering working with Prof. John C.S. Lui.",
       "highlights": [
         "Develop novel models for distributed quantum computing in collaboration with faculty, targeting high-impact journal publications.",
         "Mentor PhD students through project ideation, execution, and publication at venues such as ICML."

@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Welcome! I am Yuwen Huang, a postdoctoral fellow in the Department of Computer Science and Engineering at the Chinese University of Hong Kong (CUHK), working with Prof. John C.S. Lui. I obtained my Ph.D. in Information Engineering at CUHK under the supervision of Prof. Pascal O. Vontobel.
+Welcome! I am Yuwen Huang, a postdoc in the Department of Computer Science and Engineering at the Chinese University of Hong Kong (CUHK), working with Prof. John C.S. Lui. I obtained my Ph.D. in Information Engineering at CUHK under the supervision of Prof. Pascal O. Vontobel.
 
 I am an information theorist with broad interests spanning classical and quantum information processing, optimization theory, and combinatorics. My current projects focus on developing provable models for distributed quantum computing, characterizing Bethe partition functions via graph covers, and understanding graphical model-based characterizations of quantum non-locality.
 
