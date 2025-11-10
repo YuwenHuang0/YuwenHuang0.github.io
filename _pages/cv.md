@@ -24,14 +24,9 @@ Work experience
   * Develop novel models for distributed quantum computing in collaboration with faculty, targeting high-impact journal publications.  
   * Collaboration: Guiding PhD students through the full research lifecycle, from project ideation to publication at prestigious conferences like ICML.
   
-Skills
+Research interests
 ======
-* Quantum information processing
-* Quantum networks and distributed quantum computing
-* Graphical models and Bethe approximations
-* Optimization theory
-* Information theory
-* Programming: Matlab, C, LaTeX
+* probabilistic graphical models, optimization, information theory, foundations of data science, quantum information processing
 
 Publications
 ======
