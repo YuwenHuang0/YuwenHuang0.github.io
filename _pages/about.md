@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Welcome! I'm an information theorist whose work sits squarely in data science's core pillars—statistics, machine learning (ML), and optimization. I design probabilistic and combinatorial models that yield provable, scalable inference and decision-making. One line develops graphical-model tools (e.g., Bethe partition functions and graph covers) that connect counting, learning, and optimization—techniques widely used across modern ML. A complementary line studies quantum-enhanced computation, where tensor-network methods and distributed quantum systems act as data-centric accelerators for large-scale inference and optimization. Together, these efforts aim at reliable analytics that align with DSA's mission to unify statistics, ML, and optimization for real-world impact.
+welcome! I am an information theorist in statistics, optimization, and combinatorics. I develop graphical-model and quantum-enabled methods—Bethe/graph-cover tools, tensor networks, distributed quantum systems—for provable, scalable inference and optimization, with applications in machine learning (ML).
 
 Research interests
 
