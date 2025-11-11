@@ -22,7 +22,6 @@ Work experience
 * 11/2024–now: **Postdoc**, Department of Computer Science and Engineering, CUHK, Hong Kong  
   * Supervisor: Prof. John C.S. Lui  
   * Develop novel models for distributed quantum computing in collaboration with faculty, targeting high-impact journal publications.  
-  * Collaboration: Guiding PhD students through the full research lifecycle, from project ideation to publication at prestigious conferences like ICML.
   
 Research interests
 ======
