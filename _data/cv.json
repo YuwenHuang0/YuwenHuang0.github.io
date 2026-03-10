@@ -124,6 +124,13 @@
   "references": [],
   "publications": [
     {
+      "name": "A Scalable Distributed Quantum Optimization Framework via Factor Graph Paradigm",
+      "publisher": "Quantum",
+      "releaseDate": "2026",
+      "website": "https://arxiv.org/abs/2603.07673",
+      "summary": "Submitted manuscript with Xiaojun Lin, Bin Luo, and John C.S. Lui."
+    },
+    {
       "name": "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)",
       "publisher": "IEEE Transactions on Information Theory",
       "releaseDate": "2024",
@@ -237,6 +244,13 @@
     }
   ],
   "presentations": [
+    {
+      "name": "Bethe Approximations for Matrix Permanents and Contingency Table Counting",
+      "event": "Data Science and Analytics Thrust, HKUST (Guangzhou)",
+      "date": "2026-01",
+      "location": "Guangzhou, China",
+      "description": "Public seminar talk."
+    },
     {
       "name": "The Bethe approximation for binary contingency table counting and nonnegative matrix permanents",
       "event": "Department of Computer Science, TU Dortmund University",

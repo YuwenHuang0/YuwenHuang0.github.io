@@ -13,14 +13,14 @@ Education
 ======
 * 2018–2024: **Ph.D. in Information Engineering**, The Chinese University of Hong Kong (CUHK), Hong Kong  
   * Thesis: *Characterizing the Bethe partition function of double-edge factor graphs via graph covers*  
-  * Supervisor: Prof. Pascal O. Vontobel
+  * Supervisor: [Prof. Pascal O. Vontobel](https://sites.google.com/site/pascalvontobel/)
 * 2014–2018: **B.Eng. in Electronic and Information Engineering**, South China University of Technology (SCUT), Guangzhou, China  
-  * Supervisor: Prof. Yuan Liu
+  * Supervisor: [Prof. Yuan Liu](https://scholar.google.com/citations?hl=en&user=8xjRAYUAAAAJ&view_op=list_works&sortby=pubdate)
 
 Work experience
 ======
 * 11/2024–now: **Postdoc**, Department of Computer Science and Engineering, CUHK, Hong Kong  
-  * Supervisor: Prof. John C.S. Lui  
+  * Supervisor: [Prof. John C.S. Lui](https://www.cse.cuhk.edu.hk/~cslui/)  
   * Develop novel models for distributed quantum computing in collaboration with faculty, targeting high-impact journal publications.  
   
 Research interests
@@ -30,26 +30,28 @@ Research interests
 Publications
 ======
 ### Journal Papers (submitted)
+* Y. Huang, X. Lin, B. Luo and J. C. S. Lui, “A Scalable Distributed Quantum Optimization Framework via Factor Graph Paradigm,” submitted to *Quantum*, 2026. [arXiv:2603.07673](https://arxiv.org/abs/2603.07673)
 * Y. Huang and P. O. Vontobel, “Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version),” submitted to *IEEE Transactions on Information Theory*, 2024. [arXiv:2412.05942](https://arxiv.org/abs/2412.05942)
 
 ### Journal Papers
-* Y. Huang, N. Kashyap and P. O. Vontobel, “Degree-M Bethe and Sinkhorn permanent based bounds on the permanent of a non-negative matrix,” *IEEE Transactions on Information Theory*, vol. 70, no. 4, pp. 5289–5308, Jul. 2024. [IEEE Xplore](https://ieeexplore.ieee.org/document/10463076)
+* Y. Huang, N. Kashyap and P. O. Vontobel, “Degree-M Bethe and Sinkhorn permanent based bounds on the permanent of a non-negative matrix,” *IEEE Transactions on Information Theory*, vol. 70, no. 4, pp. 5289–5308, Jul. 2024.
 * Y. Huang, Y. Liu and F. Chen, “NOMA-aided mobile edge computing via user cooperation,” *IEEE Transactions on Communications*, vol. 68, no. 4, pp. 2221–2235, Apr. 2020.
 * Y. Huang, Y. Liu and G. Y. Li, “Energy efficiency of distributed antenna systems with wireless power transfer,” *IEEE Journal on Selected Areas in Communications*, vol. 37, no. 1, pp. 89–99, Jan. 2019.
 * Y. Huang, M. Liu and Y. Liu, “Energy-efficient SWIPT in IoT distributed antenna systems,” *IEEE Internet of Things Journal*, vol. 5, no. 4, pp. 2646–2656, Aug. 2018.
 
 ### Conference Papers
-* B. Luo*, Y. Huang, J. Allcock, X. Lin, S. Zhang and J. C.S. Lui, “Quantum algorithms for finite-horizon Markov decision processes,” in *Proceedings of the 42nd International Conference on Machine Learning (ICML)*, 2025. (*corresponding author)
+* B. Luo*, Y. Huang, J. Allcock, X. Lin, S. Zhang and J. C.S. Lui, “Quantum algorithms for finite-horizon Markov decision processes,” in Proceedings of the 42nd International Conference on Machine Learning (ICML), 2025. (*corresponding author)
 * Y. Huang and P. O. Vontobel, “The Bethe partition function and the SPA for factor graphs based on homogeneous real stable polynomials,” in *Proceedings of IEEE International Symposium on Information Theory (ISIT)*, Athens, Greece, Jul. 2024, pp. 3029–3034.
 * Y. Huang and P. O. Vontobel, “Bounding the permanent of a non-negative matrix via its degree-M Bethe and Sinkhorn permanents,” in *Proceedings of IEEE International Symposium on Information Theory (ISIT)*, Taipei, Taiwan, Jun. 2023, pp. 2774–2779.
 * Y. Huang and P. O. Vontobel, “On the relationship between the global minimum of the Bethe free energy function of a factor graph and sum-product algorithm fixed points,” in *Proceedings of IEEE Information Theory Workshop (ITW)*, Mumbai, India, Nov. 2022, pp. 666–671.
 * Y. Huang and P. O. Vontobel, “Sets of marginals and Pearson-correlation-based CHSH inequalities for a two-qubit system,” in *Proceedings of IEEE International Symposium on Information Theory (ISIT)*, Melbourne, Australia, Jul. 2021, pp. 1338–1343.
-* Y. Huang and P. O. Vontobel, “Characterizing the Bethe partition function of double-edge factor graphs via graph covers,” in *Proceedings of IEEE International Symposium on Information Theory (ISIT)*, Los Angeles, USA, Jun. 2020, pp. 1331–1336.
+* Y. Huang and P. O. Vontobel, “Characterizing the Bethe partition function of double-edge factor graphs via graph covers,” in *Proceedings of IEEE International Symposium on Information Theory (ISIT)*, Los Angeles, USA, Jun. 2020, pp. 1331–1336. [Slides](/files/slides/isit2020.pdf)
 * Y. Huang and Y. Liu, “User cooperation for NOMA-based mobile edge computing,” in *Proceedings of IEEE International Conference on Communication Systems (ICCS)*, Chengdu, China, Dec. 2018, pp. 395–400.
 * Y. Huang and Y. Liu, “Energy-Efficient SWIPT in Distributed Antenna Systems,” in *Proceedings of IEEE Globecom Workshops*, Singapore, Dec. 2017, pp. 1–6.
   
 Talks
 ======
+* Jan. 2026 – *Bethe Approximations for Matrix Permanents and Contingency Table Counting*, Data Science and Analytics Thrust, HKUST (Guangzhou) [Slides](/files/slides/talk_hkustgz.pdf)
 * Feb. 2025 – *The Bethe approximation for binary contingency table counting and nonnegative matrix permanents*, Department of Computer Science, TU Dortmund University (virtual seminar)
 * Sept. 2024 – *The Bethe partition function and the SPA for factor graphs based on homogeneous real stable polynomials*, School of Cyber Science and Engineering, Southeast University (virtual seminar)
 * Mar. 2023 – *Bounding the permanent of a non-negative matrix via its degree-M Bethe and Sinkhorn permanents*, Institute of Theoretical Computer Science and Communications, CUHK
