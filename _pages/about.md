@@ -157,6 +157,64 @@ redirect_from:
     box-shadow: 0 14px 32px rgba(18, 54, 64, 0.04);
   }
 
+  .application-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .application-card {
+    padding: 1rem;
+    border: 1px solid rgba(34, 84, 97, 0.1);
+    border-radius: 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfdfe 100%);
+    box-shadow: 0 10px 24px rgba(18, 54, 64, 0.04);
+  }
+
+  .application-card.teal {
+    background: linear-gradient(180deg, #eef8fb 0%, #ffffff 100%);
+  }
+
+  .application-card.gold {
+    background: linear-gradient(180deg, #fff8e7 0%, #ffffff 100%);
+  }
+
+  .application-card.coral {
+    background: linear-gradient(180deg, #fff2ee 0%, #ffffff 100%);
+  }
+
+  .application-card.green {
+    background: linear-gradient(180deg, #eef8f1 0%, #ffffff 100%);
+  }
+
+  .application-visual {
+    margin-bottom: 0.85rem;
+    padding: 0.7rem;
+    border-radius: 16px;
+    border: 1px solid rgba(34, 84, 97, 0.08);
+    background: rgba(255, 255, 255, 0.78);
+  }
+
+  .application-card h3 {
+    margin: 0 0 0.45rem;
+    color: #183743;
+    font-size: 1.04rem;
+    line-height: 1.35;
+  }
+
+  .application-card p {
+    margin: 0;
+    color: #4b666f;
+    line-height: 1.72;
+  }
+
+  .application-note {
+    margin-top: 0.6rem;
+    color: #2d5966;
+    font-size: 0.94rem;
+    font-weight: 600;
+  }
+
   .framework-goal {
     margin-top: 1rem;
     padding: 1rem 1.05rem;
@@ -235,6 +293,10 @@ redirect_from:
 
   @media (min-width: 760px) {
     .home-summary-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .application-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -327,46 +389,90 @@ redirect_from:
     These methods are motivated by core theoretical questions, but they also point toward practical applications in machine learning, large-scale analytics, and emerging quantum platforms.
   </p>
 
-  <div class="figure-card">
-    <p class="figure-title">Application Landscape</p>
-    <svg class="figure-svg" viewBox="0 0 920 320" role="img" aria-label="Diagram showing potential applications in machine learning, uncertainty quantification, model compression, and distributed quantum optimization">
-      <defs>
-        <linearGradient id="appsCore" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#f4fbfd" />
-          <stop offset="100%" stop-color="#eef7f9" />
-        </linearGradient>
-      </defs>
+  <div class="application-grid">
+    <article class="application-card teal">
+      <div class="application-visual">
+        <svg class="figure-svg" viewBox="0 0 360 160" role="img" aria-label="Illustration of structured machine learning using a graph">
+          <line x1="80" y1="42" x2="176" y2="30" stroke="#78b8c7" stroke-width="4" />
+          <line x1="80" y1="42" x2="116" y2="116" stroke="#78b8c7" stroke-width="4" />
+          <line x1="176" y1="30" x2="264" y2="64" stroke="#78b8c7" stroke-width="4" />
+          <line x1="116" y1="116" x2="220" y2="120" stroke="#78b8c7" stroke-width="4" />
+          <line x1="220" y1="120" x2="264" y2="64" stroke="#78b8c7" stroke-width="4" />
+          <circle cx="80" cy="42" r="15" fill="#2f7f93" />
+          <circle cx="176" cy="30" r="15" fill="#2f7f93" />
+          <circle cx="264" cy="64" r="15" fill="#2f7f93" />
+          <circle cx="116" cy="116" r="15" fill="#2f7f93" />
+          <circle cx="220" cy="120" r="15" fill="#2f7f93" />
+          <rect x="286" y="32" width="52" height="18" rx="9" fill="#dff0f5" />
+          <rect x="286" y="58" width="44" height="18" rx="9" fill="#dff0f5" />
+          <rect x="286" y="84" width="60" height="18" rx="9" fill="#dff0f5" />
+          <text x="180" y="152" text-anchor="middle" fill="#476871" font-size="16">latent structure · dependencies · constraints</text>
+        </svg>
+      </div>
+      <h3>Structured machine learning</h3>
+      <p>Methods based on graphical models and combinatorial structure can support learning problems where dependencies, constraints, and latent structure should be modeled explicitly rather than ignored.</p>
+      <p class="application-note">Potential role: more structured and interpretable ML pipelines.</p>
+    </article>
 
-      <rect x="290" y="96" width="340" height="128" rx="26" fill="url(#appsCore)" stroke="#9dc5d0" stroke-width="2" />
-      <text x="460" y="138" text-anchor="middle" fill="#1d5565" font-size="24" font-weight="700">Structure-aware Methods</text>
-      <text x="460" y="170" text-anchor="middle" fill="#4b666f" font-size="18">Inference · Counting · Optimization</text>
-      <text x="460" y="197" text-anchor="middle" fill="#4b666f" font-size="18">with rigorous guarantees</text>
+    <article class="application-card gold">
+      <div class="application-visual">
+        <svg class="figure-svg" viewBox="0 0 360 160" role="img" aria-label="Illustration of uncertainty quantification with intervals and distributions">
+          <line x1="42" y1="120" x2="318" y2="120" stroke="#d9b14f" stroke-width="4" stroke-linecap="round" />
+          <line x1="88" y1="58" x2="88" y2="120" stroke="#d9b14f" stroke-width="6" stroke-linecap="round" />
+          <line x1="180" y1="42" x2="180" y2="120" stroke="#d9b14f" stroke-width="6" stroke-linecap="round" />
+          <line x1="270" y1="72" x2="270" y2="120" stroke="#d9b14f" stroke-width="6" stroke-linecap="round" />
+          <path d="M52 112 C88 92, 102 54, 132 54 C166 54, 178 102, 210 102 C242 102, 252 72, 300 64" fill="none" stroke="#7a5614" stroke-width="5" stroke-linecap="round" />
+          <circle cx="88" cy="58" r="8" fill="#7a5614" />
+          <circle cx="180" cy="42" r="8" fill="#7a5614" />
+          <circle cx="270" cy="72" r="8" fill="#7a5614" />
+          <text x="180" y="152" text-anchor="middle" fill="#6d5d38" font-size="16">approximation quality · confidence · decision support</text>
+        </svg>
+      </div>
+      <h3>Uncertainty quantification and reliable analytics</h3>
+      <p>Scalable approximate inference can be useful when decisions must be made under uncertainty and exact probabilistic computation is too expensive.</p>
+      <p class="application-note">Potential role: reliable uncertainty estimates in complex systems.</p>
+    </article>
 
-      <line x1="290" y1="160" x2="146" y2="82" stroke="#88bbca" stroke-width="5" stroke-linecap="round" />
-      <line x1="630" y1="160" x2="774" y2="82" stroke="#d9b14f" stroke-width="5" stroke-linecap="round" />
-      <line x1="290" y1="160" x2="146" y2="252" stroke="#d69384" stroke-width="5" stroke-linecap="round" />
-      <line x1="630" y1="160" x2="774" y2="252" stroke="#81b28d" stroke-width="5" stroke-linecap="round" />
+    <article class="application-card coral">
+      <div class="application-visual">
+        <svg class="figure-svg" viewBox="0 0 360 160" role="img" aria-label="Illustration of model compression using tensor-style blocks">
+          <rect x="42" y="38" width="54" height="54" rx="8" fill="#efb2a7" />
+          <rect x="102" y="38" width="54" height="54" rx="8" fill="#efb2a7" />
+          <rect x="42" y="98" width="54" height="22" rx="8" fill="#efb2a7" />
+          <rect x="102" y="98" width="54" height="22" rx="8" fill="#efb2a7" />
+          <path d="M176 78 L228 78" stroke="#cb6651" stroke-width="6" stroke-linecap="round" />
+          <path d="M216 62 L240 78 L216 94" fill="none" stroke="#cb6651" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+          <rect x="248" y="52" width="22" height="52" rx="7" fill="#cb6651" />
+          <rect x="278" y="52" width="22" height="52" rx="7" fill="#cb6651" />
+          <rect x="308" y="52" width="22" height="52" rx="7" fill="#cb6651" />
+          <text x="180" y="152" text-anchor="middle" fill="#725f59" font-size="16">compact representations · efficient computation</text>
+        </svg>
+      </div>
+      <h3>Model compression and high-dimensional computation</h3>
+      <p>Tensor-network and quantum-inspired ideas may provide principled ways to represent large models or high-dimensional objects more compactly.</p>
+      <p class="application-note">Potential role: efficient representations for large-scale ML models.</p>
+    </article>
 
-      <rect x="30" y="26" width="232" height="92" rx="22" fill="#ebf8fb" stroke="#77b8c8" stroke-width="2" />
-      <text x="146" y="60" text-anchor="middle" fill="#1b5665" font-size="20" font-weight="700">Structured ML</text>
-      <text x="146" y="87" text-anchor="middle" fill="#476871" font-size="15">Learning with graphical</text>
-      <text x="146" y="107" text-anchor="middle" fill="#476871" font-size="15">and combinatorial structure</text>
-
-      <rect x="658" y="26" width="232" height="92" rx="22" fill="#fff7e5" stroke="#ddb24d" stroke-width="2" />
-      <text x="774" y="60" text-anchor="middle" fill="#7a5614" font-size="20" font-weight="700">Uncertainty Quantification</text>
-      <text x="774" y="87" text-anchor="middle" fill="#6d5d38" font-size="15">Scalable approximate inference</text>
-      <text x="774" y="107" text-anchor="middle" fill="#6d5d38" font-size="15">for reliable decision support</text>
-
-      <rect x="30" y="202" width="232" height="92" rx="22" fill="#fff1ed" stroke="#d88d7e" stroke-width="2" />
-      <text x="146" y="236" text-anchor="middle" fill="#8b4539" font-size="20" font-weight="700">Model Compression</text>
-      <text x="146" y="263" text-anchor="middle" fill="#725f59" font-size="15">Tensor-network and</text>
-      <text x="146" y="283" text-anchor="middle" fill="#725f59" font-size="15">quantum-inspired representations</text>
-
-      <rect x="658" y="202" width="232" height="92" rx="22" fill="#eef8f1" stroke="#7fb08b" stroke-width="2" />
-      <text x="774" y="236" text-anchor="middle" fill="#376548" font-size="20" font-weight="700">Quantum Optimization</text>
-      <text x="774" y="263" text-anchor="middle" fill="#586f60" font-size="15">Distributed quantum systems</text>
-      <text x="774" y="283" text-anchor="middle" fill="#586f60" font-size="15">for large-scale analytics</text>
-    </svg>
+    <article class="application-card green">
+      <div class="application-visual">
+        <svg class="figure-svg" viewBox="0 0 360 160" role="img" aria-label="Illustration of distributed quantum optimization over a network">
+          <line x1="72" y1="52" x2="180" y2="40" stroke="#86b894" stroke-width="4" />
+          <line x1="72" y1="52" x2="104" y2="118" stroke="#86b894" stroke-width="4" />
+          <line x1="180" y1="40" x2="282" y2="70" stroke="#86b894" stroke-width="4" />
+          <line x1="104" y1="118" x2="212" y2="122" stroke="#86b894" stroke-width="4" />
+          <line x1="212" y1="122" x2="282" y2="70" stroke="#86b894" stroke-width="4" />
+          <rect x="54" y="34" width="36" height="36" rx="10" fill="#4f8b62" />
+          <rect x="162" y="22" width="36" height="36" rx="10" fill="#4f8b62" />
+          <rect x="264" y="52" width="36" height="36" rx="10" fill="#4f8b62" />
+          <rect x="86" y="100" width="36" height="36" rx="10" fill="#4f8b62" />
+          <rect x="194" y="104" width="36" height="36" rx="10" fill="#4f8b62" />
+          <text x="180" y="152" text-anchor="middle" fill="#586f60" font-size="16">networked processors · coordination · scalability</text>
+        </svg>
+      </div>
+      <h3>Distributed quantum optimization</h3>
+      <p>Distributed quantum systems and quantum networks suggest new computational settings where structure-aware decomposition may be essential for scalability.</p>
+      <p class="application-note">Potential role: scalable optimization on emerging quantum platforms.</p>
+    </article>
   </div>
 </section>
 
