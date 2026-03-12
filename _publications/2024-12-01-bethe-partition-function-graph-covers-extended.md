@@ -7,7 +7,7 @@ authors:
 collection: publications
 category: manuscripts
 permalink: /publication/bethe-partition-function-graph-covers-extended
-excerpt: Submitted to IEEE Transactions on Information Theory (T-IT); extended study of Bethe partition functions and graph covers.
+excerpt: Extended study of Bethe partition functions and graph covers.
 date: '2024-12-01'
 venue: IEEE Transactions on Information Theory
 # citation: Y. Huang and P. O. Vontobel, 'Characterizing the Bethe partition function
@@ -17,4 +17,4 @@ paperurl: https://arxiv.org/abs/2506.16250
 status: Submitted
 topic: quantum-info
 ---
-Submitted to IEEE Transactions on Information Theory (T-IT); extended study of Bethe partition functions and graph covers.
+Extended study of Bethe partition functions and graph covers.
