@@ -393,7 +393,7 @@ redirect_from:
 
   <div class="hero-flow">
     <p class="hero-flow-note">Theory to Impact</p>
-    <svg class="figure-svg" viewBox="0 0 920 240" role="img" aria-label="Diagram showing theory flowing into algorithms, systems, and practical impact">
+    <svg class="figure-svg" viewBox="0 0 920 260" role="img" aria-label="Diagram showing theory flowing into algorithms, systems, and practical impact">
       <defs>
         <linearGradient id="heroFlowCore" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stop-color="#1d6677" />
@@ -401,28 +401,34 @@ redirect_from:
         </linearGradient>
       </defs>
 
-      <rect x="46" y="72" width="190" height="92" rx="22" fill="#eaf7fb" stroke="#77b8c8" stroke-width="2" />
-      <text x="141" y="108" text-anchor="middle" fill="#1b5665" font-size="24" font-weight="700">Theory</text>
-      <text x="141" y="136" text-anchor="middle" fill="#476871" font-size="17">information theory</text>
+      <rect x="46" y="84" width="190" height="92" rx="22" fill="#eaf7fb" stroke="#77b8c8" stroke-width="2" />
+      <text x="141" y="120" text-anchor="middle" fill="#1b5665" font-size="24" font-weight="700">Theory</text>
+      <text x="141" y="148" text-anchor="middle" fill="#476871" font-size="17">information theory</text>
 
-      <line x1="236" y1="118" x2="312" y2="118" stroke="#8fbfcc" stroke-width="6" stroke-linecap="round" />
-      <path d="M296 102 L318 118 L296 134" fill="none" stroke="#8fbfcc" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+      <line x1="236" y1="130" x2="292" y2="130" stroke="#8fbfcc" stroke-width="6" stroke-linecap="round" />
+      <path d="M276 114 L298 130 L276 146" fill="none" stroke="#8fbfcc" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
 
-      <rect x="320" y="52" width="280" height="132" rx="28" fill="url(#heroFlowCore)" />
-      <text x="460" y="95" text-anchor="middle" fill="#ffffff" font-size="28" font-weight="700">Algorithms</text>
-      <text x="460" y="124" text-anchor="middle" fill="#dff3f7" font-size="18">inference · counting · optimization</text>
-      <text x="460" y="151" text-anchor="middle" fill="#dff3f7" font-size="18">with structure and guarantees</text>
+      <rect x="300" y="48" width="324" height="164" rx="28" fill="url(#heroFlowCore)" />
+      <text x="462" y="94" text-anchor="middle" fill="#ffffff" font-size="30" font-weight="700">Algorithms</text>
+      <text x="462" y="122" text-anchor="middle" fill="#dff3f7" font-size="17" font-weight="600">
+        <tspan x="462" dy="0">inference · counting</tspan>
+        <tspan x="462" dy="24">optimization</tspan>
+        <tspan x="462" dy="24">with structure and guarantees</tspan>
+      </text>
 
-      <line x1="600" y1="118" x2="680" y2="118" stroke="#9abfcc" stroke-width="6" stroke-linecap="round" />
-      <path d="M664 102 L686 118 L664 134" fill="none" stroke="#9abfcc" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+      <line x1="624" y1="130" x2="674" y2="130" stroke="#9abfcc" stroke-width="6" stroke-linecap="round" />
+      <path d="M658 114 L680 130 L658 146" fill="none" stroke="#9abfcc" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
 
-      <rect x="690" y="30" width="182" height="78" rx="20" fill="#fff7e5" stroke="#ddb24d" stroke-width="2" />
-      <text x="781" y="61" text-anchor="middle" fill="#7a5614" font-size="20" font-weight="700">Systems</text>
-      <text x="781" y="86" text-anchor="middle" fill="#6d5d38" font-size="15">quantum networks</text>
+      <rect x="692" y="40" width="180" height="84" rx="20" fill="#fff7e5" stroke="#ddb24d" stroke-width="2" />
+      <text x="782" y="74" text-anchor="middle" fill="#7a5614" font-size="20" font-weight="700">Systems</text>
+      <text x="782" y="99" text-anchor="middle" fill="#6d5d38" font-size="15">quantum networks</text>
 
-      <rect x="690" y="132" width="182" height="78" rx="20" fill="#eef8f1" stroke="#7fb08b" stroke-width="2" />
-      <text x="781" y="163" text-anchor="middle" fill="#376548" font-size="20" font-weight="700">Impact</text>
-      <text x="781" y="188" text-anchor="middle" fill="#586f60" font-size="15">ML and efficient computation</text>
+      <rect x="692" y="146" width="180" height="88" rx="20" fill="#eef8f1" stroke="#7fb08b" stroke-width="2" />
+      <text x="782" y="180" text-anchor="middle" fill="#376548" font-size="20" font-weight="700">Impact</text>
+      <text x="782" y="202" text-anchor="middle" fill="#586f60" font-size="15" font-weight="600">
+        <tspan x="782" dy="0">ML applications and</tspan>
+        <tspan x="782" dy="18">efficient computation</tspan>
+      </text>
     </svg>
   </div>
 
