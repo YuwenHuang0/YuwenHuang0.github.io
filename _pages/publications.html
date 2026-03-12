@@ -76,12 +76,16 @@ author_profile: true
                 {% if post.paperurl %} | {% endif %}
                 <a href="{{ post.slidesurl }}">Slides</a>
               {% endif %}
-              {% if post.videourl %}
+              {% if post.slidesurl_alt %}
                 {% if post.paperurl or post.slidesurl %} | {% endif %}
+                <a href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "More Slides" }}</a>
+              {% endif %}
+              {% if post.videourl %}
+                {% if post.paperurl or post.slidesurl or post.slidesurl_alt %} | {% endif %}
                 <a href="{{ post.videourl }}">Video</a>
               {% endif %}
               {% if post.bibtexurl %}
-                {% if post.paperurl or post.slidesurl or post.videourl %} | {% endif %}
+                {% if post.paperurl or post.slidesurl or post.slidesurl_alt or post.videourl %} | {% endif %}
                 <a href="{{ post.bibtexurl }}">BibTeX</a>
               {% endif %}
             {% endcapture %}
@@ -124,12 +128,16 @@ author_profile: true
                 {% if post.paperurl %} | {% endif %}
                 <a href="{{ post.slidesurl }}">Slides</a>
               {% endif %}
-              {% if post.videourl %}
+              {% if post.slidesurl_alt %}
                 {% if post.paperurl or post.slidesurl %} | {% endif %}
+                <a href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "More Slides" }}</a>
+              {% endif %}
+              {% if post.videourl %}
+                {% if post.paperurl or post.slidesurl or post.slidesurl_alt %} | {% endif %}
                 <a href="{{ post.videourl }}">Video</a>
               {% endif %}
               {% if post.bibtexurl %}
-                {% if post.paperurl or post.slidesurl or post.videourl %} | {% endif %}
+                {% if post.paperurl or post.slidesurl or post.slidesurl_alt or post.videourl %} | {% endif %}
                 <a href="{{ post.bibtexurl }}">BibTeX</a>
               {% endif %}
             {% endcapture %}

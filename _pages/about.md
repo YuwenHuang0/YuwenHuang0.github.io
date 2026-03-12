@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Welcome. I am a postdoctoral researcher working at the intersection of information theory, machine learning, optimization, and quantum information. My research develops provable and scalable methods for inference, counting, and optimization by combining probabilistic graphical models, combinatorics, Bethe and graph-cover techniques, tensor-network representations, and distributed quantum computation. A recurring goal in my work is to turn structural insight into practical algorithms with rigorous performance guarantees. I am particularly interested in working with PhD students who want to build mathematically grounded methods with impact on modern data-intensive systems.
+Welcome. I am a postdoctoral researcher working at the intersection of information theory, machine learning, optimization, and quantum information. My research develops provable and scalable methods for inference, counting, and optimization by combining probabilistic graphical models, combinatorics, Bethe and graph-cover techniques, tensor-network representations, and distributed quantum computation, with potential applications in machine learning (ML). A recurring goal in my work is to turn structural insight into practical algorithms with rigorous performance guarantees. Exploring these applications to ML is one of my future research directions. I am particularly interested in working with PhD students who want to build mathematically grounded methods with impact on modern data-intensive systems.
 
 Research interests
 

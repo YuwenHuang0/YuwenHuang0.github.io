@@ -70,6 +70,9 @@ layout: default
         {% if page.slidesurl %}
           <p style="font-size: smaller"><a href="{{ page.slidesurl }}">Download Slides</a></p>
         {% endif %}
+        {% if page.slidesurl_alt %}
+          <p style="font-size: smaller"><a href="{{ page.slidesurl_alt }}">{{ page.slideslabel_alt | default: "More Slides" }}</a></p>
+        {% endif %}
         {% if page.videourl %}
           <p style="font-size: smaller"><a href="{{ page.videourl }}">Watch Video</a></p>
         {% endif %}

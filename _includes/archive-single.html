@@ -69,6 +69,9 @@
     {% if post.slidesurl %}
       <p><a href="{{ post.slidesurl }}">Download Slides</a></p>
     {% endif %}
+    {% if post.slidesurl_alt %}
+      <p><a href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "More Slides" }}</a></p>
+    {% endif %}
     {% if post.videourl %}
       <p><a href="{{ post.videourl }}">Watch Video</a></p>
     {% endif %}
