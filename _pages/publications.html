@@ -57,7 +57,11 @@ author_profile: true
             {% endif %}
             <p class="pub-venue">
               {% if post.status %}
-                {{ post.status }} in
+                {% if post.status == "Submitted" %}
+                  Submitted to
+                {% else %}
+                  {{ post.status }} in
+                {% endif %}
               {% else %}
                 Published in
               {% endif %}
@@ -72,8 +76,12 @@ author_profile: true
                 {% if post.paperurl %} | {% endif %}
                 <a href="{{ post.slidesurl }}">Slides</a>
               {% endif %}
-              {% if post.bibtexurl %}
+              {% if post.videourl %}
                 {% if post.paperurl or post.slidesurl %} | {% endif %}
+                <a href="{{ post.videourl }}">Video</a>
+              {% endif %}
+              {% if post.bibtexurl %}
+                {% if post.paperurl or post.slidesurl or post.videourl %} | {% endif %}
                 <a href="{{ post.bibtexurl }}">BibTeX</a>
               {% endif %}
             {% endcapture %}
@@ -116,8 +124,12 @@ author_profile: true
                 {% if post.paperurl %} | {% endif %}
                 <a href="{{ post.slidesurl }}">Slides</a>
               {% endif %}
-              {% if post.bibtexurl %}
+              {% if post.videourl %}
                 {% if post.paperurl or post.slidesurl %} | {% endif %}
+                <a href="{{ post.videourl }}">Video</a>
+              {% endif %}
+              {% if post.bibtexurl %}
+                {% if post.paperurl or post.slidesurl or post.videourl %} | {% endif %}
                 <a href="{{ post.bibtexurl }}">BibTeX</a>
               {% endif %}
             {% endcapture %}
