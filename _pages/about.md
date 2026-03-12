@@ -478,7 +478,7 @@ redirect_from:
 </style>
 
 <section class="home-intro">
-  <p class="home-eyebrow">Information Theory · Optimization · Quantum Information</p>
+  <p class="home-eyebrow">Information Theory · Statistical Physics · Optimization · Quantum Information</p>
   <h1 class="home-heading">Structured inference and optimization<br>with rigorous guarantees</h1>
 
   <div class="hero-flow">
@@ -486,7 +486,7 @@ redirect_from:
     <div class="hero-flow-grid" aria-label="Diagram showing theory flowing into algorithms, systems, and practical impact">
       <div class="hero-node theory">
         <h3>Theory</h3>
-        <p>information theory</p>
+        <p>information theory and statistical physics</p>
       </div>
 
       <div class="hero-arrow down" aria-hidden="true">↓</div>
@@ -512,7 +512,7 @@ redirect_from:
   </div>
 
   <p class="home-lead">
-    I am a postdoctoral researcher working at the intersection of information theory, machine learning, optimization, and quantum information. My research develops provable and scalable methods for inference, counting, and optimization by combining probabilistic graphical models, combinatorics, Bethe and graph-cover techniques, tensor-network representations, and distributed quantum computation.
+    I am a postdoctoral researcher working at the intersection of information theory, statistical physics, machine learning, optimization, and quantum information. My research develops provable and scalable methods for inference, counting, and optimization by combining probabilistic graphical models, combinatorics, Bethe and graph-cover techniques, tensor-network representations, ideas from statistical physics, and distributed quantum computation.
   </p>
   <p class="home-lead">
     A central theme of my work is to use structural insight to design algorithms that are both mathematically rigorous and computationally practical. I am also interested in how these ideas can lead to future applications in machine learning.
@@ -521,7 +521,7 @@ redirect_from:
   <div class="home-summary-grid">
     <article class="home-summary-card">
       <h3>Current focus</h3>
-      <p>Graphical-model methods, counting and inference problems, optimization with guarantees, tensor-network methods, and distributed quantum systems.</p>
+      <p>Graphical-model methods, counting and inference problems, Bethe and statistical-physics perspectives, optimization with guarantees, tensor-network methods, and distributed quantum systems.</p>
     </article>
     <article class="home-summary-card accent">
       <h3>Future direction</h3>
@@ -553,7 +553,7 @@ redirect_from:
         </svg>
       </div>
       <h3>Probabilistic graphical models</h3>
-      <p>Bethe methods, graph covers, message passing, and structure-aware formulations for inference and counting.</p>
+      <p>Bethe methods, graph covers, message passing, statistical-physics perspectives, and structure-aware formulations for inference and counting.</p>
     </article>
 
     <article class="direction-card gold">
