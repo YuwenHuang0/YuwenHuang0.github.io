@@ -46,6 +46,12 @@ redirect_from:
     pointer-events: none;
   }
 
+  .home-intro-grid {
+    display: grid;
+    gap: 1.2rem;
+    align-items: start;
+  }
+
   .home-eyebrow {
     margin: 0 0 0.8rem;
     color: #16677a;
@@ -107,6 +113,23 @@ redirect_from:
     margin: 0;
     color: #4c6871;
     line-height: 1.72;
+  }
+
+  .hero-visual {
+    padding: 0.95rem;
+    border: 1px solid rgba(34, 84, 97, 0.12);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  }
+
+  .hero-visual-note {
+    margin: 0 0 0.65rem;
+    color: #214d5a;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
 
   .research-framework {
@@ -267,6 +290,14 @@ redirect_from:
     line-height: 1.72;
   }
 
+  .interest-visual {
+    margin-bottom: 0.9rem;
+    padding: 0.65rem;
+    border-radius: 16px;
+    border: 1px solid rgba(34, 84, 97, 0.08);
+    background: rgba(255, 255, 255, 0.85);
+  }
+
   .interest-card .interest-accent {
     display: block;
     width: 52px;
@@ -292,6 +323,10 @@ redirect_from:
   }
 
   @media (min-width: 760px) {
+    .home-intro-grid {
+      grid-template-columns: minmax(0, 1.22fr) minmax(280px, 0.88fr);
+    }
+
     .home-summary-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -307,25 +342,67 @@ redirect_from:
 </style>
 
 <section class="home-intro">
-  <p class="home-eyebrow">Information Theory · Optimization · Quantum Information</p>
-  <h1 class="home-heading">Structured inference and optimization<br>with rigorous guarantees</h1>
+  <div class="home-intro-grid">
+    <div>
+      <p class="home-eyebrow">Information Theory · Optimization · Quantum Information</p>
+      <h1 class="home-heading">Structured inference and optimization<br>with rigorous guarantees</h1>
 
-  <p class="home-lead">
-    I am a postdoctoral researcher working at the intersection of information theory, machine learning, optimization, and quantum information. My research develops provable and scalable methods for inference, counting, and optimization by combining probabilistic graphical models, combinatorics, Bethe and graph-cover techniques, tensor-network representations, and distributed quantum computation.
-  </p>
-  <p class="home-lead">
-    A central theme of my work is to use structural insight to design algorithms that are both mathematically rigorous and computationally practical. I am also interested in how these ideas can lead to future applications in machine learning.
-  </p>
+      <p class="home-lead">
+        I am a postdoctoral researcher working at the intersection of information theory, machine learning, optimization, and quantum information. My research develops provable and scalable methods for inference, counting, and optimization by combining probabilistic graphical models, combinatorics, Bethe and graph-cover techniques, tensor-network representations, and distributed quantum computation.
+      </p>
+      <p class="home-lead">
+        A central theme of my work is to use structural insight to design algorithms that are both mathematically rigorous and computationally practical. I am also interested in how these ideas can lead to future applications in machine learning.
+      </p>
 
-  <div class="home-summary-grid">
-    <article class="home-summary-card">
-      <h3>Current focus</h3>
-      <p>Graphical-model methods, counting and inference problems, optimization with guarantees, tensor-network methods, and distributed quantum systems.</p>
-    </article>
-    <article class="home-summary-card accent">
-      <h3>Future direction</h3>
-      <p>Bringing these structure-aware tools into machine learning, especially where uncertainty, efficiency, and provable behavior all matter.</p>
-    </article>
+      <div class="home-summary-grid">
+        <article class="home-summary-card">
+          <h3>Current focus</h3>
+          <p>Graphical-model methods, counting and inference problems, optimization with guarantees, tensor-network methods, and distributed quantum systems.</p>
+        </article>
+        <article class="home-summary-card accent">
+          <h3>Future direction</h3>
+          <p>Bringing these structure-aware tools into machine learning, especially where uncertainty, efficiency, and provable behavior all matter.</p>
+        </article>
+      </div>
+    </div>
+
+    <aside class="hero-visual">
+      <p class="hero-visual-note">Theory to Impact</p>
+      <svg class="figure-svg" viewBox="0 0 360 360" role="img" aria-label="Diagram showing theory, algorithms, and systems feeding into practical impact">
+        <defs>
+          <linearGradient id="heroStack" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1d6677" />
+            <stop offset="100%" stop-color="#184856" />
+          </linearGradient>
+        </defs>
+
+        <rect x="102" y="20" width="156" height="68" rx="20" fill="#eaf7fb" stroke="#77b8c8" stroke-width="2" />
+        <text x="180" y="48" text-anchor="middle" fill="#1b5665" font-size="18" font-weight="700">Theory</text>
+        <text x="180" y="70" text-anchor="middle" fill="#476871" font-size="14">information theory</text>
+
+        <line x1="180" y1="88" x2="180" y2="120" stroke="#8fbfcc" stroke-width="5" stroke-linecap="round" />
+
+        <rect x="60" y="120" width="240" height="84" rx="22" fill="url(#heroStack)" />
+        <text x="180" y="152" text-anchor="middle" fill="#ffffff" font-size="21" font-weight="700">Algorithms</text>
+        <text x="180" y="176" text-anchor="middle" fill="#dff3f7" font-size="14">inference · counting</text>
+        <text x="180" y="196" text-anchor="middle" fill="#dff3f7" font-size="14">optimization</text>
+
+        <line x1="180" y1="204" x2="180" y2="236" stroke="#8fbfcc" stroke-width="5" stroke-linecap="round" />
+
+        <rect x="32" y="236" width="130" height="84" rx="20" fill="#fff7e5" stroke="#ddb24d" stroke-width="2" />
+        <text x="97" y="267" text-anchor="middle" fill="#7a5614" font-size="17" font-weight="700">Systems</text>
+        <text x="97" y="289" text-anchor="middle" fill="#6d5d38" font-size="13">quantum networks</text>
+        <text x="97" y="307" text-anchor="middle" fill="#6d5d38" font-size="13">large-scale analytics</text>
+
+        <rect x="198" y="236" width="130" height="84" rx="20" fill="#eef8f1" stroke="#7fb08b" stroke-width="2" />
+        <text x="263" y="267" text-anchor="middle" fill="#376548" font-size="17" font-weight="700">Impact</text>
+        <text x="263" y="289" text-anchor="middle" fill="#586f60" font-size="13">ML applications</text>
+        <text x="263" y="307" text-anchor="middle" fill="#586f60" font-size="13">efficient computation</text>
+
+        <line x1="180" y1="246" x2="110" y2="236" stroke="#cfc7a5" stroke-width="4" stroke-linecap="round" />
+        <line x1="180" y1="246" x2="250" y2="236" stroke="#a8c8b0" stroke-width="4" stroke-linecap="round" />
+      </svg>
+    </aside>
   </div>
 </section>
 
@@ -355,25 +432,51 @@ redirect_from:
       <text x="460" y="188" text-anchor="middle" fill="#ffffff" font-size="24" font-weight="700">Inference, Counting,</text>
       <text x="460" y="220" text-anchor="middle" fill="#ffffff" font-size="24" font-weight="700">and Optimization</text>
 
-      <rect x="36" y="38" width="244" height="92" rx="22" fill="#ebf8fb" stroke="#77b8c8" stroke-width="2" />
-      <text x="158" y="71" text-anchor="middle" fill="#1b5665" font-size="20" font-weight="700">Graphical Models</text>
-      <text x="158" y="98" text-anchor="middle" fill="#476871" font-size="15">Bethe methods · Graph covers</text>
-      <text x="158" y="118" text-anchor="middle" fill="#476871" font-size="15">Inference and counting</text>
+      <rect x="36" y="28" width="244" height="108" rx="22" fill="#ebf8fb" stroke="#77b8c8" stroke-width="2" />
+      <circle cx="84" cy="70" r="9" fill="#2f7f93" />
+      <circle cx="116" cy="52" r="9" fill="#2f7f93" />
+      <circle cx="122" cy="92" r="9" fill="#2f7f93" />
+      <rect x="146" y="58" width="18" height="18" rx="4" fill="#8ec6d3" />
+      <line x1="84" y1="70" x2="116" y2="52" stroke="#78b8c7" stroke-width="3" />
+      <line x1="84" y1="70" x2="122" y2="92" stroke="#78b8c7" stroke-width="3" />
+      <line x1="116" y1="52" x2="155" y2="67" stroke="#78b8c7" stroke-width="3" />
+      <line x1="122" y1="92" x2="155" y2="67" stroke="#78b8c7" stroke-width="3" />
+      <text x="196" y="65" text-anchor="middle" fill="#1b5665" font-size="20" font-weight="700">Graphical Models</text>
+      <text x="196" y="92" text-anchor="middle" fill="#476871" font-size="17">Bethe methods · Graph covers</text>
+      <text x="196" y="115" text-anchor="middle" fill="#476871" font-size="17">Inference and counting</text>
 
-      <rect x="640" y="38" width="244" height="92" rx="22" fill="#fff7e5" stroke="#ddb24d" stroke-width="2" />
-      <text x="762" y="71" text-anchor="middle" fill="#7a5614" font-size="20" font-weight="700">Optimization</text>
-      <text x="762" y="98" text-anchor="middle" fill="#6d5d38" font-size="15">Structure-exploiting algorithms</text>
-      <text x="762" y="118" text-anchor="middle" fill="#6d5d38" font-size="15">Convex and nonconvex settings</text>
+      <rect x="640" y="28" width="244" height="108" rx="22" fill="#fff7e5" stroke="#ddb24d" stroke-width="2" />
+      <path d="M686 102 C702 76, 712 60, 730 58 C745 56, 753 74, 768 74 C782 74, 788 62, 806 44" fill="none" stroke="#d9b14f" stroke-width="4" stroke-linecap="round" />
+      <path d="M794 38 L808 44 L798 57" fill="none" stroke="#7a5614" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="706" cy="70" r="4" fill="#7a5614" />
+      <circle cx="754" cy="74" r="4" fill="#7a5614" />
+      <text x="760" y="65" text-anchor="middle" fill="#7a5614" font-size="20" font-weight="700">Optimization</text>
+      <text x="760" y="92" text-anchor="middle" fill="#6d5d38" font-size="17">Structure-exploiting algorithms</text>
+      <text x="760" y="115" text-anchor="middle" fill="#6d5d38" font-size="17">Convex and nonconvex settings</text>
 
-      <rect x="36" y="230" width="244" height="92" rx="22" fill="#fff1ed" stroke="#d88d7e" stroke-width="2" />
-      <text x="158" y="263" text-anchor="middle" fill="#8b4539" font-size="20" font-weight="700">Tensor Networks</text>
-      <text x="158" y="290" text-anchor="middle" fill="#725f59" font-size="15">High-dimensional representations</text>
-      <text x="158" y="310" text-anchor="middle" fill="#725f59" font-size="15">Quantum-inspired computation</text>
+      <rect x="36" y="224" width="244" height="108" rx="22" fill="#fff1ed" stroke="#d88d7e" stroke-width="2" />
+      <rect x="66" y="248" width="24" height="24" rx="6" fill="#efb2a7" />
+      <rect x="98" y="248" width="24" height="24" rx="6" fill="#efb2a7" />
+      <rect x="82" y="282" width="24" height="24" rx="6" fill="#efb2a7" />
+      <line x1="90" y1="260" x2="98" y2="260" stroke="#cb6651" stroke-width="3" />
+      <line x1="78" y1="272" x2="94" y2="282" stroke="#cb6651" stroke-width="3" />
+      <line x1="110" y1="272" x2="94" y2="282" stroke="#cb6651" stroke-width="3" />
+      <text x="196" y="261" text-anchor="middle" fill="#8b4539" font-size="20" font-weight="700">Tensor Networks</text>
+      <text x="196" y="288" text-anchor="middle" fill="#725f59" font-size="17">High-dimensional representations</text>
+      <text x="196" y="311" text-anchor="middle" fill="#725f59" font-size="17">Quantum-inspired computation</text>
 
-      <rect x="640" y="230" width="244" height="92" rx="22" fill="#eef8f1" stroke="#7fb08b" stroke-width="2" />
-      <text x="762" y="263" text-anchor="middle" fill="#376548" font-size="20" font-weight="700">Quantum Systems</text>
-      <text x="762" y="290" text-anchor="middle" fill="#586f60" font-size="15">Distributed quantum computing</text>
-      <text x="762" y="310" text-anchor="middle" fill="#586f60" font-size="15">Quantum networks</text>
+      <rect x="640" y="224" width="244" height="108" rx="22" fill="#eef8f1" stroke="#7fb08b" stroke-width="2" />
+      <rect x="688" y="248" width="18" height="18" rx="5" fill="#4f8b62" />
+      <rect x="728" y="236" width="18" height="18" rx="5" fill="#4f8b62" />
+      <rect x="760" y="270" width="18" height="18" rx="5" fill="#4f8b62" />
+      <rect x="802" y="248" width="18" height="18" rx="5" fill="#4f8b62" />
+      <line x1="697" y1="257" x2="737" y2="245" stroke="#86b894" stroke-width="3" />
+      <line x1="737" y1="245" x2="769" y2="279" stroke="#86b894" stroke-width="3" />
+      <line x1="769" y1="279" x2="811" y2="257" stroke="#86b894" stroke-width="3" />
+      <line x1="697" y1="257" x2="769" y2="279" stroke="#86b894" stroke-width="3" />
+      <text x="760" y="261" text-anchor="middle" fill="#376548" font-size="20" font-weight="700">Quantum Systems</text>
+      <text x="760" y="288" text-anchor="middle" fill="#586f60" font-size="17">Distributed quantum computing</text>
+      <text x="760" y="311" text-anchor="middle" fill="#586f60" font-size="17">Quantum networks</text>
     </svg>
   </div>
 
@@ -482,24 +585,74 @@ redirect_from:
   <div class="interest-grid">
     <article class="interest-card teal">
       <span class="interest-accent"></span>
+      <div class="interest-visual">
+        <svg class="figure-svg" viewBox="0 0 320 120" role="img" aria-label="Factor graph style illustration">
+          <circle cx="54" cy="42" r="13" fill="#2f7f93" />
+          <circle cx="112" cy="26" r="13" fill="#2f7f93" />
+          <circle cx="112" cy="88" r="13" fill="#2f7f93" />
+          <rect x="176" y="42" width="24" height="24" rx="6" fill="#8ec6d3" />
+          <rect x="238" y="42" width="24" height="24" rx="6" fill="#8ec6d3" />
+          <line x1="67" y1="42" x2="99" y2="26" stroke="#78b8c7" stroke-width="4" />
+          <line x1="67" y1="42" x2="99" y2="88" stroke="#78b8c7" stroke-width="4" />
+          <line x1="125" y1="26" x2="188" y2="54" stroke="#78b8c7" stroke-width="4" />
+          <line x1="125" y1="88" x2="188" y2="54" stroke="#78b8c7" stroke-width="4" />
+          <line x1="200" y1="54" x2="238" y2="54" stroke="#78b8c7" stroke-width="4" />
+        </svg>
+      </div>
       <h3>Probabilistic graphical models and combinatorial inference</h3>
       <p>Scalable approximate inference, uncertainty quantification, and counting problems arising in structured learning and data analysis.</p>
     </article>
 
     <article class="interest-card gold">
       <span class="interest-accent"></span>
+      <div class="interest-visual">
+        <svg class="figure-svg" viewBox="0 0 320 120" role="img" aria-label="Optimization landscape illustration">
+          <path d="M34 90 C70 58, 102 28, 142 28 C188 28, 198 92, 236 92 C262 92, 276 72, 292 42" fill="none" stroke="#d9b14f" stroke-width="5" stroke-linecap="round" />
+          <circle cx="142" cy="28" r="7" fill="#7a5614" />
+          <circle cx="236" cy="92" r="7" fill="#7a5614" />
+          <path d="M270 38 L292 42 L278 58" fill="none" stroke="#7a5614" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+          <line x1="64" y1="98" x2="256" y2="98" stroke="#ead28d" stroke-width="3" stroke-linecap="round" />
+        </svg>
+      </div>
       <h3>Optimization for learning and sequential decision-making</h3>
       <p>Structure-exploiting algorithms for machine learning and decision problems, with emphasis on rigorous guarantees.</p>
     </article>
 
     <article class="interest-card coral">
       <span class="interest-accent"></span>
+      <div class="interest-visual">
+        <svg class="figure-svg" viewBox="0 0 320 120" role="img" aria-label="Tensor network style illustration">
+          <rect x="38" y="34" width="38" height="38" rx="8" fill="#efb2a7" />
+          <rect x="96" y="34" width="38" height="38" rx="8" fill="#efb2a7" />
+          <rect x="154" y="34" width="38" height="38" rx="8" fill="#efb2a7" />
+          <rect x="212" y="34" width="38" height="38" rx="8" fill="#efb2a7" />
+          <line x1="76" y1="53" x2="96" y2="53" stroke="#cb6651" stroke-width="4" />
+          <line x1="134" y1="53" x2="154" y2="53" stroke="#cb6651" stroke-width="4" />
+          <line x1="192" y1="53" x2="212" y2="53" stroke="#cb6651" stroke-width="4" />
+          <path d="M248 53 L286 53" stroke="#cb6651" stroke-width="5" stroke-linecap="round" />
+          <path d="M274 38 L290 53 L274 68" fill="none" stroke="#cb6651" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
       <h3>Tensor-network, quantum-inspired, and quantum-enabled methods</h3>
       <p>Methods for high-dimensional inference, compact representations, and efficient computation in large structured systems.</p>
     </article>
 
     <article class="interest-card green">
       <span class="interest-accent"></span>
+      <div class="interest-visual">
+        <svg class="figure-svg" viewBox="0 0 320 120" role="img" aria-label="Distributed quantum network illustration">
+          <rect x="44" y="34" width="26" height="26" rx="7" fill="#4f8b62" />
+          <rect x="120" y="20" width="26" height="26" rx="7" fill="#4f8b62" />
+          <rect x="118" y="74" width="26" height="26" rx="7" fill="#4f8b62" />
+          <rect x="202" y="34" width="26" height="26" rx="7" fill="#4f8b62" />
+          <rect x="258" y="62" width="26" height="26" rx="7" fill="#4f8b62" />
+          <line x1="57" y1="47" x2="133" y2="33" stroke="#86b894" stroke-width="4" />
+          <line x1="57" y1="47" x2="131" y2="87" stroke="#86b894" stroke-width="4" />
+          <line x1="133" y1="33" x2="215" y2="47" stroke="#86b894" stroke-width="4" />
+          <line x1="131" y1="87" x2="215" y2="47" stroke="#86b894" stroke-width="4" />
+          <line x1="215" y1="47" x2="271" y2="75" stroke="#86b894" stroke-width="4" />
+        </svg>
+      </div>
       <h3>Distributed quantum computing and quantum networks</h3>
       <p>Emerging computational platforms for scalable optimization, inference, and data-intensive analytics.</p>
     </article>
