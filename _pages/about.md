@@ -127,6 +127,88 @@ redirect_from:
     text-transform: uppercase;
   }
 
+  .hero-flow-grid {
+    display: grid;
+    gap: 0.75rem;
+    justify-items: center;
+  }
+
+  .hero-node {
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem 1rem 0.95rem;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .hero-node h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
+    line-height: 1.2;
+  }
+
+  .hero-node p {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.5;
+  }
+
+  .hero-node.theory {
+    max-width: 220px;
+    background: #eaf7fb;
+    border-color: #77b8c8;
+    color: #1b5665;
+  }
+
+  .hero-node.core {
+    max-width: 520px;
+    background: linear-gradient(135deg, #1d6677 0%, #184856 100%);
+    color: #ffffff;
+    padding: 1.2rem 1.35rem 1.15rem;
+  }
+
+  .hero-node.core h3 {
+    font-size: 1.3rem;
+  }
+
+  .hero-node.core p {
+    color: #dff3f7;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .hero-node.systems {
+    background: #fff7e5;
+    border-color: #ddb24d;
+    color: #7a5614;
+  }
+
+  .hero-node.impact {
+    background: #eef8f1;
+    border-color: #7fb08b;
+    color: #376548;
+  }
+
+  .hero-arrow {
+    color: #8fbfcc;
+    font-size: 1.8rem;
+    line-height: 1;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .hero-side {
+    display: grid;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .hero-arrow.down {
+    transform: scale(1.05);
+  }
+
   .research-framework {
     margin-bottom: 1.7rem;
     padding: 1.4rem;
@@ -369,6 +451,14 @@ redirect_from:
   }
 
   @media (min-width: 760px) {
+    .hero-flow-grid {
+      width: 100%;
+    }
+
+    .hero-side {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .home-summary-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -393,43 +483,32 @@ redirect_from:
 
   <div class="hero-flow">
     <p class="hero-flow-note">Theory to Impact</p>
-    <svg class="figure-svg" viewBox="0 0 920 260" role="img" aria-label="Diagram showing theory flowing into algorithms, systems, and practical impact">
-      <defs>
-        <linearGradient id="heroFlowCore" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#1d6677" />
-          <stop offset="100%" stop-color="#184856" />
-        </linearGradient>
-      </defs>
+    <div class="hero-flow-grid" aria-label="Diagram showing theory flowing into algorithms, systems, and practical impact">
+      <div class="hero-node theory">
+        <h3>Theory</h3>
+        <p>information theory</p>
+      </div>
 
-      <rect x="46" y="84" width="190" height="92" rx="22" fill="#eaf7fb" stroke="#77b8c8" stroke-width="2" />
-      <text x="141" y="120" text-anchor="middle" fill="#1b5665" font-size="24" font-weight="700">Theory</text>
-      <text x="141" y="148" text-anchor="middle" fill="#476871" font-size="17">information theory</text>
+      <div class="hero-arrow down" aria-hidden="true">↓</div>
 
-      <line x1="236" y1="130" x2="292" y2="130" stroke="#8fbfcc" stroke-width="6" stroke-linecap="round" />
-      <path d="M276 114 L298 130 L276 146" fill="none" stroke="#8fbfcc" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+      <div class="hero-node core">
+        <h3>Algorithms</h3>
+        <p>Inference, counting, and optimization with structure and guarantees</p>
+      </div>
 
-      <rect x="300" y="48" width="324" height="164" rx="28" fill="url(#heroFlowCore)" />
-      <text x="462" y="94" text-anchor="middle" fill="#ffffff" font-size="30" font-weight="700">Algorithms</text>
-      <text x="462" y="122" text-anchor="middle" fill="#dff3f7" font-size="17" font-weight="600">
-        <tspan x="462" dy="0">inference · counting</tspan>
-        <tspan x="462" dy="24">optimization</tspan>
-        <tspan x="462" dy="24">with structure and guarantees</tspan>
-      </text>
+      <div class="hero-arrow down" aria-hidden="true">↓</div>
 
-      <line x1="624" y1="130" x2="674" y2="130" stroke="#9abfcc" stroke-width="6" stroke-linecap="round" />
-      <path d="M658 114 L680 130 L658 146" fill="none" stroke="#9abfcc" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
-
-      <rect x="692" y="40" width="180" height="84" rx="20" fill="#fff7e5" stroke="#ddb24d" stroke-width="2" />
-      <text x="782" y="74" text-anchor="middle" fill="#7a5614" font-size="20" font-weight="700">Systems</text>
-      <text x="782" y="99" text-anchor="middle" fill="#6d5d38" font-size="15">quantum networks</text>
-
-      <rect x="692" y="146" width="180" height="88" rx="20" fill="#eef8f1" stroke="#7fb08b" stroke-width="2" />
-      <text x="782" y="180" text-anchor="middle" fill="#376548" font-size="20" font-weight="700">Impact</text>
-      <text x="782" y="202" text-anchor="middle" fill="#586f60" font-size="15" font-weight="600">
-        <tspan x="782" dy="0">ML applications and</tspan>
-        <tspan x="782" dy="18">efficient computation</tspan>
-      </text>
-    </svg>
+      <div class="hero-side">
+        <div class="hero-node systems">
+          <h3>Systems</h3>
+          <p>quantum networks</p>
+        </div>
+        <div class="hero-node impact">
+          <h3>Impact</h3>
+          <p>ML applications and efficient computation</p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <p class="home-lead">
@@ -446,7 +525,7 @@ redirect_from:
     </article>
     <article class="home-summary-card accent">
       <h3>Future direction</h3>
-      <p>Bringing these structure-aware tools into machine learning, especially where uncertainty, efficiency, and provable behavior all matter.</p>
+      <p>Bringing these structure-aware tools into machine learning, especially where uncertainty, efficiency, and provable behavior all matter. I also continue to explore research directions in combinatorics and inference, quantum information processing, and their potential applications in learning theory.</p>
     </article>
   </div>
 </section>
