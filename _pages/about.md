@@ -60,9 +60,9 @@ redirect_from:
     margin: 0 0 1rem;
     max-width: none;
     color: #17313a;
-    font-size: clamp(1.7rem, 4vw, 2.55rem);
+    font-size: clamp(1.38rem, 3vw, 1.95rem);
     font-weight: 800;
-    line-height: 1.08;
+    line-height: 1.12;
   }
 
   .home-lead {
