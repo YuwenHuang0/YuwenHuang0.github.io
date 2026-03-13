@@ -12,6 +12,25 @@ redirect_from:
     display: none;
   }
 
+  @media (min-width: 1024px) {
+    #main {
+      max-width: 1440px;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .page {
+      float: none;
+      width: auto;
+      margin-left: 18rem;
+      margin-right: 0;
+    }
+
+    .page__inner-wrap {
+      max-width: none;
+    }
+  }
+
   .page__content .home-section-title {
     margin: 0 0 1rem;
     padding: 0;
@@ -47,23 +66,12 @@ redirect_from:
   }
 
   .home-eyebrow {
-    margin: 0;
+    margin: 0 0 0.8rem;
     color: #16677a;
     font-size: 0.82rem;
     font-weight: 700;
     letter-spacing: 0.09em;
     text-transform: uppercase;
-  }
-
-  .home-top-band {
-    position: relative;
-    z-index: 1;
-    margin-bottom: 1rem;
-    padding: 1rem 1rem 1.05rem;
-    border: 1px solid rgba(34, 84, 97, 0.12);
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.76);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
   }
 
   .home-heading {
@@ -79,7 +87,7 @@ redirect_from:
   .home-lead {
     position: relative;
     margin: 0;
-    max-width: 56rem;
+    max-width: 68rem;
     color: #304d57;
     font-size: 1.05rem;
     line-height: 1.82;
@@ -118,6 +126,26 @@ redirect_from:
     margin: 0;
     color: #4c6871;
     line-height: 1.72;
+  }
+
+  .home-citation {
+    display: inline-block;
+    margin: 0.35rem 0.28rem 0 0;
+    padding: 0.12rem 0.48rem;
+    border: 1px solid rgba(34, 84, 97, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    color: #1f6070;
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-decoration: none !important;
+    white-space: nowrap;
+  }
+
+  .home-citation:hover {
+    background: #edf7fa;
+    border-color: rgba(34, 84, 97, 0.28);
   }
 
   .hero-flow {
@@ -159,6 +187,20 @@ redirect_from:
     margin: 0;
     font-size: 0.98rem;
     line-height: 1.5;
+  }
+
+  .hero-node .home-citation {
+    margin-top: 0.45rem;
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.24);
+    color: inherit;
+  }
+
+  .hero-node.theory .home-citation,
+  .hero-node.systems .home-citation,
+  .hero-node.impact .home-citation {
+    background: rgba(255, 255, 255, 0.62);
+    border-color: rgba(34, 84, 97, 0.12);
   }
 
   .hero-node.theory {
@@ -481,61 +523,83 @@ redirect_from:
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
+
+  @media (min-width: 1360px) {
+    .application-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
 </style>
 
 <section class="home-intro">
-  <div class="home-top-band">
-    <p class="home-eyebrow">Information Theory · Statistical Physics · Optimization · Quantum Information</p>
-
-    <div class="hero-flow">
-      <p class="hero-flow-note">Theory to Impact</p>
-      <div class="hero-flow-grid" aria-label="Diagram showing theory flowing into algorithms, systems, and practical impact">
-        <div class="hero-node theory">
-          <h3>Theory</h3>
-          <p>information theory and statistical physics</p>
-        </div>
-
-        <div class="hero-arrow down" aria-hidden="true">↓</div>
-
-        <div class="hero-node core">
-          <h3>Algorithms</h3>
-          <p>Inference, counting, and optimization with structure and guarantees</p>
-        </div>
-
-        <div class="hero-arrow down" aria-hidden="true">↓</div>
-
-        <div class="hero-side">
-          <div class="hero-node systems">
-            <h3>Systems</h3>
-            <p>quantum networks</p>
-          </div>
-          <div class="hero-node impact">
-            <h3>Impact</h3>
-            <p>ML applications and efficient computation</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <p class="home-eyebrow">Information Theory · Statistical Physics · Optimization · Quantum Information</p>
   <h1 class="home-heading">Structured inference and optimization<br>with rigorous guarantees</h1>
 
   <p class="home-lead">
     I am a postdoctoral researcher working at the intersection of information theory, statistical physics, machine learning, optimization, and quantum information. My research develops provable and scalable methods for inference, counting, and optimization by combining probabilistic graphical models, combinatorics, Bethe and graph-cover techniques, tensor-network representations, ideas from statistical physics, and distributed quantum computation.
+    <a class="home-citation" href="{{ '/publication/characterizing-bethe-partition-factor-graphs' | relative_url }}">[ISIT2020]</a>
+    <a class="home-citation" href="{{ '/publication/bethe-free-energy-global-minimum' | relative_url }}">[ITW2022]</a>
+    <a class="home-citation" href="{{ '/publication/bethe-partition-spa-stable-polynomials' | relative_url }}">[ISIT2024]</a>
+    <a class="home-citation" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-Sub]</a>
+    <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a>
   </p>
   <p class="home-lead">
     A central theme of my work is to use structural insight to design algorithms that are both mathematically rigorous and computationally practical. I am also interested in how these ideas can lead to future applications in machine learning.
+    <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
   </p>
 
   <div class="home-summary-grid">
     <article class="home-summary-card">
       <h3>Current focus</h3>
-      <p>Graphical-model methods, counting and inference problems, Bethe and statistical-physics perspectives, optimization with guarantees, tensor-network methods, and distributed quantum systems.</p>
+      <p>Graphical-model methods, counting and inference problems, Bethe and statistical-physics perspectives, optimization with guarantees, tensor-network methods, and distributed quantum systems.
+      <a class="home-citation" href="{{ '/publication/bethe-partition-spa-stable-polynomials' | relative_url }}">[ISIT2024]</a>
+      <a class="home-citation" href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">[TIT2024]</a>
+      <a class="home-citation" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-Sub]</a>
+      <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a></p>
     </article>
     <article class="home-summary-card accent">
       <h3>Future direction</h3>
-      <p>Bringing these structure-aware tools into machine learning, especially where uncertainty, efficiency, and provable behavior all matter. I also continue to explore research directions in combinatorics and inference, quantum information processing, and their potential applications in learning theory.</p>
+      <p>Bringing these structure-aware tools into machine learning, especially where uncertainty, efficiency, and provable behavior all matter. I also continue to explore research directions in combinatorics and inference, quantum information processing, and their potential applications in learning theory.
+      <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
+      <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a></p>
     </article>
+  </div>
+
+  <div class="hero-flow">
+    <p class="hero-flow-note">Theory to Impact</p>
+    <div class="hero-flow-grid" aria-label="Diagram showing theory flowing into algorithms, systems, and practical impact">
+      <div class="hero-node theory">
+        <h3>Theory</h3>
+        <p>information theory and statistical physics</p>
+        <a class="home-citation" href="{{ '/publication/characterizing-bethe-partition-factor-graphs' | relative_url }}">[ISIT2020]</a>
+        <a class="home-citation" href="{{ '/publication/bethe-free-energy-global-minimum' | relative_url }}">[ITW2022]</a>
+      </div>
+
+      <div class="hero-arrow down" aria-hidden="true">↓</div>
+
+      <div class="hero-node core">
+        <h3>Algorithms</h3>
+        <p>Inference, counting, and optimization with structure and guarantees</p>
+        <a class="home-citation" href="{{ '/publication/bethe-partition-spa-stable-polynomials' | relative_url }}">[ISIT2024]</a>
+        <a class="home-citation" href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">[TIT2024]</a>
+        <a class="home-citation" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-Sub]</a>
+      </div>
+
+      <div class="hero-arrow down" aria-hidden="true">↓</div>
+
+      <div class="hero-side">
+        <div class="hero-node systems">
+          <h3>Systems</h3>
+          <p>quantum networks</p>
+          <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a>
+        </div>
+        <div class="hero-node impact">
+          <h3>Impact</h3>
+          <p>ML applications and efficient computation</p>
+          <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -562,7 +626,11 @@ redirect_from:
         </svg>
       </div>
       <h3>Probabilistic graphical models</h3>
-      <p>Bethe methods, graph covers, message passing, statistical-physics perspectives, and structure-aware formulations for inference and counting.</p>
+      <p>Bethe methods, graph covers, message passing, statistical-physics perspectives, and structure-aware formulations for inference and counting.
+      <a class="home-citation" href="{{ '/publication/characterizing-bethe-partition-factor-graphs' | relative_url }}">[ISIT2020]</a>
+      <a class="home-citation" href="{{ '/publication/bethe-free-energy-global-minimum' | relative_url }}">[ITW2022]</a>
+      <a class="home-citation" href="{{ '/publication/bethe-partition-spa-stable-polynomials' | relative_url }}">[ISIT2024]</a>
+      <a class="home-citation" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-Sub]</a></p>
     </article>
 
     <article class="direction-card gold">
@@ -576,7 +644,9 @@ redirect_from:
         </svg>
       </div>
       <h3>Optimization and decision-making</h3>
-      <p>Structure-exploiting algorithms with provable guarantees in convex and nonconvex settings.</p>
+      <p>Structure-exploiting algorithms with provable guarantees in convex and nonconvex settings.
+      <a class="home-citation" href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">[TIT2024]</a>
+      <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a></p>
     </article>
 
     <article class="direction-card coral">
@@ -594,7 +664,9 @@ redirect_from:
         </svg>
       </div>
       <h3>Tensor networks and quantum-enabled methods</h3>
-      <p>High-dimensional representations and quantum-inspired tools for compact, efficient computation.</p>
+      <p>High-dimensional representations and quantum-inspired tools for compact, efficient computation.
+      <a class="home-citation" href="{{ '/publication/sets-of-marginals-chsh' | relative_url }}">[ISIT2021]</a>
+      <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a></p>
     </article>
 
     <article class="direction-card green">
@@ -613,7 +685,9 @@ redirect_from:
         </svg>
       </div>
       <h3>Distributed quantum computing and networks</h3>
-      <p>Structure-aware quantum architectures for scalable optimization, inference, and analytics.</p>
+      <p>Structure-aware quantum architectures for scalable optimization, inference, and analytics.
+      <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
+      <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a></p>
     </article>
   </div>
 
@@ -737,7 +811,10 @@ redirect_from:
         </svg>
       </div>
       <h3>Probabilistic graphical models and combinatorial inference</h3>
-      <p>Scalable approximate inference, uncertainty quantification, and counting problems arising in structured learning and data analysis.</p>
+      <p>Scalable approximate inference, uncertainty quantification, and counting problems arising in structured learning and data analysis.
+      <a class="home-citation" href="{{ '/publication/bounding-permanent-degree-m-bethe' | relative_url }}">[ISIT2023]</a>
+      <a class="home-citation" href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">[TIT2024]</a>
+      <a class="home-citation" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-Sub]</a></p>
     </article>
 
     <article class="interest-card gold">
@@ -752,7 +829,8 @@ redirect_from:
         </svg>
       </div>
       <h3>Optimization for learning and sequential decision-making</h3>
-      <p>Structure-exploiting algorithms for machine learning and decision problems, with emphasis on rigorous guarantees.</p>
+      <p>Structure-exploiting algorithms for machine learning and decision problems, with emphasis on rigorous guarantees.
+      <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a></p>
     </article>
 
     <article class="interest-card coral">
@@ -771,7 +849,9 @@ redirect_from:
         </svg>
       </div>
       <h3>Tensor-network, quantum-inspired, and quantum-enabled methods</h3>
-      <p>Methods for high-dimensional inference, compact representations, and efficient computation in large structured systems.</p>
+      <p>Methods for high-dimensional inference, compact representations, and efficient computation in large structured systems.
+      <a class="home-citation" href="{{ '/publication/sets-of-marginals-chsh' | relative_url }}">[ISIT2021]</a>
+      <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a></p>
     </article>
 
     <article class="interest-card green">
@@ -791,7 +871,8 @@ redirect_from:
         </svg>
       </div>
       <h3>Distributed quantum computing and quantum networks</h3>
-      <p>Emerging computational platforms for scalable optimization, inference, and data-intensive analytics.</p>
+      <p>Emerging computational platforms for scalable optimization, inference, and data-intensive analytics.
+      <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a></p>
     </article>
   </div>
 </section>
