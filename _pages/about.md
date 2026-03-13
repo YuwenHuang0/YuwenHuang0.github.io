@@ -493,6 +493,15 @@ redirect_from:
       font-size: 0.92rem;
     }
 
+    .hero-node.core {
+      max-width: 700px;
+    }
+
+    .hero-node.core p {
+      white-space: nowrap;
+      font-size: 0.94rem;
+    }
+
     .hero-side {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -514,11 +523,6 @@ redirect_from:
     }
   }
 
-  @media (min-width: 1360px) {
-    .application-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-  }
 </style>
 
 <section class="home-intro">
