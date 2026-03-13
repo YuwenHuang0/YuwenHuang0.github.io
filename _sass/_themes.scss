@@ -53,7 +53,7 @@ $small                      : 600px !default;
 $medium                     : 768px !default;
 $medium-wide                : 900px !default;
 $large                      : 925px !default;
-$x-large                    : 1280px !default;
+$x-large                    : 1440px !default;
 
 /* ==========================================================================
    Grid
@@ -70,7 +70,7 @@ $susy: (
     math: fluid,
     output: float,
     gutter-position: after,
-    container: 1120px,
+    container: 1280px,
     global-box-sizing: border-box,
 );
 
