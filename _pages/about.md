@@ -12,25 +12,6 @@ redirect_from:
     display: none;
   }
 
-  @media (min-width: 1024px) {
-    #main {
-      max-width: 1440px;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-
-    .page {
-      float: none;
-      width: auto;
-      margin-left: 18rem;
-      margin-right: 0;
-    }
-
-    .page__inner-wrap {
-      max-width: none;
-    }
-  }
-
   .page__content .home-section-title {
     margin: 0 0 1rem;
     padding: 0;
