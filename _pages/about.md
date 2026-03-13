@@ -47,12 +47,23 @@ redirect_from:
   }
 
   .home-eyebrow {
-    margin: 0 0 0.8rem;
+    margin: 0;
     color: #16677a;
     font-size: 0.82rem;
     font-weight: 700;
     letter-spacing: 0.09em;
     text-transform: uppercase;
+  }
+
+  .home-top-band {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1rem;
+    padding: 1rem 1rem 1.05rem;
+    border: 1px solid rgba(34, 84, 97, 0.12);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
   }
 
   .home-heading {
@@ -110,12 +121,7 @@ redirect_from:
   }
 
   .hero-flow {
-    margin: 1rem 0 1.15rem;
-    padding: 1rem;
-    border: 1px solid rgba(34, 84, 97, 0.12);
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+    margin-top: 0.85rem;
   }
 
   .hero-flow-note {
@@ -478,38 +484,41 @@ redirect_from:
 </style>
 
 <section class="home-intro">
-  <p class="home-eyebrow">Information Theory · Statistical Physics · Optimization · Quantum Information</p>
-  <h1 class="home-heading">Structured inference and optimization<br>with rigorous guarantees</h1>
+  <div class="home-top-band">
+    <p class="home-eyebrow">Information Theory · Statistical Physics · Optimization · Quantum Information</p>
 
-  <div class="hero-flow">
-    <p class="hero-flow-note">Theory to Impact</p>
-    <div class="hero-flow-grid" aria-label="Diagram showing theory flowing into algorithms, systems, and practical impact">
-      <div class="hero-node theory">
-        <h3>Theory</h3>
-        <p>information theory and statistical physics</p>
-      </div>
-
-      <div class="hero-arrow down" aria-hidden="true">↓</div>
-
-      <div class="hero-node core">
-        <h3>Algorithms</h3>
-        <p>Inference, counting, and optimization with structure and guarantees</p>
-      </div>
-
-      <div class="hero-arrow down" aria-hidden="true">↓</div>
-
-      <div class="hero-side">
-        <div class="hero-node systems">
-          <h3>Systems</h3>
-          <p>quantum networks</p>
+    <div class="hero-flow">
+      <p class="hero-flow-note">Theory to Impact</p>
+      <div class="hero-flow-grid" aria-label="Diagram showing theory flowing into algorithms, systems, and practical impact">
+        <div class="hero-node theory">
+          <h3>Theory</h3>
+          <p>information theory and statistical physics</p>
         </div>
-        <div class="hero-node impact">
-          <h3>Impact</h3>
-          <p>ML applications and efficient computation</p>
+
+        <div class="hero-arrow down" aria-hidden="true">↓</div>
+
+        <div class="hero-node core">
+          <h3>Algorithms</h3>
+          <p>Inference, counting, and optimization with structure and guarantees</p>
+        </div>
+
+        <div class="hero-arrow down" aria-hidden="true">↓</div>
+
+        <div class="hero-side">
+          <div class="hero-node systems">
+            <h3>Systems</h3>
+            <p>quantum networks</p>
+          </div>
+          <div class="hero-node impact">
+            <h3>Impact</h3>
+            <p>ML applications and efficient computation</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <h1 class="home-heading">Structured inference and optimization<br>with rigorous guarantees</h1>
 
   <p class="home-lead">
     I am a postdoctoral researcher working at the intersection of information theory, statistical physics, machine learning, optimization, and quantum information. My research develops provable and scalable methods for inference, counting, and optimization by combining probabilistic graphical models, combinatorics, Bethe and graph-cover techniques, tensor-network representations, ideas from statistical physics, and distributed quantum computation.
