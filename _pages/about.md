@@ -484,6 +484,15 @@ redirect_from:
       width: 100%;
     }
 
+    .hero-node.theory {
+      max-width: 360px;
+    }
+
+    .hero-node.theory p {
+      white-space: nowrap;
+      font-size: 0.92rem;
+    }
+
     .hero-side {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
