@@ -530,30 +530,17 @@ redirect_from:
   <h1 class="home-heading">Structured inference and optimization<br>with rigorous guarantees</h1>
 
   <p class="home-lead">
-    I am a postdoctoral researcher working at the intersection of information theory, statistical physics, machine learning, optimization, and quantum information. My research develops provable and scalable methods for inference, counting, and optimization by combining probabilistic graphical models, combinatorics, Bethe and graph-cover techniques, tensor-network representations, ideas from statistical physics, and distributed quantum computation.
-    <a class="home-citation" href="{{ '/publication/characterizing-bethe-partition-factor-graphs' | relative_url }}">[ISIT2020]</a>
-    <a class="home-citation" href="{{ '/publication/bethe-free-energy-global-minimum' | relative_url }}">[ITW2022]</a>
-    <a class="home-citation" href="{{ '/publication/bethe-partition-spa-stable-polynomials' | relative_url }}">[ISIT2024]</a>
-    <a class="home-citation" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-Sub]</a>
-    <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a>
-  </p>
-  <p class="home-lead">
-    A central theme of my work is to use structural insight to design algorithms that are both mathematically rigorous and computationally practical. I am also interested in how these ideas can lead to future applications in machine learning.
-    <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
+    I am a postdoctoral researcher at CUHK working on provable and scalable methods for inference, counting, and optimization. My work combines probabilistic graphical models, Bethe and graph-cover techniques, combinatorics, tensor-network methods, and distributed quantum computation to design algorithms with rigorous guarantees.
   </p>
 
   <div class="home-summary-grid">
     <article class="home-summary-card">
-      <h3>Current focus</h3>
-      <p>Graphical-model methods, counting and inference problems, Bethe and statistical-physics perspectives, optimization with guarantees, tensor-network methods, and distributed quantum systems.
-      <a class="home-citation" href="{{ '/publication/bethe-partition-spa-stable-polynomials' | relative_url }}">[ISIT2024]</a>
-      <a class="home-citation" href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">[TIT2024]</a>
-      <a class="home-citation" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-Sub]</a>
-      <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a></p>
+      <h3>Current work</h3>
+      <p>Graphical models, combinatorial inference, optimization with guarantees, and distributed quantum systems.</p>
     </article>
     <article class="home-summary-card accent">
       <h3>Future direction</h3>
-      <p>Bringing these structure-aware tools into machine learning, especially where uncertainty, efficiency, and provable behavior all matter. I also continue to explore research directions in combinatorics and inference, quantum information processing, and their potential applications in learning theory.
+      <p>Structured machine learning, learning theory, and quantum information processing.
       <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
       <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a></p>
     </article>
@@ -565,8 +552,6 @@ redirect_from:
       <div class="hero-node theory">
         <h3>Theory</h3>
         <p>information theory and statistical physics</p>
-        <a class="home-citation" href="{{ '/publication/characterizing-bethe-partition-factor-graphs' | relative_url }}">[ISIT2020]</a>
-        <a class="home-citation" href="{{ '/publication/bethe-free-energy-global-minimum' | relative_url }}">[ITW2022]</a>
       </div>
 
       <div class="hero-arrow down" aria-hidden="true">↓</div>
@@ -574,9 +559,6 @@ redirect_from:
       <div class="hero-node core">
         <h3>Algorithms</h3>
         <p>Inference, counting, and optimization with structure and guarantees</p>
-        <a class="home-citation" href="{{ '/publication/bethe-partition-spa-stable-polynomials' | relative_url }}">[ISIT2024]</a>
-        <a class="home-citation" href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">[TIT2024]</a>
-        <a class="home-citation" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-Sub]</a>
       </div>
 
       <div class="hero-arrow down" aria-hidden="true">↓</div>
@@ -585,12 +567,10 @@ redirect_from:
         <div class="hero-node systems">
           <h3>Systems</h3>
           <p>quantum networks</p>
-          <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a>
         </div>
         <div class="hero-node impact">
           <h3>Impact</h3>
           <p>ML applications and efficient computation</p>
-          <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
         </div>
       </div>
     </div>
@@ -598,9 +578,9 @@ redirect_from:
 </section>
 
 <section class="research-framework">
-  <h2 class="home-section-title">Research Framework</h2>
+  <h2 class="home-section-title">Research Directions</h2>
   <p class="framework-intro">
-    My work brings together four technical directions. The common objective is to develop scalable methods for structured inference, counting, and optimization with firm theoretical guarantees.
+    Representative directions and related papers:
   </p>
 
   <div class="direction-grid">
@@ -620,7 +600,7 @@ redirect_from:
         </svg>
       </div>
       <h3>Probabilistic graphical models</h3>
-      <p>Bethe methods, graph covers, message passing, statistical-physics perspectives, and structure-aware formulations for inference and counting.
+      <p>Bethe methods, graph covers, and message passing for inference and counting.
       <a class="home-citation" href="{{ '/publication/characterizing-bethe-partition-factor-graphs' | relative_url }}">[ISIT2020]</a>
       <a class="home-citation" href="{{ '/publication/bethe-free-energy-global-minimum' | relative_url }}">[ITW2022]</a>
       <a class="home-citation" href="{{ '/publication/bethe-partition-spa-stable-polynomials' | relative_url }}">[ISIT2024]</a>
@@ -638,7 +618,8 @@ redirect_from:
         </svg>
       </div>
       <h3>Optimization and decision-making</h3>
-      <p>Structure-exploiting algorithms with provable guarantees in convex and nonconvex settings.
+      <p>Permanent bounds and structure-exploiting optimization with guarantees.
+      <a class="home-citation" href="{{ '/publication/bounding-permanent-degree-m-bethe' | relative_url }}">[ISIT2023]</a>
       <a class="home-citation" href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">[TIT2024]</a>
       <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a></p>
     </article>
@@ -658,7 +639,7 @@ redirect_from:
         </svg>
       </div>
       <h3>Tensor networks and quantum-enabled methods</h3>
-      <p>High-dimensional representations and quantum-inspired tools for compact, efficient computation.
+      <p>Compact representations and quantum-enabled methods for high-dimensional computation.
       <a class="home-citation" href="{{ '/publication/sets-of-marginals-chsh' | relative_url }}">[ISIT2021]</a>
       <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a></p>
     </article>
@@ -679,7 +660,7 @@ redirect_from:
         </svg>
       </div>
       <h3>Distributed quantum computing and networks</h3>
-      <p>Structure-aware quantum architectures for scalable optimization, inference, and analytics.
+      <p>Structure-aware quantum architectures for scalable optimization and analytics.
       <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
       <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a></p>
     </article>
@@ -687,186 +668,6 @@ redirect_from:
 
   <div class="framework-goal">
     <span>Shared Goal</span>
-    <strong>Provable and scalable methods for inference, counting, and optimization in modern structured systems.</strong>
-  </div>
-</section>
-
-<section class="applications-showcase">
-  <h2 class="home-section-title">Potential Applications</h2>
-  <p class="framework-intro">
-    These methods are motivated by core theoretical questions, but they also point toward practical applications in machine learning, large-scale analytics, and emerging quantum platforms.
-  </p>
-
-  <div class="application-grid">
-    <article class="application-card teal">
-      <div class="application-visual">
-        <svg class="figure-svg" viewBox="0 0 360 160" role="img" aria-label="Illustration of structured machine learning using a graph">
-          <line x1="80" y1="42" x2="176" y2="30" stroke="#78b8c7" stroke-width="4" />
-          <line x1="80" y1="42" x2="116" y2="116" stroke="#78b8c7" stroke-width="4" />
-          <line x1="176" y1="30" x2="264" y2="64" stroke="#78b8c7" stroke-width="4" />
-          <line x1="116" y1="116" x2="220" y2="120" stroke="#78b8c7" stroke-width="4" />
-          <line x1="220" y1="120" x2="264" y2="64" stroke="#78b8c7" stroke-width="4" />
-          <circle cx="80" cy="42" r="15" fill="#2f7f93" />
-          <circle cx="176" cy="30" r="15" fill="#2f7f93" />
-          <circle cx="264" cy="64" r="15" fill="#2f7f93" />
-          <circle cx="116" cy="116" r="15" fill="#2f7f93" />
-          <circle cx="220" cy="120" r="15" fill="#2f7f93" />
-          <rect x="286" y="32" width="52" height="18" rx="9" fill="#dff0f5" />
-          <rect x="286" y="58" width="44" height="18" rx="9" fill="#dff0f5" />
-          <rect x="286" y="84" width="60" height="18" rx="9" fill="#dff0f5" />
-          <text x="180" y="152" text-anchor="middle" fill="#476871" font-size="16">latent structure · dependencies · constraints</text>
-        </svg>
-      </div>
-      <h3>Structured machine learning</h3>
-      <p>Methods based on graphical models and combinatorial structure can support learning problems where dependencies, constraints, and latent structure should be modeled explicitly rather than ignored.</p>
-      <p class="application-note">Potential role: more structured and interpretable ML pipelines.</p>
-    </article>
-
-    <article class="application-card gold">
-      <div class="application-visual">
-        <svg class="figure-svg" viewBox="0 0 360 160" role="img" aria-label="Illustration of uncertainty quantification with intervals and distributions">
-          <line x1="42" y1="120" x2="318" y2="120" stroke="#d9b14f" stroke-width="4" stroke-linecap="round" />
-          <line x1="88" y1="58" x2="88" y2="120" stroke="#d9b14f" stroke-width="6" stroke-linecap="round" />
-          <line x1="180" y1="42" x2="180" y2="120" stroke="#d9b14f" stroke-width="6" stroke-linecap="round" />
-          <line x1="270" y1="72" x2="270" y2="120" stroke="#d9b14f" stroke-width="6" stroke-linecap="round" />
-          <path d="M52 112 C88 92, 102 54, 132 54 C166 54, 178 102, 210 102 C242 102, 252 72, 300 64" fill="none" stroke="#7a5614" stroke-width="5" stroke-linecap="round" />
-          <circle cx="88" cy="58" r="8" fill="#7a5614" />
-          <circle cx="180" cy="42" r="8" fill="#7a5614" />
-          <circle cx="270" cy="72" r="8" fill="#7a5614" />
-          <text x="180" y="152" text-anchor="middle" fill="#6d5d38" font-size="16">approximation quality · confidence · decision support</text>
-        </svg>
-      </div>
-      <h3>Uncertainty quantification and reliable analytics</h3>
-      <p>Scalable approximate inference can be useful when decisions must be made under uncertainty and exact probabilistic computation is too expensive.</p>
-      <p class="application-note">Potential role: reliable uncertainty estimates in complex systems.</p>
-    </article>
-
-    <article class="application-card coral">
-      <div class="application-visual">
-        <svg class="figure-svg" viewBox="0 0 360 160" role="img" aria-label="Illustration of model compression using tensor-style blocks">
-          <rect x="42" y="38" width="54" height="54" rx="8" fill="#efb2a7" />
-          <rect x="102" y="38" width="54" height="54" rx="8" fill="#efb2a7" />
-          <rect x="42" y="98" width="54" height="22" rx="8" fill="#efb2a7" />
-          <rect x="102" y="98" width="54" height="22" rx="8" fill="#efb2a7" />
-          <path d="M176 78 L228 78" stroke="#cb6651" stroke-width="6" stroke-linecap="round" />
-          <path d="M216 62 L240 78 L216 94" fill="none" stroke="#cb6651" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
-          <rect x="248" y="52" width="22" height="52" rx="7" fill="#cb6651" />
-          <rect x="278" y="52" width="22" height="52" rx="7" fill="#cb6651" />
-          <rect x="308" y="52" width="22" height="52" rx="7" fill="#cb6651" />
-          <text x="180" y="152" text-anchor="middle" fill="#725f59" font-size="16">compact representations · efficient computation</text>
-        </svg>
-      </div>
-      <h3>Model compression and high-dimensional computation</h3>
-      <p>Tensor-network and quantum-inspired ideas may provide principled ways to represent large models or high-dimensional objects more compactly.</p>
-      <p class="application-note">Potential role: efficient representations for large-scale ML models.</p>
-    </article>
-
-    <article class="application-card green">
-      <div class="application-visual">
-        <svg class="figure-svg" viewBox="0 0 360 160" role="img" aria-label="Illustration of distributed quantum optimization over a network">
-          <line x1="72" y1="52" x2="180" y2="40" stroke="#86b894" stroke-width="4" />
-          <line x1="72" y1="52" x2="104" y2="118" stroke="#86b894" stroke-width="4" />
-          <line x1="180" y1="40" x2="282" y2="70" stroke="#86b894" stroke-width="4" />
-          <line x1="104" y1="118" x2="212" y2="122" stroke="#86b894" stroke-width="4" />
-          <line x1="212" y1="122" x2="282" y2="70" stroke="#86b894" stroke-width="4" />
-          <rect x="54" y="34" width="36" height="36" rx="10" fill="#4f8b62" />
-          <rect x="162" y="22" width="36" height="36" rx="10" fill="#4f8b62" />
-          <rect x="264" y="52" width="36" height="36" rx="10" fill="#4f8b62" />
-          <rect x="86" y="100" width="36" height="36" rx="10" fill="#4f8b62" />
-          <rect x="194" y="104" width="36" height="36" rx="10" fill="#4f8b62" />
-          <text x="180" y="152" text-anchor="middle" fill="#586f60" font-size="16">networked processors · coordination · scalability</text>
-        </svg>
-      </div>
-      <h3>Distributed quantum optimization</h3>
-      <p>Distributed quantum systems and quantum networks suggest new computational settings where structure-aware decomposition may be essential for scalability.</p>
-      <p class="application-note">Potential role: scalable optimization on emerging quantum platforms.</p>
-    </article>
-  </div>
-</section>
-
-<section>
-  <h2 class="home-section-title">Research Interests</h2>
-
-  <div class="interest-grid">
-    <article class="interest-card teal">
-      <span class="interest-accent"></span>
-      <div class="interest-visual">
-        <svg class="figure-svg" viewBox="0 0 320 120" role="img" aria-label="Factor graph style illustration">
-          <circle cx="54" cy="42" r="13" fill="#2f7f93" />
-          <circle cx="112" cy="26" r="13" fill="#2f7f93" />
-          <circle cx="112" cy="88" r="13" fill="#2f7f93" />
-          <rect x="176" y="42" width="24" height="24" rx="6" fill="#8ec6d3" />
-          <rect x="238" y="42" width="24" height="24" rx="6" fill="#8ec6d3" />
-          <line x1="67" y1="42" x2="99" y2="26" stroke="#78b8c7" stroke-width="4" />
-          <line x1="67" y1="42" x2="99" y2="88" stroke="#78b8c7" stroke-width="4" />
-          <line x1="125" y1="26" x2="188" y2="54" stroke="#78b8c7" stroke-width="4" />
-          <line x1="125" y1="88" x2="188" y2="54" stroke="#78b8c7" stroke-width="4" />
-          <line x1="200" y1="54" x2="238" y2="54" stroke="#78b8c7" stroke-width="4" />
-        </svg>
-      </div>
-      <h3>Probabilistic graphical models and combinatorial inference</h3>
-      <p>Scalable approximate inference, uncertainty quantification, and counting problems arising in structured learning and data analysis.
-      <a class="home-citation" href="{{ '/publication/bounding-permanent-degree-m-bethe' | relative_url }}">[ISIT2023]</a>
-      <a class="home-citation" href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">[TIT2024]</a>
-      <a class="home-citation" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-Sub]</a></p>
-    </article>
-
-    <article class="interest-card gold">
-      <span class="interest-accent"></span>
-      <div class="interest-visual">
-        <svg class="figure-svg" viewBox="0 0 320 120" role="img" aria-label="Optimization landscape illustration">
-          <path d="M34 90 C70 58, 102 28, 142 28 C188 28, 198 92, 236 92 C262 92, 276 72, 292 42" fill="none" stroke="#d9b14f" stroke-width="5" stroke-linecap="round" />
-          <circle cx="142" cy="28" r="7" fill="#7a5614" />
-          <circle cx="236" cy="92" r="7" fill="#7a5614" />
-          <path d="M270 38 L292 42 L278 58" fill="none" stroke="#7a5614" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
-          <line x1="64" y1="98" x2="256" y2="98" stroke="#ead28d" stroke-width="3" stroke-linecap="round" />
-        </svg>
-      </div>
-      <h3>Optimization for learning and sequential decision-making</h3>
-      <p>Structure-exploiting algorithms for machine learning and decision problems, with emphasis on rigorous guarantees.
-      <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a></p>
-    </article>
-
-    <article class="interest-card coral">
-      <span class="interest-accent"></span>
-      <div class="interest-visual">
-        <svg class="figure-svg" viewBox="0 0 320 120" role="img" aria-label="Tensor network style illustration">
-          <rect x="38" y="34" width="38" height="38" rx="8" fill="#efb2a7" />
-          <rect x="96" y="34" width="38" height="38" rx="8" fill="#efb2a7" />
-          <rect x="154" y="34" width="38" height="38" rx="8" fill="#efb2a7" />
-          <rect x="212" y="34" width="38" height="38" rx="8" fill="#efb2a7" />
-          <line x1="76" y1="53" x2="96" y2="53" stroke="#cb6651" stroke-width="4" />
-          <line x1="134" y1="53" x2="154" y2="53" stroke="#cb6651" stroke-width="4" />
-          <line x1="192" y1="53" x2="212" y2="53" stroke="#cb6651" stroke-width="4" />
-          <path d="M248 53 L286 53" stroke="#cb6651" stroke-width="5" stroke-linecap="round" />
-          <path d="M274 38 L290 53 L274 68" fill="none" stroke="#cb6651" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-      </div>
-      <h3>Tensor-network, quantum-inspired, and quantum-enabled methods</h3>
-      <p>Methods for high-dimensional inference, compact representations, and efficient computation in large structured systems.
-      <a class="home-citation" href="{{ '/publication/sets-of-marginals-chsh' | relative_url }}">[ISIT2021]</a>
-      <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a></p>
-    </article>
-
-    <article class="interest-card green">
-      <span class="interest-accent"></span>
-      <div class="interest-visual">
-        <svg class="figure-svg" viewBox="0 0 320 120" role="img" aria-label="Distributed quantum network illustration">
-          <rect x="44" y="34" width="26" height="26" rx="7" fill="#4f8b62" />
-          <rect x="120" y="20" width="26" height="26" rx="7" fill="#4f8b62" />
-          <rect x="118" y="74" width="26" height="26" rx="7" fill="#4f8b62" />
-          <rect x="202" y="34" width="26" height="26" rx="7" fill="#4f8b62" />
-          <rect x="258" y="62" width="26" height="26" rx="7" fill="#4f8b62" />
-          <line x1="57" y1="47" x2="133" y2="33" stroke="#86b894" stroke-width="4" />
-          <line x1="57" y1="47" x2="131" y2="87" stroke="#86b894" stroke-width="4" />
-          <line x1="133" y1="33" x2="215" y2="47" stroke="#86b894" stroke-width="4" />
-          <line x1="131" y1="87" x2="215" y2="47" stroke="#86b894" stroke-width="4" />
-          <line x1="215" y1="47" x2="271" y2="75" stroke="#86b894" stroke-width="4" />
-        </svg>
-      </div>
-      <h3>Distributed quantum computing and quantum networks</h3>
-      <p>Emerging computational platforms for scalable optimization, inference, and data-intensive analytics.
-      <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a></p>
-    </article>
+    <strong>Translate structural insight into scalable algorithms with rigorous guarantees.</strong>
   </div>
 </section>
