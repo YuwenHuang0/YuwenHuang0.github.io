@@ -13,7 +13,7 @@ redirect_from:
   }
 
   .page__content .home-section-title {
-    margin: 0 0 1rem;
+    margin: 0 0 0.75rem;
     padding: 0;
     border: 0;
     color: #16323c;
@@ -25,8 +25,8 @@ redirect_from:
   .home-intro {
     position: relative;
     overflow: hidden;
-    margin-bottom: 1.6rem;
-    padding: 1.6rem;
+    margin-bottom: 1.05rem;
+    padding: 1.25rem;
     border: 1px solid rgba(54, 118, 134, 0.16);
     border-radius: 24px;
     background:
@@ -47,7 +47,7 @@ redirect_from:
   }
 
   .home-eyebrow {
-    margin: 0 0 0.8rem;
+    margin: 0 0 0.55rem;
     color: #16677a;
     font-size: 0.82rem;
     font-weight: 700;
@@ -57,7 +57,7 @@ redirect_from:
 
   .home-heading {
     position: relative;
-    margin: 0 0 1rem;
+    margin: 0 0 0.75rem;
     max-width: none;
     color: #17313a;
     font-size: clamp(1.38rem, 3vw, 1.95rem);
@@ -71,7 +71,7 @@ redirect_from:
     max-width: 68rem;
     color: #304d57;
     font-size: 1.05rem;
-    line-height: 1.82;
+    line-height: 1.72;
   }
 
   .home-lead + .home-lead {
@@ -80,13 +80,13 @@ redirect_from:
 
   .home-summary-grid {
     display: grid;
-    gap: 1rem;
-    margin-top: 1.35rem;
+    gap: 0.8rem;
+    margin-top: 0.95rem;
   }
 
   .home-summary-card {
     position: relative;
-    padding: 1rem 1.05rem;
+    padding: 0.85rem 0.95rem;
     border: 1px solid rgba(34, 84, 97, 0.12);
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.82);
@@ -98,7 +98,7 @@ redirect_from:
   }
 
   .home-summary-card h3 {
-    margin: 0 0 0.45rem;
+    margin: 0 0 0.3rem;
     color: #1b4754;
     font-size: 1rem;
   }
@@ -106,7 +106,7 @@ redirect_from:
   .home-summary-card p {
     margin: 0;
     color: #4c6871;
-    line-height: 1.72;
+    line-height: 1.62;
   }
 
   .home-citation {
@@ -130,11 +130,11 @@ redirect_from:
   }
 
   .hero-flow {
-    margin-top: 0.85rem;
+    margin-top: 0.7rem;
   }
 
   .hero-flow-note {
-    margin: 0 0 0.7rem;
+    margin: 0 0 0.45rem;
     color: #214d5a;
     font-size: 0.84rem;
     font-weight: 700;
@@ -144,14 +144,14 @@ redirect_from:
 
   .hero-flow-grid {
     display: grid;
-    gap: 0.75rem;
+    gap: 0.55rem;
     justify-items: center;
   }
 
   .hero-node {
     width: 100%;
     max-width: 100%;
-    padding: 1rem 1rem 0.95rem;
+    padding: 0.8rem 0.9rem 0.78rem;
     border-radius: 20px;
     border: 2px solid transparent;
     text-align: center;
@@ -159,7 +159,7 @@ redirect_from:
   }
 
   .hero-node h3 {
-    margin: 0 0 0.35rem;
+    margin: 0 0 0.22rem;
     font-size: 1.05rem;
     line-height: 1.2;
   }
@@ -167,11 +167,11 @@ redirect_from:
   .hero-node p {
     margin: 0;
     font-size: 0.98rem;
-    line-height: 1.5;
+    line-height: 1.38;
   }
 
   .hero-node .home-citation {
-    margin-top: 0.45rem;
+    margin-top: 0.32rem;
     background: rgba(255, 255, 255, 0.16);
     border-color: rgba(255, 255, 255, 0.24);
     color: inherit;
@@ -195,7 +195,7 @@ redirect_from:
     max-width: 520px;
     background: linear-gradient(135deg, #1d6677 0%, #184856 100%);
     color: #ffffff;
-    padding: 1.2rem 1.35rem 1.15rem;
+    padding: 0.95rem 1.15rem 0.92rem;
   }
 
   .hero-node.core h3 {
@@ -222,7 +222,7 @@ redirect_from:
 
   .hero-arrow {
     color: #8fbfcc;
-    font-size: 1.8rem;
+    font-size: 1.55rem;
     line-height: 1;
     text-align: center;
     font-weight: 700;
@@ -230,7 +230,7 @@ redirect_from:
 
   .hero-side {
     display: grid;
-    gap: 0.8rem;
+    gap: 0.55rem;
     width: 100%;
   }
 
@@ -239,8 +239,8 @@ redirect_from:
   }
 
   .research-framework {
-    margin-bottom: 1.7rem;
-    padding: 1.4rem;
+    margin-bottom: 1.05rem;
+    padding: 1.1rem;
     border: 1px solid rgba(34, 84, 97, 0.12);
     border-radius: 24px;
     background: #ffffff;
@@ -248,9 +248,9 @@ redirect_from:
   }
 
   .framework-intro {
-    margin: 0 0 1rem;
+    margin: 0 0 0.75rem;
     color: #48626b;
-    line-height: 1.7;
+    line-height: 1.58;
   }
 
   .figure-card {
@@ -279,12 +279,12 @@ redirect_from:
 
   .direction-grid {
     display: grid;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 0.8rem;
+    margin-top: 0.75rem;
   }
 
   .direction-card {
-    padding: 1rem;
+    padding: 0.82rem;
     border: 1px solid rgba(34, 84, 97, 0.1);
     border-radius: 20px;
     background: linear-gradient(180deg, #ffffff 0%, #fbfdfe 100%);
@@ -308,15 +308,15 @@ redirect_from:
   }
 
   .direction-visual {
-    margin-bottom: 0.85rem;
-    padding: 0.75rem;
+    margin-bottom: 0.62rem;
+    padding: 0.58rem;
     border-radius: 16px;
     border: 1px solid rgba(34, 84, 97, 0.08);
     background: rgba(255, 255, 255, 0.82);
   }
 
   .direction-card h3 {
-    margin: 0 0 0.42rem;
+    margin: 0 0 0.26rem;
     color: #183743;
     font-size: 1.05rem;
     line-height: 1.34;
@@ -325,7 +325,7 @@ redirect_from:
   .direction-card p {
     margin: 0;
     color: #4b666f;
-    line-height: 1.72;
+    line-height: 1.58;
   }
 
   .applications-showcase {
@@ -396,8 +396,8 @@ redirect_from:
   }
 
   .framework-goal {
-    margin-top: 1rem;
-    padding: 1rem 1.05rem;
+    margin-top: 0.8rem;
+    padding: 0.82rem 0.95rem;
     border-radius: 18px;
     background: linear-gradient(135deg, #184554 0%, #1e6170 100%);
     color: #ffffff;
@@ -405,7 +405,7 @@ redirect_from:
 
   .framework-goal span {
     display: block;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.22rem;
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -416,7 +416,7 @@ redirect_from:
   .framework-goal strong {
     display: block;
     font-size: 1.05rem;
-    line-height: 1.6;
+    line-height: 1.42;
     font-weight: 700;
   }
 
@@ -527,7 +527,7 @@ redirect_from:
 
 <section class="home-intro">
   <p class="home-eyebrow">Information Theory · Statistical Physics · Optimization · Quantum Information</p>
-  <h1 class="home-heading">Structured inference and optimization<br>with rigorous guarantees</h1>
+  <h1 class="home-heading">Structured inference and optimization with rigorous guarantees</h1>
 
   <p class="home-lead">
     I am a postdoctoral researcher at CUHK working on provable and scalable methods for inference, counting, and optimization. My work combines probabilistic graphical models, Bethe and graph-cover techniques, combinatorics, tensor-network methods, and distributed quantum computation to design algorithms with rigorous guarantees.
