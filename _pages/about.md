@@ -143,7 +143,8 @@ redirect_from:
   .home-recruiting p {
     margin: 0;
     color: #4d5f67;
-    line-height: 1.58;
+    font-size: 0.98rem;
+    line-height: 1.5;
   }
 
   .home-summary-grid {
@@ -649,7 +650,7 @@ redirect_from:
       <span class="home-recruiting-label">Open Positions</span>
       <h2>Recruiting RAs and PhD students</h2>
       <p class="home-recruiting-meta">Faculty appointment at HKUST (Guangzhou) beginning Fall 2026</p>
-      <p>I will join the Data Science and Analytic Thrust (DSA), Information Hub, Hong Kong University of Science and Technology (Guangzhou) in Fall 2026. I am actively recruiting prospective RAs and PhD students interested in graphical models, inference, optimization, machine learning, and quantum information, especially students excited by mathematically grounded research with algorithmic impact.</p>
+      <p>I will join the Data Science and Analytic Thrust (DSA), Information Hub, Hong Kong University of Science and Technology (Guangzhou) in Fall 2026, and I am actively recruiting prospective RAs and PhD students interested in graphical models, inference, optimization, machine learning, and quantum information.</p>
     </div>
   </div>
 
