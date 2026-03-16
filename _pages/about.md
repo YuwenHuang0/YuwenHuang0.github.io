@@ -78,20 +78,41 @@ redirect_from:
     margin-top: 0.85rem;
   }
 
+  .home-top-grid {
+    display: grid;
+    gap: 0.9rem;
+    align-items: start;
+  }
+
+  .home-main-copy {
+    min-width: 0;
+  }
+
   .home-recruiting {
     position: relative;
-    margin: 0 0 0.85rem;
-    padding: 0.88rem 1rem 0.9rem;
-    border: 1px solid rgba(216, 155, 43, 0.28);
-    border-radius: 18px;
-    background: linear-gradient(135deg, rgba(255, 248, 232, 0.96) 0%, rgba(255, 255, 255, 0.96) 100%);
-    box-shadow: 0 10px 24px rgba(118, 84, 18, 0.08);
+    margin: 0;
+    padding: 0.95rem 1.05rem 1rem;
+    border: 1px solid rgba(216, 155, 43, 0.3);
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255, 245, 223, 0.98) 0%, rgba(255, 255, 255, 0.98) 100%);
+    box-shadow: 0 12px 26px rgba(118, 84, 18, 0.09);
+  }
+
+  .home-recruiting::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: 20px 20px 0 0;
+    background: linear-gradient(90deg, #d89b2b 0%, #1d6677 100%);
   }
 
   .home-recruiting-label {
     display: inline-block;
-    margin: 0 0 0.38rem;
-    padding: 0.14rem 0.48rem;
+    margin: 0 0 0.42rem;
+    padding: 0.14rem 0.52rem;
     border-radius: 999px;
     background: rgba(216, 155, 43, 0.14);
     color: #8a5b10;
@@ -102,48 +123,24 @@ redirect_from:
   }
 
   .home-recruiting h2 {
-    margin: 0 0 0.22rem;
+    margin: 0 0 0.2rem;
     color: #17313a;
-    font-size: 1.05rem;
+    font-size: 1.12rem;
     line-height: 1.25;
+  }
+
+  .home-recruiting-meta {
+    margin: 0 0 0.38rem;
+    color: #8a5b10;
+    font-size: 0.87rem;
+    font-weight: 700;
+    line-height: 1.35;
   }
 
   .home-recruiting p {
     margin: 0;
     color: #4d5f67;
     line-height: 1.58;
-  }
-
-  .home-recruiting-links {
-    margin-top: 0.45rem;
-    color: #4d5f67;
-    line-height: 1.55;
-  }
-
-  .home-recruiting-links a {
-    color: #17677a;
-    font-weight: 700;
-    text-decoration: none !important;
-    border-bottom: 1px solid rgba(23, 103, 122, 0.22);
-  }
-
-  .home-recruiting-links a:hover {
-    color: #0f4f5e;
-    border-bottom-color: rgba(15, 79, 94, 0.45);
-  }
-
-  .home-recruiting-link {
-    display: inline-block;
-    margin-top: 0.45rem;
-    color: #17677a;
-    font-weight: 700;
-    text-decoration: none !important;
-    border-bottom: 1px solid rgba(23, 103, 122, 0.28);
-  }
-
-  .home-recruiting-link:hover {
-    color: #0f4f5e;
-    border-bottom-color: rgba(15, 79, 94, 0.5);
   }
 
   .home-summary-grid {
@@ -195,6 +192,24 @@ redirect_from:
   .home-citation:hover {
     background: #edf7fa;
     border-color: rgba(34, 84, 97, 0.28);
+  }
+
+  .home-citation-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.28rem;
+    margin-top: 0.48rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .home-citation-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home-citation-row .home-citation {
+    margin: 0;
+    flex: 0 0 auto;
   }
 
   .hero-flow {
@@ -548,6 +563,10 @@ redirect_from:
   }
 
   @media (min-width: 760px) {
+    .home-top-grid {
+      grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.9fr);
+    }
+
     .hero-flow-grid {
       width: 100%;
     }
@@ -591,38 +610,44 @@ redirect_from:
     }
   }
 
+  @media (min-width: 1100px) {
+    .home-heading {
+      white-space: nowrap;
+    }
+  }
+
 </style>
 
 <section class="home-intro">
   <p class="home-eyebrow">Information Theory · Statistical Physics · Optimization · Quantum Information</p>
   <h1 class="home-heading">Structured inference and optimization with rigorous guarantees</h1>
-
-  <div class="home-recruiting">
-    <span class="home-recruiting-label">Open Positions</span>
-    <h2>Recruiting RAs and PhD students</h2>
-    <p>I am looking for motivated students interested in graphical models, combinatorial inference, optimization, and quantum information. I will join the <a href="https://dsa.hkust-gz.edu.cn/">Data Science and Analytics Thrust (DSA)</a>, <a href="https://www.hkust-gz.edu.cn/academics/hubs-and-thrust-areas/information-hub/">Information Hub</a>, <a href="https://www.hkust-gz.edu.cn/">Hong Kong University of Science and Technology (Guangzhou)</a> in Fall 2026.</p>
-    <div class="home-recruiting-links">
-      <a href="https://dsa.hkust-gz.edu.cn/">DSA</a> ·
-      <a href="https://www.hkust-gz.edu.cn/academics/hubs-and-thrust-areas/information-hub/">Information Hub</a> ·
-      <a href="https://www.hkust-gz.edu.cn/">HKUST Guangzhou</a>
+  <div class="home-top-grid">
+    <div class="home-main-copy">
+      <p class="home-lead">
+        I am a postdoctoral researcher at CUHK developing provable and scalable methods for inference, counting, and optimization in structured systems. My research combines probabilistic graphical models, Bethe and graph-cover methods, combinatorics, tensor-network representations, and distributed quantum computation to turn mathematical structure into algorithms with rigorous guarantees.
+      </p>
     </div>
-    <a class="home-recruiting-link" href="mailto:{{ site.author.email }}">Contact: {{ site.author.email }}</a>
-  </div>
 
-  <p class="home-lead">
-    I am a postdoctoral researcher at CUHK working on provable and scalable methods for inference, counting, and optimization. My work combines probabilistic graphical models, Bethe and graph-cover techniques, combinatorics, tensor-network methods, and distributed quantum computation to design algorithms with rigorous guarantees.
-  </p>
+    <div class="home-recruiting">
+      <span class="home-recruiting-label">Open Positions</span>
+      <h2>Recruiting RAs and PhD students</h2>
+      <p class="home-recruiting-meta">Faculty appointment at HKUST (Guangzhou) beginning Fall 2026</p>
+      <p>I will join the Data Science and Analytic Thrust (DSA), Information Hub, Hong Kong University of Science and Technology (Guangzhou) in Fall 2026. I am actively recruiting prospective RAs and PhD students interested in graphical models, inference, optimization, machine learning, and quantum information, especially students excited by mathematically grounded research with algorithmic impact.</p>
+    </div>
+  </div>
 
   <div class="home-summary-grid">
     <article class="home-summary-card">
       <h3>Current work</h3>
-      <p>Graphical models, combinatorial inference, optimization with guarantees, and distributed quantum systems.</p>
+      <p>Graphical models, combinatorial inference, structure-aware optimization, and distributed quantum computation.</p>
     </article>
     <article class="home-summary-card accent">
       <h3>Future direction</h3>
-      <p>Structured machine learning, learning theory, and quantum information processing.
-      <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
-      <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a></p>
+      <p>Extending structure-aware inference and optimization into machine learning, learning theory, and quantum information processing.</p>
+      <div class="home-citation-row">
+        <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
+        <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a>
+      </div>
     </article>
   </div>
 
@@ -631,7 +656,7 @@ redirect_from:
     <div class="hero-flow-grid" aria-label="Diagram showing theory flowing into algorithms, systems, and practical impact">
       <div class="hero-node theory">
         <h3>Theory</h3>
-        <p>information theory and statistical physics</p>
+        <p>information theory · statistical physics</p>
       </div>
 
       <div class="hero-arrow down" aria-hidden="true">↓</div>
@@ -646,11 +671,11 @@ redirect_from:
       <div class="hero-side">
         <div class="hero-node systems">
           <h3>Systems</h3>
-          <p>quantum networks</p>
+          <p>distributed quantum platforms</p>
         </div>
         <div class="hero-node impact">
           <h3>Impact</h3>
-          <p>ML applications and efficient computation</p>
+          <p>machine learning and efficient computation</p>
         </div>
       </div>
     </div>
@@ -660,7 +685,7 @@ redirect_from:
 <section class="research-framework">
   <h2 class="home-section-title">Research Directions</h2>
   <p class="framework-intro">
-    Representative directions and related papers:
+    Selected directions and representative papers:
   </p>
 
   <div class="direction-grid">
@@ -680,11 +705,13 @@ redirect_from:
         </svg>
       </div>
       <h3>Probabilistic graphical models</h3>
-      <p>Bethe methods, graph covers, and message passing for inference and counting.
-      <a class="home-citation" href="{{ '/publication/characterizing-bethe-partition-factor-graphs' | relative_url }}">[ISIT2020]</a>
-      <a class="home-citation" href="{{ '/publication/bethe-free-energy-global-minimum' | relative_url }}">[ITW2022]</a>
-      <a class="home-citation" href="{{ '/publication/bethe-partition-spa-stable-polynomials' | relative_url }}">[ISIT2024]</a>
-      <a class="home-citation" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-Sub]</a></p>
+      <p>Bethe approximations, graph covers, and message passing for principled inference and counting.</p>
+      <div class="home-citation-row">
+        <a class="home-citation" href="{{ '/publication/characterizing-bethe-partition-factor-graphs' | relative_url }}">[ISIT2020]</a>
+        <a class="home-citation" href="{{ '/publication/bethe-free-energy-global-minimum' | relative_url }}">[ITW2022]</a>
+        <a class="home-citation" href="{{ '/publication/bethe-partition-spa-stable-polynomials' | relative_url }}">[ISIT2024]</a>
+        <a class="home-citation" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-Sub]</a>
+      </div>
     </article>
 
     <article class="direction-card gold">
@@ -698,10 +725,12 @@ redirect_from:
         </svg>
       </div>
       <h3>Optimization and decision-making</h3>
-      <p>Permanent bounds and structure-exploiting optimization with guarantees.
-      <a class="home-citation" href="{{ '/publication/bounding-permanent-degree-m-bethe' | relative_url }}">[ISIT2023]</a>
-      <a class="home-citation" href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">[TIT2024]</a>
-      <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a></p>
+      <p>Structure-exploiting optimization and permanent bounds with provable guarantees.</p>
+      <div class="home-citation-row">
+        <a class="home-citation" href="{{ '/publication/bounding-permanent-degree-m-bethe' | relative_url }}">[ISIT2023]</a>
+        <a class="home-citation" href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">[TIT2024]</a>
+        <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
+      </div>
     </article>
 
     <article class="direction-card coral">
@@ -719,9 +748,11 @@ redirect_from:
         </svg>
       </div>
       <h3>Tensor networks and quantum-enabled methods</h3>
-      <p>Compact representations and quantum-enabled methods for high-dimensional computation.
-      <a class="home-citation" href="{{ '/publication/sets-of-marginals-chsh' | relative_url }}">[ISIT2021]</a>
-      <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a></p>
+      <p>Tensor-network representations and quantum-enabled methods for compact, high-dimensional computation.</p>
+      <div class="home-citation-row">
+        <a class="home-citation" href="{{ '/publication/sets-of-marginals-chsh' | relative_url }}">[ISIT2021]</a>
+        <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a>
+      </div>
     </article>
 
     <article class="direction-card green">
@@ -740,14 +771,16 @@ redirect_from:
         </svg>
       </div>
       <h3>Distributed quantum computing and networks</h3>
-      <p>Structure-aware quantum architectures for scalable optimization and analytics.
-      <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
-      <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a></p>
+      <p>Distributed quantum architectures for large-scale optimization, inference, and data-intensive analytics.</p>
+      <div class="home-citation-row">
+        <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
+        <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a>
+      </div>
     </article>
   </div>
 
   <div class="framework-goal">
     <span>Shared Goal</span>
-    <strong>Translate structural insight into scalable algorithms with rigorous guarantees.</strong>
+    <strong>Turn mathematical structure into scalable algorithms with rigorous guarantees.</strong>
   </div>
 </section>
