@@ -114,6 +114,24 @@ redirect_from:
     line-height: 1.58;
   }
 
+  .home-recruiting-links {
+    margin-top: 0.45rem;
+    color: #4d5f67;
+    line-height: 1.55;
+  }
+
+  .home-recruiting-links a {
+    color: #17677a;
+    font-weight: 700;
+    text-decoration: none !important;
+    border-bottom: 1px solid rgba(23, 103, 122, 0.22);
+  }
+
+  .home-recruiting-links a:hover {
+    color: #0f4f5e;
+    border-bottom-color: rgba(15, 79, 94, 0.45);
+  }
+
   .home-recruiting-link {
     display: inline-block;
     margin-top: 0.45rem;
@@ -582,7 +600,12 @@ redirect_from:
   <div class="home-recruiting">
     <span class="home-recruiting-label">Open Positions</span>
     <h2>Recruiting RAs and PhD students</h2>
-    <p>I am looking for motivated students interested in graphical models, combinatorial inference, optimization, and quantum information.</p>
+    <p>I am looking for motivated students interested in graphical models, combinatorial inference, optimization, and quantum information. I will join the <a href="https://dsa.hkust-gz.edu.cn/">Data Science and Analytics Thrust (DSA)</a>, <a href="https://www.hkust-gz.edu.cn/academics/hubs-and-thrust-areas/information-hub/">Information Hub</a>, <a href="https://www.hkust-gz.edu.cn/">Hong Kong University of Science and Technology (Guangzhou)</a> in Fall 2026.</p>
+    <div class="home-recruiting-links">
+      <a href="https://dsa.hkust-gz.edu.cn/">DSA</a> ·
+      <a href="https://www.hkust-gz.edu.cn/academics/hubs-and-thrust-areas/information-hub/">Information Hub</a> ·
+      <a href="https://www.hkust-gz.edu.cn/">HKUST Guangzhou</a>
+    </div>
     <a class="home-recruiting-link" href="mailto:{{ site.author.email }}">Contact: {{ site.author.email }}</a>
   </div>
 
