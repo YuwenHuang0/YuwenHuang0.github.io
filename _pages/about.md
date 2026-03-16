@@ -13,41 +13,63 @@ redirect_from:
   }
 
   .page__content .home-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
     margin: 0 0 0.75rem;
     padding: 0;
     border: 0;
     color: #16323c;
     font-size: 1.35rem;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.01em;
+  }
+
+  .page__content .home-section-title::after {
+    content: "";
+    flex: 1 1 auto;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(29, 102, 119, 0.24) 0%, rgba(29, 102, 119, 0) 100%);
   }
 
   .home-intro {
     position: relative;
     overflow: hidden;
-    margin-bottom: 1.05rem;
-    padding: 1.25rem;
-    border: 1px solid rgba(54, 118, 134, 0.16);
-    border-radius: 24px;
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.1rem;
+    padding: 1.3rem;
+    border: 1px solid rgba(54, 118, 134, 0.15);
+    border-radius: 28px;
     background:
-      linear-gradient(135deg, rgba(242, 250, 252, 0.98) 0%, rgba(255, 255, 255, 0.98) 54%, rgba(255, 248, 232, 0.98) 100%);
-    box-shadow: 0 14px 34px rgba(18, 54, 64, 0.06);
+      radial-gradient(circle at top right, rgba(216, 155, 43, 0.15) 0%, rgba(216, 155, 43, 0) 24%),
+      linear-gradient(135deg, rgba(242, 250, 252, 0.98) 0%, rgba(255, 255, 255, 0.99) 52%, rgba(255, 248, 232, 0.98) 100%);
+    box-shadow: 0 18px 42px rgba(18, 54, 64, 0.08);
   }
 
   .home-intro::after {
     content: "";
     position: absolute;
-    top: -56px;
-    right: -52px;
-    width: 180px;
-    height: 180px;
+    right: -70px;
+    bottom: -85px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(216, 155, 43, 0.18) 0%, rgba(216, 155, 43, 0) 72%);
+    background: radial-gradient(circle, rgba(29, 102, 119, 0.12) 0%, rgba(29, 102, 119, 0) 72%);
     pointer-events: none;
   }
 
+  .home-header {
+    display: grid;
+    gap: 0.55rem;
+    max-width: 68rem;
+    margin: 0 auto;
+    text-align: center;
+    justify-items: center;
+  }
+
   .home-eyebrow {
-    margin: 0 0 0.55rem;
+    margin: 0;
     color: #16677a;
     font-size: 0.76rem;
     font-weight: 700;
@@ -57,67 +79,68 @@ redirect_from:
 
   .home-heading {
     position: relative;
-    margin: 0 0 0.75rem;
-    max-width: none;
+    margin: 0;
+    max-width: 64rem;
     color: #17313a;
-    font-size: clamp(1.34rem, 2.45vw, 1.78rem);
+    font-size: clamp(1.48rem, 2.55vw, 2.02rem);
     font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: -0.015em;
+    line-height: 1.05;
+    letter-spacing: -0.022em;
+    text-wrap: balance;
   }
 
   .home-lead {
     position: relative;
     margin: 0;
-    max-width: 68rem;
+    max-width: 60rem;
     color: #304d57;
     font-size: 1.05rem;
-    line-height: 1.72;
+    line-height: 1.7;
   }
 
-  .home-lead + .home-lead {
-    margin-top: 0.85rem;
-  }
-
-  .home-top-grid {
-    display: grid;
-    gap: 0.9rem;
-    align-items: start;
-  }
-
-  .home-main-copy {
-    display: grid;
-    gap: 0.95rem;
-    min-width: 0;
-  }
-
-  .home-recruiting {
+  .home-recruiting-spotlight {
     position: relative;
-    margin: 0;
-    padding: 0.95rem 1.05rem 1rem;
-    border: 1px solid rgba(216, 155, 43, 0.3);
-    border-radius: 20px;
-    background: linear-gradient(135deg, rgba(255, 245, 223, 0.98) 0%, rgba(255, 255, 255, 0.98) 100%);
-    box-shadow: 0 12px 26px rgba(118, 84, 18, 0.09);
+    width: 100%;
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 1.1rem;
+    border: 1px solid rgba(216, 155, 43, 0.26);
+    border-radius: 24px;
+    background:
+      linear-gradient(135deg, rgba(255, 244, 220, 0.96) 0%, rgba(255, 255, 255, 0.98) 42%, rgba(242, 250, 252, 0.98) 100%);
+    box-shadow: 0 18px 34px rgba(78, 66, 28, 0.08);
   }
 
-  .home-recruiting::before {
+  .home-recruiting-spotlight::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 4px;
-    border-radius: 20px 20px 0 0;
-    background: linear-gradient(90deg, #d89b2b 0%, #1d6677 100%);
+    border-radius: 24px 24px 0 0;
+    background: linear-gradient(90deg, #d89b2b 0%, #1d6677 55%, #4f8b62 100%);
+  }
+
+  .home-spotlight-grid {
+    display: grid;
+    gap: 0.95rem;
+    align-items: start;
+  }
+
+  .home-spotlight-main {
+    display: grid;
+    gap: 0.58rem;
+    min-width: 0;
   }
 
   .home-recruiting-label {
-    display: inline-block;
-    margin: 0 0 0.42rem;
-    padding: 0.14rem 0.52rem;
+    display: inline-flex;
+    width: fit-content;
+    margin: 0;
+    padding: 0.18rem 0.62rem;
     border-radius: 999px;
-    background: rgba(216, 155, 43, 0.14);
+    background: rgba(216, 155, 43, 0.15);
     color: #8a5b10;
     font-size: 0.76rem;
     font-weight: 800;
@@ -125,43 +148,174 @@ redirect_from:
     text-transform: uppercase;
   }
 
-  .home-recruiting h2 {
-    margin: 0 0 0.2rem;
+  .home-recruiting-title {
+    margin: 0;
     color: #17313a;
-    font-size: 1.12rem;
-    line-height: 1.25;
+    font-size: clamp(1.18rem, 2vw, 1.5rem);
+    font-weight: 800;
+    line-height: 1.12;
   }
 
   .home-recruiting-meta {
-    margin: 0 0 0.38rem;
+    margin: 0;
     color: #8a5b10;
-    font-size: 0.87rem;
+    font-size: 0.9rem;
     font-weight: 700;
-    line-height: 1.35;
+    line-height: 1.45;
   }
 
-  .home-recruiting p {
+  .home-recruiting-copy {
     margin: 0;
     color: #4d5f67;
     font-size: 0.98rem;
     line-height: 1.5;
   }
 
+  .home-recruiting-preference {
+    margin: 0;
+    color: #1a5968;
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1.48;
+  }
+
+  .home-institution-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.1rem;
+  }
+
+  .home-institution-links a {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.22rem 0.6rem;
+    border: 1px solid rgba(23, 103, 122, 0.15);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.78);
+    color: #17677a;
+    font-size: 0.84rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-decoration: none !important;
+  }
+
+  .home-institution-links a:hover {
+    color: #0f4f5e;
+    border-color: rgba(15, 79, 94, 0.28);
+    background: rgba(255, 255, 255, 0.96);
+  }
+
+  .home-apply-panel {
+    display: grid;
+    gap: 0.62rem;
+    padding: 0.95rem 1rem;
+    border: 1px solid rgba(29, 102, 119, 0.12);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  }
+
+  .home-apply-panel h3 {
+    margin: 0;
+    color: #17313a;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .home-apply-panel p {
+    margin: 0;
+    color: #4d5f67;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .home-apply-list {
+    margin: 0;
+    padding-left: 1.15rem;
+    color: #4d5f67;
+  }
+
+  .home-apply-list li {
+    margin: 0.18rem 0;
+    line-height: 1.45;
+  }
+
+  .home-apply-subject {
+    padding: 0.68rem 0.78rem;
+    border: 1px solid rgba(29, 102, 119, 0.12);
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(241, 248, 250, 0.98) 0%, rgba(255, 255, 255, 0.96) 100%);
+  }
+
+  .home-apply-subject strong {
+    display: block;
+    margin-bottom: 0.28rem;
+    color: #1a5968;
+    font-size: 0.84rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .home-apply-subject code {
+    display: block;
+    margin-top: 0.22rem;
+    color: #17313a;
+    font-size: 0.84rem;
+    font-weight: 700;
+    line-height: 1.45;
+    white-space: nowrap;
+    overflow-x: auto;
+    background: transparent;
+  }
+
+  .home-apply-cta {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    padding: 0.62rem 0.98rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #1d6677 0%, #184d5a 100%);
+    color: #ffffff;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none !important;
+    box-shadow: 0 12px 22px rgba(29, 102, 119, 0.16);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  }
+
+  .home-apply-cta:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, #175565 0%, #143f49 100%);
+    box-shadow: 0 14px 24px rgba(29, 102, 119, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .home-intro-copy {
+    display: grid;
+    gap: 0.95rem;
+    max-width: 60rem;
+    margin: 0 auto;
+  }
+
   .home-summary-grid {
     display: grid;
-    gap: 0.8rem;
+    gap: 0.85rem;
   }
 
   .home-summary-card {
     position: relative;
-    padding: 0.85rem 0.95rem;
+    padding: 0.92rem 1rem;
     border: 1px solid rgba(34, 84, 97, 0.12);
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.82);
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(249, 252, 253, 0.92) 100%);
+    box-shadow: 0 12px 24px rgba(18, 54, 64, 0.05);
   }
 
   .home-summary-card.accent {
-    background: linear-gradient(135deg, rgba(255, 248, 232, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+    background: linear-gradient(135deg, rgba(255, 248, 232, 0.96) 0%, rgba(255, 255, 255, 0.92) 100%);
     border-color: rgba(216, 155, 43, 0.2);
   }
 
@@ -174,7 +328,7 @@ redirect_from:
   .home-summary-card p {
     margin: 0;
     color: #4c6871;
-    line-height: 1.62;
+    line-height: 1.6;
   }
 
   .home-citation {
@@ -216,11 +370,17 @@ redirect_from:
   }
 
   .hero-flow {
-    margin-top: 0.7rem;
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 1rem;
+    border: 1px solid rgba(34, 84, 97, 0.1);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
   }
 
   .hero-flow-note {
-    margin: 0 0 0.45rem;
+    margin: 0 0 0.6rem;
     color: #214d5a;
     font-size: 0.84rem;
     font-weight: 700;
@@ -230,18 +390,19 @@ redirect_from:
 
   .hero-flow-grid {
     display: grid;
-    gap: 0.55rem;
+    gap: 0.6rem;
     justify-items: center;
   }
 
   .hero-node {
     width: 100%;
     max-width: 100%;
-    padding: 0.8rem 0.9rem 0.78rem;
+    padding: 0.85rem 0.95rem 0.82rem;
     border-radius: 20px;
     border: 2px solid transparent;
     text-align: center;
     box-sizing: border-box;
+    box-shadow: 0 10px 20px rgba(18, 54, 64, 0.05);
   }
 
   .hero-node h3 {
@@ -326,11 +487,11 @@ redirect_from:
 
   .research-framework {
     margin-bottom: 1.05rem;
-    padding: 1.1rem;
+    padding: 1.15rem;
     border: 1px solid rgba(34, 84, 97, 0.12);
-    border-radius: 24px;
-    background: #ffffff;
-    box-shadow: 0 14px 32px rgba(18, 54, 64, 0.05);
+    border-radius: 26px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(249, 252, 253, 0.98) 100%);
+    box-shadow: 0 18px 36px rgba(18, 54, 64, 0.05);
   }
 
   .framework-intro {
@@ -365,16 +526,22 @@ redirect_from:
 
   .direction-grid {
     display: grid;
-    gap: 0.8rem;
-    margin-top: 0.75rem;
+    gap: 0.9rem;
+    margin-top: 0.8rem;
   }
 
   .direction-card {
-    padding: 0.82rem;
+    padding: 0.92rem;
     border: 1px solid rgba(34, 84, 97, 0.1);
-    border-radius: 20px;
+    border-radius: 22px;
     background: linear-gradient(180deg, #ffffff 0%, #fbfdfe 100%);
-    box-shadow: 0 10px 24px rgba(18, 54, 64, 0.04);
+    box-shadow: 0 14px 28px rgba(18, 54, 64, 0.04);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .direction-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 30px rgba(18, 54, 64, 0.08);
   }
 
   .direction-card.teal {
@@ -394,8 +561,8 @@ redirect_from:
   }
 
   .direction-visual {
-    margin-bottom: 0.62rem;
-    padding: 0.58rem;
+    margin-bottom: 0.68rem;
+    padding: 0.66rem;
     border-radius: 16px;
     border: 1px solid rgba(34, 84, 97, 0.08);
     background: rgba(255, 255, 255, 0.82);
@@ -483,10 +650,11 @@ redirect_from:
 
   .framework-goal {
     margin-top: 0.8rem;
-    padding: 0.82rem 0.95rem;
-    border-radius: 18px;
-    background: linear-gradient(135deg, #184554 0%, #1e6170 100%);
+    padding: 0.9rem 1rem;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #184554 0%, #1e6170 65%, #25546a 100%);
     color: #ffffff;
+    box-shadow: 0 16px 28px rgba(24, 69, 84, 0.14);
   }
 
   .framework-goal span {
@@ -566,8 +734,17 @@ redirect_from:
   }
 
   @media (min-width: 760px) {
-    .home-top-grid {
-      grid-template-columns: minmax(0, 1.68fr) minmax(320px, 0.92fr);
+    .home-intro {
+      gap: 1.15rem;
+      padding: 1.55rem;
+    }
+
+    .home-recruiting-spotlight {
+      padding: 1.2rem;
+    }
+
+    .home-spotlight-grid {
+      grid-template-columns: minmax(0, 1.3fr) minmax(290px, 1fr);
     }
 
     .hero-flow-grid {
@@ -626,35 +803,62 @@ redirect_from:
 </style>
 
 <section class="home-intro">
-  <p class="home-eyebrow">Information Theory · Statistical Physics · Optimization · Quantum Information</p>
-  <h1 class="home-heading">Structured inference and optimization with rigorous guarantees</h1>
-  <div class="home-top-grid">
-    <div class="home-main-copy">
-      <p class="home-lead">
-        I am a postdoctoral researcher at CUHK developing provable and scalable methods for inference, counting, and optimization in structured systems. My research combines probabilistic graphical models, Bethe and graph-cover methods, combinatorics, tensor-network representations, and distributed quantum computation to turn mathematical structure into algorithms with rigorous guarantees.
-      </p>
+  <div class="home-header">
+    <p class="home-eyebrow">Information Theory · Statistical Physics · Optimization · Quantum Information</p>
+    <h1 class="home-heading">Structured inference and optimization with rigorous guarantees</h1>
+  </div>
 
-      <div class="home-summary-grid">
-        <article class="home-summary-card">
-          <h3>Current work</h3>
-          <p>Graphical models, combinatorial inference, structure-aware optimization, and distributed quantum computation.</p>
-        </article>
-        <article class="home-summary-card accent">
-          <h3>Future direction</h3>
-          <p>Extending structure-aware inference and optimization into machine learning, learning theory, and quantum information processing.</p>
-          <div class="home-citation-row">
-            <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
-            <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a>
-          </div>
-        </article>
+  <div class="home-recruiting-spotlight">
+    <div class="home-spotlight-grid">
+      <div class="home-spotlight-main">
+        <span class="home-recruiting-label">Open Positions</span>
+        <h2 class="home-recruiting-title">Recruiting research assistants now; PhD inquiries are also welcome</h2>
+        <p class="home-recruiting-meta">Faculty appointment at HKUST (Guangzhou) beginning Fall 2026 in the Data Science and Analytic Thrust (DSA), Information Hub</p>
+        <p class="home-recruiting-copy">I am building a research group around graphical models, inference, optimization, machine learning, and quantum information, with an emphasis on mathematically grounded methods and algorithmic impact.</p>
+        <p class="home-recruiting-preference">Research assistant applications are preferred at this stage; strong PhD inquiries are also welcome.</p>
+        <div class="home-institution-links">
+          <a href="https://dsa.hkust-gz.edu.cn/">DSA</a>
+          <a href="https://www.hkust-gz.edu.cn/academics/hubs-and-thrust-areas/information-hub/">Information Hub</a>
+          <a href="https://www.hkust-gz.edu.cn/">HKUST Guangzhou</a>
+        </div>
+      </div>
+
+      <div class="home-apply-panel">
+        <h3>How to apply</h3>
+        <p>Please send a concise email with a short motivation note and attach your CV and transcript.</p>
+        <div class="home-apply-subject">
+          <strong>Email title</strong>
+          <code>[RA Application] Your Name - Current Institution</code>
+          <code>[PhD Inquiry] Your Name - Current Institution</code>
+        </div>
+        <ul class="home-apply-list">
+          <li>Brief motivation in the email body</li>
+          <li>CV attached</li>
+          <li>Transcript attached</li>
+        </ul>
+        <a class="home-apply-cta" href="mailto:{{ site.author.email }}">Send application by email</a>
       </div>
     </div>
+  </div>
 
-    <div class="home-recruiting">
-      <span class="home-recruiting-label">Open Positions</span>
-      <h2>Recruiting RAs and PhD students</h2>
-      <p class="home-recruiting-meta">Faculty appointment at HKUST (Guangzhou) beginning Fall 2026</p>
-      <p>I will join the Data Science and Analytic Thrust (DSA), Information Hub, Hong Kong University of Science and Technology (Guangzhou) in Fall 2026, and I am actively recruiting prospective RAs and PhD students interested in graphical models, inference, optimization, machine learning, and quantum information.</p>
+  <div class="home-intro-copy">
+    <p class="home-lead">
+      I am a postdoctoral researcher at CUHK developing provable and scalable methods for inference, counting, and optimization in structured systems. My research combines probabilistic graphical models, Bethe and graph-cover methods, combinatorics, tensor-network representations, and distributed quantum computation to turn mathematical structure into algorithms with rigorous guarantees.
+    </p>
+
+    <div class="home-summary-grid">
+      <article class="home-summary-card">
+        <h3>Current work</h3>
+        <p>Graphical models, combinatorial inference, structure-aware optimization, and distributed quantum computation.</p>
+      </article>
+      <article class="home-summary-card accent">
+        <h3>Future direction</h3>
+        <p>Extending structure-aware inference and optimization into machine learning, learning theory, and quantum information processing.</p>
+        <div class="home-citation-row">
+          <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
+          <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a>
+        </div>
+      </article>
     </div>
   </div>
 
