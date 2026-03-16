@@ -82,9 +82,9 @@ redirect_from:
     margin: 0;
     max-width: 64rem;
     color: #17313a;
-    font-size: clamp(1.48rem, 2.55vw, 2.02rem);
+    font-size: clamp(1.42rem, 2.3vw, 1.9rem);
     font-weight: 800;
-    line-height: 1.05;
+    line-height: 1.08;
     letter-spacing: -0.022em;
     text-wrap: balance;
   }
@@ -265,8 +265,8 @@ redirect_from:
     font-size: 0.84rem;
     font-weight: 700;
     line-height: 1.45;
-    white-space: nowrap;
-    overflow-x: auto;
+    white-space: normal;
+    overflow-wrap: anywhere;
     background: transparent;
   }
 
@@ -744,7 +744,7 @@ redirect_from:
     }
 
     .home-spotlight-grid {
-      grid-template-columns: minmax(0, 1.3fr) minmax(290px, 1fr);
+      grid-template-columns: minmax(0, 1.36fr) minmax(280px, 0.96fr);
     }
 
     .hero-flow-grid {
@@ -787,16 +787,6 @@ redirect_from:
 
     .interest-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media (min-width: 980px) {
-    .home-eyebrow {
-      white-space: nowrap;
-    }
-
-    .home-heading {
-      white-space: nowrap;
     }
   }
 
