@@ -78,6 +78,56 @@ redirect_from:
     margin-top: 0.85rem;
   }
 
+  .home-recruiting {
+    position: relative;
+    margin: 0 0 0.85rem;
+    padding: 0.88rem 1rem 0.9rem;
+    border: 1px solid rgba(216, 155, 43, 0.28);
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(255, 248, 232, 0.96) 0%, rgba(255, 255, 255, 0.96) 100%);
+    box-shadow: 0 10px 24px rgba(118, 84, 18, 0.08);
+  }
+
+  .home-recruiting-label {
+    display: inline-block;
+    margin: 0 0 0.38rem;
+    padding: 0.14rem 0.48rem;
+    border-radius: 999px;
+    background: rgba(216, 155, 43, 0.14);
+    color: #8a5b10;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .home-recruiting h2 {
+    margin: 0 0 0.22rem;
+    color: #17313a;
+    font-size: 1.05rem;
+    line-height: 1.25;
+  }
+
+  .home-recruiting p {
+    margin: 0;
+    color: #4d5f67;
+    line-height: 1.58;
+  }
+
+  .home-recruiting-link {
+    display: inline-block;
+    margin-top: 0.45rem;
+    color: #17677a;
+    font-weight: 700;
+    text-decoration: none !important;
+    border-bottom: 1px solid rgba(23, 103, 122, 0.28);
+  }
+
+  .home-recruiting-link:hover {
+    color: #0f4f5e;
+    border-bottom-color: rgba(15, 79, 94, 0.5);
+  }
+
   .home-summary-grid {
     display: grid;
     gap: 0.8rem;
@@ -528,6 +578,13 @@ redirect_from:
 <section class="home-intro">
   <p class="home-eyebrow">Information Theory · Statistical Physics · Optimization · Quantum Information</p>
   <h1 class="home-heading">Structured inference and optimization with rigorous guarantees</h1>
+
+  <div class="home-recruiting">
+    <span class="home-recruiting-label">Open Positions</span>
+    <h2>Recruiting RAs and PhD students</h2>
+    <p>I am looking for motivated students interested in graphical models, combinatorial inference, optimization, and quantum information.</p>
+    <a class="home-recruiting-link" href="mailto:{{ site.author.email }}">Contact: {{ site.author.email }}</a>
+  </div>
 
   <p class="home-lead">
     I am a postdoctoral researcher at CUHK working on provable and scalable methods for inference, counting, and optimization. My work combines probabilistic graphical models, Bethe and graph-cover techniques, combinatorics, tensor-network methods, and distributed quantum computation to design algorithms with rigorous guarantees.
