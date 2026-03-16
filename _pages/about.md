@@ -49,9 +49,9 @@ redirect_from:
   .home-eyebrow {
     margin: 0 0 0.55rem;
     color: #16677a;
-    font-size: 0.82rem;
+    font-size: 0.76rem;
     font-weight: 700;
-    letter-spacing: 0.09em;
+    letter-spacing: 0.075em;
     text-transform: uppercase;
   }
 
@@ -614,6 +614,10 @@ redirect_from:
   }
 
   @media (min-width: 980px) {
+    .home-eyebrow {
+      white-space: nowrap;
+    }
+
     .home-heading {
       white-space: nowrap;
     }
