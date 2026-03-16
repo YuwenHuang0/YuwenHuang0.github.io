@@ -60,9 +60,10 @@ redirect_from:
     margin: 0 0 0.75rem;
     max-width: none;
     color: #17313a;
-    font-size: clamp(1.38rem, 3vw, 1.95rem);
+    font-size: clamp(1.34rem, 2.45vw, 1.78rem);
     font-weight: 800;
-    line-height: 1.12;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
   }
 
   .home-lead {
@@ -85,6 +86,8 @@ redirect_from:
   }
 
   .home-main-copy {
+    display: grid;
+    gap: 0.95rem;
     min-width: 0;
   }
 
@@ -146,7 +149,6 @@ redirect_from:
   .home-summary-grid {
     display: grid;
     gap: 0.8rem;
-    margin-top: 0.95rem;
   }
 
   .home-summary-card {
@@ -564,7 +566,7 @@ redirect_from:
 
   @media (min-width: 760px) {
     .home-top-grid {
-      grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.9fr);
+      grid-template-columns: minmax(0, 1.68fr) minmax(320px, 0.92fr);
     }
 
     .hero-flow-grid {
@@ -610,7 +612,7 @@ redirect_from:
     }
   }
 
-  @media (min-width: 1100px) {
+  @media (min-width: 980px) {
     .home-heading {
       white-space: nowrap;
     }
@@ -626,6 +628,21 @@ redirect_from:
       <p class="home-lead">
         I am a postdoctoral researcher at CUHK developing provable and scalable methods for inference, counting, and optimization in structured systems. My research combines probabilistic graphical models, Bethe and graph-cover methods, combinatorics, tensor-network representations, and distributed quantum computation to turn mathematical structure into algorithms with rigorous guarantees.
       </p>
+
+      <div class="home-summary-grid">
+        <article class="home-summary-card">
+          <h3>Current work</h3>
+          <p>Graphical models, combinatorial inference, structure-aware optimization, and distributed quantum computation.</p>
+        </article>
+        <article class="home-summary-card accent">
+          <h3>Future direction</h3>
+          <p>Extending structure-aware inference and optimization into machine learning, learning theory, and quantum information processing.</p>
+          <div class="home-citation-row">
+            <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
+            <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a>
+          </div>
+        </article>
+      </div>
     </div>
 
     <div class="home-recruiting">
@@ -634,21 +651,6 @@ redirect_from:
       <p class="home-recruiting-meta">Faculty appointment at HKUST (Guangzhou) beginning Fall 2026</p>
       <p>I will join the Data Science and Analytic Thrust (DSA), Information Hub, Hong Kong University of Science and Technology (Guangzhou) in Fall 2026. I am actively recruiting prospective RAs and PhD students interested in graphical models, inference, optimization, machine learning, and quantum information, especially students excited by mathematically grounded research with algorithmic impact.</p>
     </div>
-  </div>
-
-  <div class="home-summary-grid">
-    <article class="home-summary-card">
-      <h3>Current work</h3>
-      <p>Graphical models, combinatorial inference, structure-aware optimization, and distributed quantum computation.</p>
-    </article>
-    <article class="home-summary-card accent">
-      <h3>Future direction</h3>
-      <p>Extending structure-aware inference and optimization into machine learning, learning theory, and quantum information processing.</p>
-      <div class="home-citation-row">
-        <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
-        <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a>
-      </div>
-    </article>
   </div>
 
   <div class="hero-flow">
