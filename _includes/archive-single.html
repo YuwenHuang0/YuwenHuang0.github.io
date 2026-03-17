@@ -1,4 +1,46 @@
 {% include base_path %}
+{% if post.collection == 'publications' %}
+  <style>
+    .archive__item .pub-resource-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.42rem;
+      margin-top: 0.35rem;
+    }
+    .archive__item .pub-resource-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.14rem 0.55rem;
+      border: 1px solid rgba(31, 96, 112, 0.2);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #1f6070;
+      font-size: 0.82rem;
+      font-weight: 700;
+      line-height: 1.35;
+      text-decoration: none !important;
+    }
+    .archive__item .pub-resource-link:hover {
+      border-color: rgba(31, 96, 112, 0.36);
+      background: #edf7fa;
+    }
+    .archive__item .pub-resource-link--paper {
+      border-color: rgba(15, 79, 94, 0.34);
+      background: linear-gradient(135deg, #e6f3f7 0%, #f4fbfd 100%);
+      color: #0f4f5e !important;
+    }
+    .archive__item .pub-resource-link--slides {
+      border-color: rgba(138, 91, 16, 0.28);
+      background: linear-gradient(135deg, #fff5dd 0%, #fffaf0 100%);
+      color: #8a5b10 !important;
+    }
+    .archive__item .pub-resource-link--video {
+      border-color: rgba(111, 40, 156, 0.24);
+      background: linear-gradient(135deg, #f4ecfb 0%, #faf6ff 100%);
+      color: #6f289c !important;
+    }
+  </style>
+{% endif %}
 
 {% if post.header.teaser %}
   {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
@@ -66,14 +108,26 @@
     <p class="archive__item-excerpt" itemprop="description"><p>{{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}<strong><a href="{% if post.paperurl %}{{ post.paperurl }}{% elsif post.link %}{{ post.link }}{% else %}{{ base_path }}{{ post.url }}{% endif %}"> Read more</a></strong></p></p>
     {% endif %}
 
-    {% if post.slidesurl %}
-      <p><a href="{{ post.slidesurl }}">Download Slides</a></p>
-    {% endif %}
-    {% if post.slidesurl_alt %}
-      <p><a href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "More Slides" }}</a></p>
-    {% endif %}
-    {% if post.videourl %}
-      <p><a href="{{ post.videourl }}">Watch Video</a></p>
+    {% if post.collection == 'publications' %}
+      {% capture pub_links %}
+        {% if post.paperurl %}<a class="pub-resource-link pub-resource-link--paper" href="{{ post.paperurl }}">Paper</a>{% endif %}
+        {% if post.slidesurl %}<a class="pub-resource-link pub-resource-link--slides" href="{{ post.slidesurl }}">Slides</a>{% endif %}
+        {% if post.slidesurl_alt %}<a class="pub-resource-link pub-resource-link--slides" href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "More Slides" }}</a>{% endif %}
+        {% if post.videourl %}<a class="pub-resource-link pub-resource-link--video" href="{{ post.videourl }}">Video</a>{% endif %}
+      {% endcapture %}
+      {% if pub_links | strip != "" %}
+        <div class="pub-resource-links">{{ pub_links | strip }}</div>
+      {% endif %}
+    {% else %}
+      {% if post.slidesurl %}
+        <p><a href="{{ post.slidesurl }}">Download Slides</a></p>
+      {% endif %}
+      {% if post.slidesurl_alt %}
+        <p><a href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "More Slides" }}</a></p>
+      {% endif %}
+      {% if post.videourl %}
+        <p><a href="{{ post.videourl }}">Watch Video</a></p>
+      {% endif %}
     {% endif %}
   </article>
 </div>

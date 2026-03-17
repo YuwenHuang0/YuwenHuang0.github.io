@@ -19,8 +19,36 @@ author_profile: true
   .pub-label { font-weight: 600; color: #444; }
   .pub-title { font-weight: 600; }
   .pub-authors, .pub-venue, .pub-links, .pub-excerpt { margin: 0.12rem 0; color: inherit; }
-  .pub-links a { color: var(--link-color); text-decoration: none; }
-  .pub-links a:hover { text-decoration: underline; }
+  .pub-links { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .pub-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.55rem;
+    border: 1px solid rgba(31, 96, 112, 0.2);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.88);
+    color: #1f6070;
+    font-size: 0.84rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-decoration: none !important;
+  }
+  .pub-link:hover { border-color: rgba(31, 96, 112, 0.38); background: rgba(237, 247, 250, 1); }
+  .pub-link--paper {
+    border-color: rgba(15, 79, 94, 0.38);
+    background: linear-gradient(135deg, #e6f3f7 0%, #f4fbfd 100%);
+    color: #0f4f5e !important;
+  }
+  .pub-link--slides {
+    border-color: rgba(138, 91, 16, 0.3);
+    background: linear-gradient(135deg, #fff5dd 0%, #fffaf0 100%);
+    color: #8a5b10 !important;
+  }
+  .pub-link--video {
+    border-color: rgba(111, 40, 156, 0.25);
+    background: linear-gradient(135deg, #f4ecfb 0%, #faf6ff 100%);
+    color: #6f289c !important;
+  }
   .pub-excerpt { font-style: italic; opacity: 0.85; }
 </style>
 
@@ -71,22 +99,18 @@ author_profile: true
               <p class="pub-excerpt">{{ post.excerpt }}</p>
             {% endif %}
             {% capture links %}
-              {% if post.paperurl %}<a href="{{ post.paperurl }}">Paper</a>{% endif %}
+              {% if post.paperurl %}<a class="pub-link pub-link--paper" href="{{ post.paperurl }}">Paper</a>{% endif %}
               {% if post.slidesurl %}
-                {% if post.paperurl %} | {% endif %}
-                <a href="{{ post.slidesurl }}">Slides</a>
+                <a class="pub-link pub-link--slides" href="{{ post.slidesurl }}">Slides</a>
               {% endif %}
               {% if post.slidesurl_alt %}
-                {% if post.paperurl or post.slidesurl %} | {% endif %}
-                <a href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "More Slides" }}</a>
+                <a class="pub-link pub-link--slides" href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "More Slides" }}</a>
               {% endif %}
               {% if post.videourl %}
-                {% if post.paperurl or post.slidesurl or post.slidesurl_alt %} | {% endif %}
-                <a href="{{ post.videourl }}">Video</a>
+                <a class="pub-link pub-link--video" href="{{ post.videourl }}">Video</a>
               {% endif %}
               {% if post.bibtexurl %}
-                {% if post.paperurl or post.slidesurl or post.slidesurl_alt or post.videourl %} | {% endif %}
-                <a href="{{ post.bibtexurl }}">BibTeX</a>
+                <a class="pub-link" href="{{ post.bibtexurl }}">BibTeX</a>
               {% endif %}
             {% endcapture %}
             {% if links | strip != "" %}
@@ -123,22 +147,18 @@ author_profile: true
               <p class="pub-excerpt">{{ post.excerpt }}</p>
             {% endif %}
             {% capture links %}
-              {% if post.paperurl %}<a href="{{ post.paperurl }}">Paper</a>{% endif %}
+              {% if post.paperurl %}<a class="pub-link pub-link--paper" href="{{ post.paperurl }}">Paper</a>{% endif %}
               {% if post.slidesurl %}
-                {% if post.paperurl %} | {% endif %}
-                <a href="{{ post.slidesurl }}">Slides</a>
+                <a class="pub-link pub-link--slides" href="{{ post.slidesurl }}">Slides</a>
               {% endif %}
               {% if post.slidesurl_alt %}
-                {% if post.paperurl or post.slidesurl %} | {% endif %}
-                <a href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "More Slides" }}</a>
+                <a class="pub-link pub-link--slides" href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "More Slides" }}</a>
               {% endif %}
               {% if post.videourl %}
-                {% if post.paperurl or post.slidesurl or post.slidesurl_alt %} | {% endif %}
-                <a href="{{ post.videourl }}">Video</a>
+                <a class="pub-link pub-link--video" href="{{ post.videourl }}">Video</a>
               {% endif %}
               {% if post.bibtexurl %}
-                {% if post.paperurl or post.slidesurl or post.slidesurl_alt or post.videourl %} | {% endif %}
-                <a href="{{ post.bibtexurl }}">BibTeX</a>
+                <a class="pub-link" href="{{ post.bibtexurl }}">BibTeX</a>
               {% endif %}
             {% endcapture %}
             {% if links | strip != "" %}

@@ -18,6 +18,48 @@ layout: default
   {% include sidebar.html %}
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    {% if page.collection == 'publications' %}
+      <style>
+        .pub-resource-links {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.45rem;
+          margin: 0.4rem 0 0.1rem;
+        }
+        .pub-resource-link {
+          display: inline-flex;
+          align-items: center;
+          padding: 0.18rem 0.62rem;
+          border: 1px solid rgba(31, 96, 112, 0.22);
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.9);
+          color: #1f6070;
+          font-size: 0.85rem;
+          font-weight: 700;
+          line-height: 1.35;
+          text-decoration: none !important;
+        }
+        .pub-resource-link:hover {
+          border-color: rgba(31, 96, 112, 0.38);
+          background: #edf7fa;
+        }
+        .pub-resource-link--paper {
+          border-color: rgba(15, 79, 94, 0.38);
+          background: linear-gradient(135deg, #e6f3f7 0%, #f4fbfd 100%);
+          color: #0f4f5e !important;
+        }
+        .pub-resource-link--slides {
+          border-color: rgba(138, 91, 16, 0.3);
+          background: linear-gradient(135deg, #fff5dd 0%, #fffaf0 100%);
+          color: #8a5b10 !important;
+        }
+        .pub-resource-link--video {
+          border-color: rgba(111, 40, 156, 0.25);
+          background: linear-gradient(135deg, #f4ecfb 0%, #faf6ff 100%);
+          color: #6f289c !important;
+        }
+      </style>
+    {% endif %}
     {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
     {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
     {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">{% endif %}
@@ -67,14 +109,27 @@ layout: default
       <section class="page__content" itemprop="text">
         {{ content }}
 
-        {% if page.slidesurl %}
-          <p style="font-size: smaller"><a href="{{ page.slidesurl }}">Download Slides</a></p>
-        {% endif %}
-        {% if page.slidesurl_alt %}
-          <p style="font-size: smaller"><a href="{{ page.slidesurl_alt }}">{{ page.slideslabel_alt | default: "More Slides" }}</a></p>
-        {% endif %}
-        {% if page.videourl %}
-          <p style="font-size: smaller"><a href="{{ page.videourl }}">Watch Video</a></p>
+        {% if page.collection == 'publications' %}
+          {% capture pub_links %}
+            {% if page.paperurl %}<a class="pub-resource-link pub-resource-link--paper" href="{{ page.paperurl }}">Paper</a>{% endif %}
+            {% if page.slidesurl %}<a class="pub-resource-link pub-resource-link--slides" href="{{ page.slidesurl }}">Slides</a>{% endif %}
+            {% if page.slidesurl_alt %}<a class="pub-resource-link pub-resource-link--slides" href="{{ page.slidesurl_alt }}">{{ page.slideslabel_alt | default: "More Slides" }}</a>{% endif %}
+            {% if page.videourl %}<a class="pub-resource-link pub-resource-link--video" href="{{ page.videourl }}">Video</a>{% endif %}
+            {% if page.bibtexurl %}<a class="pub-resource-link" href="{{ page.bibtexurl }}">BibTeX</a>{% endif %}
+          {% endcapture %}
+          {% if pub_links | strip != "" %}
+            <div class="pub-resource-links">{{ pub_links | strip }}</div>
+          {% endif %}
+        {% else %}
+          {% if page.slidesurl %}
+            <p style="font-size: smaller"><a href="{{ page.slidesurl }}">Download Slides</a></p>
+          {% endif %}
+          {% if page.slidesurl_alt %}
+            <p style="font-size: smaller"><a href="{{ page.slidesurl_alt }}">{{ page.slideslabel_alt | default: "More Slides" }}</a></p>
+          {% endif %}
+          {% if page.videourl %}
+            <p style="font-size: smaller"><a href="{{ page.videourl }}">Watch Video</a></p>
+          {% endif %}
         {% endif %}
 
         {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
