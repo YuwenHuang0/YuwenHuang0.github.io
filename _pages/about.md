@@ -802,10 +802,10 @@ redirect_from:
     <div class="home-spotlight-grid">
       <div class="home-spotlight-main">
         <span class="home-recruiting-label">Open Positions</span>
-        <h2 class="home-recruiting-title">Recruiting research assistants now; PhD inquiries are also welcome</h2>
-        <p class="home-recruiting-meta">Faculty appointment at HKUST (Guangzhou) beginning Fall 2026 in the Data Science and Analytic Thrust (DSA), Information Hub</p>
-        <p class="home-recruiting-copy">I am building a research group around graphical models, inference, optimization, machine learning, and quantum information, with an emphasis on mathematically grounded methods and algorithmic impact.</p>
-        <p class="home-recruiting-preference">Research assistant applications are preferred at this stage; strong PhD inquiries are also welcome.</p>
+        <h2 class="home-recruiting-title">Research assistant positions open now; PhD inquiries are also welcome</h2>
+        <p class="home-recruiting-meta">I will join HKUST (Guangzhou) as a tenure-track assistant professor in Fall 2026 in the Data Science and Analytic Thrust (DSA), Information Hub.</p>
+        <p class="home-recruiting-copy">I am building a research group on graphical models, inference, optimization, machine learning, and quantum information, with an emphasis on mathematically rigorous ideas that lead to scalable algorithms.</p>
+        <p class="home-recruiting-preference">For now, I am primarily looking for research assistants; exceptional PhD candidates are also encouraged to reach out.</p>
         <div class="home-institution-links">
           <a href="https://dsa.hkust-gz.edu.cn/">DSA</a>
           <a href="https://www.hkust-gz.edu.cn/academics/hubs-and-thrust-areas/information-hub/">Information Hub</a>
@@ -815,7 +815,7 @@ redirect_from:
 
       <div class="home-apply-panel">
         <h3>How to apply</h3>
-        <p>Please send a concise email with a short motivation note and attach your CV and transcript.</p>
+        <p>Please send a concise email including a short motivation note, and attach your CV and transcript.</p>
         <div class="home-apply-subject">
           <strong>Email title</strong>
           <code>[RA Application] Your Name - Current Institution</code>
@@ -833,17 +833,17 @@ redirect_from:
 
   <div class="home-intro-copy">
     <p class="home-lead">
-      I am a postdoctoral researcher at CUHK developing provable and scalable methods for inference, counting, and optimization in structured systems. My research combines probabilistic graphical models, Bethe and graph-cover methods, combinatorics, tensor-network representations, and distributed quantum computation to turn mathematical structure into algorithms with rigorous guarantees.
+      I am a postdoctoral researcher at CUHK developing provable and scalable methods for inference, counting, and optimization in structured systems. My work brings together probabilistic graphical models, Bethe and graph-cover methods, combinatorics, tensor-network representations, and distributed quantum computation to turn mathematical structure into practical algorithms with rigorous guarantees.
     </p>
 
     <div class="home-summary-grid">
       <article class="home-summary-card">
         <h3>Current work</h3>
-        <p>Graphical models, combinatorial inference, structure-aware optimization, and distributed quantum computation.</p>
+        <p>Structure-aware inference, combinatorial counting, optimization, and distributed quantum computation.</p>
       </article>
       <article class="home-summary-card accent">
         <h3>Future direction</h3>
-        <p>Extending structure-aware inference and optimization into machine learning, learning theory, and quantum information processing.</p>
+        <p>Bringing structure-aware inference and optimization into machine learning, learning theory, and quantum information processing.</p>
         <div class="home-citation-row">
           <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
           <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a>
@@ -982,6 +982,6 @@ redirect_from:
 
   <div class="framework-goal">
     <span>Shared Goal</span>
-    <strong>Turn mathematical structure into scalable algorithms with rigorous guarantees.</strong>
+    <strong>Turn mathematical structure into scalable algorithms with provable guarantees.</strong>
   </div>
 </section>
