@@ -918,10 +918,14 @@ redirect_from:
     <article class="direction-card gold">
       <div class="direction-visual">
         <svg class="figure-svg" viewBox="0 0 320 150" role="img" aria-label="Optimization illustration">
-          <path d="M34 114 C78 82, 104 34, 150 34 C188 34, 210 104, 248 104 C270 104, 284 86, 292 58" fill="none" stroke="#d9b14f" stroke-width="5" stroke-linecap="round" />
+          <defs>
+            <marker id="opt-arrow-head" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+              <path d="M0 0 L10 5 L0 10" fill="none" stroke="#d9b14f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </marker>
+          </defs>
+          <path d="M34 114 C78 82, 104 34, 150 34 C188 34, 210 104, 248 104 C270 104, 286 90, 296 60" fill="none" stroke="#d9b14f" stroke-width="5" stroke-linecap="round" marker-end="url(#opt-arrow-head)" />
           <circle cx="150" cy="34" r="8" fill="#7a5614" />
           <circle cx="248" cy="104" r="8" fill="#7a5614" />
-          <path d="M286 44 L302 52 L286 62" fill="none" stroke="#d9b14f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
           <line x1="58" y1="122" x2="276" y2="122" stroke="#ead28d" stroke-width="3" stroke-linecap="round" />
         </svg>
       </div>
@@ -937,6 +941,11 @@ redirect_from:
     <article class="direction-card coral">
       <div class="direction-visual">
         <svg class="figure-svg" viewBox="0 0 320 150" role="img" aria-label="Tensor network illustration">
+          <defs>
+            <marker id="tensor-arrow-head" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+              <path d="M0 0 L10 5 L0 10" fill="none" stroke="#cb6651" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </marker>
+          </defs>
           <rect x="42" y="44" width="34" height="34" rx="8" fill="#efb2a7" />
           <rect x="96" y="44" width="34" height="34" rx="8" fill="#efb2a7" />
           <rect x="150" y="44" width="34" height="34" rx="8" fill="#efb2a7" />
@@ -944,8 +953,7 @@ redirect_from:
           <line x1="76" y1="61" x2="96" y2="61" stroke="#cb6651" stroke-width="4" />
           <line x1="130" y1="61" x2="150" y2="61" stroke="#cb6651" stroke-width="4" />
           <line x1="184" y1="61" x2="204" y2="61" stroke="#cb6651" stroke-width="4" />
-          <path d="M238 61 L290 61" stroke="#cb6651" stroke-width="5" stroke-linecap="round" />
-          <path d="M276 46 L292 61 L276 76" fill="none" stroke="#cb6651" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M238 61 L292 61" stroke="#cb6651" stroke-width="5" stroke-linecap="round" marker-end="url(#tensor-arrow-head)" />
         </svg>
       </div>
       <h3>Tensor networks and quantum-enabled methods</h3>
