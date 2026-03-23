@@ -846,7 +846,7 @@ redirect_from:
         <p>Bringing structure-aware inference and optimization into machine learning, learning theory, and quantum information processing.</p>
         <div class="home-citation-row">
           <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
-          <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a>
+          <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[QUANTUM-sub]</a>
         </div>
       </article>
     </div>
@@ -911,17 +911,17 @@ redirect_from:
         <a class="home-citation" href="{{ '/publication/characterizing-bethe-partition-factor-graphs' | relative_url }}">[ISIT2020]</a>
         <a class="home-citation" href="{{ '/publication/bethe-free-energy-global-minimum' | relative_url }}">[ITW2022]</a>
         <a class="home-citation" href="{{ '/publication/bethe-partition-spa-stable-polynomials' | relative_url }}">[ISIT2024]</a>
-        <a class="home-citation" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-Sub]</a>
+        <a class="home-citation" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-sub]</a>
       </div>
     </article>
 
     <article class="direction-card gold">
       <div class="direction-visual">
         <svg class="figure-svg" viewBox="0 0 320 150" role="img" aria-label="Optimization illustration">
-          <path d="M34 114 C78 82, 104 34, 150 34 C188 34, 210 104, 248 104 C270 104, 286 86, 300 52" fill="none" stroke="#d9b14f" stroke-width="5" stroke-linecap="round" />
+          <path d="M34 114 C78 82, 104 34, 150 34 C188 34, 210 104, 248 104 C270 104, 284 86, 292 58" fill="none" stroke="#d9b14f" stroke-width="5" stroke-linecap="round" />
           <circle cx="150" cy="34" r="8" fill="#7a5614" />
           <circle cx="248" cy="104" r="8" fill="#7a5614" />
-          <path d="M282 46 L300 52 L288 66" fill="none" stroke="#7a5614" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M286 44 L302 52 L286 62" fill="none" stroke="#d9b14f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
           <line x1="58" y1="122" x2="276" y2="122" stroke="#ead28d" stroke-width="3" stroke-linecap="round" />
         </svg>
       </div>
@@ -944,15 +944,15 @@ redirect_from:
           <line x1="76" y1="61" x2="96" y2="61" stroke="#cb6651" stroke-width="4" />
           <line x1="130" y1="61" x2="150" y2="61" stroke="#cb6651" stroke-width="4" />
           <line x1="184" y1="61" x2="204" y2="61" stroke="#cb6651" stroke-width="4" />
-          <path d="M238 61 L286 61" stroke="#cb6651" stroke-width="5" stroke-linecap="round" />
-          <path d="M272 46 L288 61 L272 76" fill="none" stroke="#cb6651" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M238 61 L290 61" stroke="#cb6651" stroke-width="5" stroke-linecap="round" />
+          <path d="M276 46 L292 61 L276 76" fill="none" stroke="#cb6651" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </div>
       <h3>Tensor networks and quantum-enabled methods</h3>
       <p>Tensor-network representations and quantum-enabled methods for compact, high-dimensional computation.</p>
       <div class="home-citation-row">
         <a class="home-citation" href="{{ '/publication/sets-of-marginals-chsh' | relative_url }}">[ISIT2021]</a>
-        <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a>
+        <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[QUANTUM-sub]</a>
       </div>
     </article>
 
@@ -975,7 +975,7 @@ redirect_from:
       <p>Distributed quantum architectures for large-scale optimization, inference, and data-intensive analytics.</p>
       <div class="home-citation-row">
         <a class="home-citation" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
-        <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[Quantum2026]</a>
+        <a class="home-citation" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[QUANTUM-sub]</a>
       </div>
     </article>
   </div>

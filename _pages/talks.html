@@ -14,8 +14,25 @@ author_profile: true
   .talk-line { margin: 0; display: flex; gap: 0.35rem; align-items: baseline; flex-wrap: wrap; font-weight: 600;  }
   .talk-label { font-weight: 600;  }
   .talk-meta, .talk-links, .talk-excerpt { margin: 0.12rem 0; color: inherit; }
-  .talk-links a { color: var(--link-color); text-decoration: none; }
-  .talk-links a:hover { text-decoration: underline; }
+  .talk-links { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .talk-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.58rem;
+    border: 1px solid rgba(138, 91, 16, 0.32);
+    border-radius: 999px;
+    background: linear-gradient(135deg, #fff5dd 0%, #fffaf0 100%);
+    color: #8a5b10 !important;
+    font-size: 0.84rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-decoration: none !important;
+  }
+  .talk-link:hover {
+    border-color: rgba(138, 91, 16, 0.5);
+    background: linear-gradient(135deg, #ffefcc 0%, #fff7e5 100%);
+    color: #754a0e !important;
+  }
   .talk-excerpt { font-style: italic; opacity: 0.85; }
 </style>
 
@@ -40,7 +57,7 @@ author_profile: true
             <p class="talk-excerpt">{{ talk_summary | strip_html | strip }}</p>
           {% endif %}
           {% capture links %}
-            {% if talk.slidesurl %}<a href="{{ talk.slidesurl }}">Slides</a>{% endif %}
+            {% if talk.slidesurl %}<a class="talk-link" href="{{ talk.slidesurl }}">Slides</a>{% endif %}
           {% endcapture %}
           {% if links | strip != "" %}
             <p class="talk-links">{{ links | strip }}</p>
