@@ -206,6 +206,69 @@ redirect_from:
     background: rgba(255, 255, 255, 0.96);
   }
 
+  .home-role-section {
+    display: grid;
+    gap: 0.72rem;
+    margin-top: 0.88rem;
+    padding-top: 0.88rem;
+    border-top: 1px solid rgba(29, 102, 119, 0.12);
+  }
+
+  .home-role-heading {
+    margin: 0;
+    color: #17313a;
+    font-size: 0.98rem;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .home-role-grid {
+    display: grid;
+    gap: 0.72rem;
+  }
+
+  .home-role-card {
+    padding: 0.82rem 0.88rem;
+    border: 1px solid rgba(34, 84, 97, 0.1);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  }
+
+  .home-role-card.teal {
+    background: linear-gradient(180deg, #eef8fb 0%, rgba(255, 255, 255, 0.92) 100%);
+  }
+
+  .home-role-card.gold {
+    background: linear-gradient(180deg, #fff8e7 0%, rgba(255, 255, 255, 0.92) 100%);
+  }
+
+  .home-role-card.green {
+    background: linear-gradient(180deg, #eef8f1 0%, rgba(255, 255, 255, 0.92) 100%);
+  }
+
+  .home-role-card.coral {
+    background: linear-gradient(180deg, #fff1ee 0%, rgba(255, 255, 255, 0.92) 100%);
+  }
+
+  .home-role-card h3 {
+    margin: 0 0 0.34rem;
+    color: #17313a;
+    font-size: 0.98rem;
+    line-height: 1.2;
+  }
+
+  .home-role-list {
+    margin: 0;
+    padding-left: 1.05rem;
+    color: #4d5f67;
+  }
+
+  .home-role-list li {
+    margin: 0.16rem 0;
+    line-height: 1.42;
+  }
+
   .home-apply-panel {
     display: grid;
     gap: 0.62rem;
@@ -239,6 +302,28 @@ redirect_from:
   .home-apply-list li {
     margin: 0.18rem 0;
     line-height: 1.45;
+  }
+
+  .home-apply-subsection {
+    display: grid;
+    gap: 0.28rem;
+    padding: 0.72rem 0.82rem;
+    border: 1px solid rgba(29, 102, 119, 0.1);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .home-apply-subsection h4 {
+    margin: 0;
+    color: #1a5968;
+    font-size: 0.84rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .home-apply-subsection p {
+    font-size: 0.91rem;
   }
 
   .home-apply-subject {
@@ -747,6 +832,10 @@ redirect_from:
       grid-template-columns: minmax(0, 1.36fr) minmax(280px, 0.96fr);
     }
 
+    .home-role-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .hero-flow-grid {
       width: 100%;
     }
@@ -802,10 +891,10 @@ redirect_from:
     <div class="home-spotlight-grid">
       <div class="home-spotlight-main">
         <span class="home-recruiting-label">Open Positions</span>
-        <h2 class="home-recruiting-title">Research assistant positions open now; PhD inquiries are also welcome</h2>
+        <h2 class="home-recruiting-title">Recruiting RAs, MPhil/PhD students, and Postdocs</h2>
         <p class="home-recruiting-meta">I will join HKUST (Guangzhou) as a tenure-track assistant professor in Fall 2026 in the Data Science and Analytic Thrust (DSA), Information Hub.</p>
         <p class="home-recruiting-copy">I am building a research group on graphical models, inference, optimization, machine learning, and quantum information, with an emphasis on mathematically rigorous ideas that lead to scalable algorithms.</p>
-        <p class="home-recruiting-preference">For now, I am primarily looking for research assistants; exceptional PhD candidates are also encouraged to reach out.</p>
+        <p class="home-recruiting-preference">I welcome applications and inquiries from research assistants, MPhil students, PhD students, and Postdocs who are excited by theory-driven work with algorithmic and systems impact.</p>
         <div class="home-institution-links">
           <a href="https://dsa.hkust-gz.edu.cn/">DSA</a>
           <a href="https://www.hkust-gz.edu.cn/academics/hubs-and-thrust-areas/information-hub/">Information Hub</a>
@@ -815,18 +904,61 @@ redirect_from:
 
       <div class="home-apply-panel">
         <h3>How to apply</h3>
-        <p>Please send a concise email including a short motivation note, and attach your CV and transcript.</p>
+        <p>Please send a concise email introducing your background and interests, together with the materials below.</p>
         <div class="home-apply-subject">
           <strong>Email title</strong>
           <code>[RA Application] Your Name - Current Institution</code>
+          <code>[MPhil Inquiry] Your Name - Current Institution</code>
           <code>[PhD Inquiry] Your Name - Current Institution</code>
+          <code>[Postdoc Application] Your Name - Current Institution</code>
         </div>
-        <ul class="home-apply-list">
-          <li>Brief motivation in the email body</li>
-          <li>CV attached</li>
-          <li>Transcript attached</li>
-        </ul>
+        <div class="home-apply-subsection">
+          <h4>RA / MPhil / PhD</h4>
+          <p>Include a short motivation note in the email body, plus your CV and transcript.</p>
+        </div>
+        <div class="home-apply-subsection">
+          <h4>Postdoc</h4>
+          <p>Include your CV and a short research statement describing your interests and future agenda.</p>
+        </div>
         <a class="home-apply-cta" href="mailto:{{ site.author.email }}">Send application by email</a>
+      </div>
+    </div>
+
+    <div class="home-role-section">
+      <h3 class="home-role-heading">What I provide</h3>
+      <div class="home-role-grid">
+        <article class="home-role-card teal">
+          <h3>RA</h3>
+          <ul class="home-role-list">
+            <li>Close research mentoring in structured inference, optimization, and graphical models.</li>
+            <li>Hands-on exposure to mathematically grounded algorithm design and analysis.</li>
+            <li>Preparation for MPhil/PhD study or algorithm-focused industry roles.</li>
+          </ul>
+        </article>
+        <article class="home-role-card gold">
+          <h3>MPhil</h3>
+          <ul class="home-role-list">
+            <li>A structured transition from coursework into independent research problems.</li>
+            <li>Training that combines theory, applications, and rigorous performance guarantees.</li>
+            <li>Preparation for PhD study or advanced R&amp;D roles in data science and systems.</li>
+          </ul>
+        </article>
+        <article class="home-role-card green">
+          <h3>PhD</h3>
+          <ul class="home-role-list">
+            <li>Ownership of deeper research directions at the interface of theory, algorithms, and systems.</li>
+            <li>Opportunities to publish, collaborate broadly, and build an academic research profile.</li>
+            <li>Preparation for academic positions or long-term research careers.</li>
+          </ul>
+        </article>
+        <article class="home-role-card coral">
+          <h3>Postdoc</h3>
+          <ul class="home-role-list">
+            <li>Support for building an independent research agenda and publication leadership.</li>
+            <li>Opportunities to co-mentor students and shape a growing research group.</li>
+            <li>Preparation for academic job searches and broader collaboration networks.</li>
+          </ul>
+        </article>
       </div>
     </div>
   </div>
@@ -919,11 +1051,11 @@ redirect_from:
       <div class="direction-visual">
         <svg class="figure-svg" viewBox="0 0 320 150" role="img" aria-label="Optimization illustration">
           <defs>
-            <marker id="opt-arrow-head" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
-              <path d="M0 0 L10 5 L0 10" fill="none" stroke="#d9b14f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            <marker id="opt-arrow-head" viewBox="0 0 12 12" markerWidth="8" markerHeight="8" refX="10.5" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M1 1 L11 6 L1 11" fill="none" stroke="#d9b14f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </marker>
           </defs>
-          <path d="M34 114 C78 82, 104 34, 150 34 C188 34, 210 104, 248 104 C270 104, 286 90, 296 60" fill="none" stroke="#d9b14f" stroke-width="5" stroke-linecap="round" marker-end="url(#opt-arrow-head)" />
+          <path d="M34 114 C78 82, 104 34, 150 34 C188 34, 210 104, 248 104 C270 104, 288 89, 300 58" fill="none" stroke="#d9b14f" stroke-width="5" stroke-linecap="round" marker-end="url(#opt-arrow-head)" />
           <circle cx="150" cy="34" r="8" fill="#7a5614" />
           <circle cx="248" cy="104" r="8" fill="#7a5614" />
           <line x1="58" y1="122" x2="276" y2="122" stroke="#ead28d" stroke-width="3" stroke-linecap="round" />
@@ -942,8 +1074,8 @@ redirect_from:
       <div class="direction-visual">
         <svg class="figure-svg" viewBox="0 0 320 150" role="img" aria-label="Tensor network illustration">
           <defs>
-            <marker id="tensor-arrow-head" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
-              <path d="M0 0 L10 5 L0 10" fill="none" stroke="#cb6651" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            <marker id="tensor-arrow-head" viewBox="0 0 12 12" markerWidth="8" markerHeight="8" refX="10.5" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M1 1 L11 6 L1 11" fill="none" stroke="#cb6651" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </marker>
           </defs>
           <rect x="42" y="44" width="34" height="34" rx="8" fill="#efb2a7" />
@@ -953,7 +1085,7 @@ redirect_from:
           <line x1="76" y1="61" x2="96" y2="61" stroke="#cb6651" stroke-width="4" />
           <line x1="130" y1="61" x2="150" y2="61" stroke="#cb6651" stroke-width="4" />
           <line x1="184" y1="61" x2="204" y2="61" stroke="#cb6651" stroke-width="4" />
-          <path d="M238 61 L292 61" stroke="#cb6651" stroke-width="5" stroke-linecap="round" marker-end="url(#tensor-arrow-head)" />
+          <path d="M238 61 L296 61" stroke="#cb6651" stroke-width="5" stroke-linecap="round" marker-end="url(#tensor-arrow-head)" />
         </svg>
       </div>
       <h3>Tensor networks and quantum-enabled methods</h3>
