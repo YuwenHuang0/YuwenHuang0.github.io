@@ -891,10 +891,10 @@ redirect_from:
     <div class="home-spotlight-grid">
       <div class="home-spotlight-main">
         <span class="home-recruiting-label">Open Positions</span>
-        <h2 class="home-recruiting-title">Recruiting RAs, MPhil/PhD students, and Postdocs</h2>
+        <h2 class="home-recruiting-title">Recruiting RAs, MPhil/PhD students, and one Postdoc</h2>
         <p class="home-recruiting-meta">I will join HKUST (Guangzhou) as a tenure-track assistant professor in Fall 2026 in the Data Science and Analytic Thrust (DSA), Information Hub.</p>
         <p class="home-recruiting-copy">I am building a research group on graphical models, inference, optimization, machine learning, and quantum information, with an emphasis on mathematically rigorous ideas that lead to scalable algorithms.</p>
-        <p class="home-recruiting-preference">I welcome applications and inquiries from research assistants, MPhil students, PhD students, and Postdocs who are excited by theory-driven work with algorithmic and systems impact.</p>
+        <p class="home-recruiting-preference">I welcome applications and inquiries from research assistants, MPhil students, PhD students, and candidates for one Postdoc position who are excited by theory-driven work with algorithmic and systems impact.</p>
         <div class="home-institution-links">
           <a href="https://dsa.hkust-gz.edu.cn/">DSA</a>
           <a href="https://www.hkust-gz.edu.cn/academics/hubs-and-thrust-areas/information-hub/">Information Hub</a>
