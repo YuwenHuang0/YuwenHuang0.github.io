@@ -29,7 +29,7 @@ redirect_from:
    ═══════════════════════════════════════════════ */
 .sec {
   width: 100%;
-  padding: clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 6rem);
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 5vw, 6rem);
 }
 .sec-in {
   max-width: 1600px;
@@ -46,8 +46,8 @@ redirect_from:
   display: flex;
   align-items: center;
   text-align: center;
-  padding-top: clamp(4rem, 8vw, 6rem);
-  padding-bottom: clamp(3.5rem, 7vw, 5rem);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
   position: relative;
   overflow: hidden;
 }
@@ -69,8 +69,8 @@ redirect_from:
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.2rem;
-  margin-bottom: 1.8rem;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
 }
 .hero-photo {
   width: 80px; height: 80px;
@@ -99,7 +99,7 @@ redirect_from:
   border: 1px solid rgba(255,255,255,.18);
   font-size: 1.05rem; line-height: 1.4;
   color: #e5e5e7;
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
 }
 @media (min-width: 920px) {
   .hero-news { white-space: nowrap; }
@@ -122,7 +122,7 @@ redirect_from:
 
 /* Subtitle */
 .hero-desc {
-  margin-top: 1rem;
+  margin-top: .6rem;
   font-size: clamp(1.15rem, 1.8vw, 1.4rem);
   line-height: 1.5;
   color: rgba(255,255,255,.9);
@@ -132,9 +132,9 @@ redirect_from:
 
 /* Keywords */
 .hero-kw {
-  display: flex; flex-wrap: wrap; gap: .45rem;
+  display: flex; flex-wrap: wrap; gap: .4rem;
   justify-content: center;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 .kw {
   padding: .4rem 1rem;
@@ -150,7 +150,7 @@ redirect_from:
 .hero-act {
   display: flex; flex-wrap: wrap; gap: .8rem;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 1.2rem;
 }
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -189,7 +189,7 @@ redirect_from:
    ═══════════════════════════════════════════════ */
 .metrics-strip {
   width: 100%;
-  padding: clamp(1.8rem, 3vw, 2.5rem) clamp(1.5rem, 5vw, 6rem);
+  padding: clamp(1.2rem, 2vw, 1.8rem) clamp(1.5rem, 5vw, 6rem);
   background: #161617;
   border-top: 1px solid rgba(255,255,255,.06);
 }
@@ -201,7 +201,7 @@ redirect_from:
 }
 .metric { text-align: center; min-width: 110px; }
 .metric-num {
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
   font-weight: 800; letter-spacing: -.04em;
   line-height: 1; color: #fff;
 }
@@ -219,7 +219,7 @@ redirect_from:
    ═══════════════════════════════════════════════ */
 .logo-bar {
   width: 100%;
-  padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 5vw, 6rem);
+  padding: clamp(.6rem, 1.2vw, 1rem) clamp(1.5rem, 5vw, 6rem);
   background: #f5f5f7;
 }
 .logo-bar-in {
@@ -255,7 +255,7 @@ redirect_from:
 .timeline { display: grid; gap: 0; }
 .tl-item {
   display: grid; grid-template-columns: auto 1fr;
-  gap: 1rem; padding: .8rem 0;
+  gap: .8rem; padding: .5rem 0;
   border-bottom: 1px solid rgba(0,0,0,.04);
 }
 .tl-item:last-child { border-bottom: none; }
@@ -321,7 +321,7 @@ redirect_from:
    SECTION HEADERS — compact
    ═══════════════════════════════════════════════ */
 .sec-hdr {
-  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 .sec-label {
   font-size: .78rem; font-weight: 600;
@@ -330,7 +330,7 @@ redirect_from:
   margin-bottom: .4rem;
 }
 .sec-title {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
   font-weight: 700; line-height: 1.08;
   letter-spacing: -.03em;
   color: #1d1d1f;
@@ -368,9 +368,9 @@ redirect_from:
 }
 
 .area-vis {
-  height: 180px;
+  height: 140px;
   display: flex; align-items: center; justify-content: center;
-  padding: 1.2rem;
+  padding: 1rem;
 }
 .area-vis svg { width: 80%; height: 80%; }
 .vis-teal  { background: linear-gradient(160deg, #e8f6fa 0%, #c3e6ef 100%); }
@@ -378,8 +378,8 @@ redirect_from:
 .vis-coral { background: linear-gradient(160deg, #fdf2ee 0%, #f8ddd2 100%); }
 
 .area-body {
-  padding: 1.4rem 1.6rem 1.6rem;
-  display: flex; flex-direction: column; gap: .4rem; flex: 1;
+  padding: 1rem 1.2rem 1.2rem;
+  display: flex; flex-direction: column; gap: .3rem; flex: 1;
 }
 .area-label {
   font-size: .72rem; font-weight: 700;
@@ -421,7 +421,7 @@ redirect_from:
   .pipe { grid-template-columns: repeat(4, 1fr); }
 }
 .step {
-  padding: 1.5rem 1.4rem;
+  padding: 1.1rem 1.2rem;
   border-radius: 18px;
   background: rgba(255,255,255,.07);
   border: 1px solid rgba(255,255,255,.12);
@@ -468,7 +468,7 @@ redirect_from:
   .paper-featured .paper-featured-right { display: flex; flex-direction: column; gap: .5rem; }
 }
 .paper {
-  padding: 1.5rem;
+  padding: 1.1rem 1.2rem;
   border-radius: 18px;
   background: #f5f5f7;
   border: 1px solid rgba(0,0,0,.04);
@@ -483,7 +483,7 @@ redirect_from:
 .paper-featured {
   background: #1d1d1f;
   border: 1px solid rgba(255,255,255,.08);
-  padding: clamp(1.8rem, 3vw, 2.5rem);
+  padding: clamp(1.2rem, 2.5vw, 2rem);
 }
 .paper-featured .paper-tag { background: rgba(255,255,255,.12); color: rgba(255,255,255,.8); }
 .paper-featured h3 {
@@ -557,7 +557,7 @@ redirect_from:
 }
 
 .recruit-center { text-align: center; }
-.recruit-center .sec-hdr { margin-bottom: clamp(1rem, 2.5vw, 2rem); }
+.recruit-center .sec-hdr { margin-bottom: clamp(.8rem, 1.5vw, 1.2rem); }
 .recruit-center .sec-title { max-width: none; }
 .recruit-center .sec-sub {
   max-width: none;
@@ -566,14 +566,14 @@ redirect_from:
 }
 
 .roles {
-  display: grid; gap: 1rem;
-  margin-top: 2rem; text-align: left;
+  display: grid; gap: .8rem;
+  margin-top: 1.2rem; text-align: left;
 }
 @media (min-width: 800px) {
   .roles { grid-template-columns: repeat(4, 1fr); }
 }
 .role {
-  padding: 1.5rem 1.4rem; border-radius: 18px;
+  padding: 1rem 1.2rem; border-radius: 18px;
   background: #fff;
   border: 1px solid rgba(0,0,0,.05);
   display: flex; flex-direction: column; gap: .35rem;
@@ -591,7 +591,7 @@ redirect_from:
   font-size: .9rem; line-height: 1.55; color: #6e6e73;
 }
 
-.recruit-cta { margin-top: 2rem; }
+.recruit-cta { margin-top: 1.2rem; }
 .recruit-cta .btn-fill {
   background: #1d1d1f; color: #fff !important;
 }
@@ -889,15 +889,17 @@ redirect_from:
         <p>Graph covers, message passing, and Bethe approximation for inference and counting on structured graphical models — our longest-running research thread.</p>
         <div class="paper-cites">
           <a class="cite" href="https://ieeexplore.ieee.org/document/9174508/">[ISIT 2020]</a>
+          <a class="cite" href="https://arxiv.org/abs/2107.01816">[ISIT 2021]</a>
           <a class="cite" href="https://ieeexplore.ieee.org/document/9965874/">[ITW 2022]</a>
           <a class="cite" href="https://arxiv.org/abs/2306.02280">[ISIT 2023]</a>
           <a class="cite" href="https://ieeexplore.ieee.org/document/10619603/">[ISIT 2024]</a>
           <a class="cite" href="https://arxiv.org/abs/2306.02280">[TIT 2024]</a>
+          <a class="cite" href="https://arxiv.org/abs/2506.16250">[TIT-sub]</a>
         </div>
       </div>
       <div class="paper-featured-right">
         <div class="paper-featured-stats">
-          <div class="pf-stat"><div class="pf-stat-num">5</div><div class="pf-stat-label">Papers</div></div>
+          <div class="pf-stat"><div class="pf-stat-num">7</div><div class="pf-stat-label">Papers</div></div>
           <div class="pf-stat"><div class="pf-stat-num">2020–24</div><div class="pf-stat-label">Span</div></div>
           <div class="pf-stat"><div class="pf-stat-num">3</div><div class="pf-stat-label">Venues</div></div>
         </div>
@@ -923,6 +925,7 @@ redirect_from:
       <div class="paper-cites">
         <a class="cite" href="https://arxiv.org/abs/2306.02280">[ISIT 2023]</a>
         <a class="cite" href="https://arxiv.org/abs/2306.02280">[TIT 2024]</a>
+        <a class="cite" href="https://arxiv.org/abs/2508.05712">[ICML 2025]</a>
       </div>
     </article>
 
@@ -931,7 +934,6 @@ redirect_from:
       <h3>Distributed quantum systems</h3>
       <p>Distributed quantum optimization and inference.</p>
       <div class="paper-cites">
-        <a class="cite" href="https://arxiv.org/abs/2508.05712">[ICML 2025]</a>
         <a class="cite" href="https://arxiv.org/abs/2603.07673">[QUANTUM-sub]</a>
       </div>
     </article>
