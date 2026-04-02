@@ -125,7 +125,7 @@ redirect_from:
   margin-top: 1rem;
   font-size: clamp(1rem, 1.6vw, 1.25rem);
   line-height: 1.5;
-  color: rgba(255,255,255,.6);
+  color: rgba(255,255,255,.75);
   font-weight: 400;
   letter-spacing: -.005em;
 }
@@ -139,10 +139,10 @@ redirect_from:
 .kw {
   padding: .35rem .85rem;
   border-radius: 980px;
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.15);
   font-size: .85rem; font-weight: 500;
-  color: rgba(255,255,255,.7);
+  color: rgba(255,255,255,.85);
   letter-spacing: -.005em;
 }
 
@@ -174,8 +174,8 @@ redirect_from:
 .btn-fill:hover { background: #fff; box-shadow: 0 4px 16px rgba(255,255,255,.15); }
 .btn-out {
   background: transparent;
-  border: 1.5px solid rgba(255,255,255,.25);
-  color: rgba(255,255,255,.9) !important;
+  border: 1.5px solid rgba(255,255,255,.4);
+  color: #fff !important;
 }
 .splash .page__content .btn-out,
 .splash .page__content .btn-out:hover {
@@ -278,8 +278,8 @@ redirect_from:
 .pipe-bg {
   background: #1d1d1f; color: #f5f5f7;
 }
-.pipe-bg .sec-label { color: rgba(255,255,255,.5); }
-.pipe-bg .sec-title { color: #f5f5f7; }
+.pipe-bg .sec-label { color: rgba(255,255,255,.6); }
+.pipe-bg .sec-title { color: #fff; }
 
 .pipe {
   display: grid; gap: 1rem;
@@ -290,25 +290,25 @@ redirect_from:
 .step {
   padding: 1.5rem 1.4rem;
   border-radius: 18px;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
   transition: background .3s ease;
 }
-.step:hover { background: rgba(255,255,255,.1); }
+.step:hover { background: rgba(255,255,255,.12); }
 .step-n {
   font-size: .72rem; font-weight: 700;
-  color: rgba(255,255,255,.4);
+  color: rgba(255,255,255,.55);
   margin-bottom: .7rem;
   letter-spacing: .06em;
 }
 .step h3 {
   font-size: 1.05rem; font-weight: 600;
-  color: #f5f5f7; margin-bottom: .3rem;
+  color: #fff; margin-bottom: .3rem;
   letter-spacing: -.005em;
 }
 .step p {
   font-size: .9rem; line-height: 1.55;
-  color: rgba(255,255,255,.6);
+  color: rgba(255,255,255,.75);
 }
 
 /* ═══════════════════════════════════════════════
