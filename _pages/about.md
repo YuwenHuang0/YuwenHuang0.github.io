@@ -888,29 +888,19 @@ redirect_from:
         <h3>Graphical models and Bethe methods</h3>
         <p>Graph covers, message passing, and Bethe approximation for inference and counting on structured graphical models — our longest-running research thread.</p>
         <div class="paper-cites">
-          <a class="cite" href="{{ '/publication/characterizing-bethe-partition-factor-graphs' | relative_url }}">[ISIT 2020]</a>
-          <a class="cite" href="{{ '/publication/bethe-free-energy-global-minimum' | relative_url }}">[ITW 2022]</a>
-          <a class="cite" href="{{ '/publication/bethe-partition-spa-stable-polynomials' | relative_url }}">[ISIT 2024]</a>
-          <a class="cite" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-sub]</a>
+          <a class="cite" href="https://ieeexplore.ieee.org/document/9174508/">[ISIT 2020]</a>
+          <a class="cite" href="https://ieeexplore.ieee.org/document/9965874/">[ITW 2022]</a>
+          <a class="cite" href="https://arxiv.org/abs/2306.02280">[ISIT 2023]</a>
+          <a class="cite" href="https://ieeexplore.ieee.org/document/10619603/">[ISIT 2024]</a>
+          <a class="cite" href="https://arxiv.org/abs/2306.02280">[TIT 2024]</a>
         </div>
       </div>
       <div class="paper-featured-right">
         <div class="paper-featured-stats">
-          <div class="pf-stat"><div class="pf-stat-num">4</div><div class="pf-stat-label">Papers</div></div>
-          <div class="pf-stat"><div class="pf-stat-num">2020–25</div><div class="pf-stat-label">Span</div></div>
+          <div class="pf-stat"><div class="pf-stat-num">5</div><div class="pf-stat-label">Papers</div></div>
+          <div class="pf-stat"><div class="pf-stat-num">2020–24</div><div class="pf-stat-label">Span</div></div>
           <div class="pf-stat"><div class="pf-stat-num">3</div><div class="pf-stat-label">Venues</div></div>
         </div>
-      </div>
-    </article>
-
-    <article class="paper">
-      <span class="paper-tag pt-amber">Optimization</span>
-      <h3>Optimization and combinatorial structure</h3>
-      <p>Permanent bounds and guarantees for hard problems.</p>
-      <div class="paper-cites">
-        <a class="cite" href="{{ '/publication/bounding-permanent-degree-m-bethe' | relative_url }}">[ISIT 2023]</a>
-        <a class="cite" href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">[TIT 2024]</a>
-        <a class="cite" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML 2025]</a>
       </div>
     </article>
 
@@ -919,8 +909,20 @@ redirect_from:
       <h3>Tensor networks and quantum-enabled inference</h3>
       <p>Tensor-network methods for high-dimensional computation.</p>
       <div class="paper-cites">
-        <a class="cite" href="{{ '/publication/sets-of-marginals-chsh' | relative_url }}">[ISIT 2021]</a>
-        <a class="cite" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[QUANTUM-sub]</a>
+        <a class="cite" href="https://arxiv.org/abs/2107.01816">[ISIT 2021]</a>
+        <a class="cite" href="https://arxiv.org/abs/2506.16250">[TIT-sub]</a>
+        <a class="cite" href="https://arxiv.org/abs/2508.05712">[ICML 2025]</a>
+        <a class="cite" href="https://arxiv.org/abs/2603.07673">[QUANTUM-sub]</a>
+      </div>
+    </article>
+
+    <article class="paper">
+      <span class="paper-tag pt-amber">Optimization</span>
+      <h3>Optimization and combinatorial structure</h3>
+      <p>Permanent bounds and guarantees for hard problems.</p>
+      <div class="paper-cites">
+        <a class="cite" href="https://arxiv.org/abs/2306.02280">[ISIT 2023]</a>
+        <a class="cite" href="https://arxiv.org/abs/2306.02280">[TIT 2024]</a>
       </div>
     </article>
 
@@ -929,8 +931,8 @@ redirect_from:
       <h3>Distributed quantum systems</h3>
       <p>Distributed quantum optimization and inference.</p>
       <div class="paper-cites">
-        <a class="cite" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML 2025]</a>
-        <a class="cite" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[QUANTUM-sub]</a>
+        <a class="cite" href="https://arxiv.org/abs/2508.05712">[ICML 2025]</a>
+        <a class="cite" href="https://arxiv.org/abs/2603.07673">[QUANTUM-sub]</a>
       </div>
     </article>
 
