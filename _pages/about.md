@@ -23,26 +23,31 @@ redirect_from:
 .splash .page__content a { text-decoration:none; }
 
 /* ══════════════════════════════════════════════════
-   KEYFRAMES
+   KEYFRAMES — Apple-style: slow, smooth, subtle
    ══════════════════════════════════════════════════ */
-@keyframes fadeUp   { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-@keyframes scaleIn  { from{opacity:0;transform:scale(.93)} to{opacity:1;transform:scale(1)} }
-@keyframes pulse    { 0%,100%{opacity:.45} 50%{opacity:1} }
-@keyframes float1   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-@keyframes float2   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+@keyframes fadeUp   { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+@keyframes scaleIn  { from{opacity:0;transform:scale(.96)} to{opacity:1;transform:scale(1)} }
+/* Very subtle ambient breathing — barely noticeable */
+@keyframes breathe  { 0%,100%{opacity:.6} 50%{opacity:.85} }
+/* Ultra-gentle hover: 2-3px over 6+ seconds */
+@keyframes drift    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
+/* One-shot line draw — plays once on reveal, no repeat */
 @keyframes drawPath { from{stroke-dashoffset:500} to{stroke-dashoffset:0} }
-@keyframes flowDash { to{stroke-dashoffset:-24} }
-@keyframes popNode  { 0%{transform:scale(0);opacity:0} 60%{transform:scale(1.18);opacity:1} 100%{transform:scale(1);opacity:1} }
+/* Slow flowing data — very gentle, 4s cycle */
+@keyframes flowSlow { to{stroke-dashoffset:-30} }
+/* Smooth scale-in for nodes — no overshoot bounce */
+@keyframes nodeIn   { from{transform:scale(0);opacity:0} to{transform:scale(1);opacity:1} }
+/* Very slow orbit — 30s full rotation */
 @keyframes orbit    { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+/* Slow gradient shift for hero text */
 @keyframes gradShift{ 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-@keyframes shimmer  { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
 
-/* Scroll reveal */
-.rv { opacity:0; transform:translateY(28px); }
-.rv.vis { animation: fadeUp .6s cubic-bezier(.22,1,.36,1) forwards; }
-.rv-s { opacity:0; transform:scale(.93); }
-.rv-s.vis { animation: scaleIn .55s cubic-bezier(.22,1,.36,1) forwards; }
-.d1{animation-delay:0s!important} .d2{animation-delay:.1s!important} .d3{animation-delay:.2s!important} .d4{animation-delay:.3s!important}
+/* Scroll reveal — smooth Apple-like timing */
+.rv { opacity:0; transform:translateY(24px); }
+.rv.vis { animation: fadeUp .9s cubic-bezier(0,.55,.45,1) forwards; }
+.rv-s { opacity:0; transform:scale(.96); }
+.rv-s.vis { animation: scaleIn .85s cubic-bezier(0,.55,.45,1) forwards; }
+.d1{animation-delay:0s!important} .d2{animation-delay:.12s!important} .d3{animation-delay:.24s!important} .d4{animation-delay:.36s!important}
 @media(prefers-reduced-motion:reduce){
   .rv,.rv-s{opacity:1;transform:none}
   .rv.vis,.rv-s.vis{animation:none;opacity:1;transform:none}
@@ -67,12 +72,12 @@ redirect_from:
 .hero::before {
   content:""; position:absolute; top:-30%; right:-10%; width:600px; height:600px;
   border-radius:50%; background:radial-gradient(circle,rgba(23,103,122,.06) 0%,transparent 70%);
-  animation:pulse 5s ease-in-out infinite; pointer-events:none;
+  animation:breathe 10s ease-in-out infinite; pointer-events:none;
 }
 .hero::after {
   content:""; position:absolute; bottom:-20%; left:-5%; width:400px; height:400px;
   border-radius:50%; background:radial-gradient(circle,rgba(216,155,43,.05) 0%,transparent 70%);
-  animation:pulse 6s ease-in-out infinite 1s; pointer-events:none;
+  animation:breathe 12s ease-in-out infinite 3s; pointer-events:none;
 }
 .hero-inner { position:relative; z-index:1; }
 
@@ -108,7 +113,7 @@ redirect_from:
 .hero-announce .dot {
   width:8px;height:8px;border-radius:50%;
   background:linear-gradient(135deg,#d89b2b,#17677a);
-  animation:pulse 2s ease-in-out infinite;
+  animation:breathe 4s ease-in-out infinite;
   flex-shrink:0;
 }
 .hero-announce span {
@@ -128,7 +133,7 @@ redirect_from:
   background: linear-gradient(135deg,#17677a 0%,#1e99b5 40%,#d89b2b 100%);
   background-size:200% 200%;
   -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-  animation: gradShift 6s ease infinite;
+  animation: gradShift 14s ease infinite;
 }
 .hero-sub {
   margin-top:.9rem;
@@ -215,14 +220,16 @@ redirect_from:
 .card-tags { display:flex; flex-wrap:wrap; gap:.35rem; margin-top:auto; padding-top:.4rem; }
 .card-tags span { padding:.28rem .65rem; border-radius:8px; background:#f0f0f2; font-size:.84rem; font-weight:600; color:#444; }
 
-/* SVG anim helpers — always visible, looping */
-.nd { transform-origin:center; animation: popNode .5s cubic-bezier(.34,1.56,.64,1) both; }
-.nd-2{animation-delay:.12s} .nd-3{animation-delay:.24s} .nd-4{animation-delay:.36s} .nd-5{animation-delay:.48s}
-.ln { stroke-dasharray:500; stroke-dashoffset:500; animation: drawPath 1.4s ease forwards; }
-.ln-2{animation-delay:.15s} .ln-3{animation-delay:.3s} .ln-4{animation-delay:.45s}
-.fl { animation: float1 3s ease-in-out infinite; }
-.fl-2 { animation: float2 3.5s ease-in-out infinite .8s; }
-.fd { stroke-dasharray:10 8; animation: flowDash 1.2s linear infinite; }
+/* SVG anim helpers — smooth, slow, Apple-like */
+.nd { transform-origin:center; animation: nodeIn .7s cubic-bezier(0,.55,.45,1) both; }
+.nd-2{animation-delay:.15s} .nd-3{animation-delay:.3s} .nd-4{animation-delay:.45s} .nd-5{animation-delay:.6s}
+.ln { stroke-dasharray:500; stroke-dashoffset:500; animation: drawPath 1.8s cubic-bezier(0,.55,.45,1) forwards; }
+.ln-2{animation-delay:.2s} .ln-3{animation-delay:.4s} .ln-4{animation-delay:.6s}
+/* Ultra-gentle drift — 3px over 7s, barely perceptible */
+.fl { animation: drift 7s ease-in-out infinite; }
+.fl-2 { animation: drift 8s ease-in-out infinite 2s; }
+/* Slow data flow lines — gentle 4s dash movement */
+.fd { stroke-dasharray:12 10; animation: flowSlow 4s linear infinite; }
 
 /* ══════════════════════════════════════════════════
    PIPELINE (dark)
@@ -456,7 +463,7 @@ redirect_from:
           <line x1="280" y1="52" x2="280" y2="32" class="ln ln-4" stroke="#cb6651" stroke-width="3.5" stroke-linecap="round"/>
           <!-- quantum orbit -->
           <g style="transform-origin:170px 140px" class="nd nd-5">
-            <ellipse cx="170" cy="140" rx="65" ry="18" fill="none" stroke="#86b894" stroke-width="2.5" stroke-dasharray="6 5" style="transform-origin:170px 140px;animation:orbit 10s linear infinite"/>
+            <ellipse cx="170" cy="140" rx="65" ry="18" fill="none" stroke="#86b894" stroke-width="2.5" stroke-dasharray="6 5" style="transform-origin:170px 140px;animation:orbit 30s linear infinite"/>
             <circle cx="170" cy="140" r="12" fill="#4f8b62"/>
             <circle cx="232" cy="136" r="8" fill="#86b894" class="fl"/>
             <circle cx="108" cy="136" r="8" fill="#86b894" class="fl-2"/>
@@ -656,7 +663,7 @@ document.addEventListener("DOMContentLoaded",function(){
   if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("vis")});return}
   var io=new IntersectionObserver(function(ents){
     ents.forEach(function(en){if(en.isIntersecting){en.target.classList.add("vis");io.unobserve(en.target)}})
-  },{threshold:.12,rootMargin:"0px 0px -30px 0px"});
+  },{threshold:.08,rootMargin:"0px 0px -20px 0px"});
   els.forEach(function(e){io.observe(e)});
 });
 </script>
