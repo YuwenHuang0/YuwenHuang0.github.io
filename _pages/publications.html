@@ -8,143 +8,118 @@ author_profile: false
 {% include base_path %}
 
 <style>
-  /* ── Publication entries — compact for scalability ── */
-  .pub-section { margin-bottom: 2rem; }
+  /* ── Ultra-compact publication list ── */
+  .pub-section { margin-bottom: 1.5rem; }
   .pub-section h2 {
-    font-size: clamp(1.05rem, 1.6vw, 1.25rem) !important;
+    font-size: 1.05rem !important;
     font-weight: 700;
     letter-spacing: -.01em;
     color: var(--text-primary, #1d1d1f);
-    border-bottom: 1px solid rgba(0,0,0,.06) !important;
-    padding-bottom: .4em !important;
-    margin-bottom: .6rem !important;
+    border-bottom: 1px solid rgba(0,0,0,.08) !important;
+    padding-bottom: .35em !important;
+    margin-bottom: .5rem !important;
   }
   .pub-section hr { display: none; }
   .pub-subheading {
-    font-size: .75rem;
-    font-weight: 600;
-    letter-spacing: .06em;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .07em;
     text-transform: uppercase;
     color: var(--text-secondary, #6e6e73);
-    margin: 1.2rem 0 .5rem;
+    margin: .8rem 0 .35rem;
   }
 
+  /* Each entry: single tight row */
   .pub-entry {
-    margin-bottom: .25rem;
-    padding: .7rem 1rem;
-    border-radius: 10px;
-    background: var(--bg-secondary, #f5f5f7);
-    border: 1px solid rgba(0,0,0,.03);
-    transition: box-shadow .2s ease;
-  }
-  .pub-entry:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,.05);
-  }
-
-  .pub-line {
-    margin: 0;
+    padding: .35rem 0;
+    border-bottom: 1px solid rgba(0,0,0,.04);
     display: flex;
     gap: .4rem;
     align-items: baseline;
     flex-wrap: wrap;
   }
+  .pub-entry:last-child { border-bottom: none; }
+
   .pub-label {
-    font-size: .76rem;
+    font-size: .72rem;
     font-weight: 700;
-    color: var(--text-secondary, #6e6e73);
-    min-width: 2rem;
+    color: #999;
+    min-width: 1.6rem;
     flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
   }
+  .pub-body { flex: 1; min-width: 0; }
+
   .pub-title {
-    font-size: .95rem;
+    font-size: .9rem;
     font-weight: 600;
     color: var(--text-primary, #1d1d1f);
     line-height: 1.3;
   }
-  .pub-line a { text-decoration: none !important; }
-  .pub-line a:hover .pub-title { color: #06c; }
-  .pub-line a .pub-title { transition: color .2s; }
+  .pub-body a { text-decoration: none !important; }
+  .pub-body a:hover .pub-title { color: #06c; }
+  .pub-body a .pub-title { transition: color .15s; }
 
-  .pub-authors {
-    margin: .15rem 0 .05rem;
-    font-size: .85rem;
-    line-height: 1.4;
-    color: var(--text-secondary, #6e6e73);
+  /* Authors + venue on same line, smaller */
+  .pub-meta {
+    font-size: .82rem;
+    line-height: 1.35;
+    color: #6e6e73;
+    margin-top: .1rem;
   }
-  .pub-venue {
-    margin: .05rem 0;
-    font-size: .85rem;
-    line-height: 1.4;
-    color: #424245;
-  }
-  .pub-venue em { font-style: italic; }
+  .pub-meta em { font-style: italic; color: #424245; }
 
+  /* Resource links — tiny inline pills */
   .pub-links {
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
-    gap: .3rem;
-    margin-top: .4rem;
+    gap: .25rem;
+    margin-left: .4rem;
   }
   .pub-link {
     display: inline-flex;
     align-items: center;
-    padding: .15rem .55rem;
+    padding: .1rem .45rem;
     border-radius: 980px;
-    font-size: .75rem;
+    font-size: .7rem;
     font-weight: 600;
-    line-height: 1.3;
+    line-height: 1.2;
     text-decoration: none !important;
-    transition: background .2s, border-color .2s;
+    transition: background .15s;
+    vertical-align: baseline;
   }
   .pub-link--paper {
-    border: 1px solid rgba(15, 79, 94, 0.18);
+    border: 1px solid rgba(15, 79, 94, 0.15);
     background: #edf7fa;
     color: #0f4f5e !important;
   }
-  .pub-link--paper:hover {
-    border-color: rgba(15, 79, 94, 0.35);
-    background: #dff0f5;
-  }
+  .pub-link--paper:hover { background: #dff0f5; }
   .pub-link--slides {
-    border: 1px solid rgba(138, 91, 16, 0.18);
+    border: 1px solid rgba(138, 91, 16, 0.15);
     background: #fff5dd;
     color: #8a5b10 !important;
   }
-  .pub-link--slides:hover {
-    border-color: rgba(138, 91, 16, 0.35);
-    background: #ffefcc;
-  }
+  .pub-link--slides:hover { background: #ffefcc; }
   .pub-link--video {
-    border: 1px solid rgba(111, 40, 156, 0.15);
+    border: 1px solid rgba(111, 40, 156, 0.12);
     background: #f4ecfb;
     color: #6f289c !important;
   }
-  .pub-link--video:hover {
-    border-color: rgba(111, 40, 156, 0.3);
-    background: #ede0f8;
-  }
+  .pub-link--video:hover { background: #ede0f8; }
   .pub-link:not(.pub-link--paper):not(.pub-link--slides):not(.pub-link--video) {
     border: 1px solid rgba(0,0,0,.06);
-    background: #fff;
+    background: #f0f0f2;
     color: #424245 !important;
   }
   .pub-link:not(.pub-link--paper):not(.pub-link--slides):not(.pub-link--video):hover {
-    border-color: rgba(0,0,0,.12);
-    background: #e8e8ed;
-  }
-
-  .pub-excerpt {
-    font-style: italic;
-    font-size: .82rem;
-    opacity: .7;
-    margin-top: .15rem;
+    background: #e4e4e8;
   }
 </style>
 
 <div class="inner-page">
 <h1 class="inner-page-title">Publications</h1>
 {% if site.author.googlescholar %}
-  <p class="inner-page-sub">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</p>
+  <p class="inner-page-sub">Also on <a href="{{site.author.googlescholar}}">Google Scholar</a>.</p>
 {% endif %}
 
 {% assign topic_entries = "graphical-models::Graphical model-based approximation of #-P complete problems.;quantum-info::Quantum information processing.;wireless::Wireless communication systems." | split: ";" %}
@@ -166,50 +141,31 @@ author_profile: false
             {% continue %}
           {% endif %}
           <div class="pub-entry">
-            <p class="pub-line">
-              <span class="pub-label">[j{{ forloop.index }}]</span>
+            <span class="pub-label">[j{{ forloop.index }}]</span>
+            <div class="pub-body">
               {% if post.paperurl %}
                 <a href="{{ post.paperurl }}"><span class="pub-title">{{ post.title }}</span></a>
               {% else %}
                 <span class="pub-title">{{ post.title }}</span>
               {% endif %}
-            </p>
-            {% if post.authors %}
-              <p class="pub-authors">{{ post.authors | array_to_sentence_string }}.</p>
-            {% endif %}
-            <p class="pub-venue">
-              {% if post.status %}
-                {% if post.status == "Submitted" %}
-                  Submitted to
+              <div class="pub-meta">
+                {% if post.authors %}{{ post.authors | array_to_sentence_string }}.{% endif %}
+                {% if post.status %}
+                  {% if post.status == "Submitted" %}Submitted to{% else %}{{ post.status }} in{% endif %}
                 {% else %}
-                  {{ post.status }} in
+                  Published in
                 {% endif %}
-              {% else %}
-                Published in
-              {% endif %}
-              <em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}.
-            </p>
-            {% if post.excerpt %}
-              <p class="pub-excerpt">{{ post.excerpt }}</p>
-            {% endif %}
-            {% capture links %}
-              {% if post.paperurl %}<a class="pub-link pub-link--paper" href="{{ post.paperurl }}">Paper</a>{% endif %}
-              {% if post.slidesurl %}
-                <a class="pub-link pub-link--slides" href="{{ post.slidesurl }}">Slides</a>
-              {% endif %}
-              {% if post.slidesurl_alt %}
-                <a class="pub-link pub-link--slides" href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "More Slides" }}</a>
-              {% endif %}
-              {% if post.videourl %}
-                <a class="pub-link pub-link--video" href="{{ post.videourl }}">Video</a>
-              {% endif %}
-              {% if post.bibtexurl %}
-                <a class="pub-link" href="{{ post.bibtexurl }}">BibTeX</a>
-              {% endif %}
-            {% endcapture %}
-            {% if links | strip != "" %}
-              <p class="pub-links">{{ links | strip }}</p>
-            {% endif %}
+                <em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}.
+                {% capture links %}
+                  {% if post.paperurl %}<a class="pub-link pub-link--paper" href="{{ post.paperurl }}">Paper</a>{% endif %}
+                  {% if post.slidesurl %}<a class="pub-link pub-link--slides" href="{{ post.slidesurl }}">Slides</a>{% endif %}
+                  {% if post.slidesurl_alt %}<a class="pub-link pub-link--slides" href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "More Slides" }}</a>{% endif %}
+                  {% if post.videourl %}<a class="pub-link pub-link--video" href="{{ post.videourl }}">Video</a>{% endif %}
+                  {% if post.bibtexurl %}<a class="pub-link" href="{{ post.bibtexurl }}">BibTeX</a>{% endif %}
+                {% endcapture %}
+                {% if links | strip != "" %}<span class="pub-links">{{ links | strip }}</span>{% endif %}
+              </div>
+            </div>
           </div>
         {% endfor %}
       {% endif %}
@@ -222,41 +178,26 @@ author_profile: false
             {% continue %}
           {% endif %}
           <div class="pub-entry">
-            <p class="pub-line">
-              <span class="pub-label">[c{{ forloop.index }}]</span>
+            <span class="pub-label">[c{{ forloop.index }}]</span>
+            <div class="pub-body">
               {% if post.paperurl %}
                 <a href="{{ post.paperurl }}"><span class="pub-title">{{ post.title }}</span></a>
               {% else %}
                 <span class="pub-title">{{ post.title }}</span>
               {% endif %}
-            </p>
-            {% if post.authors %}
-              <p class="pub-authors">{{ post.authors | array_to_sentence_string }}.</p>
-            {% endif %}
-            <p class="pub-venue">
-              In <em>{{ post.venue }}</em>, {{ post.date | date: "%B %Y" }}.
-            </p>
-            {% if post.excerpt %}
-              <p class="pub-excerpt">{{ post.excerpt }}</p>
-            {% endif %}
-            {% capture links %}
-              {% if post.paperurl %}<a class="pub-link pub-link--paper" href="{{ post.paperurl }}">Paper</a>{% endif %}
-              {% if post.slidesurl %}
-                <a class="pub-link pub-link--slides" href="{{ post.slidesurl }}">Slides</a>
-              {% endif %}
-              {% if post.slidesurl_alt %}
-                <a class="pub-link pub-link--slides" href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "More Slides" }}</a>
-              {% endif %}
-              {% if post.videourl %}
-                <a class="pub-link pub-link--video" href="{{ post.videourl }}">Video</a>
-              {% endif %}
-              {% if post.bibtexurl %}
-                <a class="pub-link" href="{{ post.bibtexurl }}">BibTeX</a>
-              {% endif %}
-            {% endcapture %}
-            {% if links | strip != "" %}
-              <p class="pub-links">{{ links | strip }}</p>
-            {% endif %}
+              <div class="pub-meta">
+                {% if post.authors %}{{ post.authors | array_to_sentence_string }}.{% endif %}
+                In <em>{{ post.venue }}</em>, {{ post.date | date: "%B %Y" }}.
+                {% capture links %}
+                  {% if post.paperurl %}<a class="pub-link pub-link--paper" href="{{ post.paperurl }}">Paper</a>{% endif %}
+                  {% if post.slidesurl %}<a class="pub-link pub-link--slides" href="{{ post.slidesurl }}">Slides</a>{% endif %}
+                  {% if post.slidesurl_alt %}<a class="pub-link pub-link--slides" href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "More Slides" }}</a>{% endif %}
+                  {% if post.videourl %}<a class="pub-link pub-link--video" href="{{ post.videourl }}">Video</a>{% endif %}
+                  {% if post.bibtexurl %}<a class="pub-link" href="{{ post.bibtexurl }}">BibTeX</a>{% endif %}
+                {% endcapture %}
+                {% if links | strip != "" %}<span class="pub-links">{{ links | strip }}</span>{% endif %}
+              </div>
+            </div>
           </div>
         {% endfor %}
       {% endif %}

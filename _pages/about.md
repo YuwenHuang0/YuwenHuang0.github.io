@@ -95,16 +95,16 @@ redirect_from:
   gap: .3rem;
   padding: .45rem 1.1rem;
   border-radius: 980px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
   font-size: .88rem; line-height: 1.4;
-  color: rgba(255,255,255,.8);
+  color: #e5e5e7;
   margin-bottom: 2rem;
 }
 @media (min-width: 920px) {
   .hero-news { white-space: nowrap; }
 }
-.hero-news strong { color: #d4a574; font-weight: 700; }
+.hero-news strong { color: #f0c8a0; font-weight: 700; }
 .hero-news a { color: #fff; font-weight: 600; }
 .hero-news a:hover { text-decoration: underline; }
 
@@ -125,8 +125,8 @@ redirect_from:
   margin-top: 1rem;
   font-size: clamp(1rem, 1.6vw, 1.25rem);
   line-height: 1.5;
-  color: rgba(255,255,255,.75);
-  font-weight: 400;
+  color: rgba(255,255,255,.9);
+  font-weight: 500;
   letter-spacing: -.005em;
 }
 
@@ -447,7 +447,7 @@ redirect_from:
   </div>
 
   <div class="hero-news">
-    <strong>Fall 2026</strong> — Joining
+    <strong>May 2026</strong> — Joining
     <a href="https://www.hkust-gz.edu.cn/">HKUST (Guangzhou)</a>
     as Assistant Professor
     (<a href="https://dsa.hkust-gz.edu.cn/">DSA Thrust</a>,
@@ -643,7 +643,7 @@ redirect_from:
   <div class="sec-hdr">
     <div class="sec-label">Open positions</div>
     <h2 class="sec-title">Join the group</h2>
-    <p class="sec-sub">Recruiting RAs, MPhil/PhD students, and one Postdoc for Fall 2026 at the DSA Thrust, Information Hub, HKUST (Guangzhou).</p>
+    <p class="sec-sub">Recruiting RAs, MPhil/PhD students, and one Postdoc for May 2026 at the DSA Thrust, Information Hub, HKUST (Guangzhou).</p>
   </div>
   <div class="roles">
     <div class="role"><h3>RA</h3><p>Research training for graduate study or industry.</p></div>
