@@ -155,16 +155,22 @@ redirect_from:
   margin-bottom: .3rem;
 }
 .sec-title {
-  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem);
   font-weight: 700; line-height: 1.12;
   letter-spacing: -.015em;
   color: #1d1d1f;
 }
+@media (min-width: 760px) {
+  .sec-title { white-space: nowrap; }
+}
 .sec-sub {
   margin-top: .4rem;
-  font-size: 1.05rem; line-height: 1.55;
+  font-size: 1.02rem; line-height: 1.55;
   color: #6e6e73;
-  max-width: 540px;
+  max-width: none;
+}
+@media (min-width: 760px) {
+  .sec-sub { white-space: nowrap; }
 }
 
 /* ───────────────────────────────────────────────
@@ -326,13 +332,16 @@ redirect_from:
   max-width: none;
 }
 .recruit-center .sec-sub {
-  max-width: 520px; margin-left: auto; margin-right: auto;
+  max-width: none; margin-left: auto; margin-right: auto;
 }
 
 .recruit-inst {
   display: inline-flex; align-items: center; gap: .4rem;
   margin-top: .8rem;
-  font-size: .95rem; font-weight: 600; color: #946b14;
+  font-size: .93rem; font-weight: 600; color: #946b14;
+}
+@media (min-width: 760px) {
+  .recruit-inst { white-space: nowrap; }
 }
 
 .roles {

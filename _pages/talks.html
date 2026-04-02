@@ -8,32 +8,90 @@ author_profile: true
 {% include base_path %}
 
 <style>
-  .talk-section { margin-bottom: 2rem; }
-  .talk-subheading { font-size: 1.05rem; font-weight: 600; margin: 1.2rem 0 0.6rem; }
-  .talk-entry { margin-bottom: 1rem; line-height: 1.5; }
-  .talk-line { margin: 0; display: flex; gap: 0.35rem; align-items: baseline; flex-wrap: wrap; font-weight: 600;  }
-  .talk-label { font-weight: 600;  }
-  .talk-meta, .talk-links, .talk-excerpt { margin: 0.12rem 0; color: inherit; }
-  .talk-links { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  /* ── Apple-style talk entries ── */
+  .talk-section { margin-bottom: 2.8rem; }
+  .talk-section h2 {
+    font-size: clamp(1.15rem, 2vw, 1.4rem) !important;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    color: #1d1d1f;
+    border-bottom: 1px solid rgba(0,0,0,.06) !important;
+    padding-bottom: .5em !important;
+    margin-bottom: .8rem !important;
+  }
+  .talk-section hr { display: none; }
+
+  .talk-entry {
+    margin-bottom: .3rem;
+    padding: 1rem 1.2rem;
+    border-radius: 14px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.04);
+    transition: box-shadow .25s ease;
+  }
+  .talk-entry:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,.05);
+  }
+
+  .talk-line {
+    margin: 0;
+    display: flex;
+    gap: .4rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .talk-label {
+    font-size: .82rem;
+    font-weight: 700;
+    color: #6e6e73;
+    min-width: 2rem;
+    flex-shrink: 0;
+  }
+  .talk-title {
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    line-height: 1.35;
+  }
+
+  .talk-meta {
+    margin: .25rem 0 .1rem;
+    font-size: .9rem;
+    line-height: 1.5;
+    color: #6e6e73;
+  }
+
+  .talk-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin-top: .5rem;
+  }
   .talk-link {
     display: inline-flex;
     align-items: center;
-    padding: 0.15rem 0.58rem;
-    border: 1px solid rgba(138, 91, 16, 0.32);
-    border-radius: 999px;
-    background: linear-gradient(135deg, #fff5dd 0%, #fffaf0 100%);
+    padding: .2rem .65rem;
+    border: 1px solid rgba(138, 91, 16, 0.2);
+    border-radius: 980px;
+    background: #fff5dd;
     color: #8a5b10 !important;
-    font-size: 0.84rem;
-    font-weight: 700;
+    font-size: .82rem;
+    font-weight: 600;
     line-height: 1.35;
     text-decoration: none !important;
+    transition: background .2s, border-color .2s;
   }
   .talk-link:hover {
-    border-color: rgba(138, 91, 16, 0.5);
-    background: linear-gradient(135deg, #ffefcc 0%, #fff7e5 100%);
-    color: #754a0e !important;
+    border-color: rgba(138, 91, 16, 0.4);
+    background: #ffefcc;
   }
-  .talk-excerpt { font-style: italic; opacity: 0.85; }
+
+  .talk-excerpt {
+    font-style: italic;
+    font-size: .88rem;
+    opacity: .75;
+    margin-top: .25rem;
+  }
 </style>
 
 {% assign talk_groups = "Invited Seminar::Invited Seminars;Seminar::Seminars" | split: ";" %}
@@ -44,7 +102,7 @@ author_profile: true
   {% assign talks = site.talks | where: "type", talk_type_key | sort: "date" | reverse %}
   {% if talks.size > 0 %}
     <div class="talk-section">
-      <h2>{{ talk_type_label }}</h2><hr />
+      <h2>{{ talk_type_label }}</h2>
       {% for talk in talks %}
         <div class="talk-entry">
           <p class="talk-line">

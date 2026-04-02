@@ -14,4 +14,208 @@
 <link rel="icon" href="/images/favicon.ico"/>
 <meta name="theme-color" content="#ffffff"/>
 
+<!-- ═══════════ GLOBAL APPLE-STYLE OVERRIDES ═══════════ -->
+<style>
+/* ── Foundation ── */
+:root {
+  --apple-text: #1d1d1f;
+  --apple-text-secondary: #6e6e73;
+  --apple-bg: #fbfbfd;
+  --apple-link: #06c;
+  --apple-link-hover: #0055b3;
+  --apple-border: rgba(0,0,0,.06);
+  --apple-card-bg: #fff;
+  --apple-pill-bg: #f5f5f7;
+  --apple-font: -apple-system, "SF Pro Text", "Helvetica Neue", "Inter", "Segoe UI", sans-serif;
+  --apple-radius: 12px;
+}
+
+body {
+  font-family: var(--apple-font) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--apple-text);
+  background: var(--apple-bg);
+}
+
+/* ── Masthead — Apple-style nav bar ── */
+.masthead {
+  background: rgba(251,251,253,.92) !important;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,.08) !important;
+}
+.masthead::after { display: none !important; }
+
+.masthead__inner-wrap {
+  max-width: 980px !important;
+  margin: 0 auto;
+  padding: .45rem 1.2rem !important;
+  font-family: var(--apple-font) !important;
+}
+
+.greedy-nav {
+  background: transparent !important;
+}
+.greedy-nav a {
+  color: var(--apple-text) !important;
+  font-size: .92rem;
+  font-weight: 500;
+  letter-spacing: -.005em;
+  padding: .4rem 0 !important;
+  margin: 0 .85rem !important;
+  transition: color .2s;
+}
+.greedy-nav a:hover {
+  color: var(--apple-link) !important;
+}
+.greedy-nav .visible-links a::before { display: none !important; }
+.greedy-nav .visible-links li:first-child a {
+  font-weight: 700 !important;
+  font-size: .95rem;
+  color: var(--apple-text) !important;
+  margin-left: 0 !important;
+}
+.masthead__menu-item { background: transparent !important; }
+
+/* ── Sidebar / Author profile — Apple clean ── */
+.sidebar {
+  font-family: var(--apple-font) !important;
+}
+.sidebar .author__name {
+  font-family: var(--apple-font) !important;
+  font-weight: 700;
+  color: var(--apple-text);
+}
+.sidebar .author__bio {
+  color: var(--apple-text-secondary);
+  font-size: .88rem;
+  line-height: 1.4;
+}
+.author__avatar img {
+  border: 2px solid #fff !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+.author__urls a {
+  color: var(--apple-text) !important;
+  font-size: .88rem !important;
+  font-weight: 500;
+  transition: color .2s;
+}
+.author__urls a:hover {
+  color: var(--apple-link) !important;
+}
+
+/* ── Page content — Apple typography ── */
+#main {
+  max-width: 1080px !important;
+  margin-top: 1.6em !important;
+}
+.page__title {
+  font-family: var(--apple-font) !important;
+  font-size: clamp(1.6rem, 3vw, 2.2rem) !important;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: var(--apple-text);
+  line-height: 1.15;
+}
+.page__content {
+  font-family: var(--apple-font) !important;
+  color: var(--apple-text);
+}
+.page__content h2 {
+  font-family: var(--apple-font) !important;
+  font-size: clamp(1.15rem, 2vw, 1.45rem) !important;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  color: var(--apple-text);
+  border-bottom: 1px solid rgba(0,0,0,.06) !important;
+  padding-bottom: .45em !important;
+  margin-top: 2.2em !important;
+}
+.page__content h3 {
+  font-family: var(--apple-font) !important;
+  font-size: 1.1rem !important;
+  font-weight: 600;
+  color: var(--apple-text);
+}
+.page__content p, .page__content li {
+  font-size: .98rem !important;
+  line-height: 1.6;
+  color: #424245;
+}
+.page__content a {
+  color: var(--apple-link) !important;
+  text-decoration: none !important;
+  font-weight: 500;
+  transition: color .2s;
+}
+.page__content a:hover {
+  color: var(--apple-link-hover) !important;
+  text-decoration: underline !important;
+}
+
+/* ── Archive layout (used by publications, talks, CV) ── */
+.archive {
+  font-family: var(--apple-font) !important;
+}
+.archive a {
+  text-decoration: none !important;
+}
+.archive a:hover {
+  text-decoration: underline !important;
+}
+
+/* ── Footer — Apple minimal ── */
+.page__footer {
+  background: var(--apple-bg) !important;
+  border-top: 1px solid rgba(0,0,0,.06) !important;
+  margin-top: 2em !important;
+  color: var(--apple-text-secondary) !important;
+}
+.page__footer a {
+  color: var(--apple-text-secondary) !important;
+  font-weight: 500;
+}
+.page__footer a:hover {
+  color: var(--apple-link) !important;
+}
+.page__footer-follow ul { gap: .5rem; }
+.page__footer-follow li {
+  font-family: var(--apple-font) !important;
+  font-size: .82rem !important;
+  text-transform: none !important;
+}
+.page__footer-copyright {
+  font-family: var(--apple-font) !important;
+  font-size: .78rem !important;
+  color: var(--apple-text-secondary);
+  opacity: .7;
+}
+
+/* ── Horizontal rule — subtle ── */
+hr {
+  border-top: 1px solid rgba(0,0,0,.06) !important;
+  margin: 1.5rem 0 !important;
+}
+
+/* ── Links in archive pages — Apple blue ── */
+.page__content .pub-title a,
+.page__content .pub-link,
+.page__content .talk-link {
+  text-decoration: none !important;
+}
+
+/* ── Wordwrap notice ── */
+.wordwrap {
+  font-size: .92rem;
+  color: var(--apple-text-secondary);
+  margin-bottom: 1.5rem;
+}
+.wordwrap a {
+  color: var(--apple-link) !important;
+  font-weight: 600;
+}
+</style>
+
 <!-- end custom head snippets -->

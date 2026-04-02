@@ -12,44 +12,137 @@ author_profile: true
 {% include base_path %}
 
 <style>
-  .pub-section { margin-bottom: 2.25rem; }
-  .pub-subheading { font-size: 1.05rem; font-weight: 600; margin: 1.2rem 0 0.6rem; }
-  .pub-entry { margin-bottom: 1.05rem; line-height: 1.5; }
-  .pub-line { margin: 0; display: flex; gap: 0.35rem; align-items: baseline; flex-wrap: wrap; }
-  .pub-label { font-weight: 600; color: #444; }
-  .pub-title { font-weight: 600; }
-  .pub-authors, .pub-venue, .pub-links, .pub-excerpt { margin: 0.12rem 0; color: inherit; }
-  .pub-links { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  /* ── Apple-style publication entries ── */
+  .pub-section { margin-bottom: 2.8rem; }
+  .pub-section h2 {
+    font-size: clamp(1.15rem, 2vw, 1.4rem) !important;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    color: #1d1d1f;
+    border-bottom: 1px solid rgba(0,0,0,.06) !important;
+    padding-bottom: .5em !important;
+    margin-bottom: .8rem !important;
+  }
+  .pub-section hr { display: none; }
+  .pub-subheading {
+    font-size: .82rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #6e6e73;
+    margin: 1.6rem 0 .8rem;
+  }
+
+  .pub-entry {
+    margin-bottom: .3rem;
+    padding: 1rem 1.2rem;
+    border-radius: 14px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.04);
+    transition: box-shadow .25s ease;
+  }
+  .pub-entry:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,.05);
+  }
+
+  .pub-line {
+    margin: 0;
+    display: flex;
+    gap: .4rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .pub-label {
+    font-size: .82rem;
+    font-weight: 700;
+    color: #6e6e73;
+    min-width: 2rem;
+    flex-shrink: 0;
+  }
+  .pub-title {
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    line-height: 1.35;
+  }
+  .pub-line a { text-decoration: none !important; }
+  .pub-line a:hover .pub-title { color: #06c; }
+  .pub-line a .pub-title { transition: color .2s; }
+
+  .pub-authors {
+    margin: .25rem 0 .1rem;
+    font-size: .9rem;
+    line-height: 1.5;
+    color: #6e6e73;
+  }
+  .pub-venue {
+    margin: .1rem 0;
+    font-size: .9rem;
+    line-height: 1.5;
+    color: #424245;
+  }
+  .pub-venue em { font-style: italic; }
+
+  .pub-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin-top: .5rem;
+  }
   .pub-link {
     display: inline-flex;
     align-items: center;
-    padding: 0.15rem 0.55rem;
-    border: 1px solid rgba(31, 96, 112, 0.2);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.88);
-    color: #1f6070;
-    font-size: 0.84rem;
-    font-weight: 700;
+    padding: .2rem .65rem;
+    border-radius: 980px;
+    font-size: .82rem;
+    font-weight: 600;
     line-height: 1.35;
     text-decoration: none !important;
+    transition: background .2s, border-color .2s;
   }
-  .pub-link:hover { border-color: rgba(31, 96, 112, 0.38); background: rgba(237, 247, 250, 1); }
   .pub-link--paper {
-    border-color: rgba(15, 79, 94, 0.38);
-    background: linear-gradient(135deg, #e6f3f7 0%, #f4fbfd 100%);
+    border: 1px solid rgba(15, 79, 94, 0.2);
+    background: #edf7fa;
     color: #0f4f5e !important;
   }
+  .pub-link--paper:hover {
+    border-color: rgba(15, 79, 94, 0.4);
+    background: #dff0f5;
+  }
   .pub-link--slides {
-    border-color: rgba(138, 91, 16, 0.3);
-    background: linear-gradient(135deg, #fff5dd 0%, #fffaf0 100%);
+    border: 1px solid rgba(138, 91, 16, 0.2);
+    background: #fff5dd;
     color: #8a5b10 !important;
   }
+  .pub-link--slides:hover {
+    border-color: rgba(138, 91, 16, 0.4);
+    background: #ffefcc;
+  }
   .pub-link--video {
-    border-color: rgba(111, 40, 156, 0.25);
-    background: linear-gradient(135deg, #f4ecfb 0%, #faf6ff 100%);
+    border: 1px solid rgba(111, 40, 156, 0.18);
+    background: #f4ecfb;
     color: #6f289c !important;
   }
-  .pub-excerpt { font-style: italic; opacity: 0.85; }
+  .pub-link--video:hover {
+    border-color: rgba(111, 40, 156, 0.35);
+    background: #ede0f8;
+  }
+  .pub-link:not(.pub-link--paper):not(.pub-link--slides):not(.pub-link--video) {
+    border: 1px solid rgba(0,0,0,.08);
+    background: #f5f5f7;
+    color: #424245 !important;
+  }
+  .pub-link:not(.pub-link--paper):not(.pub-link--slides):not(.pub-link--video):hover {
+    border-color: rgba(0,0,0,.15);
+    background: #e8e8ed;
+  }
+
+  .pub-excerpt {
+    font-style: italic;
+    font-size: .88rem;
+    opacity: .75;
+    margin-top: .25rem;
+  }
 </style>
 
 {% assign topic_entries = "graphical-models::Graphical model-based approximation of #-P complete problems.;quantum-info::Quantum information processing.;wireless::Wireless communication systems." | split: ";" %}
@@ -61,14 +154,13 @@ author_profile: true
   {% assign topic_posts = site.publications | where: "topic", topic_key %}
   {% if topic_posts.size > 0 %}
     <div class="pub-section">
-      <h2>{{ topic_label }}</h2><hr />
+      <h2>{{ topic_label }}</h2>
 
       {% assign topic_journals = topic_posts | where: "category", "manuscripts" | sort: "date" | reverse %}
       {% if topic_journals.size > 0 %}
         <h3 class="pub-subheading">Journal Papers</h3>
         {% for post in topic_journals %}
           {% if post.title == "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)" %}
-            <!-- Publication hidden per request -->
             {% continue %}
           {% endif %}
           <div class="pub-entry">
@@ -125,7 +217,6 @@ author_profile: true
         <h3 class="pub-subheading">Conference Papers</h3>
         {% for post in topic_conferences %}
           {% if post.title == "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)" %}
-            <!-- Publication hidden per request -->
             {% continue %}
           {% endif %}
           <div class="pub-entry">
