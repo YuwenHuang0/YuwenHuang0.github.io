@@ -9,7 +9,7 @@ redirect_from:
 
 <style>
 /* ═══════════════════════════════════════════════
-   FOUNDATIONS — claude.com-inspired design
+   FOUNDATIONS
    ═══════════════════════════════════════════════ */
 .splash .page__content {
   font-family: -apple-system, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Inter", "Segoe UI", sans-serif;
@@ -25,11 +25,11 @@ redirect_from:
 .splash .page__content a { text-decoration: none; }
 
 /* ═══════════════════════════════════════════════
-   LAYOUT — full-bleed sections, wide inner
+   LAYOUT — full-bleed, wide inner
    ═══════════════════════════════════════════════ */
 .sec {
   width: 100%;
-  padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 5vw, 6rem);
+  padding: clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 6rem);
 }
 .sec-in {
   max-width: 1600px;
@@ -37,17 +37,17 @@ redirect_from:
 }
 
 /* ═══════════════════════════════════════════════
-   HERO — dark, dramatic, full viewport
+   HERO — dark, compact
    ═══════════════════════════════════════════════ */
 .hero-sec {
   background: #0d0d0d;
   color: #f5f5f7;
-  min-height: 92vh;
+  min-height: auto;
   display: flex;
   align-items: center;
   text-align: center;
-  padding-top: clamp(5rem, 12vw, 9rem);
-  padding-bottom: clamp(5rem, 10vw, 8rem);
+  padding-top: clamp(4rem, 8vw, 6rem);
+  padding-bottom: clamp(3.5rem, 7vw, 5rem);
   position: relative;
   overflow: hidden;
 }
@@ -70,7 +70,7 @@ redirect_from:
   align-items: center;
   justify-content: center;
   gap: 1.2rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.8rem;
 }
 .hero-photo {
   width: 80px; height: 80px;
@@ -84,29 +84,29 @@ redirect_from:
   letter-spacing: -.02em;
 }
 .hero-aff {
-  font-size: .95rem; color: rgba(255,255,255,.45); line-height: 1.4; margin-top: .15rem;
+  font-size: .95rem; color: rgba(255,255,255,.6); line-height: 1.4; margin-top: .15rem;
 }
-.hero-aff a { color: rgba(255,255,255,.65); font-weight: 500; }
+.hero-aff a { color: rgba(255,255,255,.8); font-weight: 500; }
 .hero-aff a:hover { color: #fff; }
 
 /* Announcement pill */
 .hero-news {
   display: inline-flex; align-items: baseline;
   gap: .3rem;
-  padding: .5rem 1.2rem;
+  padding: .45rem 1.1rem;
   border-radius: 980px;
   background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.1);
   font-size: .88rem; line-height: 1.4;
-  color: rgba(255,255,255,.7);
-  margin-bottom: 3rem;
+  color: rgba(255,255,255,.8);
+  margin-bottom: 2rem;
 }
 @media (min-width: 920px) {
   .hero-news { white-space: nowrap; }
 }
-.hero-news strong { color: #c4956a; font-weight: 700; }
-.hero-news a { color: rgba(255,255,255,.85); font-weight: 600; }
-.hero-news a:hover { color: #fff; }
+.hero-news strong { color: #d4a574; font-weight: 700; }
+.hero-news a { color: #fff; font-weight: 600; }
+.hero-news a:hover { text-decoration: underline; }
 
 /* Headline */
 .hero-h {
@@ -114,7 +114,7 @@ redirect_from:
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -.035em;
-  color: #f5f5f7;
+  color: #fff;
 }
 @media (min-width: 880px) {
   .hero-h { white-space: nowrap; }
@@ -122,27 +122,27 @@ redirect_from:
 
 /* Subtitle */
 .hero-desc {
-  margin-top: 1.5rem;
-  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  margin-top: 1rem;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
   line-height: 1.5;
-  color: rgba(255,255,255,.4);
+  color: rgba(255,255,255,.6);
   font-weight: 400;
   letter-spacing: -.005em;
 }
 
 /* Keywords */
 .hero-kw {
-  display: flex; flex-wrap: wrap; gap: .55rem;
+  display: flex; flex-wrap: wrap; gap: .45rem;
   justify-content: center;
-  margin-top: 2.2rem;
+  margin-top: 1.5rem;
 }
 .kw {
-  padding: .4rem .95rem;
+  padding: .35rem .85rem;
   border-radius: 980px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.06);
-  font-size: .88rem; font-weight: 500;
-  color: rgba(255,255,255,.55);
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.1);
+  font-size: .85rem; font-weight: 500;
+  color: rgba(255,255,255,.7);
   letter-spacing: -.005em;
 }
 
@@ -150,13 +150,13 @@ redirect_from:
 .hero-act {
   display: flex; flex-wrap: wrap; gap: .8rem;
   justify-content: center;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
-  height: 3.2rem; padding: 0 2rem;
+  height: 3rem; padding: 0 1.8rem;
   border-radius: 980px;
-  font-size: 1.05rem; font-weight: 600;
+  font-size: 1rem; font-weight: 600;
   cursor: pointer;
   text-decoration: none !important;
   transition: background .2s, box-shadow .2s, transform .15s;
@@ -171,174 +171,174 @@ redirect_from:
   color: #0d0d0d !important;
   text-decoration: none !important;
 }
-.btn-fill:hover { background: #fff; box-shadow: 0 6px 24px rgba(255,255,255,.15); }
+.btn-fill:hover { background: #fff; box-shadow: 0 4px 16px rgba(255,255,255,.15); }
 .btn-out {
   background: transparent;
-  border: 1.5px solid rgba(255,255,255,.2);
-  color: rgba(255,255,255,.8) !important;
+  border: 1.5px solid rgba(255,255,255,.25);
+  color: rgba(255,255,255,.9) !important;
 }
 .splash .page__content .btn-out,
 .splash .page__content .btn-out:hover {
-  color: rgba(255,255,255,.85) !important;
+  color: rgba(255,255,255,.9) !important;
   text-decoration: none !important;
 }
-.btn-out:hover { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.35); }
+.btn-out:hover { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.4); }
 
 /* ═══════════════════════════════════════════════
-   SECTION HEADERS
+   SECTION HEADERS — compact
    ═══════════════════════════════════════════════ */
 .sec-hdr {
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
 }
 .sec-label {
-  font-size: .8rem; font-weight: 600;
+  font-size: .78rem; font-weight: 600;
   letter-spacing: .1em; text-transform: uppercase;
-  color: #86868b;
-  margin-bottom: .6rem;
+  color: #6e6e73;
+  margin-bottom: .4rem;
 }
 .sec-title {
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  font-weight: 700; line-height: 1.06;
-  letter-spacing: -.035em;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700; line-height: 1.08;
+  letter-spacing: -.03em;
   color: #1d1d1f;
 }
 .sec-sub {
-  margin-top: .7rem;
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  margin-top: .5rem;
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
   line-height: 1.5;
-  color: #86868b;
-  max-width: 680px;
+  color: #6e6e73;
+  max-width: 620px;
 }
 
 /* ═══════════════════════════════════════════════
-   RESEARCH AREAS — large showcase cards
+   RESEARCH AREAS — compact cards
    ═══════════════════════════════════════════════ */
 .area-bg { background: #f5f5f7; }
 
 .areas {
-  display: grid; gap: 1.5rem;
+  display: grid; gap: 1.2rem;
 }
 @media (min-width: 800px) {
   .areas { grid-template-columns: repeat(3, 1fr); }
 }
 .area {
-  border-radius: 28px;
+  border-radius: 20px;
   overflow: hidden;
   display: flex; flex-direction: column;
-  transition: box-shadow .35s ease, transform .35s ease;
+  transition: box-shadow .3s ease, transform .3s ease;
   background: #fff;
-  border: 1px solid rgba(0,0,0,.04);
+  border: 1px solid rgba(0,0,0,.05);
 }
 .area:hover {
-  box-shadow: 0 20px 60px rgba(0,0,0,.08);
-  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.08);
+  transform: translateY(-4px);
 }
 
 .area-vis {
-  height: 240px;
+  height: 180px;
   display: flex; align-items: center; justify-content: center;
-  padding: 1.5rem;
+  padding: 1.2rem;
 }
-.area-vis svg { width: 85%; height: 85%; }
+.area-vis svg { width: 80%; height: 80%; }
 .vis-teal  { background: linear-gradient(160deg, #e8f6fa 0%, #c3e6ef 100%); }
 .vis-amber { background: linear-gradient(160deg, #fef8ec 0%, #fcefd0 100%); }
 .vis-coral { background: linear-gradient(160deg, #fdf2ee 0%, #f8ddd2 100%); }
 
 .area-body {
-  padding: 1.8rem 2rem 2rem;
-  display: flex; flex-direction: column; gap: .55rem; flex: 1;
+  padding: 1.4rem 1.6rem 1.6rem;
+  display: flex; flex-direction: column; gap: .4rem; flex: 1;
 }
 .area-label {
-  font-size: .75rem; font-weight: 700;
+  font-size: .72rem; font-weight: 700;
   letter-spacing: .08em; text-transform: uppercase;
 }
 .lbl-teal  { color: #17677a; }
 .lbl-amber { color: #946b14; }
 .lbl-coral { color: #a14430; }
 .area h3 {
-  font-size: 1.3rem; font-weight: 700; line-height: 1.18; color: #1d1d1f;
-  letter-spacing: -.015em;
+  font-size: 1.15rem; font-weight: 700; line-height: 1.2; color: #1d1d1f;
+  letter-spacing: -.01em;
 }
 .area p {
-  font-size: .98rem; line-height: 1.6; color: #86868b;
+  font-size: .92rem; line-height: 1.55; color: #6e6e73;
 }
 .area-tags {
-  display: flex; flex-wrap: wrap; gap: .4rem;
-  margin-top: auto; padding-top: .6rem;
+  display: flex; flex-wrap: wrap; gap: .35rem;
+  margin-top: auto; padding-top: .4rem;
 }
 .area-tags span {
-  padding: .25rem .7rem; border-radius: 980px;
+  padding: .2rem .6rem; border-radius: 980px;
   background: #f5f5f7;
-  font-size: .8rem; font-weight: 500; color: #424245;
+  font-size: .78rem; font-weight: 500; color: #424245;
 }
 
 /* ═══════════════════════════════════════════════
-   PIPELINE — dark section
+   PIPELINE — dark section, compact
    ═══════════════════════════════════════════════ */
 .pipe-bg {
   background: #1d1d1f; color: #f5f5f7;
 }
-.pipe-bg .sec-label { color: rgba(255,255,255,.25); }
+.pipe-bg .sec-label { color: rgba(255,255,255,.5); }
 .pipe-bg .sec-title { color: #f5f5f7; }
 
 .pipe {
-  display: grid; gap: 1.2rem;
+  display: grid; gap: 1rem;
 }
 @media (min-width: 800px) {
   .pipe { grid-template-columns: repeat(4, 1fr); }
 }
 .step {
-  padding: 2rem 1.8rem;
-  border-radius: 24px;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.06);
+  padding: 1.5rem 1.4rem;
+  border-radius: 18px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
   transition: background .3s ease;
 }
-.step:hover { background: rgba(255,255,255,.08); }
+.step:hover { background: rgba(255,255,255,.1); }
 .step-n {
-  font-size: .75rem; font-weight: 700;
-  color: rgba(255,255,255,.18);
-  margin-bottom: 1rem;
+  font-size: .72rem; font-weight: 700;
+  color: rgba(255,255,255,.4);
+  margin-bottom: .7rem;
   letter-spacing: .06em;
 }
 .step h3 {
-  font-size: 1.15rem; font-weight: 600;
-  color: #f5f5f7; margin-bottom: .5rem;
+  font-size: 1.05rem; font-weight: 600;
+  color: #f5f5f7; margin-bottom: .3rem;
   letter-spacing: -.005em;
 }
 .step p {
-  font-size: .94rem; line-height: 1.6;
-  color: rgba(255,255,255,.35);
+  font-size: .9rem; line-height: 1.55;
+  color: rgba(255,255,255,.6);
 }
 
 /* ═══════════════════════════════════════════════
-   SELECTED PAPERS — 4-column grid
+   SELECTED PAPERS — 4 columns, compact
    ═══════════════════════════════════════════════ */
 .papers-bg { background: #fff; }
 
 .papers {
-  display: grid; gap: 1.2rem;
+  display: grid; gap: 1rem;
 }
 @media (min-width: 800px) {
   .papers { grid-template-columns: repeat(4, 1fr); }
 }
 .paper {
-  padding: 2rem;
-  border-radius: 24px;
+  padding: 1.5rem;
+  border-radius: 18px;
   background: #f5f5f7;
   border: 1px solid rgba(0,0,0,.04);
-  display: flex; flex-direction: column; gap: .5rem;
-  transition: box-shadow .35s ease, transform .35s ease;
+  display: flex; flex-direction: column; gap: .4rem;
+  transition: box-shadow .3s ease, transform .3s ease;
 }
 .paper:hover {
-  box-shadow: 0 16px 48px rgba(0,0,0,.07);
-  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,.07);
+  transform: translateY(-3px);
 }
 
 .paper-tag {
   display: inline-flex; width: fit-content;
-  padding: .2rem .65rem; border-radius: 980px;
-  font-size: .72rem; font-weight: 700;
+  padding: .18rem .6rem; border-radius: 980px;
+  font-size: .7rem; font-weight: 700;
   letter-spacing: .05em; text-transform: uppercase;
 }
 .pt-teal  { background: #ddf0f5; color: #17677a; }
@@ -347,22 +347,22 @@ redirect_from:
 .pt-green { background: #e9f3ec; color: #3a7049; }
 
 .paper h3 {
-  font-size: 1.1rem; font-weight: 700; line-height: 1.22; color: #1d1d1f;
+  font-size: 1.02rem; font-weight: 700; line-height: 1.22; color: #1d1d1f;
   letter-spacing: -.01em;
 }
 .paper p {
-  font-size: .92rem; line-height: 1.6; color: #86868b;
+  font-size: .88rem; line-height: 1.5; color: #6e6e73;
 }
 .paper-cites {
-  display: flex; flex-wrap: wrap; gap: .4rem;
-  margin-top: auto; padding-top: .5rem;
+  display: flex; flex-wrap: wrap; gap: .35rem;
+  margin-top: auto; padding-top: .4rem;
 }
 .cite {
   display: inline-flex; align-items: center;
-  padding: .25rem .65rem; border-radius: 980px;
+  padding: .2rem .55rem; border-radius: 980px;
   background: #fff;
   color: #06c !important;
-  font-size: .82rem; font-weight: 600;
+  font-size: .78rem; font-weight: 600;
   text-decoration: none !important;
   transition: background .2s;
   letter-spacing: -.005em;
@@ -371,48 +371,48 @@ redirect_from:
 .cite:hover { background: #e8e8ed; }
 
 /* ═══════════════════════════════════════════════
-   RECRUIT — light section, centered
+   RECRUIT — compact, centered
    ═══════════════════════════════════════════════ */
 .recruit-bg {
   background: #f5f5f7;
 }
 
 .recruit-center { text-align: center; }
-.recruit-center .sec-hdr { margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+.recruit-center .sec-hdr { margin-bottom: clamp(1rem, 2.5vw, 2rem); }
 .recruit-center .sec-title { max-width: none; }
 .recruit-center .sec-sub {
   max-width: none;
   margin-left: auto; margin-right: auto;
-  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  font-size: clamp(.95rem, 1.3vw, 1.08rem);
 }
 
 .roles {
-  display: grid; gap: 1.2rem;
-  margin-top: 3rem; text-align: left;
+  display: grid; gap: 1rem;
+  margin-top: 2rem; text-align: left;
 }
 @media (min-width: 800px) {
   .roles { grid-template-columns: repeat(4, 1fr); }
 }
 .role {
-  padding: 2rem 1.8rem; border-radius: 24px;
+  padding: 1.5rem 1.4rem; border-radius: 18px;
   background: #fff;
-  border: 1px solid rgba(0,0,0,.04);
-  display: flex; flex-direction: column; gap: .45rem;
-  transition: box-shadow .35s ease, transform .35s ease;
+  border: 1px solid rgba(0,0,0,.05);
+  display: flex; flex-direction: column; gap: .35rem;
+  transition: box-shadow .3s ease, transform .3s ease;
 }
 .role:hover {
-  box-shadow: 0 12px 40px rgba(0,0,0,.06);
-  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,0,0,.06);
+  transform: translateY(-3px);
 }
 .role h3 {
-  font-size: 1.2rem; font-weight: 700; color: #1d1d1f;
+  font-size: 1.1rem; font-weight: 700; color: #1d1d1f;
   letter-spacing: -.01em;
 }
 .role p {
-  font-size: .94rem; line-height: 1.6; color: #86868b;
+  font-size: .9rem; line-height: 1.55; color: #6e6e73;
 }
 
-.recruit-cta { margin-top: 3rem; }
+.recruit-cta { margin-top: 2rem; }
 .recruit-cta .btn-fill {
   background: #1d1d1f; color: #fff !important;
 }
@@ -421,14 +421,14 @@ redirect_from:
   color: #fff !important;
   text-decoration: none !important;
 }
-.recruit-cta .btn-fill:hover { background: #000; box-shadow: 0 6px 24px rgba(0,0,0,.2); }
+.recruit-cta .btn-fill:hover { background: #000; box-shadow: 0 4px 16px rgba(0,0,0,.2); }
 .recruit-links {
   display: flex; justify-content: center; flex-wrap: wrap;
-  gap: .3rem 1.3rem;
-  margin-top: 1.2rem;
+  gap: .3rem 1.1rem;
+  margin-top: 1rem;
 }
 .recruit-links a {
-  font-size: .92rem; font-weight: 500;
+  font-size: .9rem; font-weight: 500;
   color: #06c !important; text-decoration: none !important;
 }
 .recruit-links a:hover { text-decoration: underline !important; }
@@ -488,7 +488,7 @@ redirect_from:
 
     <article class="area">
       <div class="area-vis vis-teal">
-        <svg viewBox="0 0 280 140" fill="none" aria-label="Graphical model">
+        <svg viewBox="0 0 280 140" fill="none" aria-label="Graphical model illustration">
           <line x1="58" y1="48" x2="125" y2="34" stroke="#a8d5e0" stroke-width="3.5" stroke-linecap="round"/>
           <line x1="58" y1="48" x2="110" y2="105" stroke="#a8d5e0" stroke-width="3.5" stroke-linecap="round"/>
           <line x1="125" y1="34" x2="195" y2="60" stroke="#a8d5e0" stroke-width="3.5" stroke-linecap="round"/>
@@ -507,14 +507,14 @@ redirect_from:
       <div class="area-body">
         <div class="area-label lbl-teal">Inference</div>
         <h3>Structured graphical-model reasoning</h3>
-        <p>Message passing, Bethe methods, and combinatorial structure for reliable inference and counting.</p>
+        <p>Message passing, Bethe methods, and graph covers for inference and counting.</p>
         <div class="area-tags"><span>Uncertainty</span><span>Counting</span><span>Graph covers</span></div>
       </div>
     </article>
 
     <article class="area">
       <div class="area-vis vis-amber">
-        <svg viewBox="0 0 280 140" fill="none" aria-label="Optimization landscape">
+        <svg viewBox="0 0 280 140" fill="none" aria-label="Optimization landscape illustration">
           <path d="M28 100 C55 78,75 28,115 28 C155 28,170 92,210 92 C238 92,255 68,268 42" stroke="#d9b14f" stroke-width="4" stroke-linecap="round"/>
           <circle cx="115" cy="28" r="10" fill="#946b14"/>
           <circle cx="210" cy="92" r="10" fill="#946b14"/>
@@ -528,14 +528,14 @@ redirect_from:
       <div class="area-body">
         <div class="area-label lbl-amber">Optimization</div>
         <h3>Provable optimization and decision-making</h3>
-        <p>Structure-aware objectives, permanent bounds, and algorithmic guarantees for hard problems.</p>
+        <p>Permanent bounds and algorithmic guarantees for hard combinatorial problems.</p>
         <div class="area-tags"><span>Convex / nonconvex</span><span>Permanent bounds</span><span>Decisions</span></div>
       </div>
     </article>
 
     <article class="area">
       <div class="area-vis vis-coral">
-        <svg viewBox="0 0 280 140" fill="none" aria-label="Tensor network">
+        <svg viewBox="0 0 280 140" fill="none" aria-label="Tensor network illustration">
           <line x1="68" y1="52" x2="102" y2="52" stroke="#d4836e" stroke-width="3.5" stroke-linecap="round"/>
           <line x1="138" y1="52" x2="172" y2="52" stroke="#d4836e" stroke-width="3.5" stroke-linecap="round"/>
           <line x1="208" y1="52" x2="242" y2="52" stroke="#d4836e" stroke-width="3.5" stroke-linecap="round"/>
@@ -556,7 +556,7 @@ redirect_from:
       <div class="area-body">
         <div class="area-label lbl-coral">Quantum &amp; Tensors</div>
         <h3>High-dimensional quantum computation</h3>
-        <p>Tensor-network representations and distributed quantum systems for scalable computation.</p>
+        <p>Tensor networks and distributed quantum systems for scalable computation.</p>
         <div class="area-tags"><span>Tensor networks</span><span>Quantum systems</span><span>Scalability</span></div>
       </div>
     </article>
@@ -593,7 +593,7 @@ redirect_from:
     <article class="paper">
       <span class="paper-tag pt-teal">Inference</span>
       <h3>Graphical models and Bethe methods</h3>
-      <p>Bethe approximations, graph covers, and message passing for principled inference and counting.</p>
+      <p>Graph covers and message passing for inference and counting.</p>
       <div class="paper-cites">
         <a class="cite" href="{{ '/publication/characterizing-bethe-partition-factor-graphs' | relative_url }}">[ISIT 2020]</a>
         <a class="cite" href="{{ '/publication/bethe-free-energy-global-minimum' | relative_url }}">[ITW 2022]</a>
@@ -605,7 +605,7 @@ redirect_from:
     <article class="paper">
       <span class="paper-tag pt-amber">Optimization</span>
       <h3>Optimization and combinatorial structure</h3>
-      <p>Structure-exploiting optimization and permanent bounds with rigorous guarantees.</p>
+      <p>Permanent bounds and guarantees for hard problems.</p>
       <div class="paper-cites">
         <a class="cite" href="{{ '/publication/bounding-permanent-degree-m-bethe' | relative_url }}">[ISIT 2023]</a>
         <a class="cite" href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">[TIT 2024]</a>
@@ -616,7 +616,7 @@ redirect_from:
     <article class="paper">
       <span class="paper-tag pt-coral">Tensor methods</span>
       <h3>Tensor networks and quantum-enabled inference</h3>
-      <p>Compact high-dimensional computation via tensor-network representations.</p>
+      <p>Tensor-network methods for high-dimensional computation.</p>
       <div class="paper-cites">
         <a class="cite" href="{{ '/publication/sets-of-marginals-chsh' | relative_url }}">[ISIT 2021]</a>
         <a class="cite" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[QUANTUM-sub]</a>
@@ -626,7 +626,7 @@ redirect_from:
     <article class="paper">
       <span class="paper-tag pt-green">Quantum systems</span>
       <h3>Distributed quantum systems</h3>
-      <p>Distributed quantum architectures for optimization, inference, and analytics.</p>
+      <p>Distributed quantum optimization and inference.</p>
       <div class="paper-cites">
         <a class="cite" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML 2025]</a>
         <a class="cite" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[QUANTUM-sub]</a>
@@ -646,10 +646,10 @@ redirect_from:
     <p class="sec-sub">Recruiting RAs, MPhil/PhD students, and one Postdoc for Fall 2026 at the DSA Thrust, Information Hub, HKUST (Guangzhou).</p>
   </div>
   <div class="roles">
-    <div class="role"><h3>RA</h3><p>Core research training and preparation for graduate study or industry roles.</p></div>
-    <div class="role"><h3>MPhil</h3><p>Structured transition into independent research with publication-minded training.</p></div>
-    <div class="role"><h3>PhD</h3><p>Ownership of deeper problems, broad collaboration, and long-term research support.</p></div>
-    <div class="role"><h3>Postdoc</h3><p>Shape an agenda, co-mentor students, and prepare for academic searches.</p></div>
+    <div class="role"><h3>RA</h3><p>Research training for graduate study or industry.</p></div>
+    <div class="role"><h3>MPhil</h3><p>Independent research with publication-focused training.</p></div>
+    <div class="role"><h3>PhD</h3><p>Deep problems, broad collaboration, long-term support.</p></div>
+    <div class="role"><h3>Postdoc</h3><p>Shape an agenda, co-mentor, prepare for faculty searches.</p></div>
   </div>
   <div class="recruit-cta">
     <a class="btn btn-fill" href="mailto:{{ site.author.email }}">Apply by email</a>

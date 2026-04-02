@@ -10,57 +10,44 @@ redirect_from:
 {% include base_path %}
 
 <style>
-  /* ── Wide page container ── */
-  .inner-page {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: clamp(2.5rem, 6vw, 4.5rem) clamp(2rem, 5vw, 5rem);
-  }
-  .inner-page-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    letter-spacing: -.03em;
-    color: #1d1d1f;
-    margin-bottom: clamp(2rem, 4vw, 3rem);
-  }
-
-  /* ── Apple-style CV ── */
+  /* ── CV entries ── */
   .cv-section {
-    margin-bottom: 2.4rem;
+    margin-bottom: 3rem;
   }
   .cv-section h2 {
-    font-size: clamp(1.15rem, 2vw, 1.4rem) !important;
+    font-size: clamp(1.2rem, 2vw, 1.5rem) !important;
     font-weight: 700 !important;
-    letter-spacing: -.01em;
-    color: #1d1d1f !important;
+    letter-spacing: -.015em;
+    color: var(--text-primary, #1d1d1f) !important;
     border-bottom: 1px solid rgba(0,0,0,.06) !important;
-    padding-bottom: .5em !important;
+    padding-bottom: .6em !important;
     margin-top: 0 !important;
-    margin-bottom: .8rem !important;
+    margin-bottom: 1rem !important;
   }
 
   .cv-entry {
-    padding: .85rem 1.2rem;
-    margin-bottom: .3rem;
-    border-radius: 14px;
-    background: #fff;
-    border: 1px solid rgba(0,0,0,.04);
-    transition: box-shadow .25s ease;
+    padding: 1rem 1.5rem;
+    margin-bottom: .4rem;
+    border-radius: 16px;
+    background: var(--bg-secondary, #f5f5f7);
+    border: 1px solid rgba(0,0,0,.03);
+    transition: box-shadow .3s ease, transform .3s ease;
   }
   .cv-entry:hover {
-    box-shadow: 0 4px 20px rgba(0,0,0,.05);
+    box-shadow: 0 8px 32px rgba(0,0,0,.06);
+    transform: translateY(-2px);
   }
   .cv-entry-main {
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    color: #1d1d1f;
+    color: var(--text-primary, #1d1d1f);
     line-height: 1.4;
     margin: 0;
   }
   .cv-entry-date {
     font-size: .88rem;
     font-weight: 600;
-    color: #6e6e73;
+    color: var(--text-secondary, #6e6e73);
   }
   .cv-entry-detail {
     font-size: .92rem;
@@ -80,14 +67,15 @@ redirect_from:
   .cv-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: .35rem;
+    gap: .4rem;
     margin-top: .5rem;
   }
   .cv-tag {
     display: inline-flex;
-    padding: .2rem .65rem;
-    border-radius: 8px;
-    background: #f5f5f7;
+    padding: .25rem .7rem;
+    border-radius: 980px;
+    background: var(--bg-secondary, #f5f5f7);
+    border: 1px solid rgba(0,0,0,.04);
     font-size: .84rem;
     font-weight: 500;
     color: #424245;
@@ -99,17 +87,21 @@ redirect_from:
     margin: .3rem 0 0;
   }
   .cv-list li {
-    padding: .5rem 1.2rem;
-    margin-bottom: .25rem;
-    border-radius: 14px;
-    background: #fff;
-    border: 1px solid rgba(0,0,0,.04);
+    padding: .65rem 1.5rem;
+    margin-bottom: .3rem;
+    border-radius: 16px;
+    background: var(--bg-secondary, #f5f5f7);
+    border: 1px solid rgba(0,0,0,.03);
     font-size: .94rem;
-    line-height: 1.5;
+    line-height: 1.55;
     color: #424245;
+    transition: box-shadow .3s ease;
+  }
+  .cv-list li:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,.04);
   }
   .cv-list li strong {
-    color: #1d1d1f;
+    color: var(--text-primary, #1d1d1f);
   }
 </style>
 
