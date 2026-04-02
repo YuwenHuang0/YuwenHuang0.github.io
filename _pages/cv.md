@@ -141,74 +141,6 @@ redirect_from:
 </div>
 
 <div class="cv-section">
-<h2>Journal Papers (submitted)</h2>
-<div class="cv-entry">
-<p class="cv-entry-main">A Scalable Distributed Quantum Optimization Framework via Factor Graph Paradigm</p>
-<p class="cv-entry-detail">Y. Huang, X. Lin, B. Luo, J. C. S. Lui. Submitted to <em>Quantum</em>, 2026. <a href="https://arxiv.org/abs/2603.07673">arXiv</a></p>
-</div>
-<div class="cv-entry">
-<p class="cv-entry-main">Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended)</p>
-<p class="cv-entry-detail">Y. Huang, P. O. Vontobel. Submitted to <em>IEEE Trans. Inf. Theory</em>, 2024. <a href="https://arxiv.org/abs/2412.05942">arXiv</a></p>
-</div>
-</div>
-
-<div class="cv-section">
-<h2>Journal Papers</h2>
-<div class="cv-entry">
-<p class="cv-entry-main">Degree-M Bethe and Sinkhorn permanent based bounds on the permanent of a non-negative matrix</p>
-<p class="cv-entry-detail">Y. Huang, N. Kashyap, P. O. Vontobel. <em>IEEE Trans. Inf. Theory</em>, 70(4):5289–5308, 2024.</p>
-</div>
-<div class="cv-entry">
-<p class="cv-entry-main">NOMA-aided mobile edge computing via user cooperation</p>
-<p class="cv-entry-detail">Y. Huang, Y. Liu, F. Chen. <em>IEEE Trans. Commun.</em>, 68(4):2221–2235, 2020.</p>
-</div>
-<div class="cv-entry">
-<p class="cv-entry-main">Energy efficiency of distributed antenna systems with wireless power transfer</p>
-<p class="cv-entry-detail">Y. Huang, Y. Liu, G. Y. Li. <em>IEEE J. Sel. Areas Commun.</em>, 37(1):89–99, 2019.</p>
-</div>
-<div class="cv-entry">
-<p class="cv-entry-main">Energy-efficient SWIPT in IoT distributed antenna systems</p>
-<p class="cv-entry-detail">Y. Huang, M. Liu, Y. Liu. <em>IEEE Internet Things J.</em>, 5(4):2646–2656, 2018.</p>
-</div>
-</div>
-
-<div class="cv-section">
-<h2>Conference Papers</h2>
-<div class="cv-entry">
-<p class="cv-entry-main">Quantum algorithms for finite-horizon Markov decision processes</p>
-<p class="cv-entry-detail">B. Luo*, Y. Huang, J. Allcock, X. Lin, S. Zhang, J. C.S. Lui. <em>ICML</em>, 2025.</p>
-</div>
-<div class="cv-entry">
-<p class="cv-entry-main">The Bethe partition function and the SPA for factor graphs based on homogeneous real stable polynomials</p>
-<p class="cv-entry-detail">Y. Huang, P. O. Vontobel. <em>IEEE ISIT</em>, Athens, 2024, pp. 3029–3034.</p>
-</div>
-<div class="cv-entry">
-<p class="cv-entry-main">Bounding the permanent of a non-negative matrix via its degree-M Bethe and Sinkhorn permanents</p>
-<p class="cv-entry-detail">Y. Huang, P. O. Vontobel. <em>IEEE ISIT</em>, Taipei, 2023, pp. 2774–2779.</p>
-</div>
-<div class="cv-entry">
-<p class="cv-entry-main">On the relationship between the global minimum of the Bethe free energy function and SPA fixed points</p>
-<p class="cv-entry-detail">Y. Huang, P. O. Vontobel. <em>IEEE ITW</em>, Mumbai, 2022, pp. 666–671.</p>
-</div>
-<div class="cv-entry">
-<p class="cv-entry-main">Sets of marginals and Pearson-correlation-based CHSH inequalities for a two-qubit system</p>
-<p class="cv-entry-detail">Y. Huang, P. O. Vontobel. <em>IEEE ISIT</em>, Melbourne, 2021, pp. 1338–1343.</p>
-</div>
-<div class="cv-entry">
-<p class="cv-entry-main">Characterizing the Bethe partition function of double-edge factor graphs via graph covers</p>
-<p class="cv-entry-detail">Y. Huang, P. O. Vontobel. <em>IEEE ISIT</em>, Los Angeles, 2020, pp. 1331–1336. <a class="pub-link" href="/files/slides/isit2020.pdf">Slides</a></p>
-</div>
-<div class="cv-entry">
-<p class="cv-entry-main">User cooperation for NOMA-based mobile edge computing</p>
-<p class="cv-entry-detail">Y. Huang, Y. Liu. <em>IEEE ICCS</em>, Chengdu, 2018, pp. 395–400.</p>
-</div>
-<div class="cv-entry">
-<p class="cv-entry-main">Energy-Efficient SWIPT in Distributed Antenna Systems</p>
-<p class="cv-entry-detail">Y. Huang, Y. Liu. <em>IEEE Globecom Workshops</em>, Singapore, 2017, pp. 1–6.</p>
-</div>
-</div>
-
-<div class="cv-section">
 <h2>Talks</h2>
 <div class="cv-entry">
 <p class="cv-entry-main">Bethe Approximations for Matrix Permanents and Contingency Table Counting</p>
@@ -234,17 +166,6 @@ redirect_from:
 <p class="cv-entry-main">Sets of marginals and Pearson-correlation-based CHSH inequalities for a two-qubit system</p>
 <p class="cv-entry-detail"><span class="cv-entry-date">Apr. 2022</span> · Prof. Tomamichel's group, NUS (virtual)</p>
 </div>
-</div>
-
-<div class="cv-section">
-<h2>Teaching</h2>
-<ul class="cv-list">
-<li><strong>2022</strong> · Electronic Circuit Design Lab (TA), CUHK (also 2019, 2020)</li>
-<li><strong>2022</strong> · Social Media and Human Information Interaction (TA), CUHK</li>
-<li><strong>2021</strong> · Basic Analog and Digital Circuits (TA), CUHK</li>
-<li><strong>2021</strong> · Linear Algebra for Engineers (TA), CUHK</li>
-<li><strong>2018–2020</strong> · Principles of Communication Systems (TA), CUHK</li>
-</ul>
 </div>
 
 <div class="cv-section">
