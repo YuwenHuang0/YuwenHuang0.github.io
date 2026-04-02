@@ -8,1070 +8,655 @@ redirect_from:
 ---
 
 <style>
-/* ═══════════════════════════════════════════════════════
-   RESET & FOUNDATIONS
-   ═══════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════
+   FOUNDATIONS
+   ══════════════════════════════════════════════════ */
 .splash .page__content {
-  font-family: "SF Pro Display", "Inter", "Segoe UI", "Helvetica Neue", sans-serif;
-  max-width: none;
-  padding: 0;
-  margin: 0;
-  overflow-x: hidden;
+  font-family: "SF Pro Display","Inter","Segoe UI","Helvetica Neue",sans-serif;
+  max-width: none; padding: 0; margin: 0; overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 .splash .page__content p,
 .splash .page__content h1,
 .splash .page__content h2,
-.splash .page__content h3 { margin: 0; }
-.splash .page__content a { text-decoration: none; }
+.splash .page__content h3 { margin:0; }
+.splash .page__content a { text-decoration:none; }
 
-/* ═══════════════════════════════════════════════════════
-   SCROLL REVEAL ANIMATIONS
-   ═══════════════════════════════════════════════════════ */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.92); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes slideLeft {
-  from { opacity: 0; transform: translateX(60px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes slideRight {
-  from { opacity: 0; transform: translateX(-60px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes glowPulse {
-  0%, 100% { opacity: 0.5; }
-  50%      { opacity: 1; }
-}
-@keyframes drawLine {
-  from { stroke-dashoffset: 300; }
-  to   { stroke-dashoffset: 0; }
-}
-@keyframes nodePopIn {
-  0%   { transform: scale(0); opacity: 0; }
-  70%  { transform: scale(1.15); opacity: 1; }
-  100% { transform: scale(1); opacity: 1; }
-}
-@keyframes floatY {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-6px); }
-}
-@keyframes orbitSpin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-@keyframes tensorPulse {
-  0%, 100% { rx: 8; ry: 8; }
-  50%      { rx: 10; ry: 10; }
-}
-@keyframes flowDash {
-  to { stroke-dashoffset: -20; }
+/* ══════════════════════════════════════════════════
+   KEYFRAMES
+   ══════════════════════════════════════════════════ */
+@keyframes fadeUp   { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+@keyframes scaleIn  { from{opacity:0;transform:scale(.93)} to{opacity:1;transform:scale(1)} }
+@keyframes pulse    { 0%,100%{opacity:.45} 50%{opacity:1} }
+@keyframes float1   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+@keyframes float2   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+@keyframes drawPath { from{stroke-dashoffset:500} to{stroke-dashoffset:0} }
+@keyframes flowDash { to{stroke-dashoffset:-24} }
+@keyframes popNode  { 0%{transform:scale(0);opacity:0} 60%{transform:scale(1.18);opacity:1} 100%{transform:scale(1);opacity:1} }
+@keyframes orbit    { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+@keyframes gradShift{ 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+@keyframes shimmer  { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+
+/* Scroll reveal */
+.rv { opacity:0; transform:translateY(28px); }
+.rv.vis { animation: fadeUp .6s cubic-bezier(.22,1,.36,1) forwards; }
+.rv-s { opacity:0; transform:scale(.93); }
+.rv-s.vis { animation: scaleIn .55s cubic-bezier(.22,1,.36,1) forwards; }
+.d1{animation-delay:0s!important} .d2{animation-delay:.1s!important} .d3{animation-delay:.2s!important} .d4{animation-delay:.3s!important}
+@media(prefers-reduced-motion:reduce){
+  .rv,.rv-s{opacity:1;transform:none}
+  .rv.vis,.rv-s.vis{animation:none;opacity:1;transform:none}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
 
-/* Reveal classes — elements start hidden, JS adds .is-visible */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: none;
+/* ══════════════════════════════════════════════════
+   LAYOUT
+   ══════════════════════════════════════════════════ */
+.s { width:100%; padding: clamp(2.2rem,4vw,3.5rem) clamp(1.2rem,3.5vw,2.5rem); }
+.s-inner { max-width:1060px; margin:0 auto; }
+
+/* ══════════════════════════════════════════════════
+   HERO — personal intro + announcement
+   ══════════════════════════════════════════════════ */
+.hero {
+  position:relative; overflow:hidden;
+  padding-top: clamp(2rem,4vw,3.2rem);
+  padding-bottom: clamp(2rem,4vw,3rem);
+  background: linear-gradient(170deg, #f0fafe 0%, #fff 35%, #fffdf6 70%, #f7fbfc 100%);
 }
-.reveal.is-visible {
-  animation: fadeUp 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+.hero::before {
+  content:""; position:absolute; top:-30%; right:-10%; width:600px; height:600px;
+  border-radius:50%; background:radial-gradient(circle,rgba(23,103,122,.06) 0%,transparent 70%);
+  animation:pulse 5s ease-in-out infinite; pointer-events:none;
 }
-.reveal-scale {
-  opacity: 0;
-  transform: scale(0.92);
+.hero::after {
+  content:""; position:absolute; bottom:-20%; left:-5%; width:400px; height:400px;
+  border-radius:50%; background:radial-gradient(circle,rgba(216,155,43,.05) 0%,transparent 70%);
+  animation:pulse 6s ease-in-out infinite 1s; pointer-events:none;
 }
-.reveal-scale.is-visible {
-  animation: scaleIn 0.65s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+.hero-inner { position:relative; z-index:1; }
+
+/* Top bar: photo + name + affiliation */
+.hero-profile {
+  display:flex; align-items:center; gap:1.2rem;
+  margin-bottom:1.6rem;
+  animation: fadeUp .7s .1s cubic-bezier(.22,1,.36,1) both;
+}
+.hero-avatar {
+  width:72px; height:72px; border-radius:50%;
+  object-fit:cover; border:3px solid #fff;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+}
+.hero-id h2 {
+  font-size:1.5rem; font-weight:800; color:#111; line-height:1.2;
+}
+.hero-id p {
+  font-size:1.02rem; color:#555; line-height:1.4; margin-top:.15rem;
+}
+.hero-id a { color:#17677a; font-weight:600; }
+.hero-id a:hover { color:#114e5d; }
+
+/* Announcement banner */
+.hero-announce {
+  display:inline-flex; align-items:center; gap:.6rem;
+  padding:.5rem 1.1rem; border-radius:12px;
+  background: linear-gradient(135deg, rgba(216,155,43,.1) 0%, rgba(23,103,122,.08) 100%);
+  border:1px solid rgba(216,155,43,.18);
+  margin-bottom:1.5rem;
+  animation: fadeUp .7s .2s cubic-bezier(.22,1,.36,1) both;
+}
+.hero-announce .dot {
+  width:8px;height:8px;border-radius:50%;
+  background:linear-gradient(135deg,#d89b2b,#17677a);
+  animation:pulse 2s ease-in-out infinite;
+  flex-shrink:0;
+}
+.hero-announce span {
+  font-size:.95rem; font-weight:700; color:#6b4510; line-height:1.35;
+}
+.hero-announce a { color:#17677a; font-weight:800; }
+
+/* Headline */
+.hero h1 {
+  font-size: clamp(2.2rem,5vw,3.8rem);
+  font-weight:800; line-height:1.08; letter-spacing:-.03em; color:#111;
+  max-width:18ch;
+  animation: fadeUp .7s .15s cubic-bezier(.22,1,.36,1) both;
+}
+.hero h1 em {
+  font-style:normal;
+  background: linear-gradient(135deg,#17677a 0%,#1e99b5 40%,#d89b2b 100%);
+  background-size:200% 200%;
+  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  animation: gradShift 6s ease infinite;
+}
+.hero-sub {
+  margin-top:.9rem;
+  font-size: clamp(1.08rem,1.6vw,1.28rem);
+  line-height:1.6; color:#444; max-width:48rem;
+  animation: fadeUp .7s .25s cubic-bezier(.22,1,.36,1) both;
 }
 
-/* Stagger delays for card grids */
-.stagger-1 { animation-delay: 0s !important; }
-.stagger-2 { animation-delay: 0.12s !important; }
-.stagger-3 { animation-delay: 0.24s !important; }
-.stagger-4 { animation-delay: 0.36s !important; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .reveal, .reveal-scale { opacity: 1; transform: none; }
-  .reveal.is-visible, .reveal-scale.is-visible { animation: none; opacity: 1; transform: none; }
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+/* Chips */
+.hero-chips {
+  display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.2rem;
+  animation: fadeUp .7s .3s cubic-bezier(.22,1,.36,1) both;
+}
+.chip {
+  padding:.38rem .85rem; border-radius:10px;
+  border:1px solid rgba(23,103,122,.12);
+  background:rgba(255,255,255,.8);
+  font-size:.92rem; font-weight:600; color:#1a5d6c;
 }
 
-/* ═══════════════════════════════════════════════════════
-   SECTION SCAFFOLD
-   ═══════════════════════════════════════════════════════ */
-.hp-section {
-  width: 100%;
-  padding: clamp(3rem, 6vw, 5.5rem) clamp(1.4rem, 4vw, 3rem);
+/* CTAs */
+.hero-cta {
+  display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.5rem;
+  animation: fadeUp .7s .35s cubic-bezier(.22,1,.36,1) both;
 }
-.hp-inner {
-  max-width: 1080px;
-  margin: 0 auto;
+.btn {
+  display:inline-flex; align-items:center; justify-content:center;
+  min-height:2.9rem; padding:.7rem 1.7rem; border-radius:12px;
+  font-size:1.05rem; font-weight:700; cursor:pointer;
+  text-decoration:none!important;
+  transition:all .22s cubic-bezier(.22,1,.36,1);
 }
+.btn-p {
+  background:linear-gradient(135deg,#17677a,#1a8199);
+  color:#fff!important;
+  box-shadow:0 3px 16px rgba(23,103,122,.22);
+}
+.btn-p:hover { transform:translateY(-2px); box-shadow:0 6px 28px rgba(23,103,122,.32); }
+.btn-s {
+  background:rgba(23,103,122,.06); border:1.5px solid rgba(23,103,122,.16);
+  color:#17677a!important;
+}
+.btn-s:hover { background:rgba(23,103,122,.1); border-color:rgba(23,103,122,.28); transform:translateY(-2px); }
 
-/* ═══════════════════════════════════════════════════════
-   HERO
-   ═══════════════════════════════════════════════════════ */
-.hp-hero {
-  position: relative;
-  text-align: center;
-  padding-top: clamp(3.5rem, 8vw, 6.5rem);
-  padding-bottom: clamp(3rem, 6vw, 5rem);
-  background: #fff;
-  overflow: hidden;
-}
-/* Animated gradient orb behind hero */
-.hp-hero::before {
-  content: "";
-  position: absolute;
-  top: -20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 800px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(23,103,122,0.08) 0%, rgba(216,155,43,0.04) 40%, transparent 70%);
-  animation: glowPulse 6s ease-in-out infinite;
-  pointer-events: none;
-}
-.hp-hero-inner {
-  position: relative;
-  z-index: 1;
-}
-.hp-hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 1.1rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(23,103,122,0.08) 0%, rgba(216,155,43,0.06) 100%);
-  border: 1px solid rgba(23,103,122,0.1);
-  color: #17677a;
-  font-size: 0.92rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  margin-bottom: 1.8rem;
-  animation: fadeIn 0.8s 0.2s ease both;
-}
-.hp-hero-badge .dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #17677a;
-  animation: glowPulse 2s ease-in-out infinite;
-}
-.hp-hero h1 {
-  font-size: clamp(2.6rem, 6vw, 4.8rem);
-  font-weight: 800;
-  line-height: 1.06;
-  letter-spacing: -0.035em;
-  color: #111;
-  max-width: 16ch;
-  margin: 0 auto;
-  text-wrap: balance;
-  animation: fadeUp 0.8s 0.1s cubic-bezier(0.23,1,0.32,1) both;
-}
-.hp-hero h1 .gradient-text {
-  background: linear-gradient(135deg, #17677a 0%, #1d8fa8 50%, #d89b2b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hp-hero-sub {
-  margin-top: 1.3rem;
-  font-size: clamp(1.12rem, 1.8vw, 1.38rem);
-  line-height: 1.65;
-  color: #555;
-  max-width: 42rem;
-  margin-left: auto;
-  margin-right: auto;
-  animation: fadeUp 0.8s 0.25s cubic-bezier(0.23,1,0.32,1) both;
-}
-.hp-hero-chips {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-  margin-top: 1.5rem;
-  animation: fadeUp 0.8s 0.35s cubic-bezier(0.23,1,0.32,1) both;
-}
-.hp-chip {
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid rgba(23,103,122,0.12);
-  background: rgba(255,255,255,0.8);
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: #1a5d6c;
-}
-.hp-hero-actions {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2rem;
-  animation: fadeUp 0.8s 0.45s cubic-bezier(0.23,1,0.32,1) both;
-}
-.hp-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 3.1rem;
-  padding: 0.8rem 2rem;
-  border-radius: 14px;
-  font-size: 1.08rem;
-  font-weight: 700;
-  text-decoration: none !important;
-  transition: all 0.25s cubic-bezier(0.23,1,0.32,1);
-  cursor: pointer;
-}
-.hp-btn-primary {
-  background: linear-gradient(135deg, #17677a 0%, #1a7d94 100%);
-  color: #fff !important;
-  box-shadow: 0 4px 20px rgba(23,103,122,0.25), inset 0 1px 0 rgba(255,255,255,0.15);
-}
-.hp-btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(23,103,122,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
-}
-.hp-btn-secondary {
-  background: rgba(23,103,122,0.06);
-  border: 1.5px solid rgba(23,103,122,0.18);
-  color: #17677a !important;
-}
-.hp-btn-secondary:hover {
-  background: rgba(23,103,122,0.1);
-  border-color: rgba(23,103,122,0.3);
-  transform: translateY(-2px);
-}
-
-/* ═══════════════════════════════════════════════════════
+/* ══════════════════════════════════════════════════
    SECTION HEADERS
-   ═══════════════════════════════════════════════════════ */
-.hp-section-header {
-  text-align: center;
-  margin-bottom: clamp(2rem, 4vw, 3.2rem);
-}
-.hp-section-kicker {
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: #17677a;
-  margin-bottom: 0.6rem;
-}
-.hp-section-title {
-  font-size: clamp(1.8rem, 3.8vw, 3rem);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  color: #111;
-  text-wrap: balance;
-}
-.hp-section-sub {
-  margin-top: 0.8rem;
-  font-size: clamp(1.05rem, 1.5vw, 1.22rem);
-  line-height: 1.6;
-  color: #666;
-  max-width: 40rem;
-  margin-left: auto;
-  margin-right: auto;
-}
+   ══════════════════════════════════════════════════ */
+.sh { text-align:center; margin-bottom:clamp(1.5rem,3vw,2.2rem); }
+.sh-k { font-size:.86rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#17677a; margin-bottom:.4rem; }
+.sh-t { font-size:clamp(1.7rem,3.5vw,2.6rem); font-weight:800; line-height:1.1; letter-spacing:-.02em; color:#111; }
+.sh-sub { margin-top:.5rem; font-size:clamp(1.02rem,1.4vw,1.15rem); line-height:1.55; color:#666; max-width:38rem; margin-left:auto; margin-right:auto; }
+.dark .sh-k { color:rgba(255,255,255,.4); }
+.dark .sh-t { color:#eee; }
 
-/* ═══════════════════════════════════════════════════════
-   RESEARCH AREA CARDS (with animated SVG art)
-   ═══════════════════════════════════════════════════════ */
-.hp-gray { background: #f7f7f8; }
+/* ══════════════════════════════════════════════════
+   RESEARCH CARDS — bold animated SVGs
+   ══════════════════════════════════════════════════ */
+.bg-g { background:#f5f5f7; }
 
-.hp-cards {
-  display: grid;
-  gap: 1.2rem;
-  grid-template-columns: 1fr;
+.cards { display:grid; gap:1rem; }
+@media(min-width:760px){ .cards{grid-template-columns:repeat(3,1fr)} }
+.card {
+  border-radius:20px; border:1px solid rgba(0,0,0,.06);
+  overflow:hidden; display:flex; flex-direction:column;
+  transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s ease;
 }
-@media (min-width: 760px) {
-  .hp-cards { grid-template-columns: repeat(3, 1fr); }
-}
-.hp-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 22px;
-  border: 1px solid rgba(0,0,0,0.06);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s cubic-bezier(0.23,1,0.32,1), box-shadow 0.3s ease;
-}
-.hp-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 48px rgba(0,0,0,0.1);
-}
+.card:hover { transform:translateY(-5px); box-shadow:0 18px 40px rgba(0,0,0,.1); }
 
-/* Card animated art area */
-.hp-card-art {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
-}
-.hp-card-art svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.hp-card-art-teal { background: linear-gradient(160deg, #daf1f7 0%, #eef9fc 100%); }
-.hp-card-art-gold { background: linear-gradient(160deg, #fef2d6 0%, #fffbf0 100%); }
-.hp-card-art-coral { background: linear-gradient(160deg, #fde8e1 0%, #fef5f2 100%); }
+/* Card art — taller, bolder */
+.card-art { position:relative; height:180px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.card-art svg { width:92%; height:92%; }
+.card-art-t { background:linear-gradient(145deg,#d0eef6 0%,#e8f7fb 100%); }
+.card-art-g { background:linear-gradient(145deg,#fcefd2 0%,#fffaf0 100%); }
+.card-art-c { background:linear-gradient(145deg,#fce0d6 0%,#fef3ef 100%); }
 
-/* Card body */
-.hp-card-body {
-  padding: 1.5rem 1.6rem 1.8rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  flex: 1;
-  background: #fff;
+.card-body {
+  padding:1.3rem 1.4rem 1.5rem; display:flex; flex-direction:column;
+  gap:.45rem; flex:1; background:#fff;
 }
-.hp-card-label {
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-}
-.hp-card-label.teal { color: #17677a; }
-.hp-card-label.gold { color: #9a6a12; }
-.hp-card-label.coral { color: #b04a33; }
+.card-lbl { font-size:.82rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
+.card-lbl-t { color:#17677a; } .card-lbl-g { color:#9a6a12; } .card-lbl-c { color:#b04a33; }
+.card h3 { font-size:1.22rem; font-weight:700; line-height:1.2; color:#111; }
+.card p  { font-size:1.02rem; line-height:1.55; color:#555; }
+.card-tags { display:flex; flex-wrap:wrap; gap:.35rem; margin-top:auto; padding-top:.4rem; }
+.card-tags span { padding:.28rem .65rem; border-radius:8px; background:#f0f0f2; font-size:.84rem; font-weight:600; color:#444; }
 
-.hp-card h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  line-height: 1.2;
-  color: #111;
-}
-.hp-card p {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: #555;
-}
-.hp-card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: auto;
-  padding-top: 0.5rem;
-}
-.hp-card-tags span {
-  padding: 0.3rem 0.72rem;
-  border-radius: 999px;
-  background: #f3f3f5;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #444;
-}
+/* SVG anim helpers — always visible, looping */
+.nd { transform-origin:center; animation: popNode .5s cubic-bezier(.34,1.56,.64,1) both; }
+.nd-2{animation-delay:.12s} .nd-3{animation-delay:.24s} .nd-4{animation-delay:.36s} .nd-5{animation-delay:.48s}
+.ln { stroke-dasharray:500; stroke-dashoffset:500; animation: drawPath 1.4s ease forwards; }
+.ln-2{animation-delay:.15s} .ln-3{animation-delay:.3s} .ln-4{animation-delay:.45s}
+.fl { animation: float1 3s ease-in-out infinite; }
+.fl-2 { animation: float2 3.5s ease-in-out infinite .8s; }
+.fd { stroke-dasharray:10 8; animation: flowDash 1.2s linear infinite; }
 
-/* ═══════════════════════════════════════════════════════
-   PIPELINE (dark strip)
-   ═══════════════════════════════════════════════════════ */
-.hp-dark {
-  background: linear-gradient(180deg, #0f1b20 0%, #152830 100%);
-  color: #f5f5f7;
+/* ══════════════════════════════════════════════════
+   PIPELINE (dark)
+   ══════════════════════════════════════════════════ */
+.dark { background:linear-gradient(180deg,#0d1a1f,#15282f); color:#f0f0f2; }
+.pipe { display:grid; gap:.8rem; }
+@media(min-width:760px){ .pipe{grid-template-columns:repeat(4,1fr)} }
+.stg {
+  padding:1.4rem 1.2rem; border-radius:16px;
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06);
+  transition:background .3s ease,border-color .3s ease;
 }
-.hp-dark .hp-section-kicker { color: rgba(255,255,255,0.4); }
-.hp-dark .hp-section-title { color: #f0f0f2; }
+.stg:hover { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.12); }
+.stg-n {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:2.2rem; height:2.2rem; border-radius:9px;
+  background:rgba(255,255,255,.08); font-size:.86rem; font-weight:800;
+  color:rgba(255,255,255,.45); margin-bottom:.8rem;
+}
+.stg h3 { font-size:1.12rem; font-weight:700; color:#e5e5e7; margin-bottom:.35rem; }
+.stg p  { font-size:.98rem; line-height:1.5; color:rgba(255,255,255,.5); }
 
-.hp-pipeline {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
+/* ══════════════════════════════════════════════════
+   SELECTED PAPERS — animated headers
+   ══════════════════════════════════════════════════ */
+.pgrid { display:grid; gap:1rem; }
+@media(min-width:760px){ .pgrid{grid-template-columns:repeat(2,1fr)} }
+.pcard {
+  border-radius:20px; border:1px solid rgba(0,0,0,.06); background:#fff;
+  overflow:hidden; display:flex; flex-direction:column;
+  transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s ease;
 }
-@media (min-width: 760px) {
-  .hp-pipeline { grid-template-columns: repeat(4, 1fr); }
-}
-.hp-stage {
-  position: relative;
-  padding: 1.8rem 1.4rem;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: background 0.3s ease, border-color 0.3s ease;
-}
-.hp-stage:hover {
-  background: rgba(255,255,255,0.08);
-  border-color: rgba(255,255,255,0.12);
-}
-.hp-stage-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.08);
-  font-size: 0.88rem;
-  font-weight: 800;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 1rem;
-}
-.hp-stage h3 {
-  font-size: 1.18rem;
-  font-weight: 700;
-  color: #eee;
-  margin-bottom: 0.45rem;
-}
-.hp-stage p {
-  font-size: 1rem;
-  line-height: 1.55;
-  color: rgba(255,255,255,0.5);
-}
+.pcard:hover { transform:translateY(-4px); box-shadow:0 16px 38px rgba(0,0,0,.09); }
+.pcard-art { height:140px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.pcard-art svg { width:90%; height:90%; }
+.pa-t { background:linear-gradient(150deg,#c8eaf3,#e6f6fa); }
+.pa-g { background:linear-gradient(150deg,#faeabc,#fef8ec); }
+.pa-c { background:linear-gradient(150deg,#f8d4c9,#fef0ea); }
+.pa-gr{ background:linear-gradient(150deg,#c8e8ce,#e8f5eb); }
 
-/* ═══════════════════════════════════════════════════════
-   SELECTED RESEARCH (animated paper cards)
-   ═══════════════════════════════════════════════════════ */
-.hp-research-grid {
-  display: grid;
-  gap: 1.2rem;
-  grid-template-columns: 1fr;
+.pcard-body { padding:1.2rem 1.3rem 1.4rem; display:flex; flex-direction:column; gap:.45rem; flex:1; }
+.pcard-lbl {
+  display:inline-flex; width:fit-content; padding:.22rem .7rem; border-radius:8px;
+  font-size:.78rem; font-weight:800; letter-spacing:.05em; text-transform:uppercase;
 }
-@media (min-width: 760px) {
-  .hp-research-grid { grid-template-columns: repeat(2, 1fr); }
+.pcard-lbl-t { background:rgba(23,103,122,.1); color:#17677a; }
+.pcard-lbl-g { background:rgba(216,155,43,.12); color:#8b5a10; }
+.pcard-lbl-c { background:rgba(203,102,81,.1); color:#a14430; }
+.pcard-lbl-gr{ background:rgba(79,139,98,.1); color:#3a7049; }
+.pcard h3 { font-size:1.15rem; font-weight:700; line-height:1.22; color:#111; }
+.pcard p  { font-size:1rem; line-height:1.55; color:#555; }
+.cites { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:auto; padding-top:.3rem; }
+.ct {
+  display:inline-flex; align-items:center; padding:.32rem .72rem;
+  border-radius:9px; border:1px solid rgba(23,103,122,.15);
+  background:rgba(23,103,122,.04); color:#17677a!important;
+  font-size:.88rem; font-weight:700; text-decoration:none!important;
+  transition:all .2s ease;
 }
-.hp-paper {
-  position: relative;
-  overflow: hidden;
-  border-radius: 22px;
-  border: 1px solid rgba(0,0,0,0.06);
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s cubic-bezier(0.23,1,0.32,1), box-shadow 0.3s ease;
-}
-.hp-paper:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 44px rgba(0,0,0,0.1);
-}
-/* Paper animated header */
-.hp-paper-art {
-  position: relative;
-  height: 160px;
-  overflow: hidden;
-}
-.hp-paper-art svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.hp-paper-art-teal { background: linear-gradient(160deg, #d5eff6 0%, #edf9fc 100%); }
-.hp-paper-art-gold { background: linear-gradient(160deg, #fceed0 0%, #fffbf2 100%); }
-.hp-paper-art-coral { background: linear-gradient(160deg, #fce3da 0%, #fef4f0 100%); }
-.hp-paper-art-green { background: linear-gradient(160deg, #d9f0de 0%, #eef8f0 100%); }
+.ct:hover { background:rgba(23,103,122,.12); border-color:rgba(23,103,122,.3); transform:translateY(-2px); box-shadow:0 3px 10px rgba(23,103,122,.1); }
 
-.hp-paper-body {
-  padding: 1.4rem 1.5rem 1.6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-  flex: 1;
+/* ══════════════════════════════════════════════════
+   RECRUIT
+   ══════════════════════════════════════════════════ */
+.recruit { text-align:center; background:#fff; }
+.recruit-t { font-size:clamp(1.7rem,3.5vw,2.6rem); font-weight:800; line-height:1.1; letter-spacing:-.02em; color:#111; }
+.recruit-sub { margin-top:.6rem; font-size:clamp(1.02rem,1.4vw,1.15rem); line-height:1.55; color:#555; max-width:42rem; margin-left:auto; margin-right:auto; }
+.recruit-meta {
+  display:inline-flex; align-items:center; gap:.45rem; margin-top:1rem;
+  padding:.4rem 1rem; border-radius:10px;
+  background:rgba(216,155,43,.08); border:1px solid rgba(216,155,43,.15);
+  font-size:.92rem; font-weight:700; color:#8b5a10;
 }
-.hp-paper-label {
-  display: inline-flex;
-  width: fit-content;
-  padding: 0.28rem 0.78rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.roles { display:grid; gap:.8rem; margin-top:2rem; text-align:left; }
+@media(min-width:760px){ .roles{grid-template-columns:repeat(4,1fr)} }
+.role {
+  padding:1.3rem 1.2rem; border-radius:16px; background:#f5f5f7;
+  border:1px solid rgba(0,0,0,.04);
+  display:flex; flex-direction:column; gap:.4rem;
+  transition:transform .22s ease,box-shadow .22s ease;
 }
-.hp-paper-label.teal { background: rgba(23,103,122,0.1); color: #17677a; }
-.hp-paper-label.gold { background: rgba(216,155,43,0.12); color: #8b5a10; }
-.hp-paper-label.coral { background: rgba(203,102,81,0.1); color: #a14430; }
-.hp-paper-label.green { background: rgba(79,139,98,0.1); color: #3a7049; }
-
-.hp-paper h3 {
-  font-size: 1.22rem;
-  font-weight: 700;
-  line-height: 1.25;
-  color: #111;
-}
-.hp-paper p {
-  font-size: 1.02rem;
-  line-height: 1.6;
-  color: #555;
-}
-.hp-cite-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: auto;
-  padding-top: 0.3rem;
-}
-.hp-cite {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.35rem 0.8rem;
-  border-radius: 10px;
-  border: 1px solid rgba(23,103,122,0.15);
-  background: rgba(23,103,122,0.04);
-  color: #17677a !important;
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-decoration: none !important;
-  transition: all 0.2s ease;
-}
-.hp-cite:hover {
-  background: rgba(23,103,122,0.12);
-  border-color: rgba(23,103,122,0.3);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(23,103,122,0.1);
-}
-
-/* ═══════════════════════════════════════════════════════
-   RECRUIT SECTION
-   ═══════════════════════════════════════════════════════ */
-.hp-recruit {
-  text-align: center;
-  background:
-    radial-gradient(ellipse 60% 50% at 50% 100%, rgba(216,155,43,0.05) 0%, transparent 70%),
-    #fff;
-}
-.hp-recruit-title {
-  font-size: clamp(1.8rem, 3.8vw, 3rem);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  color: #111;
-  text-wrap: balance;
-}
-.hp-recruit-sub {
-  margin-top: 0.9rem;
-  font-size: clamp(1.05rem, 1.5vw, 1.22rem);
-  line-height: 1.6;
-  color: #555;
-  max-width: 44rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-.hp-recruit-meta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1.2rem;
-  padding: 0.45rem 1.1rem;
-  border-radius: 999px;
-  background: rgba(216,155,43,0.08);
-  border: 1px solid rgba(216,155,43,0.15);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #8b5a10;
-}
-.hp-roles {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
-  margin-top: 2.5rem;
-  text-align: left;
-}
-@media (min-width: 760px) {
-  .hp-roles { grid-template-columns: repeat(4, 1fr); }
-}
-.hp-role {
-  padding: 1.5rem 1.3rem;
-  border-radius: 18px;
-  background: #f7f7f8;
-  border: 1px solid rgba(0,0,0,0.04);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.hp-role:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.06);
-}
-.hp-role h3 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #111;
-}
-.hp-role p {
-  font-size: 1rem;
-  line-height: 1.55;
-  color: #555;
-}
-.hp-recruit-cta {
-  margin-top: 2.5rem;
-}
-.hp-recruit-links {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
-  margin-top: 1rem;
-}
-.hp-recruit-links a {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #17677a !important;
-  text-decoration: none !important;
-  transition: color 0.2s ease;
-}
-.hp-recruit-links a:hover { color: #114e5d !important; }
-.hp-recruit-links a::after { content: " \2197"; font-size: 0.8em; }
-
-/* ═══════════════════════════════════════════════════════
-   ANIMATED SVG HELPERS
-   ═══════════════════════════════════════════════════════ */
-.anim-line {
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-}
-.is-visible .anim-line {
-  animation: drawLine 1.2s ease forwards;
-}
-.is-visible .anim-line.d2 { animation-delay: 0.2s; }
-.is-visible .anim-line.d3 { animation-delay: 0.4s; }
-.is-visible .anim-line.d4 { animation-delay: 0.6s; }
-
-.anim-node {
-  transform-origin: center;
-  transform: scale(0);
-  opacity: 0;
-}
-.is-visible .anim-node {
-  animation: nodePopIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-.is-visible .anim-node.d2 { animation-delay: 0.15s; }
-.is-visible .anim-node.d3 { animation-delay: 0.3s; }
-.is-visible .anim-node.d4 { animation-delay: 0.45s; }
-.is-visible .anim-node.d5 { animation-delay: 0.6s; }
-
-.float-anim {
-  animation: floatY 3s ease-in-out infinite;
-}
-.float-anim.slow { animation-duration: 4s; }
-.float-anim.offset { animation-delay: -1.5s; }
-
-/* Flowing dashed lines */
-.flow-line {
-  stroke-dasharray: 8 6;
-  animation: flowDash 1.5s linear infinite;
-}
-
-/* Orbit ring */
-.orbit-ring {
-  transform-origin: center;
-  animation: orbitSpin 12s linear infinite;
-}
+.role:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,.06); }
+.role h3 { font-size:1.1rem; font-weight:700; color:#111; }
+.role p  { font-size:.98rem; line-height:1.5; color:#555; }
+.recruit-cta { margin-top:2rem; }
+.recruit-links { display:flex; justify-content:center; flex-wrap:wrap; gap:.4rem 1.2rem; margin-top:.8rem; }
+.recruit-links a { font-size:.98rem; font-weight:600; color:#17677a!important; text-decoration:none!important; }
+.recruit-links a:hover { color:#114e5d!important; }
+.recruit-links a::after { content:" \2197"; font-size:.8em; }
 </style>
 
-<!-- ════════════════════════════════════════════════════════
-     HERO
-     ════════════════════════════════════════════════════════ -->
-<section class="hp-section hp-hero">
-  <div class="hp-inner hp-hero-inner">
-    <p class="hp-hero-badge"><span class="dot"></span> Yuwen Huang · Researcher</p>
-    <h1>Provable methods for <span class="gradient-text">structured inference</span></h1>
-    <p class="hp-hero-sub">
-      Scalable algorithms with rigorous guarantees — built on graphical models, combinatorics, tensor networks, and distributed quantum systems.
-    </p>
-    <div class="hp-hero-chips">
-      <span class="hp-chip">Bethe methods</span>
-      <span class="hp-chip">Combinatorial counting</span>
-      <span class="hp-chip">Tensor networks</span>
-      <span class="hp-chip">Quantum systems</span>
-    </div>
-    <div class="hp-hero-actions">
-      <a class="hp-btn hp-btn-primary" href="#positions">Open positions</a>
-      <a class="hp-btn hp-btn-secondary" href="#research">Selected research</a>
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="s hero">
+<div class="s-inner hero-inner">
+
+  <div class="hero-profile">
+    <img class="hero-avatar" src="{{ '/images/yuwen_photo.jpg' | relative_url }}" alt="Yuwen Huang">
+    <div class="hero-id">
+      <h2>Yuwen Huang</h2>
+      <p>Postdoctoral Researcher, <a href="https://www.cse.cuhk.edu.hk/">CSE Dept., CUHK</a></p>
     </div>
   </div>
-</section>
 
-<!-- ════════════════════════════════════════════════════════
-     RESEARCH AREAS (animated SVG illustrations)
-     ════════════════════════════════════════════════════════ -->
-<section class="hp-section hp-gray">
-  <div class="hp-inner">
-    <div class="hp-section-header reveal">
-      <p class="hp-section-kicker">Research areas</p>
-      <h2 class="hp-section-title">Three pillars, one pursuit</h2>
-      <p class="hp-section-sub">Turning mathematical structure into practical, scalable computation.</p>
-    </div>
-    <div class="hp-cards">
-
-      <!-- INFERENCE CARD -->
-      <article class="hp-card reveal-scale stagger-1">
-        <div class="hp-card-art hp-card-art-teal">
-          <svg viewBox="0 0 400 200" role="img" aria-label="Graphical model with message-passing illustration">
-            <!-- Edges (animate draw) -->
-            <line x1="90" y1="70" x2="180" y2="55" class="anim-line" stroke="#78b8c7" stroke-width="4" stroke-linecap="round"/>
-            <line x1="90" y1="70" x2="160" y2="140" class="anim-line d2" stroke="#78b8c7" stroke-width="4" stroke-linecap="round"/>
-            <line x1="180" y1="55" x2="270" y2="80" class="anim-line d3" stroke="#78b8c7" stroke-width="4" stroke-linecap="round"/>
-            <line x1="160" y1="140" x2="270" y2="80" class="anim-line d3" stroke="#78b8c7" stroke-width="4" stroke-linecap="round"/>
-            <line x1="270" y1="80" x2="340" y2="100" class="anim-line d4" stroke="#78b8c7" stroke-width="4" stroke-linecap="round"/>
-            <!-- Message arrows (flowing) -->
-            <line x1="120" y1="63" x2="155" y2="57" class="flow-line" stroke="#2f7f93" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="200" y1="62" x2="245" y2="75" class="flow-line" stroke="#2f7f93" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- Nodes -->
-            <circle cx="90" cy="70" r="18" class="anim-node" fill="#2f7f93"/>
-            <circle cx="180" cy="55" r="15" class="anim-node d2" fill="#2f7f93"/>
-            <circle cx="160" cy="140" r="15" class="anim-node d3" fill="#5ba3b4"/>
-            <circle cx="270" cy="80" r="17" class="anim-node d4" fill="#2f7f93"/>
-            <circle cx="340" cy="100" r="14" class="anim-node d5" fill="#5ba3b4"/>
-            <!-- Factor boxes -->
-            <rect x="295" y="130" width="80" height="38" rx="10" class="anim-node d4" fill="#e0f3f8" stroke="#78b8c7" stroke-width="2"/>
-            <rect x="302" y="140" width="8" height="18" rx="3" fill="#2f7f93" class="float-anim"/>
-            <rect x="316" y="134" width="8" height="24" rx="3" fill="#78b8c7" class="float-anim offset"/>
-            <rect x="330" y="138" width="8" height="20" rx="3" fill="#2f7f93" class="float-anim"/>
-            <rect x="344" y="142" width="8" height="16" rx="3" fill="#78b8c7" class="float-anim offset"/>
-            <text x="90" y="75" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">x₁</text>
-            <text x="180" y="60" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">x₂</text>
-            <text x="270" y="85" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">x₃</text>
-          </svg>
-        </div>
-        <div class="hp-card-body">
-          <p class="hp-card-label teal">Inference</p>
-          <h3>Structured graphical-model reasoning</h3>
-          <p>Message passing, Bethe methods, and combinatorial structure for reliable inference and counting.</p>
-          <div class="hp-card-tags">
-            <span>Uncertainty</span><span>Counting</span><span>Graph covers</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- OPTIMIZATION CARD -->
-      <article class="hp-card reveal-scale stagger-2">
-        <div class="hp-card-art hp-card-art-gold">
-          <svg viewBox="0 0 400 200" role="img" aria-label="Optimization landscape illustration">
-            <defs>
-              <linearGradient id="opt-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#e8c75a"/>
-                <stop offset="100%" stop-color="#d89b2b"/>
-              </linearGradient>
-              <marker id="opt-arr" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="9" refY="5" orient="auto">
-                <path d="M1 1 L9 5 L1 9" fill="none" stroke="#d89b2b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </marker>
-            </defs>
-            <!-- Landscape curve -->
-            <path d="M40 140 C80 110, 100 50, 150 50 C200 50, 220 135, 270 135 C305 135, 325 105, 355 65" class="anim-line" fill="none" stroke="url(#opt-grad)" stroke-width="5" stroke-linecap="round" marker-end="url(#opt-arr)"/>
-            <!-- Critical points -->
-            <circle cx="150" cy="50" r="12" class="anim-node d2 float-anim" fill="#8a5b10"/>
-            <circle cx="270" cy="135" r="12" class="anim-node d3 float-anim offset" fill="#8a5b10"/>
-            <!-- Bound labels -->
-            <rect x="68" y="28" width="66" height="30" rx="10" class="anim-node d3" fill="#fff6de" stroke="#ead28d" stroke-width="2"/>
-            <text x="101" y="48" text-anchor="middle" fill="#8a5b10" font-size="12" font-weight="800">Bounds</text>
-            <rect x="280" y="28" width="82" height="30" rx="10" class="anim-node d4" fill="#fff6de" stroke="#ead28d" stroke-width="2"/>
-            <text x="321" y="48" text-anchor="middle" fill="#8a5b10" font-size="12" font-weight="800">Algorithms</text>
-            <!-- Baseline -->
-            <line x1="60" y1="170" x2="340" y2="170" class="anim-line d4" stroke="#ead28d" stroke-width="3" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="hp-card-body">
-          <p class="hp-card-label gold">Optimization</p>
-          <h3>Provable optimization and decision-making</h3>
-          <p>Structure-aware objectives, permanent bounds, and algorithmic guarantees for hard problems.</p>
-          <div class="hp-card-tags">
-            <span>Convex / nonconvex</span><span>Permanent bounds</span><span>Decisions</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- QUANTUM & TENSORS CARD -->
-      <article class="hp-card reveal-scale stagger-3">
-        <div class="hp-card-art hp-card-art-coral">
-          <svg viewBox="0 0 400 200" role="img" aria-label="Tensor network and quantum illustration">
-            <!-- Tensor chain -->
-            <line x1="82" y1="90" x2="132" y2="90" class="anim-line" stroke="#cb6651" stroke-width="4" stroke-linecap="round"/>
-            <line x1="172" y1="90" x2="222" y2="90" class="anim-line d2" stroke="#cb6651" stroke-width="4" stroke-linecap="round"/>
-            <line x1="262" y1="90" x2="312" y2="90" class="anim-line d3" stroke="#cb6651" stroke-width="4" stroke-linecap="round"/>
-            <!-- Tensor nodes -->
-            <rect x="42" y="72" width="40" height="36" rx="10" class="anim-node" fill="#efb2a7"/>
-            <rect x="132" y="72" width="40" height="36" rx="10" class="anim-node d2" fill="#efb2a7"/>
-            <rect x="222" y="72" width="40" height="36" rx="10" class="anim-node d3" fill="#efb2a7"/>
-            <rect x="312" y="72" width="40" height="36" rx="10" class="anim-node d4" fill="#efb2a7"/>
-            <!-- Vertical bonds -->
-            <line x1="62" y1="72" x2="62" y2="52" class="anim-line d2" stroke="#cb6651" stroke-width="3" stroke-linecap="round"/>
-            <line x1="152" y1="72" x2="152" y2="52" class="anim-line d3" stroke="#cb6651" stroke-width="3" stroke-linecap="round"/>
-            <line x1="242" y1="72" x2="242" y2="52" class="anim-line d3" stroke="#cb6651" stroke-width="3" stroke-linecap="round"/>
-            <line x1="332" y1="72" x2="332" y2="52" class="anim-line d4" stroke="#cb6651" stroke-width="3" stroke-linecap="round"/>
-            <!-- Quantum orbit ring -->
-            <g style="transform-origin: 200px 148px;" class="orbit-ring">
-              <ellipse cx="200" cy="148" rx="55" ry="18" fill="none" stroke="#86b894" stroke-width="2" stroke-dasharray="5 4"/>
-            </g>
-            <circle cx="200" cy="148" r="10" class="anim-node d4" fill="#4f8b62"/>
-            <circle cx="252" cy="144" r="7" class="anim-node d5 float-anim" fill="#86b894"/>
-            <circle cx="148" cy="144" r="7" class="anim-node d5 float-anim offset" fill="#86b894"/>
-          </svg>
-        </div>
-        <div class="hp-card-body">
-          <p class="hp-card-label coral">Quantum &amp; Tensors</p>
-          <h3>High-dimensional quantum computation</h3>
-          <p>Tensor-network representations and distributed quantum systems for scalable computation.</p>
-          <div class="hp-card-tags">
-            <span>Tensor networks</span><span>Quantum systems</span><span>Scalability</span>
-          </div>
-        </div>
-      </article>
-
-    </div>
+  <div class="hero-announce">
+    <span class="dot"></span>
+    <span>Joining <a href="https://dsa.hkust-gz.edu.cn/">Data Science and Analytics Thrust</a>, <a href="https://www.hkust-gz.edu.cn/academics/hubs-and-thrust-areas/information-hub/">Information Hub</a>, <a href="https://www.hkust-gz.edu.cn/">HKUST (Guangzhou)</a> as tenure-track Assistant Professor, Fall 2026</span>
   </div>
+
+  <h1>Provable methods for <em>structured inference and optimization</em></h1>
+
+  <p class="hero-sub">
+    I develop scalable algorithms with rigorous guarantees using graphical models, combinatorics, tensor networks, and distributed quantum systems, with growing directions in machine learning and learning theory.
+  </p>
+
+  <div class="hero-chips">
+    <span class="chip">Bethe methods &amp; graph covers</span>
+    <span class="chip">Combinatorial inference</span>
+    <span class="chip">Tensor networks</span>
+    <span class="chip">Distributed quantum systems</span>
+  </div>
+
+  <div class="hero-cta">
+    <a class="btn btn-p" href="#positions">Open positions</a>
+    <a class="btn btn-s" href="#research">Selected research</a>
+  </div>
+
+</div>
 </section>
 
-<!-- ════════════════════════════════════════════════════════
-     PIPELINE (dark)
-     ════════════════════════════════════════════════════════ -->
-<section class="hp-section hp-dark">
-  <div class="hp-inner">
-    <div class="hp-section-header reveal">
-      <p class="hp-section-kicker">From theory to impact</p>
-      <h2 class="hp-section-title">Structure becomes computation</h2>
-    </div>
-    <div class="hp-pipeline">
-      <div class="hp-stage reveal stagger-1">
-        <div class="hp-stage-num">01</div>
-        <h3>Information theory &amp; statistical physics</h3>
-        <p>Structure, correlation, and entropy motivate the underlying questions.</p>
+<!-- ═══════════════════ RESEARCH AREAS ═══════════════════ -->
+<section class="s bg-g">
+<div class="s-inner">
+  <div class="sh rv">
+    <p class="sh-k">Research areas</p>
+    <h2 class="sh-t">Three pillars, one pursuit</h2>
+    <p class="sh-sub">Turning mathematical structure into practical, scalable computation.</p>
+  </div>
+  <div class="cards">
+
+    <!-- INFERENCE -->
+    <article class="card rv-s d1">
+      <div class="card-art card-art-t">
+        <svg viewBox="0 0 320 180" aria-label="Graphical model inference">
+          <!-- edges -->
+          <line x1="70" y1="60" x2="145" y2="42" class="ln" stroke="#5ba8bb" stroke-width="5" stroke-linecap="round"/>
+          <line x1="70" y1="60" x2="130" y2="130" class="ln ln-2" stroke="#5ba8bb" stroke-width="5" stroke-linecap="round"/>
+          <line x1="145" y1="42" x2="220" y2="75" class="ln ln-3" stroke="#5ba8bb" stroke-width="5" stroke-linecap="round"/>
+          <line x1="130" y1="130" x2="220" y2="75" class="ln ln-3" stroke="#5ba8bb" stroke-width="5" stroke-linecap="round"/>
+          <line x1="220" y1="75" x2="280" y2="60" class="ln ln-4" stroke="#5ba8bb" stroke-width="5" stroke-linecap="round"/>
+          <!-- message flow -->
+          <line x1="95" y1="53" x2="125" y2="46" class="fd" stroke="#17677a" stroke-width="3" stroke-linecap="round"/>
+          <line x1="165" y1="52" x2="200" y2="68" class="fd" stroke="#17677a" stroke-width="3" stroke-linecap="round"/>
+          <!-- nodes -->
+          <circle cx="70" cy="60" r="22" class="nd" fill="#2a8a9e"/>
+          <circle cx="145" cy="42" r="18" class="nd nd-2" fill="#2a8a9e"/>
+          <circle cx="130" cy="130" r="18" class="nd nd-3" fill="#4da8b8"/>
+          <circle cx="220" cy="75" r="20" class="nd nd-4" fill="#2a8a9e"/>
+          <circle cx="280" cy="60" r="16" class="nd nd-5" fill="#4da8b8"/>
+          <!-- labels -->
+          <text x="70" y="66" text-anchor="middle" fill="#fff" font-size="14" font-weight="800">x&#x2081;</text>
+          <text x="145" y="48" text-anchor="middle" fill="#fff" font-size="13" font-weight="800">x&#x2082;</text>
+          <text x="220" y="81" text-anchor="middle" fill="#fff" font-size="14" font-weight="800">x&#x2083;</text>
+          <!-- bar chart -->
+          <rect x="235" y="110" width="55" height="40" rx="8" fill="#e0f3f8" stroke="#78b8c7" stroke-width="2"/>
+          <rect x="243" y="130" width="8" height="16" rx="3" fill="#2a8a9e" class="fl"/>
+          <rect x="255" y="122" width="8" height="24" rx="3" fill="#5ba8bb" class="fl-2"/>
+          <rect x="267" y="126" width="8" height="20" rx="3" fill="#2a8a9e" class="fl"/>
+          <rect x="279" y="132" width="8" height="14" rx="3" fill="#5ba8bb" class="fl-2"/>
+        </svg>
       </div>
-      <div class="hp-stage reveal stagger-2">
-        <div class="hp-stage-num">02</div>
-        <h3>Inference, counting, optimization</h3>
-        <p>Bethe methods, graph covers, and structure-aware optimization.</p>
+      <div class="card-body">
+        <p class="card-lbl card-lbl-t">Inference</p>
+        <h3>Structured graphical-model reasoning</h3>
+        <p>Message passing, Bethe methods, and combinatorial structure for reliable inference and counting.</p>
+        <div class="card-tags"><span>Uncertainty</span><span>Counting</span><span>Graph covers</span></div>
       </div>
-      <div class="hp-stage reveal stagger-3">
-        <div class="hp-stage-num">03</div>
+    </article>
+
+    <!-- OPTIMIZATION -->
+    <article class="card rv-s d2">
+      <div class="card-art card-art-g">
+        <svg viewBox="0 0 320 180" aria-label="Optimization landscape">
+          <defs>
+            <linearGradient id="og" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#e8c75a"/><stop offset="100%" stop-color="#d89b2b"/></linearGradient>
+            <marker id="oa" viewBox="0 0 10 10" markerWidth="8" markerHeight="8" refX="9" refY="5" orient="auto">
+              <path d="M1 1L9 5L1 9" fill="none" stroke="#d89b2b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+          <!-- curve -->
+          <path d="M30 130 C65 100,90 40,135 40 C180 40,200 120,245 120 C275 120,295 90,310 55" class="ln" fill="none" stroke="url(#og)" stroke-width="6" stroke-linecap="round" marker-end="url(#oa)"/>
+          <!-- critical pts -->
+          <circle cx="135" cy="40" r="14" class="nd nd-2 fl" fill="#8a5b10"/>
+          <circle cx="245" cy="120" r="14" class="nd nd-3 fl-2" fill="#8a5b10"/>
+          <!-- descent arrows -->
+          <path d="M95 75 L120 48" class="fd" stroke="#b38320" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M275 105 L298 72" class="fd" stroke="#b38320" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <!-- labels -->
+          <rect x="55" y="18" width="60" height="26" rx="9" class="nd nd-3" fill="#fff6de" stroke="#ead28d" stroke-width="2"/>
+          <text x="85" y="36" text-anchor="middle" fill="#8a5b10" font-size="12" font-weight="800">Bounds</text>
+          <rect x="230" y="18" width="72" height="26" rx="9" class="nd nd-4" fill="#fff6de" stroke="#ead28d" stroke-width="2"/>
+          <text x="266" y="36" text-anchor="middle" fill="#8a5b10" font-size="12" font-weight="800">Algorithms</text>
+          <!-- baseline -->
+          <line x1="45" y1="158" x2="290" y2="158" class="ln ln-4" stroke="#ead28d" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <p class="card-lbl card-lbl-g">Optimization</p>
+        <h3>Provable optimization and decision-making</h3>
+        <p>Structure-aware objectives, permanent bounds, and algorithmic guarantees for hard problems.</p>
+        <div class="card-tags"><span>Convex / nonconvex</span><span>Permanent bounds</span><span>Decisions</span></div>
+      </div>
+    </article>
+
+    <!-- QUANTUM & TENSORS -->
+    <article class="card rv-s d3">
+      <div class="card-art card-art-c">
+        <svg viewBox="0 0 320 180" aria-label="Tensor network and quantum">
+          <!-- tensor chain bonds -->
+          <line x1="72" y1="70" x2="108" y2="70" class="ln" stroke="#cb6651" stroke-width="5" stroke-linecap="round"/>
+          <line x1="148" y1="70" x2="184" y2="70" class="ln ln-2" stroke="#cb6651" stroke-width="5" stroke-linecap="round"/>
+          <line x1="224" y1="70" x2="260" y2="70" class="ln ln-3" stroke="#cb6651" stroke-width="5" stroke-linecap="round"/>
+          <!-- tensor nodes -->
+          <rect x="32" y="52" width="40" height="36" rx="10" class="nd" fill="#e08a78"/>
+          <rect x="108" y="52" width="40" height="36" rx="10" class="nd nd-2" fill="#e08a78"/>
+          <rect x="184" y="52" width="40" height="36" rx="10" class="nd nd-3" fill="#e08a78"/>
+          <rect x="260" y="52" width="40" height="36" rx="10" class="nd nd-4" fill="#e08a78"/>
+          <!-- physical indices -->
+          <line x1="52" y1="52" x2="52" y2="32" class="ln ln-2" stroke="#cb6651" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="128" y1="52" x2="128" y2="32" class="ln ln-3" stroke="#cb6651" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="204" y1="52" x2="204" y2="32" class="ln ln-3" stroke="#cb6651" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="280" y1="52" x2="280" y2="32" class="ln ln-4" stroke="#cb6651" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- quantum orbit -->
+          <g style="transform-origin:170px 140px" class="nd nd-5">
+            <ellipse cx="170" cy="140" rx="65" ry="18" fill="none" stroke="#86b894" stroke-width="2.5" stroke-dasharray="6 5" style="transform-origin:170px 140px;animation:orbit 10s linear infinite"/>
+            <circle cx="170" cy="140" r="12" fill="#4f8b62"/>
+            <circle cx="232" cy="136" r="8" fill="#86b894" class="fl"/>
+            <circle cx="108" cy="136" r="8" fill="#86b894" class="fl-2"/>
+          </g>
+          <!-- label -->
+          <text x="170" y="145" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">Q</text>
+        </svg>
+      </div>
+      <div class="card-body">
+        <p class="card-lbl card-lbl-c">Quantum &amp; Tensors</p>
+        <h3>High-dimensional quantum computation</h3>
+        <p>Tensor-network representations and distributed quantum systems for scalable computation.</p>
+        <div class="card-tags"><span>Tensor networks</span><span>Quantum systems</span><span>Scalability</span></div>
+      </div>
+    </article>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════ PIPELINE ═══════════════════ -->
+<section class="s dark">
+<div class="s-inner">
+  <div class="sh rv">
+    <p class="sh-k">From theory to impact</p>
+    <h2 class="sh-t">Structure becomes computation</h2>
+  </div>
+  <div class="pipe">
+    <div class="stg rv d1"><div class="stg-n">01</div><h3>Information theory &amp; statistical physics</h3><p>Structure, correlation, and entropy motivate the underlying questions.</p></div>
+    <div class="stg rv d2"><div class="stg-n">02</div><h3>Inference, counting, optimization</h3><p>Bethe methods, graph covers, and structure-aware optimization.</p></div>
+    <div class="stg rv d3"><div class="stg-n">03</div><h3>Distributed quantum systems</h3><p>Quantum networks extending the computational regime.</p></div>
+    <div class="stg rv d4"><div class="stg-n">04</div><h3>ML &amp; efficient computation</h3><p>Learning theory, analytics, and large-scale decision making.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════ SELECTED RESEARCH ═══════════════════ -->
+<section class="s bg-g" id="research">
+<div class="s-inner">
+  <div class="sh rv">
+    <p class="sh-k">Selected research</p>
+    <h2 class="sh-t">Representative directions and papers</h2>
+  </div>
+  <div class="pgrid">
+
+    <!-- 1 Graphical models -->
+    <article class="pcard rv-s d1">
+      <div class="pcard-art pa-t">
+        <svg viewBox="0 0 340 130" aria-label="Graphical models">
+          <line x1="60" y1="50" x2="130" y2="35" class="ln" stroke="#5ba8bb" stroke-width="4" stroke-linecap="round"/>
+          <line x1="60" y1="50" x2="115" y2="100" class="ln ln-2" stroke="#5ba8bb" stroke-width="4" stroke-linecap="round"/>
+          <line x1="130" y1="35" x2="210" y2="60" class="ln ln-3" stroke="#5ba8bb" stroke-width="4" stroke-linecap="round"/>
+          <line x1="115" y1="100" x2="210" y2="60" class="ln ln-3" stroke="#5ba8bb" stroke-width="4" stroke-linecap="round"/>
+          <line x1="210" y1="60" x2="275" y2="48" class="ln ln-4" stroke="#5ba8bb" stroke-width="4" stroke-linecap="round"/>
+          <line x1="85" y1="44" x2="112" y2="38" class="fd" stroke="#17677a" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="150" y1="42" x2="190" y2="55" class="fd" stroke="#17677a" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="60" cy="50" r="16" class="nd" fill="#2a8a9e"/>
+          <circle cx="130" cy="35" r="14" class="nd nd-2" fill="#2a8a9e"/>
+          <circle cx="115" cy="100" r="14" class="nd nd-3" fill="#4da8b8"/>
+          <circle cx="210" cy="60" r="16" class="nd nd-4" fill="#2a8a9e"/>
+          <circle cx="275" cy="48" r="13" class="nd nd-5" fill="#4da8b8"/>
+        </svg>
+      </div>
+      <div class="pcard-body">
+        <span class="pcard-lbl pcard-lbl-t">Inference</span>
+        <h3>Graphical models and Bethe methods</h3>
+        <p>Bethe approximations, graph covers, and message passing for principled inference and counting.</p>
+        <div class="cites">
+          <a class="ct" href="{{ '/publication/characterizing-bethe-partition-factor-graphs' | relative_url }}">[ISIT2020]</a>
+          <a class="ct" href="{{ '/publication/bethe-free-energy-global-minimum' | relative_url }}">[ITW2022]</a>
+          <a class="ct" href="{{ '/publication/bethe-partition-spa-stable-polynomials' | relative_url }}">[ISIT2024]</a>
+          <a class="ct" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-sub]</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2 Optimization -->
+    <article class="pcard rv-s d2">
+      <div class="pcard-art pa-g">
+        <svg viewBox="0 0 340 130" aria-label="Optimization">
+          <defs><marker id="pa" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="9" refY="5" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#d89b2b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+          <path d="M35 95 C65 72,85 28,125 28 C170 28,185 88,225 88 C255 88,275 65,300 38" class="ln" fill="none" stroke="#d9b14f" stroke-width="5" stroke-linecap="round" marker-end="url(#pa)"/>
+          <circle cx="125" cy="28" r="12" class="nd nd-2 fl" fill="#8a5b10"/>
+          <circle cx="225" cy="88" r="12" class="nd nd-3 fl-2" fill="#8a5b10"/>
+          <path d="M85 55 L110 35" class="fd" stroke="#b38320" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <line x1="50" y1="115" x2="280" y2="115" class="ln ln-4" stroke="#ead28d" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="pcard-body">
+        <span class="pcard-lbl pcard-lbl-g">Optimization</span>
+        <h3>Optimization and combinatorial structure</h3>
+        <p>Structure-exploiting optimization and permanent bounds with rigorous guarantees.</p>
+        <div class="cites">
+          <a class="ct" href="{{ '/publication/bounding-permanent-degree-m-bethe' | relative_url }}">[ISIT2023]</a>
+          <a class="ct" href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">[TIT2024]</a>
+          <a class="ct" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3 Tensor methods -->
+    <article class="pcard rv-s d3">
+      <div class="pcard-art pa-c">
+        <svg viewBox="0 0 340 130" aria-label="Tensor network">
+          <line x1="78" y1="55" x2="112" y2="55" class="ln" stroke="#cb6651" stroke-width="5" stroke-linecap="round"/>
+          <line x1="152" y1="55" x2="186" y2="55" class="ln ln-2" stroke="#cb6651" stroke-width="5" stroke-linecap="round"/>
+          <line x1="226" y1="55" x2="260" y2="55" class="ln ln-3" stroke="#cb6651" stroke-width="5" stroke-linecap="round"/>
+          <rect x="38" y="38" width="40" height="34" rx="10" class="nd" fill="#e08a78"/>
+          <rect x="112" y="38" width="40" height="34" rx="10" class="nd nd-2" fill="#e08a78"/>
+          <rect x="186" y="38" width="40" height="34" rx="10" class="nd nd-3" fill="#e08a78"/>
+          <rect x="260" y="38" width="40" height="34" rx="10" class="nd nd-4" fill="#e08a78"/>
+          <line x1="58" y1="38" x2="58" y2="20" class="ln ln-2" stroke="#cb6651" stroke-width="3" stroke-linecap="round"/>
+          <line x1="132" y1="38" x2="132" y2="20" class="ln ln-3" stroke="#cb6651" stroke-width="3" stroke-linecap="round"/>
+          <line x1="206" y1="38" x2="206" y2="20" class="ln ln-3" stroke="#cb6651" stroke-width="3" stroke-linecap="round"/>
+          <line x1="280" y1="38" x2="280" y2="20" class="ln ln-4" stroke="#cb6651" stroke-width="3" stroke-linecap="round"/>
+          <!-- result bar -->
+          <rect x="100" y="92" width="160" height="26" rx="10" class="nd nd-5" fill="#fde8e1" stroke="#e08a78" stroke-width="2"/>
+          <text x="180" y="110" text-anchor="middle" fill="#a14430" font-size="11" font-weight="700">Compact representation</text>
+        </svg>
+      </div>
+      <div class="pcard-body">
+        <span class="pcard-lbl pcard-lbl-c">Tensor methods</span>
+        <h3>Tensor networks and quantum-enabled inference</h3>
+        <p>Compact high-dimensional computation via tensor-network representations.</p>
+        <div class="cites">
+          <a class="ct" href="{{ '/publication/sets-of-marginals-chsh' | relative_url }}">[ISIT2021]</a>
+          <a class="ct" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[QUANTUM-sub]</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4 Distributed quantum -->
+    <article class="pcard rv-s d4">
+      <div class="pcard-art pa-gr">
+        <svg viewBox="0 0 340 130" aria-label="Distributed quantum network">
+          <line x1="72" y1="58" x2="140" y2="38" class="ln" stroke="#86b894" stroke-width="4" stroke-linecap="round"/>
+          <line x1="72" y1="58" x2="140" y2="92" class="ln ln-2" stroke="#86b894" stroke-width="4" stroke-linecap="round"/>
+          <line x1="140" y1="38" x2="215" y2="60" class="ln ln-3" stroke="#86b894" stroke-width="4" stroke-linecap="round"/>
+          <line x1="140" y1="92" x2="215" y2="60" class="ln ln-3" stroke="#86b894" stroke-width="4" stroke-linecap="round"/>
+          <line x1="215" y1="60" x2="278" y2="42" class="ln ln-4" stroke="#86b894" stroke-width="4" stroke-linecap="round"/>
+          <line x1="215" y1="60" x2="278" y2="90" class="ln ln-4" stroke="#86b894" stroke-width="4" stroke-linecap="round"/>
+          <line x1="96" y1="50" x2="120" y2="42" class="fd" stroke="#4f8b62" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="160" y1="44" x2="195" y2="55" class="fd" stroke="#4f8b62" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="52" y="42" width="32" height="32" rx="9" class="nd" fill="#4f8b62"/>
+          <rect x="124" y="22" width="32" height="32" rx="9" class="nd nd-2" fill="#4f8b62"/>
+          <rect x="124" y="76" width="32" height="32" rx="9" class="nd nd-3" fill="#4f8b62"/>
+          <rect x="199" y="44" width="32" height="32" rx="9" class="nd nd-4" fill="#4f8b62"/>
+          <rect x="262" y="26" width="32" height="32" rx="9" class="nd nd-5" fill="#6aa67a"/>
+          <rect x="262" y="74" width="32" height="32" rx="9" class="nd nd-5" fill="#6aa67a"/>
+          <text x="68" y="63" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">Q&#x2081;</text>
+          <text x="140" y="43" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">Q&#x2082;</text>
+          <text x="215" y="65" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">Q&#x2083;</text>
+        </svg>
+      </div>
+      <div class="pcard-body">
+        <span class="pcard-lbl pcard-lbl-gr">Quantum systems</span>
         <h3>Distributed quantum systems</h3>
-        <p>Quantum networks extending the computational regime.</p>
+        <p>Distributed quantum architectures for optimization, inference, and analytics.</p>
+        <div class="cites">
+          <a class="ct" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
+          <a class="ct" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[QUANTUM-sub]</a>
+        </div>
       </div>
-      <div class="hp-stage reveal stagger-4">
-        <div class="hp-stage-num">04</div>
-        <h3>ML &amp; efficient computation</h3>
-        <p>Learning theory, analytics, and large-scale decision making.</p>
-      </div>
-    </div>
+    </article>
+
   </div>
+</div>
 </section>
 
-<!-- ════════════════════════════════════════════════════════
-     SELECTED RESEARCH (with animated SVG per paper)
-     ════════════════════════════════════════════════════════ -->
-<section class="hp-section hp-gray" id="research">
-  <div class="hp-inner">
-    <div class="hp-section-header reveal">
-      <p class="hp-section-kicker">Selected research</p>
-      <h2 class="hp-section-title">Representative directions and papers</h2>
-    </div>
-    <div class="hp-research-grid">
-
-      <!-- PAPER 1: Graphical models -->
-      <article class="hp-paper reveal-scale stagger-1">
-        <div class="hp-paper-art hp-paper-art-teal">
-          <svg viewBox="0 0 400 160" role="img" aria-label="Graphical models">
-            <line x1="80" y1="60" x2="150" y2="42" class="anim-line" stroke="#78b8c7" stroke-width="4" stroke-linecap="round"/>
-            <line x1="80" y1="60" x2="130" y2="115" class="anim-line d2" stroke="#78b8c7" stroke-width="4" stroke-linecap="round"/>
-            <line x1="150" y1="42" x2="240" y2="68" class="anim-line d3" stroke="#78b8c7" stroke-width="4" stroke-linecap="round"/>
-            <line x1="130" y1="115" x2="240" y2="68" class="anim-line d3" stroke="#78b8c7" stroke-width="4" stroke-linecap="round"/>
-            <line x1="240" y1="68" x2="310" y2="58" class="anim-line d4" stroke="#78b8c7" stroke-width="4" stroke-linecap="round"/>
-            <line x1="310" y1="58" x2="350" y2="98" class="anim-line d4" stroke="#78b8c7" stroke-width="4" stroke-linecap="round"/>
-            <!-- Graph cover overlay (dashed) -->
-            <line x1="95" y1="54" x2="145" y2="38" class="flow-line" stroke="#2f7f93" stroke-width="2" stroke-linecap="round"/>
-            <line x1="255" y1="62" x2="305" y2="54" class="flow-line" stroke="#2f7f93" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="80" cy="60" r="14" class="anim-node" fill="#2f7f93"/>
-            <circle cx="150" cy="42" r="12" class="anim-node d2" fill="#2f7f93"/>
-            <circle cx="130" cy="115" r="12" class="anim-node d3" fill="#5ba3b4"/>
-            <circle cx="240" cy="68" r="14" class="anim-node d3" fill="#2f7f93"/>
-            <circle cx="310" cy="58" r="11" class="anim-node d4" fill="#5ba3b4"/>
-            <circle cx="350" cy="98" r="11" class="anim-node d5" fill="#2f7f93"/>
-          </svg>
-        </div>
-        <div class="hp-paper-body">
-          <span class="hp-paper-label teal">Inference</span>
-          <h3>Graphical models and Bethe methods</h3>
-          <p>Bethe approximations, graph covers, and message passing for principled inference and counting.</p>
-          <div class="hp-cite-row">
-            <a class="hp-cite" href="{{ '/publication/characterizing-bethe-partition-factor-graphs' | relative_url }}">[ISIT2020]</a>
-            <a class="hp-cite" href="{{ '/publication/bethe-free-energy-global-minimum' | relative_url }}">[ITW2022]</a>
-            <a class="hp-cite" href="{{ '/publication/bethe-partition-spa-stable-polynomials' | relative_url }}">[ISIT2024]</a>
-            <a class="hp-cite" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-sub]</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- PAPER 2: Optimization -->
-      <article class="hp-paper reveal-scale stagger-2">
-        <div class="hp-paper-art hp-paper-art-gold">
-          <svg viewBox="0 0 400 160" role="img" aria-label="Optimization landscape">
-            <defs>
-              <marker id="p-opt-arr" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="9" refY="5" orient="auto">
-                <path d="M1 1 L9 5 L1 9" fill="none" stroke="#d89b2b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </marker>
-            </defs>
-            <path d="M50 115 C90 85, 115 30, 160 30 C210 30, 230 110, 275 110 C310 110, 330 80, 355 50" class="anim-line" fill="none" stroke="#d9b14f" stroke-width="5" stroke-linecap="round" marker-end="url(#p-opt-arr)"/>
-            <circle cx="160" cy="30" r="11" class="anim-node d2 float-anim" fill="#8a5b10"/>
-            <circle cx="275" cy="110" r="11" class="anim-node d3 float-anim offset" fill="#8a5b10"/>
-            <line x1="70" y1="138" x2="335" y2="138" class="anim-line d4" stroke="#ead28d" stroke-width="3" stroke-linecap="round"/>
-            <!-- Gradient descent arrows -->
-            <path d="M110 66 L140 40" class="anim-line d3" fill="none" stroke="#b38320" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 3"/>
-            <path d="M310 88 L340 58" class="anim-line d4" fill="none" stroke="#b38320" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 3"/>
-          </svg>
-        </div>
-        <div class="hp-paper-body">
-          <span class="hp-paper-label gold">Optimization</span>
-          <h3>Optimization and combinatorial structure</h3>
-          <p>Structure-exploiting optimization and permanent bounds with rigorous guarantees.</p>
-          <div class="hp-cite-row">
-            <a class="hp-cite" href="{{ '/publication/bounding-permanent-degree-m-bethe' | relative_url }}">[ISIT2023]</a>
-            <a class="hp-cite" href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">[TIT2024]</a>
-            <a class="hp-cite" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- PAPER 3: Tensor methods -->
-      <article class="hp-paper reveal-scale stagger-3">
-        <div class="hp-paper-art hp-paper-art-coral">
-          <svg viewBox="0 0 400 160" role="img" aria-label="Tensor network chain">
-            <!-- Tensor chain bonds -->
-            <line x1="90" y1="65" x2="140" y2="65" class="anim-line" stroke="#cb6651" stroke-width="5" stroke-linecap="round"/>
-            <line x1="180" y1="65" x2="230" y2="65" class="anim-line d2" stroke="#cb6651" stroke-width="5" stroke-linecap="round"/>
-            <line x1="270" y1="65" x2="320" y2="65" class="anim-line d3" stroke="#cb6651" stroke-width="5" stroke-linecap="round"/>
-            <!-- Tensor nodes -->
-            <rect x="50" y="47" width="40" height="36" rx="10" class="anim-node" fill="#e8947f"/>
-            <rect x="140" y="47" width="40" height="36" rx="10" class="anim-node d2" fill="#e8947f"/>
-            <rect x="230" y="47" width="40" height="36" rx="10" class="anim-node d3" fill="#e8947f"/>
-            <rect x="320" y="47" width="40" height="36" rx="10" class="anim-node d4" fill="#e8947f"/>
-            <!-- Physical indices (vertical) -->
-            <line x1="70" y1="47" x2="70" y2="27" class="anim-line d2" stroke="#cb6651" stroke-width="3" stroke-linecap="round"/>
-            <line x1="160" y1="47" x2="160" y2="27" class="anim-line d3" stroke="#cb6651" stroke-width="3" stroke-linecap="round"/>
-            <line x1="250" y1="47" x2="250" y2="27" class="anim-line d3" stroke="#cb6651" stroke-width="3" stroke-linecap="round"/>
-            <line x1="340" y1="47" x2="340" y2="27" class="anim-line d4" stroke="#cb6651" stroke-width="3" stroke-linecap="round"/>
-            <!-- Contraction arrow -->
-            <path d="M360 65 L390 65" class="flow-line" stroke="#cb6651" stroke-width="3" stroke-linecap="round"/>
-            <!-- Result -->
-            <rect x="120" y="110" width="180" height="30" rx="12" class="anim-node d5" fill="#fde8e1" stroke="#e8947f" stroke-width="2"/>
-            <text x="210" y="130" text-anchor="middle" fill="#a14430" font-size="12" font-weight="700">Compact representation</text>
-          </svg>
-        </div>
-        <div class="hp-paper-body">
-          <span class="hp-paper-label coral">Tensor methods</span>
-          <h3>Tensor networks and quantum-enabled inference</h3>
-          <p>Compact high-dimensional computation via tensor-network representations.</p>
-          <div class="hp-cite-row">
-            <a class="hp-cite" href="{{ '/publication/sets-of-marginals-chsh' | relative_url }}">[ISIT2021]</a>
-            <a class="hp-cite" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[QUANTUM-sub]</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- PAPER 4: Distributed quantum -->
-      <article class="hp-paper reveal-scale stagger-4">
-        <div class="hp-paper-art hp-paper-art-green">
-          <svg viewBox="0 0 400 160" role="img" aria-label="Distributed quantum network">
-            <!-- Network links -->
-            <line x1="82" y1="70" x2="172" y2="45" class="anim-line" stroke="#86b894" stroke-width="4" stroke-linecap="round"/>
-            <line x1="82" y1="70" x2="172" y2="110" class="anim-line d2" stroke="#86b894" stroke-width="4" stroke-linecap="round"/>
-            <line x1="172" y1="45" x2="260" y2="70" class="anim-line d3" stroke="#86b894" stroke-width="4" stroke-linecap="round"/>
-            <line x1="172" y1="110" x2="260" y2="70" class="anim-line d3" stroke="#86b894" stroke-width="4" stroke-linecap="round"/>
-            <line x1="260" y1="70" x2="340" y2="55" class="anim-line d4" stroke="#86b894" stroke-width="4" stroke-linecap="round"/>
-            <line x1="260" y1="70" x2="340" y2="105" class="anim-line d4" stroke="#86b894" stroke-width="4" stroke-linecap="round"/>
-            <!-- Entanglement pulses -->
-            <line x1="110" y1="62" x2="145" y2="52" class="flow-line" stroke="#4f8b62" stroke-width="2" stroke-linecap="round"/>
-            <line x1="195" y1="55" x2="235" y2="65" class="flow-line" stroke="#4f8b62" stroke-width="2" stroke-linecap="round"/>
-            <line x1="285" y1="65" x2="318" y2="58" class="flow-line" stroke="#4f8b62" stroke-width="2" stroke-linecap="round"/>
-            <!-- Quantum processor nodes -->
-            <rect x="62" y="54" width="32" height="32" rx="9" class="anim-node" fill="#4f8b62"/>
-            <rect x="156" y="29" width="32" height="32" rx="9" class="anim-node d2" fill="#4f8b62"/>
-            <rect x="156" y="94" width="32" height="32" rx="9" class="anim-node d3" fill="#4f8b62"/>
-            <rect x="244" y="54" width="32" height="32" rx="9" class="anim-node d3" fill="#4f8b62"/>
-            <rect x="324" y="39" width="32" height="32" rx="9" class="anim-node d4" fill="#6aa67a"/>
-            <rect x="324" y="89" width="32" height="32" rx="9" class="anim-node d5" fill="#6aa67a"/>
-            <!-- Labels -->
-            <text x="78" y="75" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">Q₁</text>
-            <text x="172" y="50" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">Q₂</text>
-            <text x="260" y="75" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">Q₃</text>
-          </svg>
-        </div>
-        <div class="hp-paper-body">
-          <span class="hp-paper-label green">Quantum systems</span>
-          <h3>Distributed quantum systems</h3>
-          <p>Distributed quantum architectures for optimization, inference, and analytics.</p>
-          <div class="hp-cite-row">
-            <a class="hp-cite" href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">[ICML2025]</a>
-            <a class="hp-cite" href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">[QUANTUM-sub]</a>
-          </div>
-        </div>
-      </article>
-
-    </div>
+<!-- ═══════════════════ OPEN POSITIONS ═══════════════════ -->
+<section class="s recruit" id="positions">
+<div class="s-inner">
+  <div class="rv">
+    <h2 class="recruit-t">Join the group</h2>
+    <p class="recruit-sub">Recruiting RAs, MPhil/PhD students, and one Postdoc for Fall 2026 at HKUST (Guangzhou), Data Science and Analytics Thrust.</p>
+    <p class="recruit-meta">Tenure-track Assistant Professor &middot; Information Hub &middot; DSA</p>
   </div>
+  <div class="roles">
+    <div class="role rv d1"><h3>RA</h3><p>Core research training and preparation for graduate study or industry roles.</p></div>
+    <div class="role rv d2"><h3>MPhil</h3><p>Structured transition into independent research with publication-minded training.</p></div>
+    <div class="role rv d3"><h3>PhD</h3><p>Ownership of deeper problems, broad collaboration, and long-term research support.</p></div>
+    <div class="role rv d4"><h3>Postdoc</h3><p>Shape an agenda, co-mentor students, and prepare for academic searches.</p></div>
+  </div>
+  <div class="recruit-cta rv"><a class="btn btn-p" href="mailto:{{ site.author.email }}">Apply by email</a></div>
+  <div class="recruit-links rv">
+    <a href="https://dsa.hkust-gz.edu.cn/">DSA Thrust</a>
+    <a href="https://www.hkust-gz.edu.cn/academics/hubs-and-thrust-areas/information-hub/">Information Hub</a>
+    <a href="https://www.hkust-gz.edu.cn/">HKUST Guangzhou</a>
+  </div>
+</div>
 </section>
 
-<!-- ════════════════════════════════════════════════════════
-     OPEN POSITIONS
-     ════════════════════════════════════════════════════════ -->
-<section class="hp-section hp-recruit" id="positions">
-  <div class="hp-inner">
-    <div class="reveal">
-      <h2 class="hp-recruit-title">Join the group</h2>
-      <p class="hp-recruit-sub">
-        Recruiting RAs, MPhil/PhD students, and one Postdoc for Fall 2026 at HKUST (Guangzhou), Data Science and Analytics Thrust.
-      </p>
-      <p class="hp-recruit-meta">Tenure-track Assistant Professor · Information Hub · DSA</p>
-    </div>
-    <div class="hp-roles">
-      <div class="hp-role reveal stagger-1">
-        <h3>RA</h3>
-        <p>Core research training and preparation for graduate study or industry roles.</p>
-      </div>
-      <div class="hp-role reveal stagger-2">
-        <h3>MPhil</h3>
-        <p>Structured transition into independent research with publication-minded training.</p>
-      </div>
-      <div class="hp-role reveal stagger-3">
-        <h3>PhD</h3>
-        <p>Ownership of deeper problems, broad collaboration, and long-term research support.</p>
-      </div>
-      <div class="hp-role reveal stagger-4">
-        <h3>Postdoc</h3>
-        <p>Shape an agenda, co-mentor students, and prepare for academic searches.</p>
-      </div>
-    </div>
-    <div class="hp-recruit-cta reveal">
-      <a class="hp-btn hp-btn-primary" href="mailto:{{ site.author.email }}">Apply by email</a>
-    </div>
-    <div class="hp-recruit-links reveal">
-      <a href="https://dsa.hkust-gz.edu.cn/">DSA Thrust</a>
-      <a href="https://www.hkust-gz.edu.cn/academics/hubs-and-thrust-areas/information-hub/">Information Hub</a>
-      <a href="https://www.hkust-gz.edu.cn/">HKUST Guangzhou</a>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════
-     SCROLL REVEAL SCRIPT
-     ════════════════════════════════════════════════════════ -->
+<!-- ═══════════════════ SCROLL REVEAL ═══════════════════ -->
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  var els = document.querySelectorAll(".reveal, .reveal-scale");
-  if (!("IntersectionObserver" in window)) {
-    // Fallback: just show everything
-    els.forEach(function (el) { el.classList.add("is-visible"); });
-    return;
-  }
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
-  els.forEach(function (el) { observer.observe(el); });
+document.addEventListener("DOMContentLoaded",function(){
+  var els=document.querySelectorAll(".rv,.rv-s");
+  if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("vis")});return}
+  var io=new IntersectionObserver(function(ents){
+    ents.forEach(function(en){if(en.isIntersecting){en.target.classList.add("vis");io.unobserve(en.target)}})
+  },{threshold:.12,rootMargin:"0px 0px -30px 0px"});
+  els.forEach(function(e){io.observe(e)});
 });
 </script>
