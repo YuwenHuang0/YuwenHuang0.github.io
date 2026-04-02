@@ -211,7 +211,7 @@ redirect_from:
   color: rgba(255,255,255,.5); margin-top: .35rem;
 }
 .metric-detail {
-  font-size: .8rem; color: rgba(255,255,255,.35); margin-top: .15rem;
+  font-size: .8rem; color: rgba(255,255,255,.5); margin-top: .15rem;
 }
 
 /* ═══════════════════════════════════════════════
@@ -235,10 +235,10 @@ redirect_from:
 }
 .logo-item {
   display: flex; align-items: center; gap: .4rem;
-  opacity: .5; transition: opacity .3s;
+  opacity: .6; transition: opacity .3s;
   text-decoration: none !important;
 }
-.logo-item:hover { opacity: .85; }
+.logo-item:hover { opacity: .9; }
 .logo-icon {
   width: 26px; height: 26px; border-radius: 6px;
   display: flex; align-items: center; justify-content: center;
@@ -537,7 +537,8 @@ redirect_from:
 }
 .cite {
   display: inline-flex; align-items: center;
-  padding: .2rem .55rem; border-radius: 980px;
+  padding: .4rem .7rem; border-radius: 980px;
+  min-height: 2.2rem;
   background: #fff;
   color: #06c !important;
   font-size: .78rem; font-weight: 600;
@@ -610,10 +611,26 @@ redirect_from:
   color: #06c !important; text-decoration: none !important;
 }
 .recruit-links a:hover { text-decoration: underline !important; }
+
+/* Skip nav */
+.skip-nav {
+  position: absolute; top: -100%;
+  left: 50%; transform: translateX(-50%);
+  padding: .6rem 1.5rem; border-radius: 980px;
+  background: #06c; color: #fff !important;
+  font-size: .9rem; font-weight: 600;
+  text-decoration: none !important;
+  z-index: 9999;
+}
+.skip-nav:focus {
+  top: 1rem;
+}
 </style>
 
+<a class="skip-nav" href="#research">Skip to research</a>
+
 <!-- ═══════════ HERO ═══════════ -->
-<section class="sec hero-sec">
+<section class="sec hero-sec" aria-label="Introduction">
 <div class="sec-in">
 
   <div class="hero-top">
@@ -707,7 +724,7 @@ redirect_from:
 </div>
 
 <!-- ═══════════ LATEST UPDATES ═══════════ -->
-<section class="sec" style="background:#fff;">
+<section class="sec" style="background:#fff;" aria-label="Latest updates">
 <div class="sec-in">
   <div class="sec-hdr">
     <div class="sec-label">Latest updates</div>
@@ -751,7 +768,7 @@ redirect_from:
 </section>
 
 <!-- ═══════════ RESEARCH AREAS ═══════════ -->
-<section class="sec area-bg">
+<section class="sec area-bg" aria-label="Research areas">
 <div class="sec-in">
   <div class="sec-hdr">
     <div class="sec-label">Research</div>
@@ -841,7 +858,7 @@ redirect_from:
 </section>
 
 <!-- ═══════════ PIPELINE ═══════════ -->
-<section class="sec pipe-bg">
+<section class="sec pipe-bg" aria-label="Research pipeline">
 <div class="sec-in">
   <div class="sec-hdr">
     <div class="sec-label">From theory to impact</div>
