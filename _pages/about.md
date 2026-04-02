@@ -185,6 +185,140 @@ redirect_from:
 .btn-out:hover { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.4); }
 
 /* ═══════════════════════════════════════════════
+   METRICS STRIP — credibility numbers
+   ═══════════════════════════════════════════════ */
+.metrics-strip {
+  width: 100%;
+  padding: clamp(1.8rem, 3vw, 2.5rem) clamp(1.5rem, 5vw, 6rem);
+  background: #f5f5f7;
+  border-top: 1px solid rgba(0,0,0,.04);
+}
+.metrics-in {
+  max-width: 1600px; margin: 0 auto;
+  display: flex; justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+.metric { text-align: center; min-width: 110px; }
+.metric-num {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800; letter-spacing: -.04em;
+  line-height: 1; color: #1d1d1f;
+}
+.metric-label {
+  font-size: .78rem; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: #6e6e73; margin-top: .35rem;
+}
+.metric-detail {
+  font-size: .8rem; color: #6e6e73; margin-top: .15rem;
+}
+
+/* ═══════════════════════════════════════════════
+   INSTITUTION LOGOS — trust bar
+   ═══════════════════════════════════════════════ */
+.logo-bar {
+  width: 100%;
+  padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 5vw, 6rem);
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.04);
+}
+.logo-bar-in {
+  max-width: 1600px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(1.2rem, 3vw, 3rem);
+}
+.logo-bar-label {
+  font-size: .72rem; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: #6e6e73; white-space: nowrap;
+}
+.logo-item {
+  display: flex; align-items: center; gap: .4rem;
+  opacity: .5; transition: opacity .3s;
+  text-decoration: none !important;
+}
+.logo-item:hover { opacity: .85; }
+.logo-icon {
+  width: 26px; height: 26px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .65rem; font-weight: 800; color: #fff; flex-shrink: 0;
+}
+.logo-name {
+  font-size: .8rem; font-weight: 600;
+  color: #424245; letter-spacing: -.005em;
+}
+
+/* ═══════════════════════════════════════════════
+   LATEST UPDATES — timeline
+   ═══════════════════════════════════════════════ */
+.timeline { display: grid; gap: 0; }
+.tl-item {
+  display: grid; grid-template-columns: auto 1fr;
+  gap: 1rem; padding: .8rem 0;
+  border-bottom: 1px solid rgba(0,0,0,.04);
+}
+.tl-item:last-child { border-bottom: none; }
+.tl-dot-col {
+  display: flex; flex-direction: column; align-items: center;
+  padding-top: .3rem;
+}
+.tl-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #06c; flex-shrink: 0;
+}
+.tl-dot.tl-new { background: #30d158; }
+.tl-dot.tl-upcoming { background: #ff9f0a; }
+.tl-line {
+  width: 1.5px; flex: 1;
+  background: rgba(0,0,0,.08); margin-top: .3rem;
+}
+.tl-item:last-child .tl-line { display: none; }
+.tl-date {
+  font-size: .7rem; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: #6e6e73; margin-bottom: .1rem;
+}
+.tl-title {
+  font-size: .92rem; font-weight: 600;
+  color: #1d1d1f; line-height: 1.35;
+}
+.tl-title a { color: #1d1d1f !important; text-decoration: none !important; }
+.tl-title a:hover { color: #06c !important; }
+.tl-venue { font-size: .8rem; color: #6e6e73; margin-top: .05rem; }
+.tl-badge {
+  display: inline-flex; padding: .1rem .45rem;
+  border-radius: 980px; font-size: .62rem; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase;
+  margin-left: .3rem; vertical-align: middle;
+}
+.badge-new { background: #e8fbe8; color: #1a7a2e; }
+.badge-upcoming { background: #fff5e0; color: #946b14; }
+
+/* ═══════════════════════════════════════════════
+   SECTION TRANSITIONS — accent dividers
+   ═══════════════════════════════════════════════ */
+.sec-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0,102,204,.12) 20%, rgba(0,102,204,.2) 50%, rgba(0,102,204,.12) 80%, transparent 100%);
+}
+.sec-divider-dark {
+  background: linear-gradient(90deg, transparent 0%, rgba(99,102,241,.1) 20%, rgba(99,102,241,.18) 50%, rgba(99,102,241,.1) 80%, transparent 100%);
+}
+
+/* ═══════════════════════════════════════════════
+   DOT GRID TEXTURE — subtle depth
+   ═══════════════════════════════════════════════ */
+.dot-bg { position: relative; }
+.dot-bg::after {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,.035) 1px, transparent 1px);
+  background-size: 22px 22px; pointer-events: none; z-index: 0;
+}
+.dot-bg > * { position: relative; z-index: 1; }
+
+/* ═══════════════════════════════════════════════
    SECTION HEADERS — compact
    ═══════════════════════════════════════════════ */
 .sec-hdr {
@@ -312,15 +446,23 @@ redirect_from:
 }
 
 /* ═══════════════════════════════════════════════
-   SELECTED PAPERS — 4 columns, compact
+   SELECTED PAPERS — bento grid
    ═══════════════════════════════════════════════ */
 .papers-bg { background: #fff; }
 
 .papers {
   display: grid; gap: 1rem;
+  grid-template-columns: 1fr;
 }
 @media (min-width: 800px) {
-  .papers { grid-template-columns: repeat(4, 1fr); }
+  .papers {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+  }
+  .paper-featured {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+  }
 }
 .paper {
   padding: 1.5rem;
@@ -333,6 +475,37 @@ redirect_from:
 .paper:hover {
   box-shadow: 0 12px 36px rgba(0,0,0,.07);
   transform: translateY(-3px);
+}
+/* Featured card — larger, more prominent */
+.paper-featured {
+  background: #1d1d1f;
+  border: 1px solid rgba(255,255,255,.08);
+  padding: clamp(1.8rem, 3vw, 2.5rem);
+  justify-content: center;
+}
+.paper-featured .paper-tag { background: rgba(255,255,255,.12); color: rgba(255,255,255,.8); }
+.paper-featured h3 {
+  font-size: clamp(1.25rem, 2vw, 1.6rem) !important;
+  color: #fff !important;
+}
+.paper-featured p { color: rgba(255,255,255,.7) !important; }
+.paper-featured .cite {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.85) !important;
+}
+.paper-featured .cite:hover {
+  background: rgba(255,255,255,.18);
+}
+.paper-featured:hover {
+  box-shadow: 0 16px 48px rgba(0,0,0,.3);
+}
+/* Featured visual accent */
+.paper-featured-accent {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: .5rem;
+  opacity: .6;
 }
 
 .paper-tag {
@@ -475,8 +648,109 @@ redirect_from:
 </div>
 </section>
 
+<!-- ═══════════ METRICS STRIP ═══════════ -->
+<div class="metrics-strip">
+<div class="metrics-in">
+  <div class="metric">
+    <div class="metric-num">14+</div>
+    <div class="metric-label">Publications</div>
+    <div class="metric-detail">Journal &amp; Conference</div>
+  </div>
+  <div class="metric">
+    <div class="metric-num">3</div>
+    <div class="metric-label">Research Areas</div>
+    <div class="metric-detail">Inference · Optimization · Quantum</div>
+  </div>
+  <div class="metric">
+    <div class="metric-num">5+</div>
+    <div class="metric-label">Top Venues</div>
+    <div class="metric-detail">IEEE TIT · ISIT · ICML</div>
+  </div>
+  <div class="metric">
+    <div class="metric-num">6</div>
+    <div class="metric-label">Invited Talks</div>
+    <div class="metric-detail">International &amp; Domestic</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════ INSTITUTION LOGOS ═══════════ -->
+<div class="logo-bar">
+<div class="logo-bar-in">
+  <span class="logo-bar-label">Affiliations &amp; Venues</span>
+  <a class="logo-item" href="https://www.cuhk.edu.hk/" style="text-decoration:none !important">
+    <span class="logo-icon" style="background:#6b2fa0;">CU</span>
+    <span class="logo-name">CUHK</span>
+  </a>
+  <a class="logo-item" href="https://www.hkust-gz.edu.cn/" style="text-decoration:none !important">
+    <span class="logo-icon" style="background:#003d7c;">HK</span>
+    <span class="logo-name">HKUST (GZ)</span>
+  </a>
+  <a class="logo-item" href="https://www.scut.edu.cn/" style="text-decoration:none !important">
+    <span class="logo-icon" style="background:#8b1a1a;">SC</span>
+    <span class="logo-name">SCUT</span>
+  </a>
+  <span class="logo-item">
+    <span class="logo-icon" style="background:#00629b;">IE</span>
+    <span class="logo-name">IEEE</span>
+  </span>
+  <span class="logo-item">
+    <span class="logo-icon" style="background:#b31b1b;">IC</span>
+    <span class="logo-name">ICML</span>
+  </span>
+</div>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- ═══════════ LATEST UPDATES ═══════════ -->
+<section class="sec" style="background:#fff;">
+<div class="sec-in">
+  <div class="sec-hdr">
+    <div class="sec-label">Latest updates</div>
+    <h2 class="sec-title">What's new</h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot-col"><div class="tl-dot tl-new"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-date">May 2026</div>
+        <div class="tl-title">Joining HKUST (Guangzhou) as Assistant Professor <span class="tl-badge badge-upcoming">Starting</span></div>
+        <div class="tl-venue">DSA Thrust, Information Hub</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot-col"><div class="tl-dot tl-new"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-date">Jul 2025</div>
+        <div class="tl-title"><a href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">Quantum Algorithms for Finite Horizon MDPs</a> <span class="tl-badge badge-new">New</span></div>
+        <div class="tl-venue">Accepted at ICML 2025</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-date">Mar 2026</div>
+        <div class="tl-title"><a href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">Scalable Distributed Quantum Optimization</a></div>
+        <div class="tl-venue">Submitted to Quantum</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-date">2024</div>
+        <div class="tl-title"><a href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">Degree-M Bethe &amp; Sinkhorn Permanent</a></div>
+        <div class="tl-venue">Published in IEEE Trans. Inf. Theory, 2024</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="sec-divider"></div>
+
 <!-- ═══════════ RESEARCH AREAS ═══════════ -->
-<section class="sec area-bg">
+<section class="sec area-bg dot-bg">
 <div class="sec-in">
   <div class="sec-hdr">
     <div class="sec-label">Research</div>
@@ -566,6 +840,7 @@ redirect_from:
 </section>
 
 <!-- ═══════════ PIPELINE ═══════════ -->
+<div class="sec-divider-dark"></div>
 <section class="sec pipe-bg">
 <div class="sec-in">
   <div class="sec-hdr">
@@ -580,9 +855,10 @@ redirect_from:
   </div>
 </div>
 </section>
+<div class="sec-divider-dark"></div>
 
-<!-- ═══════════ SELECTED RESEARCH ═══════════ -->
-<section class="sec papers-bg" id="research">
+<!-- ═══════════ SELECTED RESEARCH — bento grid ═══════════ -->
+<section class="sec papers-bg dot-bg" id="research">
 <div class="sec-in">
   <div class="sec-hdr">
     <div class="sec-label">Selected research</div>
@@ -590,10 +866,10 @@ redirect_from:
   </div>
   <div class="papers">
 
-    <article class="paper">
-      <span class="paper-tag pt-teal">Inference</span>
+    <article class="paper paper-featured">
+      <span class="paper-tag pt-teal">Inference — Core Theme</span>
       <h3>Graphical models and Bethe methods</h3>
-      <p>Graph covers and message passing for inference and counting.</p>
+      <p>Graph covers, message passing, and Bethe approximation for inference and counting on structured graphical models — our longest-running research thread with contributions spanning ISIT, ITW, and IEEE Transactions on Information Theory.</p>
       <div class="paper-cites">
         <a class="cite" href="{{ '/publication/characterizing-bethe-partition-factor-graphs' | relative_url }}">[ISIT 2020]</a>
         <a class="cite" href="{{ '/publication/bethe-free-energy-global-minimum' | relative_url }}">[ITW 2022]</a>
@@ -637,8 +913,10 @@ redirect_from:
 </div>
 </section>
 
+<div class="sec-divider"></div>
+
 <!-- ═══════════ OPEN POSITIONS ═══════════ -->
-<section class="sec recruit-bg" id="positions">
+<section class="sec recruit-bg dot-bg" id="positions">
 <div class="sec-in recruit-center">
   <div class="sec-hdr">
     <div class="sec-label">Open positions</div>

@@ -144,18 +144,35 @@ body {
   font-weight: 600;
   color: var(--text-primary);
 }
-.page__content p, .page__content li {
+/* Only apply dark text to non-splash pages (inner pages) */
+.single .page__content p, .single .page__content li,
+.archive .page__content p, .archive .page__content li {
   font-size: 1rem !important;
   line-height: 1.65;
   color: #424245;
 }
-.page__content a {
+/* Links: only force blue on non-splash pages */
+.single .page__content a, .archive .page__content a {
   color: var(--link-color) !important;
   text-decoration: none !important;
   font-weight: 500;
   transition: color .2s;
 }
-.page__content a:hover {
+.single .page__content a:hover, .archive .page__content a:hover {
+  color: var(--link-hover) !important;
+  text-decoration: underline !important;
+}
+/* Inner-page links (publications, talks, CV use splash layout but need blue links) */
+.inner-page p, .inner-page li {
+  color: #424245;
+  line-height: 1.55;
+}
+.inner-page a {
+  color: var(--link-color) !important;
+  text-decoration: none !important;
+  font-weight: 500;
+}
+.inner-page a:hover {
   color: var(--link-hover) !important;
   text-decoration: underline !important;
 }

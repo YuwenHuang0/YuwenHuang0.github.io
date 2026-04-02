@@ -8,112 +8,63 @@ author_profile: false
 {% include base_path %}
 
 <style>
-  /* ── Ultra-compact publication list ── */
-  .pub-section { margin-bottom: 1.5rem; }
+  .pub-section { margin-bottom: 1.2rem; }
   .pub-section h2 {
-    font-size: 1.05rem !important;
+    font-size: .95rem !important;
     font-weight: 700;
-    letter-spacing: -.01em;
     color: var(--text-primary, #1d1d1f);
-    border-bottom: 1px solid rgba(0,0,0,.08) !important;
-    padding-bottom: .35em !important;
-    margin-bottom: .5rem !important;
+    border-bottom: 1px solid rgba(0,0,0,.1) !important;
+    padding-bottom: .3em !important;
+    margin-bottom: .35rem !important;
   }
   .pub-section hr { display: none; }
-  .pub-subheading {
-    font-size: .7rem;
+  .pub-sub {
+    font-size: .68rem;
     font-weight: 700;
     letter-spacing: .07em;
     text-transform: uppercase;
-    color: var(--text-secondary, #6e6e73);
-    margin: .8rem 0 .35rem;
-  }
-
-  /* Each entry: single tight row */
-  .pub-entry {
-    padding: .35rem 0;
-    border-bottom: 1px solid rgba(0,0,0,.04);
-    display: flex;
-    gap: .4rem;
-    align-items: baseline;
-    flex-wrap: wrap;
-  }
-  .pub-entry:last-child { border-bottom: none; }
-
-  .pub-label {
-    font-size: .72rem;
-    font-weight: 700;
     color: #999;
-    min-width: 1.6rem;
-    flex-shrink: 0;
-    font-variant-numeric: tabular-nums;
+    margin: .6rem 0 .2rem;
   }
-  .pub-body { flex: 1; min-width: 0; }
 
-  .pub-title {
-    font-size: .9rem;
-    font-weight: 600;
-    color: var(--text-primary, #1d1d1f);
-    line-height: 1.3;
-  }
-  .pub-body a { text-decoration: none !important; }
-  .pub-body a:hover .pub-title { color: #06c; }
-  .pub-body a .pub-title { transition: color .15s; }
-
-  /* Authors + venue on same line, smaller */
-  .pub-meta {
-    font-size: .82rem;
+  .pub-row {
+    padding: .2rem 0;
+    border-bottom: 1px solid rgba(0,0,0,.035);
+    font-size: .84rem;
     line-height: 1.35;
-    color: #6e6e73;
-    margin-top: .1rem;
+    color: #424245;
   }
-  .pub-meta em { font-style: italic; color: #424245; }
+  .pub-row:last-child { border-bottom: none; }
 
-  /* Resource links — tiny inline pills */
-  .pub-links {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: .25rem;
-    margin-left: .4rem;
+  .pub-row .t {
+    font-weight: 600;
+    color: #1d1d1f;
   }
-  .pub-link {
+  .pub-row a { text-decoration: none !important; }
+  .pub-row a:hover .t { color: #06c; }
+  .pub-row a .t { transition: color .15s; }
+  .pub-row em { font-style: italic; }
+
+  /* Tiny inline resource pills */
+  .r {
     display: inline-flex;
-    align-items: center;
-    padding: .1rem .45rem;
+    padding: .05rem .35rem;
     border-radius: 980px;
-    font-size: .7rem;
+    font-size: .65rem;
     font-weight: 600;
     line-height: 1.2;
     text-decoration: none !important;
-    transition: background .15s;
     vertical-align: baseline;
+    margin-left: .15rem;
   }
-  .pub-link--paper {
-    border: 1px solid rgba(15, 79, 94, 0.15);
-    background: #edf7fa;
-    color: #0f4f5e !important;
-  }
-  .pub-link--paper:hover { background: #dff0f5; }
-  .pub-link--slides {
-    border: 1px solid rgba(138, 91, 16, 0.15);
-    background: #fff5dd;
-    color: #8a5b10 !important;
-  }
-  .pub-link--slides:hover { background: #ffefcc; }
-  .pub-link--video {
-    border: 1px solid rgba(111, 40, 156, 0.12);
-    background: #f4ecfb;
-    color: #6f289c !important;
-  }
-  .pub-link--video:hover { background: #ede0f8; }
-  .pub-link:not(.pub-link--paper):not(.pub-link--slides):not(.pub-link--video) {
-    border: 1px solid rgba(0,0,0,.06);
-    background: #f0f0f2;
-    color: #424245 !important;
-  }
-  .pub-link:not(.pub-link--paper):not(.pub-link--slides):not(.pub-link--video):hover {
-    background: #e4e4e8;
-  }
+  .rp { border: 1px solid rgba(15,79,94,.15); background: #edf7fa; color: #0f4f5e !important; }
+  .rp:hover { background: #dff0f5; }
+  .rs { border: 1px solid rgba(138,91,16,.15); background: #fff5dd; color: #8a5b10 !important; }
+  .rs:hover { background: #ffefcc; }
+  .rv { border: 1px solid rgba(111,40,156,.12); background: #f4ecfb; color: #6f289c !important; }
+  .rv:hover { background: #ede0f8; }
+  .rb { border: 1px solid rgba(0,0,0,.06); background: #f0f0f2; color: #424245 !important; }
+  .rb:hover { background: #e4e4e8; }
 </style>
 
 <div class="inner-page">
@@ -135,69 +86,31 @@ author_profile: false
 
       {% assign topic_journals = topic_posts | where: "category", "manuscripts" | sort: "date" | reverse %}
       {% if topic_journals.size > 0 %}
-        <h3 class="pub-subheading">Journal Papers</h3>
+        <div class="pub-sub">Journal Papers</div>
         {% for post in topic_journals %}
           {% if post.title == "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)" %}
             {% continue %}
           {% endif %}
-          <div class="pub-entry">
-            <span class="pub-label">[j{{ forloop.index }}]</span>
-            <div class="pub-body">
-              {% if post.paperurl %}
-                <a href="{{ post.paperurl }}"><span class="pub-title">{{ post.title }}</span></a>
-              {% else %}
-                <span class="pub-title">{{ post.title }}</span>
-              {% endif %}
-              <div class="pub-meta">
-                {% if post.authors %}{{ post.authors | array_to_sentence_string }}.{% endif %}
-                {% if post.status %}
-                  {% if post.status == "Submitted" %}Submitted to{% else %}{{ post.status }} in{% endif %}
-                {% else %}
-                  Published in
-                {% endif %}
-                <em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}.
-                {% capture links %}
-                  {% if post.paperurl %}<a class="pub-link pub-link--paper" href="{{ post.paperurl }}">Paper</a>{% endif %}
-                  {% if post.slidesurl %}<a class="pub-link pub-link--slides" href="{{ post.slidesurl }}">Slides</a>{% endif %}
-                  {% if post.slidesurl_alt %}<a class="pub-link pub-link--slides" href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "More Slides" }}</a>{% endif %}
-                  {% if post.videourl %}<a class="pub-link pub-link--video" href="{{ post.videourl }}">Video</a>{% endif %}
-                  {% if post.bibtexurl %}<a class="pub-link" href="{{ post.bibtexurl }}">BibTeX</a>{% endif %}
-                {% endcapture %}
-                {% if links | strip != "" %}<span class="pub-links">{{ links | strip }}</span>{% endif %}
-              </div>
-            </div>
+          <div class="pub-row">
+            {% if post.paperurl %}<a href="{{ post.paperurl }}"><span class="t">{{ post.title }}</span></a>{% else %}<span class="t">{{ post.title }}</span>{% endif %}
+            <br>{% if post.authors %}{{ post.authors | array_to_sentence_string }}.{% endif %}
+            {% if post.status %}{% if post.status == "Submitted" %}Submitted to{% else %}{{ post.status }} in{% endif %}{% else %}Published in{% endif %}
+            <em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}.{% capture lnk %}{% if post.paperurl %}<a class="r rp" href="{{ post.paperurl }}">Paper</a>{% endif %}{% if post.slidesurl %}<a class="r rs" href="{{ post.slidesurl }}">Slides</a>{% endif %}{% if post.slidesurl_alt %}<a class="r rs" href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "Slides" }}</a>{% endif %}{% if post.videourl %}<a class="r rv" href="{{ post.videourl }}">Video</a>{% endif %}{% if post.bibtexurl %}<a class="r rb" href="{{ post.bibtexurl }}">BibTeX</a>{% endif %}{% endcapture %}{% if lnk | strip != "" %} {{ lnk | strip }}{% endif %}
           </div>
         {% endfor %}
       {% endif %}
 
       {% assign topic_conferences = topic_posts | where: "category", "conferences" | sort: "date" | reverse %}
       {% if topic_conferences.size > 0 %}
-        <h3 class="pub-subheading">Conference Papers</h3>
+        <div class="pub-sub">Conference Papers</div>
         {% for post in topic_conferences %}
           {% if post.title == "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)" %}
             {% continue %}
           {% endif %}
-          <div class="pub-entry">
-            <span class="pub-label">[c{{ forloop.index }}]</span>
-            <div class="pub-body">
-              {% if post.paperurl %}
-                <a href="{{ post.paperurl }}"><span class="pub-title">{{ post.title }}</span></a>
-              {% else %}
-                <span class="pub-title">{{ post.title }}</span>
-              {% endif %}
-              <div class="pub-meta">
-                {% if post.authors %}{{ post.authors | array_to_sentence_string }}.{% endif %}
-                In <em>{{ post.venue }}</em>, {{ post.date | date: "%B %Y" }}.
-                {% capture links %}
-                  {% if post.paperurl %}<a class="pub-link pub-link--paper" href="{{ post.paperurl }}">Paper</a>{% endif %}
-                  {% if post.slidesurl %}<a class="pub-link pub-link--slides" href="{{ post.slidesurl }}">Slides</a>{% endif %}
-                  {% if post.slidesurl_alt %}<a class="pub-link pub-link--slides" href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "More Slides" }}</a>{% endif %}
-                  {% if post.videourl %}<a class="pub-link pub-link--video" href="{{ post.videourl }}">Video</a>{% endif %}
-                  {% if post.bibtexurl %}<a class="pub-link" href="{{ post.bibtexurl }}">BibTeX</a>{% endif %}
-                {% endcapture %}
-                {% if links | strip != "" %}<span class="pub-links">{{ links | strip }}</span>{% endif %}
-              </div>
-            </div>
+          <div class="pub-row">
+            {% if post.paperurl %}<a href="{{ post.paperurl }}"><span class="t">{{ post.title }}</span></a>{% else %}<span class="t">{{ post.title }}</span>{% endif %}
+            <br>{% if post.authors %}{{ post.authors | array_to_sentence_string }}.{% endif %}
+            In <em>{{ post.venue }}</em>, {{ post.date | date: "%B %Y" }}.{% capture lnk %}{% if post.paperurl %}<a class="r rp" href="{{ post.paperurl }}">Paper</a>{% endif %}{% if post.slidesurl %}<a class="r rs" href="{{ post.slidesurl }}">Slides</a>{% endif %}{% if post.slidesurl_alt %}<a class="r rs" href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "Slides" }}</a>{% endif %}{% if post.videourl %}<a class="r rv" href="{{ post.videourl }}">Video</a>{% endif %}{% if post.bibtexurl %}<a class="r rb" href="{{ post.bibtexurl }}">BibTeX</a>{% endif %}{% endcapture %}{% if lnk | strip != "" %} {{ lnk | strip }}{% endif %}
           </div>
         {% endfor %}
       {% endif %}
