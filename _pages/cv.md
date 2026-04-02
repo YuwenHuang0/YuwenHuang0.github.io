@@ -12,41 +12,41 @@ redirect_from:
 <style>
   /* ── Ultra-compact CV ── */
   .cv-section {
-    margin-bottom: 1.5rem;
+    margin-bottom: .9rem;
   }
   .cv-section h2 {
-    font-size: 1.05rem !important;
+    font-size: .88rem !important;
     font-weight: 700 !important;
     letter-spacing: -.01em;
     color: var(--text-primary, #1d1d1f) !important;
     border-bottom: 1px solid rgba(0,0,0,.08) !important;
-    padding-bottom: .35em !important;
+    padding-bottom: .25em !important;
     margin-top: 0 !important;
-    margin-bottom: .4rem !important;
+    margin-bottom: .25rem !important;
   }
 
   .cv-entry {
-    padding: .35rem 0;
-    border-bottom: 1px solid rgba(0,0,0,.04);
+    padding: .15rem 0;
+    border-bottom: 1px solid rgba(0,0,0,.03);
   }
   .cv-entry:last-child { border-bottom: none; }
   .cv-entry-main {
-    font-size: .9rem;
+    font-size: .82rem;
     font-weight: 600;
     color: var(--text-primary, #1d1d1f);
-    line-height: 1.3;
+    line-height: 1.25;
     margin: 0;
   }
   .cv-entry-date {
-    font-size: .8rem;
+    font-size: .75rem;
     font-weight: 600;
     color: #6e6e73;
   }
   .cv-entry-detail {
-    font-size: .82rem;
+    font-size: .78rem;
     color: #6e6e73;
-    line-height: 1.4;
-    margin: .05rem 0 0;
+    line-height: 1.35;
+    margin: .02rem 0 0;
   }
   .cv-entry-detail a {
     color: #06c !important;
@@ -60,15 +60,15 @@ redirect_from:
   .cv-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: .25rem;
-    margin-top: .2rem;
+    gap: .2rem;
+    margin-top: .1rem;
   }
   .cv-tag {
     display: inline-flex;
-    padding: .12rem .5rem;
+    padding: .08rem .4rem;
     border-radius: 980px;
     background: #f0f0f2;
-    font-size: .76rem;
+    font-size: .72rem;
     font-weight: 500;
     color: #424245;
   }
@@ -76,13 +76,13 @@ redirect_from:
   .cv-list {
     list-style: none;
     padding: 0;
-    margin: .15rem 0 0;
+    margin: .1rem 0 0;
   }
   .cv-list li {
-    padding: .25rem 0;
-    border-bottom: 1px solid rgba(0,0,0,.04);
-    font-size: .84rem;
-    line-height: 1.4;
+    padding: .15rem 0;
+    border-bottom: 1px solid rgba(0,0,0,.03);
+    font-size: .78rem;
+    line-height: 1.35;
     color: #6e6e73;
   }
   .cv-list li:last-child { border-bottom: none; }
@@ -94,20 +94,20 @@ redirect_from:
   /* Inline links for slides etc */
   .cv-entry-detail .pub-link {
     display: inline-flex;
-    padding: .08rem .4rem;
+    padding: .05rem .35rem;
     border-radius: 980px;
-    font-size: .68rem;
+    font-size: .62rem;
     font-weight: 600;
     border: 1px solid rgba(138, 91, 16, 0.15);
     background: #fff5dd;
     color: #8a5b10 !important;
     text-decoration: none !important;
-    margin-left: .2rem;
+    margin-left: .15rem;
   }
 </style>
 
-<div class="inner-page">
-<h1 class="inner-page-title">CV</h1>
+<div class="inner-page" style="padding-top:clamp(1.2rem,2vw,2rem);">
+<h1 class="inner-page-title" style="font-size:clamp(1.3rem,2.5vw,1.8rem);margin-bottom:.15rem;">CV</h1>
 
 <div class="cv-section">
 <h2>Education</h2>

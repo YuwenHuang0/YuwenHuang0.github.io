@@ -720,19 +720,19 @@ redirect_from:
       </div>
     </div>
     <div class="tl-item">
-      <div class="tl-dot-col"><div class="tl-dot tl-new"></div><div class="tl-line"></div></div>
-      <div class="tl-content">
-        <div class="tl-date">Jul 2025</div>
-        <div class="tl-title"><a href="{{ '/publication/quantum-algorithms-finite-horizon-mdp' | relative_url }}">Quantum Algorithms for Finite Horizon MDPs</a> <span class="tl-badge badge-new">New</span></div>
-        <div class="tl-venue">Accepted at ICML 2025</div>
-      </div>
-    </div>
-    <div class="tl-item">
       <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-date">Mar 2026</div>
         <div class="tl-title"><a href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">Scalable Distributed Quantum Optimization</a></div>
         <div class="tl-venue">Submitted to Quantum</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-date">Jul 2025</div>
+        <div class="tl-title"><a href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">Graph-Cover-based Characterization of the Bethe Partition Function</a></div>
+        <div class="tl-venue">Submitted to IEEE Trans. Inf. Theory</div>
       </div>
     </div>
     <div class="tl-item">
