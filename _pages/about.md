@@ -70,7 +70,7 @@ redirect_from:
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 .hero-photo {
   width: 80px; height: 80px;
@@ -89,24 +89,15 @@ redirect_from:
 .hero-aff a { color: rgba(255,255,255,.8); font-weight: 500; }
 .hero-aff a:hover { color: #fff; }
 
-/* Announcement pill */
-.hero-news {
-  display: inline-flex; align-items: baseline;
-  gap: .3rem;
-  padding: .45rem 1.1rem;
-  border-radius: 980px;
-  background: rgba(255,255,255,.1);
-  border: 1px solid rgba(255,255,255,.18);
-  font-size: 1.05rem; line-height: 1.4;
-  color: #e5e5e7;
-  margin-bottom: 1.2rem;
+/* Announcement — inline under affiliation */
+.hero-news-inline {
+  font-size: .95rem; line-height: 1.4;
+  color: rgba(255,255,255,.55);
+  margin-top: .2rem;
 }
-@media (min-width: 920px) {
-  .hero-news { white-space: nowrap; }
-}
-.hero-news strong { color: #f0c8a0; font-weight: 700; }
-.hero-news a { color: #fff; font-weight: 600; }
-.hero-news a:hover { text-decoration: underline; }
+.hero-news-inline strong { color: #f0c8a0; font-weight: 700; }
+.hero-news-inline a { color: rgba(255,255,255,.75); font-weight: 600; }
+.hero-news-inline a:hover { color: #fff; text-decoration: underline; }
 
 /* Headline */
 .hero-h {
@@ -120,21 +111,11 @@ redirect_from:
   .hero-h { white-space: nowrap; }
 }
 
-/* Subtitle */
-.hero-desc {
-  margin-top: .6rem;
-  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
-  line-height: 1.5;
-  color: rgba(255,255,255,.9);
-  font-weight: 500;
-  letter-spacing: -.005em;
-}
-
 /* Keywords */
 .hero-kw {
-  display: flex; flex-wrap: wrap; gap: .4rem;
+  display: flex; flex-wrap: wrap; gap: .5rem;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: .8rem;
 }
 .kw {
   padding: .4rem 1rem;
@@ -638,22 +619,14 @@ redirect_from:
     <div class="hero-id">
       <div class="hero-name">Yuwen Huang</div>
       <div class="hero-aff">Postdoctoral Researcher, <a href="https://www.cse.cuhk.edu.hk/">CSE Dept., CUHK</a></div>
+      <div class="hero-news-inline">
+        <strong>May 2026</strong> — Joining
+        <a href="https://www.hkust-gz.edu.cn/">HKUST (Guangzhou)</a> as Assistant Professor
+      </div>
     </div>
   </div>
 
-  <div class="hero-news">
-    <strong>May 2026</strong> — Joining
-    <a href="https://www.hkust-gz.edu.cn/">HKUST (Guangzhou)</a>
-    as Assistant Professor
-    (<a href="https://dsa.hkust-gz.edu.cn/">DSA Thrust</a>,
-    <a href="https://www.hkust-gz.edu.cn/academics/hubs-and-thrust-areas/information-hub/">Information Hub</a>)
-  </div>
-
   <h1 class="hero-h">Provable methods for structured inference and optimization</h1>
-
-  <p class="hero-desc">
-    Graphical models · Combinatorics · Tensor networks · Quantum systems · Machine learning
-  </p>
 
   <div class="hero-kw">
     <span class="kw">Bethe methods &amp; graph covers</span>
