@@ -873,7 +873,7 @@ redirect_from:
       <div class="paper-featured-right">
         <div class="paper-featured-stats">
           <div class="pf-stat"><div class="pf-stat-num">7</div><div class="pf-stat-label">Papers</div></div>
-          <div class="pf-stat"><div class="pf-stat-num">2020–</div><div class="pf-stat-label">Active since</div></div>
+          <div class="pf-stat"><div class="pf-stat-num">2020–now</div><div class="pf-stat-label">Span</div></div>
           <div class="pf-stat"><div class="pf-stat-num">3</div><div class="pf-stat-label">Venues</div></div>
         </div>
       </div>
