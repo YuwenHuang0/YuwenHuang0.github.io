@@ -49,7 +49,7 @@ body {
 .masthead::after { display: none !important; }
 
 .masthead__inner-wrap {
-  max-width: var(--site-width) !important;
+  max-width: 1440px !important;
   margin: 0 auto;
   padding: .5rem 1.5rem !important;
   font-family: var(--apple-font) !important;
@@ -109,7 +109,7 @@ body {
 
 /* ── Page content — wide, Apple typography ── */
 #main {
-  max-width: var(--site-width) !important;
+  max-width: 1440px !important;
   margin-top: 1.8em !important;
   padding-left: 1.5rem !important;
   padding-right: 1.5rem !important;
@@ -157,6 +157,17 @@ body {
   color: var(--apple-link-hover) !important;
   text-decoration: underline !important;
 }
+/* Preserve button text color */
+.page__content a.btn-fill,
+.page__content a.btn-fill:hover {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+.page__content a.btn-out,
+.page__content a.btn-out:hover {
+  color: #06c !important;
+  text-decoration: none !important;
+}
 
 /* ── Archive layout (used by publications, talks, CV) ── */
 .archive {
@@ -177,7 +188,7 @@ body {
   color: var(--apple-text-secondary) !important;
 }
 .page__footer footer {
-  max-width: var(--site-width) !important;
+  max-width: 1440px !important;
   padding: 0 1.5rem 1.5rem !important;
 }
 .page__footer a {

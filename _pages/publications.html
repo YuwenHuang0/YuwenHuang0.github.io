@@ -5,13 +5,36 @@ permalink: /publications/
 author_profile: false
 ---
 
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
-
 {% include base_path %}
 
 <style>
+  /* ── Wide page container ── */
+  .inner-page {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 4.5rem) clamp(2rem, 5vw, 5rem);
+  }
+  .inner-page-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -.03em;
+    color: #1d1d1f;
+    margin-bottom: .5rem;
+  }
+  .inner-page-sub {
+    font-size: .94rem;
+    color: #6e6e73;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+  .inner-page-sub a {
+    color: #06c;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .inner-page-sub a:hover {
+    text-decoration: underline;
+  }
+
   /* ── Apple-style publication entries ── */
   .pub-section { margin-bottom: 2.8rem; }
   .pub-section h2 {
@@ -145,6 +168,12 @@ author_profile: false
   }
 </style>
 
+<div class="inner-page">
+<h1 class="inner-page-title">Publications</h1>
+{% if site.author.googlescholar %}
+  <p class="inner-page-sub">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</p>
+{% endif %}
+
 {% assign topic_entries = "graphical-models::Graphical model-based approximation of #-P complete problems.;quantum-info::Quantum information processing.;wireless::Wireless communication systems." | split: ";" %}
 
 {% for topic_entry in topic_entries %}
@@ -261,3 +290,4 @@ author_profile: false
     </div>
   {% endif %}
 {% endfor %}
+</div>

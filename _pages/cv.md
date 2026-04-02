@@ -10,6 +10,20 @@ redirect_from:
 {% include base_path %}
 
 <style>
+  /* ── Wide page container ── */
+  .inner-page {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 4.5rem) clamp(2rem, 5vw, 5rem);
+  }
+  .inner-page-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -.03em;
+    color: #1d1d1f;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
   /* ── Apple-style CV ── */
   .cv-section {
     margin-bottom: 2.4rem;
@@ -98,6 +112,9 @@ redirect_from:
     color: #1d1d1f;
   }
 </style>
+
+<div class="inner-page">
+<h1 class="inner-page-title">CV</h1>
 
 <div class="cv-section">
 <h2>Education</h2>
@@ -288,4 +305,6 @@ redirect_from:
 <span class="cv-tag">Mandarin (native)</span>
 <span class="cv-tag">English (fluent)</span>
 </div>
+</div>
+
 </div>

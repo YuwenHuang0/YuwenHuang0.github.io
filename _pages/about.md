@@ -92,6 +92,7 @@ redirect_from:
 }
 @media (min-width: 920px) {
   .hero-news { white-space: nowrap; }
+  .hero-h { white-space: nowrap; }
 }
 .hero-news strong { color: #17677a; font-weight: 700; }
 .hero-news a { color: #06c; font-weight: 600; }
@@ -104,7 +105,7 @@ redirect_from:
   line-height: 1.04;
   letter-spacing: -.035em;
   color: #1d1d1f;
-  max-width: 1000px;
+  max-width: none;
   margin: 0 auto;
 }
 
@@ -153,6 +154,10 @@ redirect_from:
 .btn-fill {
   background: #06c; color: #fff !important;
   box-shadow: 0 4px 16px rgba(0,102,204,.3);
+  min-width: 180px;
+}
+.splash .page__content .btn-fill {
+  color: #fff !important;
 }
 .btn-fill:hover { background: #0055b3; box-shadow: 0 6px 24px rgba(0,102,204,.4); }
 .btn-out {
@@ -298,7 +303,7 @@ redirect_from:
   display: grid; gap: 1.2rem;
 }
 @media (min-width: 760px) {
-  .papers { grid-template-columns: repeat(2, 1fr); }
+  .papers { grid-template-columns: repeat(4, 1fr); }
 }
 .paper {
   padding: 1.8rem 2rem;
@@ -424,7 +429,7 @@ redirect_from:
     <a href="https://www.hkust-gz.edu.cn/academics/hubs-and-thrust-areas/information-hub/">Information Hub</a>)
   </div>
 
-  <h1 class="hero-h">Provable methods for structured<br>inference and optimization</h1>
+  <h1 class="hero-h">Provable methods for structured inference and optimization</h1>
 
   <p class="hero-desc">
     Graphical models · Combinatorics · Tensor networks · Quantum systems · Machine learning
@@ -622,7 +627,7 @@ redirect_from:
     <div class="role"><h3>Postdoc</h3><p>Shape an agenda, co-mentor students, and prepare for academic searches.</p></div>
   </div>
   <div class="recruit-cta">
-    <a class="btn btn-fill" href="mailto:{{ site.author.email }}">Apply by email</a>
+    <a class="btn btn-fill" href="mailto:{{ site.author.email }}" style="color:#fff !important;">Apply by email</a>
   </div>
   <div class="recruit-links">
     <a href="https://dsa.hkust-gz.edu.cn/">DSA Thrust</a>
