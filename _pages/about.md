@@ -84,7 +84,7 @@ redirect_from:
   letter-spacing: -.02em;
 }
 .hero-aff {
-  font-size: .95rem; color: rgba(255,255,255,.6); line-height: 1.4; margin-top: .15rem;
+  font-size: 1.1rem; color: rgba(255,255,255,.7); line-height: 1.4; margin-top: .15rem;
 }
 .hero-aff a { color: rgba(255,255,255,.8); font-weight: 500; }
 .hero-aff a:hover { color: #fff; }
@@ -97,7 +97,7 @@ redirect_from:
   border-radius: 980px;
   background: rgba(255,255,255,.1);
   border: 1px solid rgba(255,255,255,.18);
-  font-size: .88rem; line-height: 1.4;
+  font-size: 1.05rem; line-height: 1.4;
   color: #e5e5e7;
   margin-bottom: 2rem;
 }
@@ -123,7 +123,7 @@ redirect_from:
 /* Subtitle */
 .hero-desc {
   margin-top: 1rem;
-  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
   line-height: 1.5;
   color: rgba(255,255,255,.9);
   font-weight: 500;
@@ -137,11 +137,11 @@ redirect_from:
   margin-top: 1.5rem;
 }
 .kw {
-  padding: .35rem .85rem;
+  padding: .4rem 1rem;
   border-radius: 980px;
   background: rgba(255,255,255,.1);
   border: 1px solid rgba(255,255,255,.15);
-  font-size: .85rem; font-weight: 500;
+  font-size: 1rem; font-weight: 500;
   color: rgba(255,255,255,.85);
   letter-spacing: -.005em;
 }
@@ -190,8 +190,8 @@ redirect_from:
 .metrics-strip {
   width: 100%;
   padding: clamp(1.8rem, 3vw, 2.5rem) clamp(1.5rem, 5vw, 6rem);
-  background: #f5f5f7;
-  border-top: 1px solid rgba(0,0,0,.04);
+  background: #161617;
+  border-top: 1px solid rgba(255,255,255,.06);
 }
 .metrics-in {
   max-width: 1600px; margin: 0 auto;
@@ -203,15 +203,15 @@ redirect_from:
 .metric-num {
   font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 800; letter-spacing: -.04em;
-  line-height: 1; color: #1d1d1f;
+  line-height: 1; color: #fff;
 }
 .metric-label {
   font-size: .78rem; font-weight: 600;
   letter-spacing: .06em; text-transform: uppercase;
-  color: #6e6e73; margin-top: .35rem;
+  color: rgba(255,255,255,.5); margin-top: .35rem;
 }
 .metric-detail {
-  font-size: .8rem; color: #6e6e73; margin-top: .15rem;
+  font-size: .8rem; color: rgba(255,255,255,.35); margin-top: .15rem;
 }
 
 /* ═══════════════════════════════════════════════
@@ -220,8 +220,7 @@ redirect_from:
 .logo-bar {
   width: 100%;
   padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 5vw, 6rem);
-  background: #fff;
-  border-bottom: 1px solid rgba(0,0,0,.04);
+  background: #f5f5f7;
 }
 .logo-bar-in {
   max-width: 1600px; margin: 0 auto;
@@ -457,12 +456,16 @@ redirect_from:
 @media (min-width: 800px) {
   .papers {
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto;
   }
   .paper-featured {
-    grid-column: 1 / 3;
-    grid-row: 1 / 3;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
   }
+  .paper-featured .paper-featured-left { display: flex; flex-direction: column; gap: .4rem; }
+  .paper-featured .paper-featured-right { display: flex; flex-direction: column; gap: .5rem; }
 }
 .paper {
   padding: 1.5rem;
@@ -476,36 +479,38 @@ redirect_from:
   box-shadow: 0 12px 36px rgba(0,0,0,.07);
   transform: translateY(-3px);
 }
-/* Featured card — larger, more prominent */
+/* Featured card — full-width dark banner */
 .paper-featured {
   background: #1d1d1f;
   border: 1px solid rgba(255,255,255,.08);
   padding: clamp(1.8rem, 3vw, 2.5rem);
-  justify-content: center;
 }
 .paper-featured .paper-tag { background: rgba(255,255,255,.12); color: rgba(255,255,255,.8); }
 .paper-featured h3 {
-  font-size: clamp(1.25rem, 2vw, 1.6rem) !important;
+  font-size: clamp(1.15rem, 2vw, 1.45rem) !important;
   color: #fff !important;
 }
-.paper-featured p { color: rgba(255,255,255,.7) !important; }
+.paper-featured p { color: rgba(255,255,255,.65) !important; font-size: .88rem; line-height: 1.5; }
 .paper-featured .cite {
   background: rgba(255,255,255,.1);
   border-color: rgba(255,255,255,.15);
   color: rgba(255,255,255,.85) !important;
 }
-.paper-featured .cite:hover {
-  background: rgba(255,255,255,.18);
+.paper-featured .cite:hover { background: rgba(255,255,255,.18); }
+.paper-featured:hover { box-shadow: 0 16px 48px rgba(0,0,0,.3); }
+/* Featured stats highlight */
+.paper-featured-stats {
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
 }
-.paper-featured:hover {
-  box-shadow: 0 16px 48px rgba(0,0,0,.3);
+.pf-stat { text-align: center; }
+.pf-stat-num {
+  font-size: 1.6rem; font-weight: 800;
+  color: #fff; letter-spacing: -.03em; line-height: 1;
 }
-/* Featured visual accent */
-.paper-featured-accent {
-  font-size: 2.5rem;
-  line-height: 1;
-  margin-bottom: .5rem;
-  opacity: .6;
+.pf-stat-label {
+  font-size: .68rem; font-weight: 600;
+  color: rgba(255,255,255,.5); text-transform: uppercase;
+  letter-spacing: .05em; margin-top: .2rem;
 }
 
 .paper-tag {
@@ -701,8 +706,6 @@ redirect_from:
 </div>
 </div>
 
-<div class="sec-divider"></div>
-
 <!-- ═══════════ LATEST UPDATES ═══════════ -->
 <section class="sec" style="background:#fff;">
 <div class="sec-in">
@@ -747,10 +750,8 @@ redirect_from:
 </div>
 </section>
 
-<div class="sec-divider"></div>
-
 <!-- ═══════════ RESEARCH AREAS ═══════════ -->
-<section class="sec area-bg dot-bg">
+<section class="sec area-bg">
 <div class="sec-in">
   <div class="sec-hdr">
     <div class="sec-label">Research</div>
@@ -840,7 +841,6 @@ redirect_from:
 </section>
 
 <!-- ═══════════ PIPELINE ═══════════ -->
-<div class="sec-divider-dark"></div>
 <section class="sec pipe-bg">
 <div class="sec-in">
   <div class="sec-hdr">
@@ -855,10 +855,9 @@ redirect_from:
   </div>
 </div>
 </section>
-<div class="sec-divider-dark"></div>
 
 <!-- ═══════════ SELECTED RESEARCH — bento grid ═══════════ -->
-<section class="sec papers-bg dot-bg" id="research">
+<section class="sec papers-bg" id="research">
 <div class="sec-in">
   <div class="sec-hdr">
     <div class="sec-label">Selected research</div>
@@ -867,14 +866,23 @@ redirect_from:
   <div class="papers">
 
     <article class="paper paper-featured">
-      <span class="paper-tag pt-teal">Inference — Core Theme</span>
-      <h3>Graphical models and Bethe methods</h3>
-      <p>Graph covers, message passing, and Bethe approximation for inference and counting on structured graphical models — our longest-running research thread with contributions spanning ISIT, ITW, and IEEE Transactions on Information Theory.</p>
-      <div class="paper-cites">
-        <a class="cite" href="{{ '/publication/characterizing-bethe-partition-factor-graphs' | relative_url }}">[ISIT 2020]</a>
-        <a class="cite" href="{{ '/publication/bethe-free-energy-global-minimum' | relative_url }}">[ITW 2022]</a>
-        <a class="cite" href="{{ '/publication/bethe-partition-spa-stable-polynomials' | relative_url }}">[ISIT 2024]</a>
-        <a class="cite" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-sub]</a>
+      <div class="paper-featured-left">
+        <span class="paper-tag pt-teal">Inference — Core Theme</span>
+        <h3>Graphical models and Bethe methods</h3>
+        <p>Graph covers, message passing, and Bethe approximation for inference and counting on structured graphical models — our longest-running research thread.</p>
+        <div class="paper-cites">
+          <a class="cite" href="{{ '/publication/characterizing-bethe-partition-factor-graphs' | relative_url }}">[ISIT 2020]</a>
+          <a class="cite" href="{{ '/publication/bethe-free-energy-global-minimum' | relative_url }}">[ITW 2022]</a>
+          <a class="cite" href="{{ '/publication/bethe-partition-spa-stable-polynomials' | relative_url }}">[ISIT 2024]</a>
+          <a class="cite" href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">[TIT-sub]</a>
+        </div>
+      </div>
+      <div class="paper-featured-right">
+        <div class="paper-featured-stats">
+          <div class="pf-stat"><div class="pf-stat-num">4</div><div class="pf-stat-label">Papers</div></div>
+          <div class="pf-stat"><div class="pf-stat-num">2020–25</div><div class="pf-stat-label">Span</div></div>
+          <div class="pf-stat"><div class="pf-stat-num">3</div><div class="pf-stat-label">Venues</div></div>
+        </div>
       </div>
     </article>
 
@@ -913,10 +921,8 @@ redirect_from:
 </div>
 </section>
 
-<div class="sec-divider"></div>
-
 <!-- ═══════════ OPEN POSITIONS ═══════════ -->
-<section class="sec recruit-bg dot-bg" id="positions">
+<section class="sec recruit-bg" id="positions">
 <div class="sec-in recruit-center">
   <div class="sec-hdr">
     <div class="sec-label">Open positions</div>
