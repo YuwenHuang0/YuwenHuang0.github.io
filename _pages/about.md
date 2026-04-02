@@ -29,10 +29,10 @@ redirect_from:
    ─────────────────────────────────────────────── */
 .sec {
   width: 100%;
-  padding: clamp(4rem, 9vw, 7rem) clamp(1.5rem, 5vw, 4rem);
+  padding: clamp(4rem, 9vw, 7rem) clamp(2rem, 5vw, 5rem);
 }
 .sec-in {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -99,12 +99,12 @@ redirect_from:
 
 /* Headline — HUGE, Apple/Claude-scale */
 .hero-h {
-  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-size: clamp(2.6rem, 6vw, 4.8rem);
   font-weight: 700;
-  line-height: 1.06;
-  letter-spacing: -.03em;
+  line-height: 1.04;
+  letter-spacing: -.035em;
   color: #1d1d1f;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -175,9 +175,9 @@ redirect_from:
   margin-bottom: .5rem;
 }
 .sec-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
   font-weight: 700; line-height: 1.06;
-  letter-spacing: -.025em;
+  letter-spacing: -.03em;
   color: #1d1d1f;
 }
 .sec-sub {
@@ -213,7 +213,7 @@ redirect_from:
 }
 
 .area-vis {
-  height: 200px;
+  height: 220px;
   display: flex; align-items: center; justify-content: center;
   padding: 1.5rem;
 }
