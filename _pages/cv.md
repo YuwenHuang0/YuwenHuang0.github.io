@@ -141,34 +141,6 @@ redirect_from:
 </div>
 
 <div class="cv-section">
-<h2>Talks</h2>
-<div class="cv-entry">
-<p class="cv-entry-main">Bethe Approximations for Matrix Permanents and Contingency Table Counting</p>
-<p class="cv-entry-detail"><span class="cv-entry-date">Jan. 2026</span> · DSA Thrust, HKUST (Guangzhou) <a class="pub-link" href="/files/slides/talk_hkustgz.pdf">Slides</a></p>
-</div>
-<div class="cv-entry">
-<p class="cv-entry-main">The Bethe approximation for binary contingency table counting and nonnegative matrix permanents</p>
-<p class="cv-entry-detail"><span class="cv-entry-date">Feb. 2025</span> · CS Dept., TU Dortmund University (virtual)</p>
-</div>
-<div class="cv-entry">
-<p class="cv-entry-main">The Bethe partition function and the SPA for factor graphs based on homogeneous real stable polynomials</p>
-<p class="cv-entry-detail"><span class="cv-entry-date">Sept. 2024</span> · School of Cyber Science and Engineering, Southeast University (virtual)</p>
-</div>
-<div class="cv-entry">
-<p class="cv-entry-main">Bounding the permanent of a non-negative matrix via its degree-M Bethe and Sinkhorn permanents</p>
-<p class="cv-entry-detail"><span class="cv-entry-date">Mar. 2023</span> · ITCSC, CUHK</p>
-</div>
-<div class="cv-entry">
-<p class="cv-entry-main">On the relationship between the minimum of the Bethe free energy function and SPA fixed points</p>
-<p class="cv-entry-detail"><span class="cv-entry-date">Nov. 2022</span> · ITCSC, CUHK</p>
-</div>
-<div class="cv-entry">
-<p class="cv-entry-main">Sets of marginals and Pearson-correlation-based CHSH inequalities for a two-qubit system</p>
-<p class="cv-entry-detail"><span class="cv-entry-date">Apr. 2022</span> · Prof. Tomamichel's group, NUS (virtual)</p>
-</div>
-</div>
-
-<div class="cv-section">
 <h2>Service</h2>
 <ul class="cv-list">
 <li>Journal reviewer: <em>IEEE Commun. Mag.</em>, <em>IEEE Trans. Commun.</em>, <em>IEEE J. Sel. Topics Signal Process.</em>, <em>IEEE Commun. Lett.</em></li>
