@@ -12,36 +12,36 @@
 <link rel="icon" type="image/png" href="{{ base_path }}/images/favicon-192x192.png" sizes="192x192"/>
 <link rel="manifest" href="{{ base_path }}/images/manifest.json"/>
 <link rel="icon" href="/images/favicon.ico"/>
-<meta name="theme-color" content="#ffffff"/>
+<meta name="theme-color" content="#0d0d0d"/>
 
-<!-- ═══════════ GLOBAL APPLE-STYLE OVERRIDES ═══════════ -->
+<!-- ═══════════ GLOBAL DESIGN SYSTEM ═══════════ -->
 <style>
 /* ── Foundation ── */
 :root {
-  --apple-text: #1d1d1f;
-  --apple-text-secondary: #6e6e73;
-  --apple-bg: #fbfbfd;
-  --apple-link: #06c;
-  --apple-link-hover: #0055b3;
-  --apple-border: rgba(0,0,0,.06);
-  --apple-card-bg: #fff;
-  --apple-pill-bg: #f5f5f7;
-  --apple-font: -apple-system, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Inter", "Segoe UI", sans-serif;
-  --apple-radius: 12px;
-  --site-width: 1440px;
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --bg-primary: #fff;
+  --bg-secondary: #f5f5f7;
+  --link-color: #06c;
+  --link-hover: #0055b3;
+  --border-color: rgba(0,0,0,.06);
+  --card-bg: #fff;
+  --font-stack: -apple-system, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Inter", "Segoe UI", sans-serif;
+  --radius: 14px;
+  --content-width: 1600px;
 }
 
 body {
-  font-family: var(--apple-font) !important;
+  font-family: var(--font-stack) !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--apple-text);
-  background: var(--apple-bg);
+  color: var(--text-primary);
+  background: var(--bg-primary);
 }
 
-/* ── Masthead — wide Apple-style nav bar ── */
+/* ── Masthead — frosted, edge-to-edge ── */
 .masthead {
-  background: rgba(251,251,253,.92) !important;
+  background: rgba(255,255,255,.85) !important;
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid rgba(0,0,0,.08) !important;
@@ -49,47 +49,47 @@ body {
 .masthead::after { display: none !important; }
 
 .masthead__inner-wrap {
-  max-width: 1440px !important;
+  max-width: var(--content-width) !important;
   margin: 0 auto;
-  padding: .5rem 1.5rem !important;
-  font-family: var(--apple-font) !important;
+  padding: .5rem 2rem !important;
+  font-family: var(--font-stack) !important;
 }
 
 .greedy-nav {
   background: transparent !important;
 }
 .greedy-nav a {
-  color: var(--apple-text) !important;
+  color: var(--text-primary) !important;
   font-size: .92rem;
   font-weight: 500;
   letter-spacing: -.005em;
   padding: .4rem 0 !important;
-  margin: 0 .85rem !important;
+  margin: 0 .9rem !important;
   transition: color .2s;
 }
 .greedy-nav a:hover {
-  color: var(--apple-link) !important;
+  color: var(--link-color) !important;
 }
 .greedy-nav .visible-links a::before { display: none !important; }
 .greedy-nav .visible-links li:first-child a {
   font-weight: 700 !important;
   font-size: .95rem;
-  color: var(--apple-text) !important;
+  color: var(--text-primary) !important;
   margin-left: 0 !important;
 }
 .masthead__menu-item { background: transparent !important; }
 
-/* ── Sidebar / Author profile — Apple clean ── */
+/* ── Sidebar / Author profile ── */
 .sidebar {
-  font-family: var(--apple-font) !important;
+  font-family: var(--font-stack) !important;
 }
 .sidebar .author__name {
-  font-family: var(--apple-font) !important;
+  font-family: var(--font-stack) !important;
   font-weight: 700;
-  color: var(--apple-text);
+  color: var(--text-primary);
 }
 .sidebar .author__bio {
-  color: var(--apple-text-secondary);
+  color: var(--text-secondary);
   font-size: .88rem;
   line-height: 1.4;
 }
@@ -98,49 +98,51 @@ body {
   box-shadow: 0 2px 12px rgba(0,0,0,.08);
 }
 .author__urls a {
-  color: var(--apple-text) !important;
+  color: var(--text-primary) !important;
   font-size: .88rem !important;
   font-weight: 500;
   transition: color .2s;
 }
 .author__urls a:hover {
-  color: var(--apple-link) !important;
+  color: var(--link-color) !important;
 }
 
-/* ── Page content — wide, Apple typography ── */
+/* ── Main content — edge-to-edge ── */
 #main {
-  max-width: 1440px !important;
-  margin-top: 1.8em !important;
-  padding-left: 1.5rem !important;
-  padding-right: 1.5rem !important;
+  max-width: none !important;
+  margin-top: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
+
+/* ── Page content — typography ── */
 .page__title {
-  font-family: var(--apple-font) !important;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem) !important;
+  font-family: var(--font-stack) !important;
+  font-size: clamp(2rem, 4vw, 3rem) !important;
   font-weight: 700;
-  letter-spacing: -.025em;
-  color: var(--apple-text);
+  letter-spacing: -.03em;
+  color: var(--text-primary);
   line-height: 1.1;
 }
 .page__content {
-  font-family: var(--apple-font) !important;
-  color: var(--apple-text);
+  font-family: var(--font-stack) !important;
+  color: var(--text-primary);
 }
 .page__content h2 {
-  font-family: var(--apple-font) !important;
+  font-family: var(--font-stack) !important;
   font-size: clamp(1.3rem, 2.2vw, 1.65rem) !important;
   font-weight: 700;
   letter-spacing: -.015em;
-  color: var(--apple-text);
-  border-bottom: 1px solid rgba(0,0,0,.06) !important;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color) !important;
   padding-bottom: .5em !important;
   margin-top: 2.5em !important;
 }
 .page__content h3 {
-  font-family: var(--apple-font) !important;
+  font-family: var(--font-stack) !important;
   font-size: 1.15rem !important;
   font-weight: 600;
-  color: var(--apple-text);
+  color: var(--text-primary);
 }
 .page__content p, .page__content li {
   font-size: 1rem !important;
@@ -148,13 +150,13 @@ body {
   color: #424245;
 }
 .page__content a {
-  color: var(--apple-link) !important;
+  color: var(--link-color) !important;
   text-decoration: none !important;
   font-weight: 500;
   transition: color .2s;
 }
 .page__content a:hover {
-  color: var(--apple-link-hover) !important;
+  color: var(--link-hover) !important;
   text-decoration: underline !important;
 }
 /* Preserve button text color */
@@ -165,59 +167,80 @@ body {
 }
 .page__content a.btn-out,
 .page__content a.btn-out:hover {
-  color: #06c !important;
   text-decoration: none !important;
 }
 
-/* ── Archive layout (used by publications, talks, CV) ── */
+/* ── Archive layout ── */
 .archive {
-  font-family: var(--apple-font) !important;
+  font-family: var(--font-stack) !important;
 }
-.archive a {
-  text-decoration: none !important;
-}
-.archive a:hover {
-  text-decoration: underline !important;
-}
+.archive a { text-decoration: none !important; }
+.archive a:hover { text-decoration: underline !important; }
 
-/* ── Footer — Apple minimal ── */
+/* ── Footer — minimal ── */
 .page__footer {
-  background: var(--apple-bg) !important;
-  border-top: 1px solid rgba(0,0,0,.06) !important;
-  margin-top: 3em !important;
-  color: var(--apple-text-secondary) !important;
+  background: #0d0d0d !important;
+  border-top: none !important;
+  margin-top: 0 !important;
+  color: rgba(255,255,255,.4) !important;
 }
 .page__footer footer {
-  max-width: 1440px !important;
-  padding: 0 1.5rem 1.5rem !important;
+  max-width: var(--content-width) !important;
+  padding: 2rem 2rem 1.5rem !important;
 }
 .page__footer a {
-  color: var(--apple-text-secondary) !important;
+  color: rgba(255,255,255,.4) !important;
   font-weight: 500;
 }
 .page__footer a:hover {
-  color: var(--apple-link) !important;
+  color: rgba(255,255,255,.7) !important;
 }
 .page__footer-follow ul { gap: .5rem; }
 .page__footer-follow li {
-  font-family: var(--apple-font) !important;
+  font-family: var(--font-stack) !important;
   font-size: .82rem !important;
   text-transform: none !important;
 }
 .page__footer-copyright {
-  font-family: var(--apple-font) !important;
+  font-family: var(--font-stack) !important;
   font-size: .78rem !important;
-  color: var(--apple-text-secondary);
-  opacity: .7;
+  color: rgba(255,255,255,.3);
 }
 
-/* ── Horizontal rule — subtle ── */
+/* ── Horizontal rule ── */
 hr {
-  border-top: 1px solid rgba(0,0,0,.06) !important;
+  border-top: 1px solid var(--border-color) !important;
   margin: 1.5rem 0 !important;
 }
 
-/* ── Links in archive pages — Apple blue ── */
+/* ── Inner page container (publications, talks, CV) ── */
+.inner-page {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 5rem) clamp(1.5rem, 5vw, 6rem);
+}
+.inner-page-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -.035em;
+  color: var(--text-primary);
+  margin-bottom: .5rem;
+}
+.inner-page-sub {
+  font-size: .94rem;
+  color: var(--text-secondary);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.inner-page-sub a {
+  color: var(--link-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+.inner-page-sub a:hover {
+  text-decoration: underline;
+}
+
+/* ── Links in archive pages ── */
 .page__content .pub-title a,
 .page__content .pub-link,
 .page__content .talk-link {
@@ -227,11 +250,11 @@ hr {
 /* ── Wordwrap notice ── */
 .wordwrap {
   font-size: .92rem;
-  color: var(--apple-text-secondary);
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
 }
 .wordwrap a {
-  color: var(--apple-link) !important;
+  color: var(--link-color) !important;
   font-weight: 600;
 }
 </style>
