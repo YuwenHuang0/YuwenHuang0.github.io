@@ -83,14 +83,16 @@ redirect_from:
 .hero-news a { color: #06c; font-weight: 600; }
 .hero-news a:hover { text-decoration: underline; }
 
-/* Headline — prevent awkward breaks */
+/* Headline — fits on one line at desktop (980px container) */
 .hero-h {
-  font-size: clamp(1.9rem, 3.8vw, 2.8rem);
+  font-size: clamp(1.28rem, 2.5vw, 1.85rem);
   font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -.02em;
+  line-height: 1.2;
+  letter-spacing: -.01em;
   color: #1d1d1f;
-  max-width: 680px;
+}
+@media (min-width: 760px) {
+  .hero-h { white-space: nowrap; }
 }
 
 /* Description */
