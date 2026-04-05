@@ -33,7 +33,7 @@ redirect_from:
 .h-news { font-size: .8rem; color: rgba(255,255,255,.55) !important; margin-top: .1rem; }
 .h-news strong { color: #f0c8a0 !important; font-weight: 700; }
 .h-news a { color: rgba(255,255,255,.7) !important; }
-.h-intro { font-size: 1.05rem; line-height: 1.5; color: rgba(255,255,255,.85) !important; max-width: 480px; text-align: center; }
+.h-intro { font-size: 1.05rem; line-height: 1.5; color: rgba(255,255,255,.85) !important; text-align: center; white-space: nowrap; }
 .h-cta { display: flex; gap: .4rem; margin-top: .6rem; }
 .btn { display: inline-flex; align-items: center; height: 2.2rem; padding: 0 1.1rem; border-radius: 980px; font-size: .84rem; font-weight: 600; cursor: pointer; text-decoration: none !important; transition: all .2s; }
 .btn-w { background: #fff; color: #000 !important; }
