@@ -126,7 +126,7 @@ redirect_from:
       <div class="h-news"><strong>May 2026</strong> — Joining <a href="https://www.hkust-gz.edu.cn/">HKUST (GZ)</a> as Assistant Professor</div>
     </div>
   </div>
-  <p class="h-intro">I develop provable algorithms for inference, optimization, and quantum computation — using graphical models, combinatorics, and tensor networks.</p>
+  <p class="h-intro">I develop provable algorithms for inference, optimization, and quantum computation —<br>using graphical models, combinatorics, and tensor networks.</p>
   <div class="h-cta">
     <a class="btn btn-w" href="#positions">Open positions</a>
     <a class="btn btn-o" href="#research">Research</a>
