@@ -64,7 +64,7 @@ redirect_from:
 .s-white { background: var(--bg-white); }
 .s-snow { background: var(--bg-snow); }
 .s-warm { background: var(--bg-warm); }
-.s-accent { background: var(--accent); }
+.s-accent { background: #1e1035; }
 
 /* Force black text everywhere on splash */
 .s-white h2, .s-white h3, .s-white p, .s-white div, .s-white span,
@@ -432,26 +432,26 @@ redirect_from:
 .role {
   padding: .25rem .75rem;
   border-radius: 6px;
-  background: rgba(255,255,255,.18);
-  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(124,58,237,.3);
+  border: 1px solid rgba(124,58,237,.5);
   font-size: .78rem; font-weight: 600;
-  color: #fff !important;
+  color: rgba(255,255,255,.9) !important;
 }
 
 .join-cta { margin-top: 1.2rem; }
 .btn-accent {
-  background: #fff;
-  color: var(--accent) !important;
+  background: var(--accent);
+  color: #fff !important;
   font-weight: 700;
 }
 .splash .page__content .btn-accent,
 .splash .page__content .btn-accent:hover {
-  color: var(--accent) !important;
+  color: #fff !important;
   text-decoration: none !important;
 }
 .btn-accent:hover {
-  background: #f0f0f0;
-  box-shadow: 0 4px 24px rgba(0,0,0,.15);
+  background: var(--accent-hover);
+  box-shadow: 0 4px 24px rgba(124,58,237,.3);
   transform: translateY(-1px);
 }
 
