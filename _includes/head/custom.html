@@ -196,6 +196,23 @@ body {
 .archive a { text-decoration: none !important; }
 .archive a:hover { text-decoration: underline !important; }
 
+/* ── Splash-page masthead: dark, transparent ── */
+.splash .masthead {
+  background: rgba(20,20,24,.85) !important;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,.06) !important;
+}
+.splash .greedy-nav a {
+  color: rgba(240,240,242,.8) !important;
+}
+.splash .greedy-nav a:hover {
+  color: #fff !important;
+}
+.splash .greedy-nav .visible-links li:first-child a {
+  color: #f0f0f2 !important;
+}
+
 /* ── Footer — minimal ── */
 .page__footer {
   background: #0d0d0d !important;
@@ -234,9 +251,9 @@ hr {
 
 /* ── Inner page container (publications, talks, CV) ── */
 .inner-page {
-  max-width: var(--content-width);
+  max-width: 900px;
   margin: 0 auto;
-  padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 5vw, 6rem);
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 5vw, 4rem);
 }
 .inner-page-title {
   font-size: clamp(1.6rem, 3vw, 2.2rem);
@@ -246,17 +263,23 @@ hr {
   margin-bottom: .3rem;
 }
 .inner-page-sub {
-  font-size: .88rem;
+  font-size: .9rem;
   color: var(--text-secondary);
   margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 .inner-page-sub a {
-  color: var(--link-color);
+  color: #7c3aed;
   font-weight: 600;
   text-decoration: none;
 }
 .inner-page-sub a:hover {
   text-decoration: underline;
+}
+
+/* ── Inner page background for splash layouts ── */
+.splash .inner-page {
+  background: var(--bg-secondary);
+  min-height: calc(100vh - 120px);
 }
 
 /* ── Links in archive pages ── */

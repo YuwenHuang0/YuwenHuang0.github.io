@@ -10,79 +10,88 @@ redirect_from:
 {% include base_path %}
 
 <style>
-  .cv-section { margin-bottom: .5rem; }
+  .cv-section { margin-bottom: 1.5rem; }
   .cv-section h2 {
-    font-size: .8rem !important;
+    font-size: .82rem !important;
     font-weight: 700 !important;
-    letter-spacing: .04em;
+    letter-spacing: .06em;
     text-transform: uppercase;
-    color: #6e6e73 !important;
-    border-bottom: 1px solid rgba(0,0,0,.06) !important;
-    padding-bottom: .2em !important;
+    color: #8b5cf6 !important;
+    border-bottom: 2px solid rgba(139,92,246,.2) !important;
+    padding-bottom: .3em !important;
     margin-top: 0 !important;
-    margin-bottom: .15rem !important;
+    margin-bottom: .5rem !important;
   }
   .cv-entry {
-    padding: .1rem 0;
-    border-bottom: 1px solid rgba(0,0,0,.025);
+    padding: .4rem .6rem;
+    margin-bottom: .35rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,.05);
+    background: #fff;
+    transition: border-color .15s;
   }
-  .cv-entry:last-child { border-bottom: none; }
+  .cv-entry:hover { border-color: rgba(0,0,0,.1); }
   .cv-entry-main {
-    font-size: .78rem;
+    font-size: .88rem;
     font-weight: 600;
-    color: var(--text-primary, #1d1d1f);
-    line-height: 1.2;
+    color: #1d1d1f;
+    line-height: 1.35;
     margin: 0;
   }
   .cv-entry-date {
-    font-size: .72rem;
+    font-size: .78rem;
     font-weight: 600;
-    color: #6e6e73;
+    color: #52525b;
+    font-family: "SF Mono", "Fira Code", monospace;
   }
   .cv-entry-detail {
-    font-size: .74rem;
-    color: #6e6e73;
-    line-height: 1.3;
-    margin: 0;
+    font-size: .82rem;
+    color: #52525b;
+    line-height: 1.4;
+    margin: .1rem 0 0;
   }
   .cv-entry-detail a {
-    color: #06c !important;
+    color: #7c3aed !important;
     text-decoration: none !important;
     font-weight: 500;
   }
   .cv-entry-detail a:hover { text-decoration: underline !important; }
   .cv-tags {
-    display: flex; flex-wrap: wrap; gap: .15rem;
-    margin-top: .05rem;
+    display: flex; flex-wrap: wrap; gap: .3rem;
+    margin-top: .2rem;
   }
   .cv-tag {
     display: inline-flex;
-    padding: .05rem .35rem;
+    padding: .2rem .55rem;
     border-radius: 980px;
-    background: #f0f0f2;
-    font-size: .68rem;
+    background: rgba(139,92,246,.08);
+    border: 1px solid rgba(139,92,246,.12);
+    font-size: .76rem;
     font-weight: 500;
-    color: #424245;
+    color: #6d28d9;
   }
   .cv-list {
-    list-style: none; padding: 0; margin: .05rem 0 0;
+    list-style: none; padding: 0; margin: .15rem 0 0;
   }
   .cv-list li {
-    padding: .1rem 0;
-    border-bottom: 1px solid rgba(0,0,0,.025);
-    font-size: .74rem;
-    line-height: 1.3;
-    color: #6e6e73;
+    padding: .35rem .6rem;
+    margin-bottom: .3rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,.05);
+    background: #fff;
+    font-size: .84rem;
+    line-height: 1.4;
+    color: #52525b;
   }
-  .cv-list li:last-child { border-bottom: none; }
+  .cv-list li:hover { border-color: rgba(0,0,0,.1); }
   .cv-list li strong {
-    color: var(--text-primary, #1d1d1f);
+    color: #1d1d1f;
     font-weight: 600;
   }
 </style>
 
-<div class="inner-page" style="padding-top:clamp(.8rem,1.5vw,1.2rem);">
-<h1 class="inner-page-title" style="font-size:clamp(1.1rem,2vw,1.5rem);margin-bottom:.1rem;">CV</h1>
+<div class="inner-page" style="padding-top:clamp(1.5rem,3vw,2.5rem);">
+<h1 class="inner-page-title" style="margin-bottom:.8rem;">CV</h1>
 
 <div class="cv-section">
 <h2>Education</h2>
