@@ -30,20 +30,20 @@ redirect_from:
    DESIGN TOKENS
    ══════════════════════════════════════════════════ */
 :root {
-  --bg-dark: #111113;
-  --bg-darker: #0c0c0e;
+  --bg-dark: #1a1a1f;
+  --bg-darker: #141418;
   --bg-light: #fafafa;
   --bg-muted: #f4f4f5;
-  --text-primary: #ececee;
-  --text-secondary: rgba(236,236,238,.55);
-  --text-tertiary: rgba(236,236,238,.35);
+  --text-primary: #f0f0f2;
+  --text-secondary: rgba(240,240,242,.72);
+  --text-tertiary: rgba(240,240,242,.50);
   --text-dark: #18181b;
-  --text-dark-secondary: #71717a;
+  --text-dark-secondary: #52525b;
   --accent: #c4a1ff;
   --accent-dim: rgba(196,161,255,.15);
   --accent-hover: #d4bbff;
-  --border-dark: rgba(255,255,255,.06);
-  --border-light: rgba(0,0,0,.06);
+  --border-dark: rgba(255,255,255,.10);
+  --border-light: rgba(0,0,0,.08);
   --radius: 12px;
   --transition: .2s cubic-bezier(.4,0,.2,1);
 }
@@ -137,17 +137,17 @@ redirect_from:
 }
 .hero-aff {
   font-size: .85rem;
-  color: var(--text-secondary) !important;
+  color: rgba(240,240,242,.68) !important;
   margin-top: .05rem;
 }
-.hero-aff a { color: var(--text-secondary) !important; font-weight: 500; transition: color var(--transition); }
+.hero-aff a { color: rgba(240,240,242,.68) !important; font-weight: 500; transition: color var(--transition); }
 .hero-aff a:hover { color: var(--text-primary) !important; }
 
 .hero-tagline {
   font-size: clamp(1.1rem, 2vw, 1.35rem);
   font-weight: 400;
   line-height: 1.5;
-  color: rgba(236,236,238,.75) !important;
+  color: rgba(240,240,242,.85) !important;
   max-width: 560px;
 }
 
@@ -230,12 +230,12 @@ redirect_from:
   padding: 1.2rem;
   border-radius: var(--radius);
   border: 1px solid var(--border-dark);
-  background: rgba(255,255,255,.02);
+  background: rgba(255,255,255,.03);
   transition: border-color var(--transition), background var(--transition);
 }
 .card:hover {
-  border-color: rgba(255,255,255,.1);
-  background: rgba(255,255,255,.04);
+  border-color: rgba(255,255,255,.16);
+  background: rgba(255,255,255,.06);
 }
 .card-title {
   font-size: 1rem;
@@ -262,8 +262,8 @@ redirect_from:
   margin-top: 1rem;
   padding: 1.2rem;
   border-radius: var(--radius);
-  background: rgba(196,161,255,.04);
-  border: 1px solid rgba(196,161,255,.08);
+  background: rgba(196,161,255,.06);
+  border: 1px solid rgba(196,161,255,.14);
 }
 .feat-title {
   font-size: 1.1rem;
@@ -285,8 +285,8 @@ redirect_from:
   display: inline-flex; align-items: center;
   padding: .2rem .5rem;
   border-radius: 6px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid var(--border-dark);
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
   color: var(--text-secondary) !important;
   font-size: .72rem;
   font-weight: 500;
@@ -295,8 +295,8 @@ redirect_from:
   transition: all var(--transition);
 }
 .cite:hover {
-  background: rgba(255,255,255,.1);
-  border-color: rgba(255,255,255,.12);
+  background: rgba(255,255,255,.14);
+  border-color: rgba(255,255,255,.2);
   color: var(--text-primary) !important;
 }
 
@@ -345,7 +345,7 @@ redirect_from:
 .tl-row:first-child { border-top: 1px solid var(--border-light); }
 .tl-date {
   font-size: .75rem; font-weight: 600;
-  color: var(--text-dark-secondary);
+  color: #52525b;
   min-width: 72px; flex-shrink: 0;
   font-family: "SF Mono", "Fira Code", monospace;
 }
@@ -358,7 +358,7 @@ redirect_from:
 .tl-title a:hover { color: var(--accent) !important; }
 .tl-venue {
   font-size: .75rem;
-  color: var(--text-dark-secondary);
+  color: #52525b;
   margin-top: .05rem;
 }
 .tl-badge {
@@ -415,7 +415,7 @@ redirect_from:
 .perk {
   display: flex; align-items: baseline; gap: .4rem;
   font-size: .86rem; line-height: 1.35;
-  color: rgba(236,236,238,.8) !important;
+  color: rgba(240,240,242,.88) !important;
 }
 .perk::before {
   content: "";
