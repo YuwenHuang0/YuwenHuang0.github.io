@@ -8,195 +8,648 @@ redirect_from:
 ---
 
 <style>
-/* ── Reset ALL theme defaults inside splash ── */
-.splash .page__content { font-family: -apple-system, "SF Pro Display", "Helvetica Neue", "Inter", sans-serif; max-width: none !important; padding: 0 !important; margin: 0 !important; -webkit-font-smoothing: antialiased; color: #1d1d1f; }
-.splash .page__content p, .splash .page__content h1, .splash .page__content h2, .splash .page__content h3, .splash .page__content h4 { margin: 0 !important; padding: 0 !important; border: none !important; line-height: 1.2; }
+/* ══════════════════════════════════════════════════
+   RESET — kill all theme defaults in splash
+   ══════════════════════════════════════════════════ */
+.splash .page__content {
+  font-family: -apple-system, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Inter", "Segoe UI", sans-serif;
+  max-width: none !important; padding: 0 !important; margin: 0 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.splash .page__content p,
+.splash .page__content h1,
+.splash .page__content h2,
+.splash .page__content h3,
+.splash .page__content h4 {
+  margin: 0 !important; padding: 0 !important; border: none !important;
+}
 .splash .page__content a { text-decoration: none; }
 
-/* ── Sections ── */
-.s { width: 100%; padding: .7rem clamp(1.2rem, 4vw, 5rem); }
-.s-in { max-width: 960px; width: 100%; margin: 0 auto; }
-
-/* ── Dark section — warm charcoal ── */
-.s-dark { background: #1a1a2e; color: #f0eff4; }
-.s-dark h2, .s-dark h3, .s-dark p, .s-dark div, .s-dark span, .s-dark a { color: #f0eff4; }
-
-/* ── HERO ── */
-.hero { padding-top: 1.5rem; padding-bottom: 1rem; text-align: center; }
-.hero .s-in { display: flex; flex-direction: column; align-items: center; }
-.h-row { display: flex; align-items: center; gap: .7rem; margin-bottom: .5rem; }
-.h-photo { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,.15); }
-.h-id { text-align: left; }
-.h-name { font-size: 1.1rem; font-weight: 700; }
-.h-aff { font-size: .85rem; color: rgba(255,255,255,.7) !important; margin-top: .05rem; }
-.h-aff a { color: rgba(255,255,255,.8) !important; font-weight: 500; }
-.h-news { font-size: .8rem; color: rgba(255,255,255,.55) !important; margin-top: .1rem; }
-.h-news strong { color: #a78bfa !important; font-weight: 700; }
-.h-news a { color: rgba(255,255,255,.7) !important; }
-.h-intro { font-size: 1.05rem; line-height: 1.5; color: rgba(255,255,255,.85) !important; text-align: center; white-space: nowrap; }
-.h-cta { display: flex; gap: .4rem; margin-top: .6rem; }
-.btn { display: inline-flex; align-items: center; height: 2.2rem; padding: 0 1.1rem; border-radius: 980px; font-size: .84rem; font-weight: 600; cursor: pointer; text-decoration: none !important; transition: all .2s; }
-.btn-w { background: #fff; color: #000 !important; }
-.splash .page__content .btn-w, .splash .page__content .btn-w:hover { color: #000 !important; text-decoration: none !important; }
-.btn-o { background: transparent; border: 1.5px solid rgba(255,255,255,.3); color: #fff !important; }
-.splash .page__content .btn-o, .splash .page__content .btn-o:hover { color: #fff !important; text-decoration: none !important; }
-
-/* ── Light sections — warm tones ── */
-.s-light { background: #faf9f6; }
-.s-alt { background: #f0eff4; }
-
-/* ── Section headers ── */
-.sh { font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #8e8a99; margin-bottom: .15rem; }
-.s-dark .sh { color: rgba(240,239,244,.45) !important; }
-.sh2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -.02em; color: #2d2b3a; }
-.s-dark .sh2 { color: #f0eff4 !important; }
-
-/* ── RESEARCH — 3-col text ── */
-.r-grid { display: grid; gap: .5rem; margin-top: .4rem; }
-@media (min-width: 700px) { .r-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; } }
-.r-name { font-size: .95rem; font-weight: 700; color: #2d2b3a; }
-.r-desc { font-size: .82rem; line-height: 1.4; color: #5c5875; margin-top: .1rem; }
-
-/* ── WORK — papers ── */
-.wf { margin-top: .3rem; padding-bottom: .3rem; border-bottom: 1px solid rgba(255,255,255,.1); }
-.wf-t { font-size: 1rem; font-weight: 700; color: #f0eff4 !important; }
-.wf-d { font-size: .82rem; line-height: 1.4; color: rgba(240,239,244,.6) !important; margin-top: .1rem; }
-.wc { display: flex; flex-wrap: wrap; gap: .2rem; margin-top: .25rem; }
-.cite { display: inline-flex; padding: .15rem .4rem; border-radius: 980px; background: rgba(240,239,244,.1); border: 1px solid rgba(240,239,244,.15); color: rgba(240,239,244,.8) !important; font-size: .68rem; font-weight: 600; text-decoration: none !important; transition: all .15s; }
-.cite:hover { background: rgba(240,239,244,.2); color: #f0eff4 !important; }
-.w-grid { display: grid; gap: .4rem; margin-top: .4rem; }
-@media (min-width: 700px) { .w-grid { grid-template-columns: repeat(3, 1fr); } }
-.wa-n { font-size: .88rem; font-weight: 700; color: #f0eff4 !important; }
-.wa-d { font-size: .76rem; line-height: 1.3; color: rgba(240,239,244,.5) !important; margin-top: .05rem; }
-.w-more { margin-top: .4rem; text-align: center; }
-.w-more a { font-size: .82rem; font-weight: 600; color: rgba(240,239,244,.55) !important; text-decoration: none !important; }
-.w-more a:hover { color: #f0eff4 !important; }
-.w-more a::after { content: " →"; }
-
-/* ── UPDATES — minimal rows ── */
-.u-list { margin-top: .25rem; }
-.u-row { display: flex; gap: 1rem; padding: .2rem 0; border-bottom: 1px solid rgba(45,43,58,.08); align-items: baseline; }
-.u-row:first-child { border-top: 1px solid rgba(45,43,58,.08); }
-.u-dt { font-size: .74rem; font-weight: 700; color: #8e8a99; min-width: 68px; flex-shrink: 0; }
-.u-tt { font-size: .84rem; font-weight: 600; color: #2d2b3a; line-height: 1.2; }
-.u-tt a { color: #2d2b3a !important; text-decoration: none !important; }
-.u-tt a:hover { color: #6366f1 !important; }
-.u-v { font-size: .72rem; color: #8e8a99; }
-
-/* ── JOIN — white on black, large & clear ── */
-.join { padding-top: 1.2rem; padding-bottom: 1.2rem; }
-.join .s-in { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.join-h { font-size: 1.8rem !important; font-weight: 800 !important; color: #f0eff4 !important; letter-spacing: -.03em; }
-.join-d { font-size: .9rem; line-height: 1.4; color: rgba(240,239,244,.7) !important; margin-top: .3rem; white-space: nowrap; }
-.join-perks { display: grid; gap: .15rem; margin-top: .5rem; text-align: left; max-width: 420px; width: 100%; }
-.join-pk { display: flex; align-items: baseline; gap: .35rem; font-size: .84rem; line-height: 1.3; color: rgba(240,239,244,.85) !important; }
-.join-pk::before { content: "→"; color: #a78bfa; font-weight: 700; }
-.join-roles { display: flex; gap: .25rem; justify-content: center; margin-top: .5rem; }
-.join-role { padding: .2rem .65rem; border-radius: 980px; border: 1.5px solid rgba(167,139,250,.4); font-size: .78rem; font-weight: 700; color: #c4b5fd !important; }
-.join-cta { margin-top: .5rem; }
-.btn-a { background: #a78bfa; color: #1a1a2e !important; font-weight: 800; font-size: .88rem; height: 2.4rem; padding: 0 1.4rem; }
-.splash .page__content .btn-a, .splash .page__content .btn-a:hover { color: #1a1a2e !important; text-decoration: none !important; }
-.btn-a:hover { background: #c4b5fd; }
-.join-links { display: flex; gap: .6rem; margin-top: .3rem; }
-.join-links a { font-size: .74rem; font-weight: 600; color: rgba(240,239,244,.45) !important; text-decoration: none !important; }
-.join-links a:hover { color: #c4b5fd !important; }
-
-/* ── Mobile ── */
-@media (max-width: 700px) {
-  .s { padding: .5rem .8rem; }
-  .h-row { flex-direction: column; text-align: center; }
-  .h-id { text-align: center; }
-  .u-row { flex-direction: column; gap: 0; }
-  .u-dt { min-width: auto; }
+/* ══════════════════════════════════════════════════
+   DESIGN TOKENS
+   ══════════════════════════════════════════════════ */
+:root {
+  --bg-dark: #111113;
+  --bg-darker: #0c0c0e;
+  --bg-light: #fafafa;
+  --bg-muted: #f4f4f5;
+  --text-primary: #ececee;
+  --text-secondary: rgba(236,236,238,.55);
+  --text-tertiary: rgba(236,236,238,.35);
+  --text-dark: #18181b;
+  --text-dark-secondary: #71717a;
+  --accent: #c4a1ff;
+  --accent-dim: rgba(196,161,255,.15);
+  --accent-hover: #d4bbff;
+  --border-dark: rgba(255,255,255,.06);
+  --border-light: rgba(0,0,0,.06);
+  --radius: 12px;
+  --transition: .2s cubic-bezier(.4,0,.2,1);
 }
 
-.skip-nav { position: absolute; top: -100%; left: 50%; transform: translateX(-50%); padding: .4rem 1rem; border-radius: 980px; background: #06c; color: #fff !important; font-size: .8rem; font-weight: 600; text-decoration: none !important; z-index: 9999; }
-.skip-nav:focus { top: .6rem; }
+/* ══════════════════════════════════════════════════
+   SECTION SYSTEM
+   ══════════════════════════════════════════════════ */
+.sec {
+  width: 100%;
+  padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 5vw, 6rem);
+}
+.sec-in {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Dark sections */
+.dark { background: var(--bg-dark); color: var(--text-primary); }
+.dark h2, .dark h3, .dark p, .dark div, .dark span { color: var(--text-primary); }
+.darker { background: var(--bg-darker); color: var(--text-primary); }
+.darker h2, .darker h3, .darker p, .darker div, .darker span { color: var(--text-primary); }
+
+/* Light sections */
+.light { background: var(--bg-light); color: var(--text-dark); }
+.muted { background: var(--bg-muted); color: var(--text-dark); }
+
+/* ══════════════════════════════════════════════════
+   SECTION HEADERS
+   ══════════════════════════════════════════════════ */
+.label {
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .4rem;
+}
+.heading {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -.03em;
+  line-height: 1.1;
+}
+.dark .heading, .darker .heading { color: var(--text-primary); }
+.light .heading, .muted .heading { color: var(--text-dark); }
+.subtext {
+  margin-top: .4rem;
+  font-size: .95rem;
+  line-height: 1.5;
+}
+.dark .subtext, .darker .subtext { color: var(--text-secondary); }
+.light .subtext, .muted .subtext { color: var(--text-dark-secondary); }
+
+/* ══════════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════════ */
+.hero {
+  padding-top: clamp(2.5rem, 6vw, 5rem);
+  padding-bottom: clamp(2rem, 4vw, 3.5rem);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -40%; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 500px;
+  background: radial-gradient(ellipse, rgba(196,161,255,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero .sec-in {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center;
+}
+
+.hero-id {
+  display: flex; align-items: center; gap: .8rem;
+  margin-bottom: 1.5rem;
+}
+.hero-photo {
+  width: 56px; height: 56px;
+  border-radius: 50%; object-fit: cover;
+  border: 2px solid rgba(255,255,255,.08);
+}
+.hero-meta { text-align: left; }
+.hero-name {
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--text-primary) !important;
+}
+.hero-aff {
+  font-size: .85rem;
+  color: var(--text-secondary) !important;
+  margin-top: .05rem;
+}
+.hero-aff a { color: var(--text-secondary) !important; font-weight: 500; transition: color var(--transition); }
+.hero-aff a:hover { color: var(--text-primary) !important; }
+
+.hero-tagline {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(236,236,238,.75) !important;
+  max-width: 560px;
+}
+
+.hero-announcement {
+  display: inline-flex; align-items: center;
+  gap: .4rem;
+  margin-top: 1.2rem;
+  padding: .4rem 1rem;
+  border-radius: 980px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(196,161,255,.12);
+  font-size: .82rem;
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+.hero-announcement a {
+  color: var(--accent) !important;
+  font-weight: 600;
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
+}
+
+.hero-cta {
+  display: flex; gap: .5rem;
+  margin-top: 1.5rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 2.5rem; padding: 0 1.4rem;
+  border-radius: 980px;
+  font-size: .88rem; font-weight: 600;
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: all var(--transition);
+}
+.btn-primary {
+  background: var(--text-primary);
+  color: var(--bg-dark) !important;
+}
+.splash .page__content .btn-primary,
+.splash .page__content .btn-primary:hover {
+  color: var(--bg-dark) !important;
+  text-decoration: none !important;
+}
+.btn-primary:hover {
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(236,236,238,.1);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--border-dark);
+  color: var(--text-secondary) !important;
+}
+.splash .page__content .btn-secondary,
+.splash .page__content .btn-secondary:hover {
+  color: var(--text-secondary) !important;
+  text-decoration: none !important;
+}
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,.15);
+  color: var(--text-primary) !important;
+  background: rgba(255,255,255,.03);
+}
+
+/* ══════════════════════════════════════════════════
+   RESEARCH AREAS — cards with subtle borders
+   ══════════════════════════════════════════════════ */
+.cards {
+  display: grid;
+  gap: .8rem;
+  margin-top: 1.2rem;
+}
+@media (min-width: 700px) {
+  .cards { grid-template-columns: repeat(3, 1fr); }
+}
+.card {
+  padding: 1.2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-dark);
+  background: rgba(255,255,255,.02);
+  transition: border-color var(--transition), background var(--transition);
+}
+.card:hover {
+  border-color: rgba(255,255,255,.1);
+  background: rgba(255,255,255,.04);
+}
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary) !important;
+  letter-spacing: -.01em;
+}
+.card-desc {
+  font-size: .85rem;
+  line-height: 1.5;
+  color: var(--text-secondary) !important;
+  margin-top: .25rem;
+}
+.card-tags {
+  margin-top: .5rem;
+  font-size: .75rem;
+  color: var(--text-tertiary) !important;
+}
+
+/* ══════════════════════════════════════════════════
+   SELECTED WORK — featured + grid
+   ══════════════════════════════════════════════════ */
+.featured {
+  margin-top: 1rem;
+  padding: 1.2rem;
+  border-radius: var(--radius);
+  background: rgba(196,161,255,.04);
+  border: 1px solid rgba(196,161,255,.08);
+}
+.feat-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary) !important;
+}
+.feat-desc {
+  font-size: .85rem;
+  line-height: 1.5;
+  color: var(--text-secondary) !important;
+  margin-top: .2rem;
+}
+.cites {
+  display: flex; flex-wrap: wrap;
+  gap: .25rem;
+  margin-top: .5rem;
+}
+.cite {
+  display: inline-flex; align-items: center;
+  padding: .2rem .5rem;
+  border-radius: 6px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--border-dark);
+  color: var(--text-secondary) !important;
+  font-size: .72rem;
+  font-weight: 500;
+  font-family: "SF Mono", "Fira Code", monospace;
+  text-decoration: none !important;
+  transition: all var(--transition);
+}
+.cite:hover {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.12);
+  color: var(--text-primary) !important;
+}
+
+.sub-grid {
+  display: grid; gap: .8rem;
+  margin-top: .8rem;
+}
+@media (min-width: 700px) {
+  .sub-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.sub-title {
+  font-size: .9rem; font-weight: 700;
+  color: var(--text-primary) !important;
+}
+.sub-desc {
+  font-size: .78rem; line-height: 1.4;
+  color: var(--text-tertiary) !important;
+  margin-top: .1rem;
+}
+
+.view-all {
+  margin-top: 1rem; text-align: center;
+}
+.view-all a {
+  font-size: .85rem; font-weight: 500;
+  color: var(--accent) !important;
+  text-decoration: none !important;
+  transition: color var(--transition);
+}
+.view-all a:hover { color: var(--accent-hover) !important; }
+.view-all a::after { content: " →"; }
+
+/* ══════════════════════════════════════════════════
+   UPDATES — clean rows
+   ══════════════════════════════════════════════════ */
+.timeline {
+  margin-top: .8rem;
+}
+.tl-row {
+  display: flex;
+  gap: 1.2rem;
+  padding: .5rem 0;
+  border-bottom: 1px solid var(--border-light);
+  align-items: baseline;
+}
+.tl-row:first-child { border-top: 1px solid var(--border-light); }
+.tl-date {
+  font-size: .75rem; font-weight: 600;
+  color: var(--text-dark-secondary);
+  min-width: 72px; flex-shrink: 0;
+  font-family: "SF Mono", "Fira Code", monospace;
+}
+.tl-title {
+  font-size: .88rem; font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.3;
+}
+.tl-title a { color: var(--text-dark) !important; text-decoration: none !important; transition: color var(--transition); }
+.tl-title a:hover { color: var(--accent) !important; }
+.tl-venue {
+  font-size: .75rem;
+  color: var(--text-dark-secondary);
+  margin-top: .05rem;
+}
+.tl-badge {
+  display: inline-flex;
+  padding: .1rem .4rem;
+  border-radius: 4px;
+  font-size: .6rem; font-weight: 700;
+  letter-spacing: .03em; text-transform: uppercase;
+  background: rgba(196,161,255,.12);
+  color: #9061e0;
+  margin-left: .3rem; vertical-align: middle;
+}
+
+/* ══════════════════════════════════════════════════
+   JOIN — accent-highlighted section
+   ══════════════════════════════════════════════════ */
+.join {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.join::before {
+  content: "";
+  position: absolute;
+  bottom: -30%; left: 50%; transform: translateX(-50%);
+  width: 700px; height: 400px;
+  background: radial-gradient(ellipse, rgba(196,161,255,.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.join .sec-in {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center;
+}
+.join-heading {
+  font-size: clamp(1.8rem, 4vw, 2.8rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -.035em;
+  color: var(--text-primary) !important;
+  line-height: 1.05;
+}
+.join-sub {
+  margin-top: .5rem;
+  font-size: .95rem;
+  color: var(--text-secondary) !important;
+  line-height: 1.5;
+}
+
+.perks {
+  display: grid; gap: .3rem;
+  margin-top: 1rem;
+  text-align: left;
+  max-width: 440px; width: 100%;
+}
+.perk {
+  display: flex; align-items: baseline; gap: .4rem;
+  font-size: .86rem; line-height: 1.35;
+  color: rgba(236,236,238,.8) !important;
+}
+.perk::before {
+  content: "";
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: .4em;
+}
+
+.roles {
+  display: flex; gap: .3rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.role {
+  padding: .25rem .75rem;
+  border-radius: 6px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(196,161,255,.1);
+  font-size: .78rem; font-weight: 600;
+  color: var(--accent) !important;
+}
+
+.join-cta { margin-top: 1.2rem; }
+.btn-accent {
+  background: var(--accent);
+  color: var(--bg-darker) !important;
+  font-weight: 700;
+}
+.splash .page__content .btn-accent,
+.splash .page__content .btn-accent:hover {
+  color: var(--bg-darker) !important;
+  text-decoration: none !important;
+}
+.btn-accent:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 4px 24px rgba(196,161,255,.2);
+  transform: translateY(-1px);
+}
+
+.join-links {
+  display: flex; gap: .8rem;
+  margin-top: .8rem;
+}
+.join-links a {
+  font-size: .78rem; font-weight: 500;
+  color: var(--text-tertiary) !important;
+  text-decoration: none !important;
+  transition: color var(--transition);
+}
+.join-links a:hover { color: var(--accent) !important; }
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════ */
+@media (max-width: 700px) {
+  .sec { padding: 1.5rem 1rem; }
+  .hero-id { flex-direction: column; text-align: center; }
+  .hero-meta { text-align: center; }
+  .tl-row { flex-direction: column; gap: .1rem; }
+  .tl-date { min-width: auto; }
+}
+
+/* Skip nav */
+.skip-nav {
+  position: absolute; top: -100%;
+  left: 50%; transform: translateX(-50%);
+  padding: .5rem 1.2rem; border-radius: 980px;
+  background: var(--accent); color: var(--bg-darker) !important;
+  font-size: .82rem; font-weight: 600;
+  text-decoration: none !important; z-index: 9999;
+}
+.skip-nav:focus { top: .8rem; }
 </style>
 
 <a class="skip-nav" href="#research">Skip to research</a>
 
-<section class="s s-dark hero">
-<div class="s-in">
-  <div class="h-row">
-    <img class="h-photo" src="{{ '/images/yuwen_photo.jpg' | relative_url }}" alt="Yuwen Huang">
-    <div class="h-id">
-      <div class="h-name">Yuwen Huang</div>
-      <div class="h-aff">Postdoc, <a href="https://www.cse.cuhk.edu.hk/">CSE Dept., CUHK</a></div>
-      <div class="h-news"><strong>May 2026</strong> — Joining <a href="https://www.hkust-gz.edu.cn/">HKUST (GZ)</a> as Assistant Professor</div>
+<!-- ════ HERO ════ -->
+<section class="sec darker hero" aria-label="Introduction">
+<div class="sec-in">
+
+  <div class="hero-id">
+    <img class="hero-photo" src="{{ '/images/yuwen_photo.jpg' | relative_url }}" alt="Yuwen Huang">
+    <div class="hero-meta">
+      <div class="hero-name">Yuwen Huang</div>
+      <div class="hero-aff">Postdoc, <a href="https://www.cse.cuhk.edu.hk/">CSE Dept., CUHK</a></div>
     </div>
   </div>
-  <p class="h-intro">Provable algorithms for inference, optimization, and quantum computation.</p>
-  <div class="h-cta">
-    <a class="btn btn-w" href="#positions">Open positions</a>
-    <a class="btn btn-o" href="#research">Research</a>
+
+  <p class="hero-tagline">Provable algorithms for inference, optimization, and quantum computation.</p>
+
+  <div class="hero-announcement">
+    <strong>May 2026</strong> — Joining <a href="https://www.hkust-gz.edu.cn/">HKUST (Guangzhou)</a> as Assistant Professor
   </div>
+
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="#positions">Open positions</a>
+    <a class="btn btn-secondary" href="#research">Research</a>
+  </div>
+
 </div>
 </section>
 
-<section class="s s-light">
-<div class="s-in">
-  <div class="sh">Research</div>
-  <h2 class="sh2">Three core areas</h2>
-  <div class="r-grid">
-    <div><div class="r-name">Structured inference</div><div class="r-desc">Bethe methods, graph covers, and message passing for counting and inference.</div></div>
-    <div><div class="r-name">Provable optimization</div><div class="r-desc">Permanent bounds and guarantees for hard combinatorial problems.</div></div>
-    <div><div class="r-name">Quantum &amp; tensors</div><div class="r-desc">Tensor networks and distributed quantum systems for scalable computation.</div></div>
-  </div>
-</div>
-</section>
-
-<section class="s s-dark" id="research">
-<div class="s-in">
-  <div class="sh">Selected work</div>
-  <h2 class="sh2">Representative papers</h2>
-  <div class="wf">
-    <div class="wf-t">Graphical models and Bethe methods</div>
-    <div class="wf-d">Graph covers and Bethe approximation for inference and counting — our longest-running thread.</div>
-    <div class="wc">
-      <a class="cite" href="https://ieeexplore.ieee.org/document/9174508/">[ISIT'20]</a>
-      <a class="cite" href="https://arxiv.org/abs/2107.01816">[ISIT'21]</a>
-      <a class="cite" href="https://ieeexplore.ieee.org/document/9965874/">[ITW'22]</a>
-      <a class="cite" href="https://arxiv.org/abs/2306.02280">[ISIT'23]</a>
-      <a class="cite" href="https://ieeexplore.ieee.org/document/10619603/">[ISIT'24]</a>
-      <a class="cite" href="https://arxiv.org/abs/2306.02280">[TIT'24]</a>
-      <a class="cite" href="https://arxiv.org/abs/2506.16250">[TIT-sub]</a>
+<!-- ════ RESEARCH ════ -->
+<section class="sec dark" aria-label="Research areas">
+<div class="sec-in">
+  <div class="label">Research</div>
+  <h2 class="heading">Three core areas</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="card-title">Structured inference</div>
+      <div class="card-desc">Bethe methods, graph covers, and message passing for counting and inference on graphical models.</div>
+      <div class="card-tags">Uncertainty · Counting · Graph covers</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Provable optimization</div>
+      <div class="card-desc">Permanent bounds and algorithmic guarantees for hard combinatorial problems.</div>
+      <div class="card-tags">Convex / nonconvex · Permanent bounds</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Quantum &amp; tensors</div>
+      <div class="card-desc">Tensor networks and distributed quantum systems for scalable computation.</div>
+      <div class="card-tags">Tensor networks · Quantum systems</div>
     </div>
   </div>
-  <div class="w-grid">
-    <div><div class="wa-n">Tensor methods</div><div class="wa-d">High-dimensional computation via tensor networks.</div><div class="wc"><a class="cite" href="https://arxiv.org/abs/2107.01816">[ISIT'21]</a><a class="cite" href="https://arxiv.org/abs/2506.16250">[TIT-sub]</a><a class="cite" href="https://arxiv.org/abs/2508.05712">[ICML'25]</a><a class="cite" href="https://arxiv.org/abs/2603.07673">[Q-sub]</a></div></div>
-    <div><div class="wa-n">Optimization</div><div class="wa-d">Permanent bounds for hard problems.</div><div class="wc"><a class="cite" href="https://arxiv.org/abs/2306.02280">[ISIT'23]</a><a class="cite" href="https://arxiv.org/abs/2306.02280">[TIT'24]</a><a class="cite" href="https://arxiv.org/abs/2508.05712">[ICML'25]</a></div></div>
-    <div><div class="wa-n">Quantum systems</div><div class="wa-d">Distributed quantum optimization.</div><div class="wc"><a class="cite" href="https://arxiv.org/abs/2603.07673">[Q-sub]</a></div></div>
-  </div>
-  <div class="w-more"><a href="{{ '/publications/' | relative_url }}">All publications</a></div>
 </div>
 </section>
 
-<section class="s s-alt">
-<div class="s-in">
-  <div class="sh">Latest</div>
-  <h2 class="sh2">What's new</h2>
-  <div class="u-list">
-    <div class="u-row"><div class="u-dt">May 2026</div><div><div class="u-tt">Joining HKUST (GZ) as Assistant Professor</div><div class="u-v">DSA Thrust, Information Hub</div></div></div>
-    <div class="u-row"><div class="u-dt">Mar 2026</div><div><div class="u-tt"><a href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">Scalable Distributed Quantum Optimization</a></div><div class="u-v">Submitted to Quantum</div></div></div>
-    <div class="u-row"><div class="u-dt">Jul 2025</div><div><div class="u-tt"><a href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">Graph-Cover-based Bethe Partition Function</a></div><div class="u-v">Submitted to IEEE TIT</div></div></div>
-    <div class="u-row"><div class="u-dt">2024</div><div><div class="u-tt"><a href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">Degree-M Bethe &amp; Sinkhorn Permanent</a></div><div class="u-v">Published in IEEE TIT</div></div></div>
+<!-- ════ SELECTED WORK ════ -->
+<section class="sec darker" id="research" aria-label="Selected work">
+<div class="sec-in">
+  <div class="label">Selected work</div>
+  <h2 class="heading">Representative papers</h2>
+  <div class="featured">
+    <div class="feat-title">Graphical models and Bethe methods</div>
+    <div class="feat-desc">Graph covers and Bethe approximation for inference and counting — our longest-running thread.</div>
+    <div class="cites">
+      <a class="cite" href="https://ieeexplore.ieee.org/document/9174508/">ISIT'20</a>
+      <a class="cite" href="https://arxiv.org/abs/2107.01816">ISIT'21</a>
+      <a class="cite" href="https://ieeexplore.ieee.org/document/9965874/">ITW'22</a>
+      <a class="cite" href="https://arxiv.org/abs/2306.02280">ISIT'23</a>
+      <a class="cite" href="https://ieeexplore.ieee.org/document/10619603/">ISIT'24</a>
+      <a class="cite" href="https://arxiv.org/abs/2306.02280">TIT'24</a>
+      <a class="cite" href="https://arxiv.org/abs/2506.16250">TIT-sub</a>
+    </div>
+  </div>
+  <div class="sub-grid">
+    <div>
+      <div class="sub-title">Tensor methods</div>
+      <div class="sub-desc">Tensor-network methods for high-dimensional computation.</div>
+      <div class="cites">
+        <a class="cite" href="https://arxiv.org/abs/2107.01816">ISIT'21</a>
+        <a class="cite" href="https://arxiv.org/abs/2506.16250">TIT-sub</a>
+        <a class="cite" href="https://arxiv.org/abs/2508.05712">ICML'25</a>
+        <a class="cite" href="https://arxiv.org/abs/2603.07673">Q-sub</a>
+      </div>
+    </div>
+    <div>
+      <div class="sub-title">Optimization</div>
+      <div class="sub-desc">Permanent bounds for hard problems.</div>
+      <div class="cites">
+        <a class="cite" href="https://arxiv.org/abs/2306.02280">ISIT'23</a>
+        <a class="cite" href="https://arxiv.org/abs/2306.02280">TIT'24</a>
+        <a class="cite" href="https://arxiv.org/abs/2508.05712">ICML'25</a>
+      </div>
+    </div>
+    <div>
+      <div class="sub-title">Quantum systems</div>
+      <div class="sub-desc">Distributed quantum optimization.</div>
+      <div class="cites">
+        <a class="cite" href="https://arxiv.org/abs/2603.07673">Q-sub</a>
+      </div>
+    </div>
+  </div>
+  <div class="view-all"><a href="{{ '/publications/' | relative_url }}">All publications</a></div>
+</div>
+</section>
+
+<!-- ════ UPDATES ════ -->
+<section class="sec muted" aria-label="Latest updates">
+<div class="sec-in">
+  <div class="label" style="color: #9061e0;">Latest</div>
+  <h2 class="heading">What's new</h2>
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">May 2026</div>
+      <div><div class="tl-title">Joining HKUST (GZ) as Assistant Professor <span class="tl-badge">Starting</span></div><div class="tl-venue">DSA Thrust, Information Hub</div></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Mar 2026</div>
+      <div><div class="tl-title"><a href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">Scalable Distributed Quantum Optimization</a></div><div class="tl-venue">Submitted to Quantum</div></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Jul 2025</div>
+      <div><div class="tl-title"><a href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">Graph-Cover-based Bethe Partition Function</a></div><div class="tl-venue">Submitted to IEEE TIT</div></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2024</div>
+      <div><div class="tl-title"><a href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">Degree-M Bethe &amp; Sinkhorn Permanent</a></div><div class="tl-venue">Published in IEEE TIT</div></div>
+    </div>
   </div>
 </div>
 </section>
 
-<section class="s s-dark join" id="positions">
-<div class="s-in">
-  <h2 class="join-h">Join the group</h2>
-  <p class="join-d">Building a team at HKUST (Guangzhou) starting May 2026.</p>
-  <div class="join-perks">
-    <div class="join-pk">Full tuition and competitive stipend</div>
-    <div class="join-pk">Mentorship targeting IEEE TIT, ISIT, ICML</div>
-    <div class="join-pk">Greater Bay Area research ecosystem</div>
-    <div class="join-pk">Small group, close advising</div>
+<!-- ════ JOIN ════ -->
+<section class="sec darker join" id="positions" aria-label="Open positions">
+<div class="sec-in">
+  <div class="label">Open positions</div>
+  <h2 class="join-heading">Join the group</h2>
+  <p class="join-sub">Building a team at HKUST (Guangzhou) starting May 2026.</p>
+
+  <div class="perks">
+    <div class="perk">Full tuition and competitive stipend</div>
+    <div class="perk">Mentorship targeting IEEE TIT, ISIT, ICML</div>
+    <div class="perk">Greater Bay Area research ecosystem</div>
+    <div class="perk">Small group, close advising</div>
   </div>
-  <div class="join-roles"><span class="join-role">RA</span><span class="join-role">MPhil</span><span class="join-role">PhD</span><span class="join-role">Postdoc</span></div>
-  <div class="join-cta"><a class="btn btn-a" href="mailto:{{ site.author.email }}">Get in touch</a></div>
-  <div class="join-links"><a href="https://dsa.hkust-gz.edu.cn/">DSA Thrust</a><a href="https://www.hkust-gz.edu.cn/academics/hubs-and-thrust-areas/information-hub/">Info Hub</a><a href="https://www.hkust-gz.edu.cn/">HKUST GZ</a></div>
+
+  <div class="roles">
+    <span class="role">RA</span>
+    <span class="role">MPhil</span>
+    <span class="role">PhD</span>
+    <span class="role">Postdoc</span>
+  </div>
+
+  <div class="join-cta">
+    <a class="btn btn-accent" href="mailto:{{ site.author.email }}">Get in touch</a>
+  </div>
+
+  <div class="join-links">
+    <a href="https://dsa.hkust-gz.edu.cn/">DSA Thrust</a>
+    <a href="https://www.hkust-gz.edu.cn/academics/hubs-and-thrust-areas/information-hub/">Info Hub</a>
+    <a href="https://www.hkust-gz.edu.cn/">HKUST GZ</a>
+  </div>
 </div>
 </section>
