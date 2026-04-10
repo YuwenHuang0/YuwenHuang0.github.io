@@ -149,7 +149,8 @@ redirect_from:
   font-weight: 400;
   line-height: 1.5;
   color: var(--text-body) !important;
-  max-width: 560px;
+  max-width: 700px;
+  white-space: nowrap;
 }
 
 .hero-announcement {
