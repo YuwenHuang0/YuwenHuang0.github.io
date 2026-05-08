@@ -588,6 +588,13 @@ redirect_from:
         <a class="cite" href="https://arxiv.org/abs/2603.07673">Q-sub</a>
       </div>
     </div>
+    <div>
+      <div class="sub-title">Efficient attention</div>
+      <div class="sub-desc">Provably linear-time attention mechanisms.</div>
+      <div class="cites">
+        <a class="cite" href="{{ '/publication/plash-linear-attention' | relative_url }}">ICML'26</a>
+      </div>
+    </div>
   </div>
   <div class="view-all"><a href="{{ '/publications/' | relative_url }}">All publications</a></div>
 </div>
@@ -602,6 +609,10 @@ redirect_from:
     <div class="tl-row">
       <div class="tl-date">May 2026</div>
       <div><div class="tl-title">Joining HKUST (GZ) as Assistant Professor <span class="tl-badge">Starting</span></div><div class="tl-venue">DSA Thrust, Information Hub</div></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">May 2026</div>
+      <div><div class="tl-title"><a href="{{ '/publication/plash-linear-attention' | relative_url }}">PLASH: Provably Linear-Time Attention</a> <span class="tl-badge">Accepted</span></div><div class="tl-venue">ICML 2026</div></div>
     </div>
     <div class="tl-row">
       <div class="tl-date">Mar 2026</div>

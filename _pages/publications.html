@@ -84,7 +84,7 @@ author_profile: false
   <p class="inner-page-sub">Also on <a href="{{site.author.googlescholar}}">Google Scholar</a>.</p>
 {% endif %}
 
-{% assign topic_entries = "graphical-models::Graphical model-based approximation of #-P complete problems.;quantum-info::Quantum information processing.;wireless::Wireless communication systems." | split: ";" %}
+{% assign topic_entries = "machine-learning::Machine learning.;graphical-models::Graphical model-based approximation of #-P complete problems.;quantum-info::Quantum information processing.;wireless::Wireless communication systems." | split: ";" %}
 
 {% for topic_entry in topic_entries %}
   {% assign parts = topic_entry | split: "::" %}
