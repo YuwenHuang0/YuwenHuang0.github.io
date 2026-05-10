@@ -500,14 +500,14 @@ redirect_from:
     <img class="hero-photo" src="{{ '/images/yuwen_photo.jpg' | relative_url }}" alt="Yuwen Huang">
     <div class="hero-meta">
       <div class="hero-name">Yuwen Huang</div>
-      <div class="hero-aff">Postdoc, <a href="https://www.cse.cuhk.edu.hk/">CSE Dept., CUHK</a></div>
+      <div class="hero-aff">Assistant Professor, <a href="https://dsa.hkust-gz.edu.cn/">DSA Thrust, HKUST (Guangzhou)</a></div>
     </div>
   </div>
 
   <p class="hero-tagline">Provable algorithms for inference, optimization, and quantum computation.</p>
 
   <div class="hero-announcement">
-    <strong>May 2026</strong> — Joining <a href="https://www.hkust-gz.edu.cn/">HKUST (Guangzhou)</a> as Assistant Professor
+    <strong>May 2026</strong> — Started as Assistant Professor at <a href="https://www.hkust-gz.edu.cn/">HKUST (Guangzhou)</a>
   </div>
 
   <div class="hero-cta">
@@ -608,7 +608,7 @@ redirect_from:
   <div class="timeline">
     <div class="tl-row">
       <div class="tl-date">May 2026</div>
-      <div><div class="tl-title">Joining HKUST (GZ) as Assistant Professor <span class="tl-badge">Starting</span></div><div class="tl-venue">DSA Thrust, Information Hub</div></div>
+      <div><div class="tl-title">Started as Assistant Professor at HKUST (GZ) <span class="tl-badge">New</span></div><div class="tl-venue">DSA Thrust, Information Hub</div></div>
     </div>
     <div class="tl-row">
       <div class="tl-date">May 2026</div>
@@ -635,7 +635,7 @@ redirect_from:
 <div class="sec-in">
   <div class="label" style="color: rgba(255,255,255,.7) !important;">Open positions</div>
   <h2 class="join-heading">Join the group</h2>
-  <p class="join-sub">Building a team at HKUST (Guangzhou) starting May 2026.</p>
+  <p class="join-sub">Building a team at HKUST (Guangzhou).</p>
 
   <div class="perks">
     <div class="perk">Full tuition and competitive stipend</div>

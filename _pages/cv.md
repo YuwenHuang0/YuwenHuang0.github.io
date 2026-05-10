@@ -108,7 +108,11 @@ redirect_from:
 <div class="cv-section">
 <h2>Experience</h2>
 <div class="cv-entry">
-<p class="cv-entry-main"><span class="cv-entry-date">11/2024–present</span> · Postdoc, CSE, CUHK</p>
+<p class="cv-entry-main"><span class="cv-entry-date">05/2026–present</span> · Assistant Professor, DSA Thrust, HKUST (Guangzhou)</p>
+<p class="cv-entry-detail"><a href="https://dsa.hkust-gz.edu.cn/">Thrust of Data Science and Analytics</a>, Information Hub</p>
+</div>
+<div class="cv-entry">
+<p class="cv-entry-main"><span class="cv-entry-date">11/2024–04/2026</span> · Postdoc, CSE, CUHK</p>
 <p class="cv-entry-detail">Supervisor: <a href="https://www.cse.cuhk.edu.hk/~cslui/">Prof. John C.S. Lui</a> · Distributed quantum computing</p>
 </div>
 </div>
