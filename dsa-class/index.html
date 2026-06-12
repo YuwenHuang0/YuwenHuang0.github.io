@@ -97,9 +97,6 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   background:rgba(20,30,60,.95); border:1px solid rgba(255,255,255,.25); color:#fff; font-weight:700;
   padding:.6em 1.6em; border-radius:999px; font-size:clamp(15px,1.5vw,21px); display:none; }
 
-/* 提词条 */
-#noteBar { position:fixed; bottom:0; left:0; right:0; z-index:65; background:rgba(0,0,0,.72);
-  color:#ffd84d; font-size:15px; padding:.55em 1.2em; display:none; border-top:1px solid rgba(255,216,77,.3); }
 
 /* ============ S0 猜数字 ============ */
 #rangeTrack { position:relative; width:min(74vw,1000px); height:54px; background:rgba(255,255,255,.07);
@@ -459,7 +456,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   padding:.55em 1em; text-align:center; }
 @media (max-width: 760px) {
   #mobileTip { display:block; }
-  #noteBar, .selfQR { display:none !important; }
+  .selfQR { display:none !important; }
   #achv { top:auto; bottom:9vh; right:50%; transform:translateX(50%); padding:.3em .6em; }
   #achv .a { width:24px; height:24px; font-size:13px; }
   .slide { padding:6vh 4vw 12vh; }
@@ -508,7 +505,6 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 </div>
 
 <div id="toast"></div>
-<div id="noteBar"></div>
 <div id="mobileTip">📱 手机版小课堂 · 跟着大屏一起玩 · 用底部 ‹ › 翻页（点我关闭）</div>
 
 <!-- 幕间章节卡 -->
@@ -1156,9 +1152,8 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
     <span><kbd>→</kbd> <kbd>PgDn</kbd> <kbd>空格</kbd></span><span>下一步 / 下一页（支持翻页笔）</span>
     <span><kbd>←</kbd> <kbd>PgUp</kbd></span><span>上一页</span>
     <span><kbd>T</kbd></span><span>10 秒倒计时</span>
-    <span><kbd>C</kbd></span><span>课堂进度仪表盘（建议进度+快慢提示）</span>
+    <span><kbd>C</kbd></span><span>显示/隐藏课堂进度仪表盘（默认隐藏）</span>
     <span><kbd>M</kbd></span><span>静音开关</span>
-    <span><kbd>N</kbd></span><span>提词条开关（给主讲人看的）</span>
     <span><kbd>R</kbd></span><span>直达第⑦关数据红娘（彩蛋页在菜单里）</span>
     <span><kbd>F</kbd></span><span>全屏</span>
     <span><kbd>Esc</kbd></span><span>菜单</span>
@@ -1347,7 +1342,7 @@ const SLIDE_ACT = { "s-open": 0, "s-title": 1, "s-magic": 1, "s-sort": 1, "s-maz
   "s-rec": 5, "s-quiz": 5, "s-final": 5, "s-bridge": 5, "s-vs": 5, "s-dsa": 5, "s-end": 5 };
 const ACT_LABEL = ["序幕《一个数字诞生了》", "第一幕《它被找到，被排好》", "第二幕《它被机器读懂》",
   "第三幕《它被怀疑》", "第四幕《它的生死劫》", "终幕《它改变了一个决定》"];
-const CLOCK = { t0: null, timer: null, visible: true };
+const CLOCK = { t0: null, timer: null, visible: false };  // 默认隐藏，按 C 调出
 function actIdxByTime(sec) {
   if (sec < ACTS[0].from) return 0;
   for (let i = 0; i < ACTS.length; i++) if (sec < ACTS[i].to) return i + 1;
@@ -1439,7 +1434,7 @@ function goToSlide(i) {
   const s = slides[cur];
   s.classList.remove("left");
   s.classList.add("active");
-  syncDots(); updateNote();
+  syncDots();
   if (ONENTER[s.id]) ONENTER[s.id]();
   if (s.id !== "s-open" && !CLOCK.t0) clockStart();
   maybeAct(s.id);
@@ -1464,13 +1459,6 @@ function back() {
 $("navNext").addEventListener("click", advance);
 $("navPrev").addEventListener("click", back);
 
-/* 提词条 */
-let noteOn = false;
-function updateNote() {
-  const n = slides[cur].getAttribute("data-note") || "";
-  $("noteBar").textContent = "🎙️ 提词：" + n;
-  $("noteBar").style.display = noteOn ? "block" : "none";
-}
 
 /* ============ 键盘 ============ */
 addEventListener("keydown", e => {
@@ -1481,13 +1469,12 @@ addEventListener("keydown", e => {
     case "ArrowLeft": case "PageUp": e.preventDefault(); back(); break;
     case "t": case "T": cdTimer ? stopCountdown() : countdown(10); break;
     case "c": case "C":
-      if (!CLOCK.t0) { toast("⏱ 离开第一页后自动开始计时"); break; }
+      if (!CLOCK.t0) { toast("⏱ 计时在离开第一页时已自动开始/将自动开始"); break; }
       CLOCK.visible = !CLOCK.visible;
       $("clock").style.display = CLOCK.visible ? "block" : "none";
       break;
     case "m": case "M":
       muted = !muted; toast(muted ? "🔇 已静音" : "🔊 声音开启"); break;
-    case "n": case "N": noteOn = !noteOn; updateNote(); break;
     case "r": case "R": goToSlide(slides.findIndex(s => s.id === "s-rec")); break;
     case "f": case "F":
       document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); break;
@@ -3017,7 +3004,7 @@ function updateSelftest() {
 }
 setTimeout(() => { updateSelftest(); console.log("[AI+DSA 自检]", SELFTEST); }, 600);
 $("menuBtn").addEventListener("click", updateSelftest);
-syncDots(); updateNote();
+syncDots();
 
 /* ============ 无头测试钩子（仅 #test 时触发，正常放映不会运行） ============ */
 if (location.hash === "#test") {
