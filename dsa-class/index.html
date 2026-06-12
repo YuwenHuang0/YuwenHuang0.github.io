@@ -56,10 +56,10 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 #dots { position:fixed; bottom:2.2vh; left:50%; transform:translateX(-50%); display:flex; gap:10px; z-index:50; }
 #dots span { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.22); cursor:pointer; transition:all .25s; }
 #dots span.on { background:#29e6ff; width:26px; border-radius:6px; box-shadow:0 0 12px #29e6ff; }
-.navArr { position:fixed; bottom:1.6vh; z-index:50; background:rgba(255,255,255,.07); color:#cfe0ff;
+.navArr { position:fixed; bottom:1.6vh; z-index:85; background:rgba(255,255,255,.07); color:#cfe0ff;
   border:1px solid rgba(255,255,255,.18); width:46px; height:46px; border-radius:50%; font-size:20px; }
 #navPrev { left:2vw; } #navNext { right:2vw; }
-#menuBtn { position:fixed; top:2vh; right:1.6vw; z-index:60; background:rgba(255,255,255,.07);
+#menuBtn { position:fixed; top:2vh; right:1.6vw; z-index:85; background:rgba(255,255,255,.07);
   border:1px solid rgba(255,255,255,.18); color:#cfe0ff; width:44px; height:44px; border-radius:12px; font-size:20px; }
 
 /* ============ 全班成就栏 ============ */
@@ -86,6 +86,9 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 .ov { position:fixed; inset:0; background:rgba(5,8,18,.92); z-index:80; display:none;
   align-items:center; justify-content:center; flex-direction:column; padding:6vh 6vw; text-align:center; }
 .ov.show { display:flex; animation:fadeIn .3s; }
+.ov.show::after { content:"点击任意处继续 ▸"; position:fixed; bottom:2vh; left:50%; transform:translateX(-50%);
+  font-size:13px; color:rgba(255,255,255,.5); font-weight:700; letter-spacing:.15em; }
+#menuOv.show::after, #videoOv.show::after { content:""; }
 @keyframes fadeIn { from { opacity:0; } }
 .ov h2 { font-size:clamp(26px,3.6vw,52px); font-weight:900; margin-bottom:2.5vh; }
 
@@ -1247,7 +1250,8 @@ function stopCountdown() {
 /* ============ 遮罩层通用 ============ */
 function showOv(id) { $(id).classList.add("show"); }
 function hideOv(id) { $(id).classList.remove("show"); }
-["sortMath","mazeWord","aiHow","llmHow","helpOv","binHow","dncHow","sixDeg","gdHow","tempHow","magicHow","rpsHow"].forEach(id =>
+["sortMath","mazeWord","aiHow","llmHow","helpOv","binHow","dncHow","sixDeg","gdHow","tempHow",
+ "magicHow","rpsHow","mapHow","round2How","bogoHow","inkHow"].forEach(id =>
   $(id).addEventListener("click", () => hideOv(id)));
 $("videoOv").addEventListener("click", e => { if (e.target.id === "videoOv") { $("promoVideo").pause(); hideOv("videoOv"); } });
 $("menuOv").addEventListener("click", e => { if (e.target.id === "menuOv") hideOv("menuOv"); });
@@ -2884,6 +2888,16 @@ if (location.hash === "#test") {
     r2AnimStart();
     SELFTEST.push(["第二场入场动画", $("insAnim").children.length === 8 && $("mergeRows").children.length === 4]);
   } catch (e) { SELFTEST.push(["入场动画异常:" + e.message, false]); }
+  try {
+    let pass = true;
+    document.querySelectorAll(".ov").forEach(ov => {
+      if (ov.id === "menuOv" || ov.id === "videoOv") return;
+      ov.classList.add("show");
+      ov.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      if (ov.classList.contains("show")) { pass = false; ov.classList.remove("show"); }
+    });
+    SELFTEST.push(["全部遮罩点击可关闭", pass]);
+  } catch (e) { SELFTEST.push(["遮罩异常:" + e.message, false]); }
   try {
     llmShow(4); $("llmFlip").click(); tempType("tmp2");
     quizShow(QUIZ.length - 1); $("quizReveal").click();
