@@ -406,6 +406,20 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   border:1px solid rgba(255,216,77,.55); font-weight:800; padding:.4em 1em; border-radius:999px;
   font-size:clamp(12px,1.2vw,17px); z-index:3; }
 
+/* ============ S-VIZ 数据测谎仪 ============ */
+#vizTable { padding:.9em 1.4em; margin-top:.6vh; }
+#vizTable table { border-collapse:collapse; }
+#vizTable th, #vizTable td { padding:.32em 1.1em; font-size:clamp(13px,1.5vw,21px); text-align:center; }
+#vizTable th { color:#9ff0ff; font-weight:800; border-bottom:1px solid rgba(255,255,255,.2); }
+#vizTable td { font-weight:800; color:#ffd84d; font-variant-numeric:tabular-nums; }
+#vizTable td.lbl { color:#aebcdd; font-weight:700; }
+#vizGrid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.4vh 1vw; width:min(1250px,94vw); margin-top:1.6vh; }
+#vizGrid .vcard { background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.14); border-radius:16px;
+  padding:.6em; text-align:center; opacity:0; transform:scale(.6); }
+#vizGrid .vcard.on { animation:chainPop .45s forwards; }
+#vizGrid canvas { width:100%; border-radius:10px; background:rgba(0,0,0,.3); display:block; }
+#vizGrid h4 { font-size:clamp(13px,1.4vw,19px); margin-top:.4em; color:#ffd84d; }
+
 /* ============ 数据的一生 · 管线图 ============ */
 #pipeRow { display:flex; justify-content:center; align-items:stretch; flex-wrap:wrap; margin-top:2.5vh; }
 .pipeCard { width:min(13vw,168px); background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.14);
@@ -480,6 +494,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   #qrRow { gap:4vw; } #qrRow img { width:min(36vw,170px); height:min(36vw,170px); }
   #qrLab { flex-direction:column; gap:1.6vh; }
   #qrWebWrap img { width:min(64vw,30vh); height:min(64vw,30vh); }
+  #vizGrid { grid-template-columns:repeat(2,1fr); }
   #pipeRow { flex-direction:column; align-items:center; }
   .pipeCard { width:82vw; margin-right:0; margin-bottom:30px; }
   .pipeCard:not(:last-child)::after { content:"↓"; right:auto; left:50%; top:auto; bottom:-27px; transform:translateX(-50%); }
@@ -730,6 +745,33 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
     <button class="btn ghost sm" id="bdayReset">🔄 清零</button>
   </div>
   <div class="dsaTie">🎓 在 DSA ·〔统计层〕｜"统计学习和建模"是学域八大研究方向之一，第一课就是用模拟和数据校准直觉——哈希碰撞检测、抽奖公平性验证，用的都是今天这招。</div>
+</section>
+
+<!-- ================================================================ -->
+<!-- S-VIZ 数据测谎仪（安斯库姆四重奏，机动关） -->
+<!-- ================================================================ -->
+<section class="slide" id="s-viz" data-note="先全场举手猜→点'画出来'四图逐张翻→金句'不画图别下结论'">
+  <div class="badgeFloat">⚡ 机动关 · 第三幕加时</div>
+  <div class="quest">🎯 全场任务：找出哪个班在"撒谎"</div>
+  <div class="s-head" style="margin-bottom:.6vh">
+    <div class="s-tag">机动关 · 数据测谎仪</div>
+    <div class="s-title">📈 四个班的成绩单，<span class="kw2">数字一模一样</span></div>
+    <div class="s-sub">平均分相同 · 波动相同 · 两科的关联度也相同——这四个班，真的一样吗？举手表态！</div>
+  </div>
+  <div id="vizTable" class="card">
+    <table>
+      <tr><th></th><th>一班</th><th>二班</th><th>三班</th><th>四班</th></tr>
+      <tr><td class="lbl">数学平均</td><td>9.0</td><td>9.0</td><td>9.0</td><td>9.0</td></tr>
+      <tr><td class="lbl">物理平均</td><td>7.50</td><td>7.50</td><td>7.50</td><td>7.50</td></tr>
+      <tr><td class="lbl">两科关联度</td><td>0.82</td><td>0.82</td><td>0.82</td><td>0.82</td></tr>
+    </table>
+  </div>
+  <div id="vizGrid"></div>
+  <div class="flexCtl">
+    <button class="btn gold" id="vizGo">📈 画出来！</button>
+    <button class="btn ghost sm" id="vizReset">🔄 收回</button>
+  </div>
+  <div class="dsaTie">🎓 在 DSA ·〔可视化层〕｜"数据可视化和信息图表"是学域八大方向之一——<b>协作交互式可视化和分析实验室</b>专门研究怎么让数据被看见。这组数据是统计学史上最著名的"测谎案例"（安斯库姆四重奏）。</div>
 </section>
 
 <!-- ================================================================ -->
@@ -1092,7 +1134,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
     <div class="card"><div class="e">🔮</div><h4>⑦ 数据红娘</h4><p>决策 · 推荐系统</p></div>
     <div class="card"><div class="e">🏆</div><h4>⑧ 终极闯关</h4><p>10 题对决</p></div>
   </div>
-  <div id="mapEggs">🌟 机动关：🃏 读心魔术 · 🗺️ 迷宫智能导航 ｜ 课后彩蛋：🎯 扔飞镖算 π · 🚚 百万美元难题 —— 每过一关右上角亮一枚成就，<b>集满有称号</b>！</div>
+  <div id="mapEggs">🌟 机动关：🃏 读心魔术 · 🗺️ 迷宫智能导航 · 📈 数据测谎仪 ｜ 课后彩蛋：🎯 扔飞镖算 π · 🚚 百万美元难题 —— 每过一关右上角亮一枚成就，<b>集满有称号</b>！</div>
   <div class="dsaTie">🎓 注意每关前面的小字：算法 → AI → 统计 → 数据 → 决策——这 8 关连起来是<b>数据的一生</b>，也是 <b>DSA 学域</b>四年课程的缩影。AI 只是其中两关，这就是数据科学比 AI 更大的地方（结尾见分晓）。</div>
 </div>
 
@@ -1132,9 +1174,9 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 <div class="ov" id="inkHow">
   <h2>🎨 泼了墨为什么还能扫？为什么泼多了又不行？</h2>
   <div class="hookBig" style="font-size:clamp(18px,2.3vw,33px)">
-    <span class="kw">里德-所罗门纠错码</span>把信息冗余编码——<br>
-    <span class="kw2">知道哪里坏</span>（擦除）：最多修 30%；
-    <span class="kw3">不知道哪里坏</span>（错误）：先侦查再修复，<u>双倍代价</u> → 实战 ≈15%
+    把数据想成一张考卷——<br>
+    <span class="kw2">撕掉一角</span>：知道哪里没了，老师好补分（最多补 30%）；<br>
+    <span class="kw3">被偷偷改错几道</span>：不知道哪错了，先找错再改，<u>费双倍功夫</u>（实战只扛 ≈15%）
   </div>
   <p class="s-sub" style="margin-top:1.2vh">刚才你们用手机亲手测出了这个差距——这就是编码理论里"错误 vs 擦除"的真实力量。</p>
   <div class="ideaRow">
@@ -1276,6 +1318,7 @@ const ACHV_HIDDEN = [    // 隐藏 ★4 枚：机动站与深入步骤专属
   { k: "path",  e: "🗺️", n: "寻路高手" },
   { k: "gd",    e: "⛰️", n: "蒙眼下山" },
   { k: "temp",  e: "🌡️", n: "幻觉猎人" },
+  { k: "viz",   e: "📈", n: "数据测谎师" },
 ];
 const achvOn = new Set();
 try { JSON.parse(localStorage.getItem("dsa-achv") || "[]").forEach(k => achvOn.add(k)); } catch (e) {}
@@ -1338,7 +1381,7 @@ function maybeAct(id) {
   return true;
 }
 const SLIDE_ACT = { "s-open": 0, "s-title": 1, "s-magic": 1, "s-sort": 1, "s-maze": 1,
-  "s-ai": 2, "s-llm": 2, "s-bday": 3, "s-qr": 4,
+  "s-ai": 2, "s-llm": 2, "s-bday": 3, "s-viz": 3, "s-qr": 4,
   "s-rec": 5, "s-quiz": 5, "s-final": 5, "s-bridge": 5, "s-vs": 5, "s-dsa": 5, "s-end": 5 };
 const ACT_LABEL = ["序幕《一个数字诞生了》", "第一幕《它被找到，被排好》", "第二幕《它被机器读懂》",
   "第三幕《它被怀疑》", "第四幕《它的生死劫》", "终幕《它改变了一个决定》"];
@@ -1492,7 +1535,7 @@ const MENU_TITLES = {
   "s-magic": "🃏 读心魔术（机动）", "s-sort": "② 排序赛马 · 分治 · 第二场 · 猴子",
   "s-maze": "🗺️ 迷宫 BFS/A* · 六度分隔（机动）", "s-ai": "③ 手写识别 · 蒙眼下山",
   "s-llm": "④ 文字接龙 · 温度与幻觉",
-  "s-bday": "⑤ 生日悖论 · 统计", "s-qr": "⑥ 二维码手术室 · 纠错码",
+  "s-bday": "⑤ 生日悖论 · 统计", "s-viz": "📈 数据测谎仪（机动）", "s-qr": "⑥ 二维码手术室 · 纠错码",
   "s-rec": "⑦ 数据红娘 · 推荐系统",
   "s-quiz": "⑧ 终极闯关（4~10 题）", "s-final": "🎖️ 成就结算",
   "s-bridge": "🌊 数据的一生 · 每关一门课", "s-vs": "🤔 DSA vs AI 学域怎么选",
@@ -2887,6 +2930,50 @@ $("bdayReset").addEventListener("click", () => { BD.hit = 0; BD.total = 0; bdayD
 ONENTER["s-bday"] = () => bdayDraw(null);
 
 /* ================================================================
+   S-VIZ 数据测谎仪（Anscombe's Quartet）
+   ================================================================ */
+const VIZ = {
+  x1: [10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5],
+  sets: [
+    { name: "一班 · 规规矩矩", y: [8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68] },
+    { name: "二班 · 一条弧线", y: [9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74] },
+    { name: "三班 · 被一个怪点带歪", y: [7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73] },
+    { name: "四班 · 全靠一个点撑着", x: [8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8],
+      y: [6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89] },
+  ],
+};
+function vizBuild() {
+  const g = $("vizGrid");
+  if (g.children.length === 4) return;
+  g.innerHTML = "";
+  VIZ.sets.forEach(st => {
+    const d = document.createElement("div"); d.className = "vcard";
+    const cv = document.createElement("canvas"); cv.width = 300; cv.height = 200;
+    d.appendChild(cv);
+    const h = document.createElement("h4"); h.textContent = st.name; d.appendChild(h);
+    g.appendChild(d);
+    const ctx = cv.getContext("2d");
+    const xs = st.x || VIZ.x1, ys = st.y;
+    const X = v => 18 + (v - 2) / 18 * 264, Y = v => 186 - (v - 2) / 12 * 172;
+    ctx.strokeStyle = "rgba(255,255,255,.18)"; ctx.lineWidth = 1;
+    ctx.strokeRect(10, 6, 282, 186);
+    ctx.strokeStyle = "rgba(255,216,77,.6)"; ctx.lineWidth = 2;       // 同一条回归线 y=3+0.5x
+    ctx.beginPath(); ctx.moveTo(X(2), Y(3 + 0.5 * 2)); ctx.lineTo(X(20), Y(3 + 0.5 * 20)); ctx.stroke();
+    ctx.fillStyle = "#29e6ff";
+    for (let i = 0; i < xs.length; i++) { ctx.beginPath(); ctx.arc(X(xs[i]), Y(ys[i]), 5, 0, 7); ctx.fill(); }
+  });
+}
+function vizReveal() {
+  vizBuild();
+  unlock("viz");
+  [...$("vizGrid").children].forEach((c, i) =>
+    setTimeout(() => { c.classList.add("on"); SND.pop(); if (i === 3) setTimeout(() => SND.tada(), 350); }, 450 * i));
+}
+$("vizGo").addEventListener("click", vizReveal);
+$("vizReset").addEventListener("click", () => { [...$("vizGrid").children].forEach(c => c.classList.remove("on")); SND.pop(); });
+ONENTER["s-viz"] = vizBuild;
+
+/* ================================================================
    S-PI 蒙特卡洛算 π
    ================================================================ */
 const PI = { inside: 0, n: 0, run: false };
@@ -3038,8 +3125,8 @@ if (location.hash === "#test") {
   } catch (e) { SELFTEST.push(["下山异常:" + e.message, false]); }
   try {
     unlock("bin"); unlock("quiz");
-    SELFTEST.push(["成就体系8+4", achvOn.has("bin") && achvOn.has("quiz") && !!$("achv-bin")
-      && ACHV.length === 8 && ACHV_HIDDEN.length === 4]);
+    SELFTEST.push(["成就体系8+5", achvOn.has("bin") && achvOn.has("quiz") && !!$("achv-bin")
+      && ACHV.length === 8 && ACHV_HIDDEN.length === 5]);
   } catch (e) { SELFTEST.push(["成就异常:" + e.message, false]); }
   try {
     const b = mazeBFS();
@@ -3078,6 +3165,19 @@ if (location.hash === "#test") {
     SELFTEST.push(["互动调用", QUIZ.length === 10 && QUIZ_SRC.length === 10 && LLM_ROUNDS.length === 5
       && BRIDGE.length === 8 && PIPE.length === 6 && VS_DIFF.length === 3 && !!$("s-vs") && r5 > 0]);
   } catch (e) { SELFTEST.push(["互动异常:" + e.message, false]); }
+  try {
+    let okv = true;
+    VIZ.sets.forEach(st => {
+      const xs = st.x || VIZ.x1, ys = st.y;
+      const mx = xs.reduce((a, b) => a + b, 0) / xs.length, my = ys.reduce((a, b) => a + b, 0) / ys.length;
+      let sxy = 0, sx2 = 0, sy2 = 0;
+      for (let i = 0; i < xs.length; i++) { sxy += (xs[i] - mx) * (ys[i] - my); sx2 += (xs[i] - mx) ** 2; sy2 += (ys[i] - my) ** 2; }
+      const r = sxy / Math.sqrt(sx2 * sy2);
+      if (Math.abs(mx - 9) > 0.01 || Math.abs(my - 7.5) > 0.01 || Math.abs(r - 0.816) > 0.01) okv = false;
+    });
+    vizBuild();
+    SELFTEST.push(["测谎仪Anscombe校验", okv && $("vizGrid").children.length === 4]);
+  } catch (e) { SELFTEST.push(["测谎仪异常:" + e.message, false]); }
   try {
     const sum = ACTS[0].from + ACTS.reduce((a, x) => a + (x.to - x.from), 0);
     const trigOk = ACTS.every(x => !!$(x.trigger)) && ACTS.length === 5;
