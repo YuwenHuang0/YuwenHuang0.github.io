@@ -17,5 +17,6 @@ videourl: https://www.youtube.com/watch?v=utEtKIFsyxk&t=190s
 #   \ CHSH inequalities for a two-qubit system,' Proceedings of IEEE International Symposium\
 #   \ on Information Theory (ISIT), Melbourne, Australia, 2021, pp. 1338\u20131343."
 topic: quantum-info
+sole_corresponding: true
 ---
 Studies CHSH inequalities via marginal sets for two-qubit systems.

@@ -18,5 +18,6 @@ slidesurl: /files/slides/isit2020.pdf
 #   \ Symposium on Information Theory (ISIT), Los Angeles, USA, 2020, pp. 1331\u2013\
 #   1336."
 topic: quantum-info
+sole_corresponding: true
 ---
 Characterizes Bethe partition functions of double-edge factor graphs via graph covers.

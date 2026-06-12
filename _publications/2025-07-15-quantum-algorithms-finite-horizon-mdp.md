@@ -18,5 +18,6 @@ paperurl: https://arxiv.org/abs/2508.05712
 #   algorithms for finite-horizon Markov decision processes,' Proceedings of the 42nd
 #   International Conference on Machine Learning (ICML), 2025. (*corresponding author)
 topic: quantum-info
+sole_corresponding: true
 ---
 Introduces quantum algorithms for finite-horizon MDPs with provable advantages.

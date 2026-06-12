@@ -14,5 +14,6 @@ venue: Quantum
 paperurl: https://arxiv.org/abs/2603.07673
 status: Submitted
 topic: quantum-info
+sole_corresponding: true
 ---
 Introduces a structure-aware distributed quantum optimization framework based on factor graphs that preserves Grover-like scaling.

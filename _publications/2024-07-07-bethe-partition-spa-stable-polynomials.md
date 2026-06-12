@@ -20,5 +20,6 @@ slideslabel_alt: Slides (Vontobel)
 #   \ IEEE International Symposium on Information Theory (ISIT), Athens, Greece, 2024,\
 #   \ pp. 3029\u20133034."
 topic: graphical-models
+sole_corresponding: true
 ---
 Studies Bethe partition functions for factor graphs with homogeneous real stable polynomials.

@@ -16,5 +16,6 @@ slidesurl: /files/slides/isit2023.pdf
 #   \ matrix via its degree-M Bethe and Sinkhorn permanents,' Proceedings of IEEE International\
 #   \ Symposium on Information Theory (ISIT), Taipei, Taiwan, 2023, pp. 2774\u20132779."
 topic: graphical-models
+sole_corresponding: true
 ---
 Bounds matrix permanents through degree-M Bethe and Sinkhorn permanents.
