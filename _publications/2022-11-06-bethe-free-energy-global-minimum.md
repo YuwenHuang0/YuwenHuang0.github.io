@@ -18,5 +18,6 @@ slidesurl: /files/slides/its2022.pdf
 #   \ India, 2022, pp. 666\u2013671."
 topic: graphical-models
 sole_corresponding: true
+sole_first: true
 ---
 Connects Bethe free energy minima with SPA fixed points for factor graphs.

@@ -55,9 +55,27 @@ author_profile: false
   .pub-row a .t { transition: color .15s; }
   .pub-row em { font-style: italic; }
 
-  /* Sole-corresponding-author annotation */
+  /* Sole-corresponding / sole-first author annotations */
   .corr { color: #7c3aed; font-weight: 700; margin-left: .08em; }
-  .corr-note { font-size: .78rem; font-weight: 600; color: #7c3aed; white-space: nowrap; }
+  .pub-flags {
+    float: right;
+    margin: .1rem 0 .2rem .6rem;
+    text-align: right;
+    max-width: 45%;
+  }
+  .pub-flags span {
+    display: inline-block;
+    font-size: .64rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #7c3aed;
+    background: #f4ecfb;
+    border: 1px solid rgba(111,40,156,.15);
+    border-radius: 980px;
+    padding: .12rem .45rem;
+    margin-left: .25rem;
+    white-space: nowrap;
+  }
 
   /* Inline resource pills */
   .r {
@@ -107,8 +125,9 @@ author_profile: false
             {% continue %}
           {% endif %}
           <div class="pub-row">
+            {% if post.sole_corresponding or post.sole_first %}<span class="pub-flags">{% if post.sole_corresponding %}<span>&#9993; sole corresponding author</span>{% endif %}{% if post.sole_first %}<span>sole first author</span>{% endif %}</span>{% endif %}
             {% if post.paperurl %}<a href="{{ post.paperurl }}"><span class="t">{{ post.title }}</span></a>{% else %}<span class="t">{{ post.title }}</span>{% endif %}
-            <br>{% if post.authors %}{% assign auth = post.authors | array_to_sentence_string %}{% if post.sole_corresponding %}{% assign auth = auth | replace: "Yuwen Huang", 'Yuwen Huang<span class="corr">&#9993;</span>' %}{% endif %}{{ auth }}.{% if post.sole_corresponding %} <span class="corr-note">(&#9993; sole corresponding author)</span>{% endif %}{% endif %}
+            <br>{% if post.authors %}{% assign auth = post.authors | array_to_sentence_string %}{% if post.sole_corresponding %}{% assign auth = auth | replace: "Yuwen Huang", 'Yuwen Huang<span class="corr">&#9993;</span>' %}{% endif %}{{ auth }}.{% endif %}
             {% if post.status %}{% if post.status == "Submitted" %}Submitted to{% else %}{{ post.status }} in{% endif %}{% else %}Published in{% endif %}
             <em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}.{% capture lnk %}{% if post.paperurl %}<a class="r rp" href="{{ post.paperurl }}">Paper</a>{% endif %}{% if post.slidesurl %}<a class="r rs" href="{{ post.slidesurl }}">Slides</a>{% endif %}{% if post.slidesurl_alt %}<a class="r rs" href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "Slides" }}</a>{% endif %}{% if post.videourl %}<a class="r rv" href="{{ post.videourl }}">Video</a>{% endif %}{% if post.bibtexurl %}<a class="r rb" href="{{ post.bibtexurl }}">BibTeX</a>{% endif %}{% endcapture %}{% if lnk | strip != "" %} {{ lnk | strip }}{% endif %}
           </div>
@@ -123,8 +142,9 @@ author_profile: false
             {% continue %}
           {% endif %}
           <div class="pub-row">
+            {% if post.sole_corresponding or post.sole_first %}<span class="pub-flags">{% if post.sole_corresponding %}<span>&#9993; sole corresponding author</span>{% endif %}{% if post.sole_first %}<span>sole first author</span>{% endif %}</span>{% endif %}
             {% if post.paperurl %}<a href="{{ post.paperurl }}"><span class="t">{{ post.title }}</span></a>{% else %}<span class="t">{{ post.title }}</span>{% endif %}
-            <br>{% if post.authors %}{% assign auth = post.authors | array_to_sentence_string %}{% if post.sole_corresponding %}{% assign auth = auth | replace: "Yuwen Huang", 'Yuwen Huang<span class="corr">&#9993;</span>' %}{% endif %}{{ auth }}.{% if post.sole_corresponding %} <span class="corr-note">(&#9993; sole corresponding author)</span>{% endif %}{% endif %}
+            <br>{% if post.authors %}{% assign auth = post.authors | array_to_sentence_string %}{% if post.sole_corresponding %}{% assign auth = auth | replace: "Yuwen Huang", 'Yuwen Huang<span class="corr">&#9993;</span>' %}{% endif %}{{ auth }}.{% endif %}
             In <em>{{ post.venue }}</em>, {{ post.date | date: "%B %Y" }}.{% capture lnk %}{% if post.paperurl %}<a class="r rp" href="{{ post.paperurl }}">Paper</a>{% endif %}{% if post.slidesurl %}<a class="r rs" href="{{ post.slidesurl }}">Slides</a>{% endif %}{% if post.slidesurl_alt %}<a class="r rs" href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "Slides" }}</a>{% endif %}{% if post.videourl %}<a class="r rv" href="{{ post.videourl }}">Video</a>{% endif %}{% if post.bibtexurl %}<a class="r rb" href="{{ post.bibtexurl }}">BibTeX</a>{% endif %}{% endcapture %}{% if lnk | strip != "" %} {{ lnk | strip }}{% endif %}
           </div>
         {% endfor %}

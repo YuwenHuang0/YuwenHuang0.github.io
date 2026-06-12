@@ -17,5 +17,6 @@ venue: IEEE Transactions on Information Theory
 paperurl: https://arxiv.org/abs/2306.02280
 topic: graphical-models
 sole_corresponding: true
+sole_first: true
 ---
 Tight bounds on matrix permanents using Bethe and Sinkhorn permanents.

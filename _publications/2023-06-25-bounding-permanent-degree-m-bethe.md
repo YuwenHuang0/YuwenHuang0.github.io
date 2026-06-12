@@ -17,5 +17,6 @@ slidesurl: /files/slides/isit2023.pdf
 #   \ Symposium on Information Theory (ISIT), Taipei, Taiwan, 2023, pp. 2774\u20132779."
 topic: graphical-models
 sole_corresponding: true
+sole_first: true
 ---
 Bounds matrix permanents through degree-M Bethe and Sinkhorn permanents.

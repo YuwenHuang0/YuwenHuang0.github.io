@@ -19,5 +19,6 @@ slidesurl: /files/slides/isit2020.pdf
 #   1336."
 topic: quantum-info
 sole_corresponding: true
+sole_first: true
 ---
 Characterizes Bethe partition functions of double-edge factor graphs via graph covers.

@@ -21,5 +21,6 @@ slideslabel_alt: Slides (Vontobel)
 #   \ pp. 3029\u20133034."
 topic: graphical-models
 sole_corresponding: true
+sole_first: true
 ---
 Studies Bethe partition functions for factor graphs with homogeneous real stable polynomials.

@@ -17,5 +17,6 @@ paperurl: https://arxiv.org/abs/2506.16250
 status: Submitted
 topic: quantum-info
 sole_corresponding: true
+sole_first: true
 ---
 Extended study of Bethe partition functions and graph covers.
