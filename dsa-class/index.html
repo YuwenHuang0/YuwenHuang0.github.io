@@ -384,6 +384,31 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 .bridgeRow span { color:#aebcdd; font-size:clamp(12px,1.3vw,18px); margin-left:auto; text-align:right; }
 .bridgeRow span i { font-style:normal; color:#ffd84d; font-weight:800; }
 
+/* ============ 三幕剧：章节卡 / 数据球 / 进度仪表盘 / 全场任务 ============ */
+#actOv { z-index:82; }
+#actNum { font-size:clamp(16px,1.8vw,26px); font-weight:900; letter-spacing:.5em; color:#ffd84d;
+  border:1px solid rgba(255,216,77,.5); padding:.35em 1.4em .35em 1.9em; border-radius:999px; }
+#actTitle { font-size:clamp(40px,6.5vw,96px); font-weight:900; margin-top:2.5vh;
+  background:linear-gradient(90deg,#29e6ff,#7a8cff,#ff4d8c); -webkit-background-clip:text; background-clip:text;
+  color:transparent; animation:titleIn .7s cubic-bezier(.2,.9,.25,1.15); }
+#actSub { font-size:clamp(16px,2vw,30px); color:#aebcdd; margin-top:2.2vh; font-weight:700; }
+#actOv.climax #actNum { color:#ff5577; border-color:rgba(255,85,119,.65); animation:pulseRed 1s infinite; }
+#actOv.climax #actTitle { background:linear-gradient(90deg,#ffd84d,#ff5577); -webkit-background-clip:text; background-clip:text; }
+@keyframes pulseRed { 50% { box-shadow:0 0 24px rgba(255,85,119,.7); } }
+.heroOrb { width:clamp(74px,9vw,110px); height:clamp(74px,9vw,110px); border-radius:50%; margin-top:3.2vh;
+  background:radial-gradient(circle at 32% 28%, #fff3c4, #ffd84d 45%, #b8860b 100%);
+  display:flex; align-items:center; justify-content:center; font-size:clamp(26px,3.4vw,44px); font-weight:900;
+  color:#3a2c00; box-shadow:0 0 38px rgba(255,216,77,.75); animation:orbFloat 2.6s ease-in-out infinite; }
+@keyframes orbFloat { 50% { transform:translateY(-10px); } }
+.heroTag { margin-top:1vh; color:#8fa3cc; font-size:clamp(12px,1.2vw,17px); font-weight:700; letter-spacing:.2em; }
+#clock { position:fixed; left:2vw; bottom:9vh; z-index:84; display:none;
+  background:rgba(10,14,28,.88); border:1px solid rgba(255,255,255,.18); border-radius:12px;
+  padding:.45em .9em; font-size:13px; font-weight:800; color:#cfe0ff; }
+#clock b { color:#ffd84d; font-variant-numeric:tabular-nums; }
+.quest { position:absolute; top:3vh; right:2vw; background:rgba(255,216,77,.12); color:#ffd84d;
+  border:1px solid rgba(255,216,77,.55); font-weight:800; padding:.4em 1em; border-radius:999px;
+  font-size:clamp(12px,1.2vw,17px); z-index:3; }
+
 /* ============ 数据的一生 · 管线图 ============ */
 #pipeRow { display:flex; justify-content:center; align-items:stretch; flex-wrap:wrap; margin-top:2.5vh; }
 .pipeCard { width:min(13vw,168px); background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.14);
@@ -486,6 +511,18 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 <div id="noteBar"></div>
 <div id="mobileTip">📱 手机版小课堂 · 跟着大屏一起玩 · 用底部 ‹ › 翻页（点我关闭）</div>
 
+<!-- 幕间章节卡 -->
+<div class="ov" id="actOv">
+  <div id="actNum"></div>
+  <div id="actTitle"></div>
+  <div id="actSub"></div>
+  <div class="heroOrb"><span id="actOrbN">?</span></div>
+  <div class="heroTag">主角 · 你们创造的那条数据</div>
+</div>
+
+<!-- 课堂进度仪表盘（按 C 显隐） -->
+<div id="clock">⏱ <b id="clockT">00:00</b>　建议进度：<span id="clockAct">序幕</span>　<span id="clockDot">🟢</span></div>
+
 <!-- ================================================================ -->
 <!-- S0 热身：猜数字 -->
 <!-- ================================================================ -->
@@ -493,7 +530,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   <div class="s-head">
     <div class="s-tag">第一关 · 热身挑战</div>
     <div class="s-title">🎯 我想好了一个 <span class="kw2">1 ~ 100</span> 的数</div>
-    <div class="s-sub">全场一起猜！我保证：最多 <b class="kw">7 次</b> 必被你们猜中 —— 不信？来！</div>
+    <div class="s-sub">全场一起猜！最多 <b class="kw">7 次</b> 必被你们猜中——而且，<b class="kw2">今天课堂的主角</b>将从你们口中诞生</div>
   </div>
   <div id="rangeTrack">
     <div id="rangeFill" style="left:0%;right:0%"></div>
@@ -506,6 +543,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
     <div id="guessVal">50</div>
     <button class="btn gold" id="guessBtn">猜！</button>
     <button class="btn ghost sm" id="guessReset">🔄 换个数</button>
+    <button class="btn ghost sm" id="guessHard">🔥 升级 1~1000</button>
   </div>
   <div id="guessMsg"></div>
   <div id="guessHist"></div>
@@ -569,6 +607,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 <!-- S2 排序赛马 -->
 <!-- ================================================================ -->
 <section class="slide" id="s-sort" data-note="抛问题→按 → 全场举手押注(点声量大的一边)→按 → 开赛→按 → 10亿件换算→按 → 分治思想 | 彩蛋:第二场/猴子加赛">
+  <div class="quest">🎯 全场任务：问出 2 个押注理由</div>
   <div id="sortHook" class="center">
     <div class="s-tag">第二关 · 算法赛马场</div>
     <div class="hookBig">🛒 双十一，淘宝要把 <span class="kw2">10 亿件商品</span><br>按价格从低到高排好序</div>
@@ -633,7 +672,8 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 <!-- ================================================================ -->
 <!-- S4 手写识别 人机大战 -->
 <!-- ================================================================ -->
-<section class="slide" id="s-ai" data-note="请同学上台写数字骗AI(骗过=英雄,送礼品) · 没人上→自己画自嘲 · 按 → 原理 → 再按 → 蒙眼下山">
+<section class="slide" id="s-ai" data-note="请同学上台写数字骗AI(骗过=本场英雄·带全场鼓掌) · 没人上→自己画自嘲 · 按 → 原理 → 再按 → 蒙眼下山">
+  <div class="quest">🎯 全场任务：让 AI 认错 1 次</div>
   <div class="s-head" style="margin-bottom:1.2vh">
     <div class="s-tag">第三关 · 人机大战</div>
     <div class="s-title">✍️ 把数字写丑，<span class="kw3">骗过 AI</span> 你就是英雄！</div>
@@ -661,6 +701,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 <!-- S5 文字接龙 -->
 <!-- ================================================================ -->
 <section class="slide" id="s-llm" data-note="全场抢答下一个词→点'翻牌'对比AI概率→5轮(最后1轮彩蛋)→按 → AI写作演示 → 再按 → 温度旋钮">
+  <div class="quest">🎯 全场任务：押中 3 次概率第一</div>
   <div class="s-head">
     <div class="s-tag">第四关 · 大模型读心术</div>
     <div class="s-title">💬 文字接龙：猜中 AI 心里的词</div>
@@ -686,6 +727,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   </div>
   <canvas id="bdayCv"></canvas>
   <div id="bdayStats">点下面的按钮，随机"生成"一个班试试</div>
+  <p class="s-sub" style="margin-top:.6vh">⚽ 真实世界的验证：世界杯经典的 <b class="kw">23 人大名单</b>（2018 及之前）恰好是同生日概率过半的人数——有人统计过当年的 32 支队，<b class="kw2">约一半的队伍</b>里真有同生日队友，与理论吻合。</p>
   <div class="flexCtl">
     <button class="btn" id="bdayOnce">🎲 模拟一个班（45人）</button>
     <button class="btn gold" id="bdayAuto">⚡ 自动模拟 20 个班</button>
@@ -698,10 +740,11 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 <!-- S-QR 二维码手术室（纠错码） -->
 <!-- ================================================================ -->
 <section class="slide" id="s-qr" data-note="泼1-3勺→全场实扫成功→'一键泼穿'→实扫失败→手术修复→按 → 揭秘纠错码与大数据存储">
+  <div class="quest">🎯 全场任务：完成 2 轮全场实扫</div>
   <div class="s-head" style="margin-bottom:.8vh">
     <div class="s-tag">第六关 · 二维码手术室</div>
     <div class="s-title">🏥 你的每一次扫码，都是一次<span class="kw2">数据抢救</span></div>
-    <div class="s-sub">自带<b class="kw">纠错护甲</b>：标称 30%、实战约 15%（为什么缩水？揭秘见分晓）——来做个破坏性实验</div>
+    <div class="s-sub">主角数据<b class="kw3">最危险的一天</b>：它自带纠错护甲（标称 30%、实战约 15%）——我们当一回"病危抢救组"</div>
   </div>
   <div id="qrLab">
     <div id="qrWebWrap"><img id="qrWebImg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAADEUlEQVR4nO1cW66cMAy1AWk+QboL6FJga11SdwBL6QIqwedIQa7sOMB9VCrqaFIm53zMzWSwJnisw7GdXBY6jak6b0MEIwcc4YAjHHCEA45wwBEOOOJKjmBHQzR1RDwsPqKpW5mHJV0wZFneScDoAY7oRTHr0ILh253jyFHb50mFwuUv7IjG/y4dUf9DR63FRS3cy8rUz2u8gInq8PTlVTDK74ilIRnjsJZ3RPHob/oLwCgbRyQwtb9Y5wNNXIcoJj4Cv1MBjmhFjBlEft5ExlZ1RHtnGdsQKUNEwsXu6RRglHBUjFQL9fNXL+kCU6AjvOd43aeG7BNTV+vbQKIJh42UQTItr4JRHo4QTTw9+2yNMpQZjA/iUyO9NYAjSogICa4U/IcPKddofXQIC0REARExWg1KNcNBaCpb9HuUKIMgIkqKCFI+iGyhwWAB4rrTiCIGCDiilOzzzjIuN5cQRCsza0uDO4o6Iqag45Xu6RRglLCzgLiYUCrYheYuKhNlQEcUEEayNbl4oFVrlhuisnS2yLS8k4DRv+sIshqUqshUn0yiMqYZxiBQlqXVLMUTDh+lue2tqU08NYqpUNVy5AjTDKmAHfWk0wh0RDm9T5lUQPSyNjQNdZrr6pB0BfZHFBYRrJtl9EW4nzu2DTTci3U91iZpzOcur4JRJh3Rbw1QTzx3RWFzqGKXxxGrssDsO2+tYDUNO29oKXt+e/7yKhhl7IYLLY0+GOrA/UjCh1BZ3nROd9E8eXkVjHL1NdqtAWopRSpPHFriO9D7LKVC5UilCA+Q1A89BMh/fk8VjB6xP8Lh2+hiryO9bLozXoOIKO5M1ztom0O36FuoXOieTgJGfzjTJVaz/K6xQQtz2mkXvjI6BxhdyxHLdqgzZpoeG34ClJn9BGim5Z0CjB7W+5y3nZSHTXap9xnnoCNePfaaTzOLngCV1SpUeozHjnjdNFQyLK+CUcYqtvguqU9bbfdPkX2Wd6ZL9AmR8oqtMrE1wvHUeHkjxn8mu8TvVMEoAo5wwBEOOMIBRzjgCMfzHPEbtBqTBxapagEAAAAASUVORK5CYII=" alt="官网"><canvas id="inkCv"></canvas></div>
@@ -727,6 +770,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 <!-- S10 推荐系统（隐藏彩蛋站，按 R 进入） -->
 <!-- ================================================================ -->
 <section class="slide" id="s-rec" data-note="请1位同学上台选3个喜欢的→点'开始推荐'→念推荐理由→最后一条永远是DSA彩蛋→讲'抖音同款'">
+  <div class="quest">🎯 全场任务：给推荐结果找 1 个反例</div>
   <div class="s-head" style="margin-bottom:.6vh">
     <div class="s-tag">第七关 · 数据红娘</div>
     <div class="s-title">🔮 数据红娘——抖音为什么这么<span class="kw2">懂你</span>？</div>
@@ -738,6 +782,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
     <button class="btn ghost sm" id="recReset">🔄 重选</button>
   </div>
   <div id="recOut"></div>
+  <p class="s-sub" style="margin-top:1vh">💰 2006 年 Netflix 悬赏 <b class="kw2">100 万美元</b>，只为让推荐算法准 10%——三年后才有人领走。数据红娘值多少钱，资本早就投过票。</p>
   <div class="dsaTie">🎓 在 DSA ·〔决策层〕｜推荐系统是"工业和商业分析"方向的看家本领；<b>量化投资金融科技实验室</b>用同类算法研究投资——我们一位大三本科生的金融时间序列预测，论文发在数据挖掘顶会 KDD 2025。数据的终点是<b>决策</b>，这就是 DSA 和纯 AI 的区别。</div>
 </section>
 
@@ -845,6 +890,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
     <div class="q"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQCAIAAAAP3aGbAAAOMklEQVR4nO3dQa7jOg4F0HLj73/LbtQ4Ab6aTUq+zjnjiiPbLxdOMaSu+77/ACT4z+kFAKwSWEAMgQXEEFhADIEFxBBYQAyBBcQQWEAMgQXEEFhADIEFxPhn5R9d1/XnqM+Gx/KSVg5V+zeNQpc0avGOd12o8vkev3fXwoVq/EB1WbwCnrCAGAILiCGwgBgCC4ghsIB3VQk/bS5IrSygsfJSK/SUjRatVg51vFB7/BY0lvZq6xy9mKGf8a88YQExBBYQQ2ABMQQWEENgAW+vEkaUOUbboxqLVl3NbqOXd7RsN1rve2BfZGNd+NrYA/iEz7gnLCCGwAJiCCwghsACYggs4PeqhJs9oWBRO3JXua3xRLrqfY1XoNHK2TVO6fz8Z3OF2pRpoo08YQExBBYQQ2ABMQQWEENgATFSq4Sj8zY3l3W6ClubZ5BubgBcPLuue3d8o8ByyfU63Sk5yhMWEENgATEEFhBDYAExBBYQQ2ABv/ezhjeVThu31ewyuinsyqtGlzT3qtEJxaMzi3Pb+0d5wgJiCCwghsACYggsIIbAAt5eJTw+dLU8aLhW72usG3bt9Dna/Fwbs7t4wVf+TeO+rZvv7+YJ1NfYxrHHP+NfecICYggsIIbAAmIILCCGwALeVSV8Qg/R2apZo64C3OYSVe29njltefSC1w51vCR3P+8z/pUnLCCGwAJiCCwghsACYggsIMY1t2loYymkdqjGgZCjzW5dC8iVW/ON6CW8Tzeidr3KExaQxFdCIIbAAmIILCCGwAJ+r0p43GLlZa4quvheXUWrxRNpLEj965HLS6rdlPJE2dqrRkfaHv97Hl1A4zaXnrCAGAILiCGwgBgCC4ghsIC370v4abSq0qixYNGlVmdpbAeL6Mgrb/vYVcZq3AaxfPAVc3ssNlaBy+frCQuIIbCAGAILiCGwgBgCC4ghsIDf+1nD8Srs8WbRzTubNl6Brt9MjLbLbp7hO/pbhMbf1lwbR3Uv/iyp8RcSnzxhATEEFhBDYAExBBYQQ2ABMQZHJG/eRnR039aIAcGNt3JusPIT+s837/05t4A/e0d+L7KRKsBfvhICMQQWEENgATEEFvD2KuHxIl3EVN8HtoOVPfD+jl7MzWW7zfu2Xnubc22kCvwiXwmBGAILiCGwgBgCC3hXlXDz/MnNXXKbq0grNncFzlWaFpfUWMbqKtKtHPn4kNuUXtHGPx5PWEAMgQXEEFhADIEFxBBYwNv3JVz5T/7RCZybC3CjSxqts3T1AK686plVs7ltHzf3it7f3m6uJLeyW+XiB7+x7u8JC4ghsIAYAguIIbCAGAILeHuVcLRsN9f+9tVo6+Jxo41d/3qc0bLsYtVs5YWNIzHnOiWvtY/Yzju+SC8h8It8JQRiCCwghsACYggs4F1VwrnupCfsyjdXQxktY0V05JUPNdo7uXmTx9E/p502NzN+5QkLiCGwgBgCC4ghsIAYAguIIbCAtzc/j/7yYPSHDnMl7dFFbt5aNWJIdFnXocrN3qO/q7iaDj56wW2kCryfr4RADIEFxBBYQAyBBcS45iomo4Wtci2mq4hTPrudZcrFBXTVNxubvd9UA+2aN31Xe4+73m7xAzV3CzxhAUl8JQRiCCwghsACYggs4F29hLX/9t88iPZTuarSNWa3PMP31+bzjnaP1g61uaF1c0n9Kl2BRUYkA/zlKyEQQ2ABMQQWEENgAW/vJTy+r+enxlpbrbOssZVv9Aps3qW1q2jV2Lz5wD1oR3tjj+9+aiNV4Bf5SgjEEFhADIEFxBBYwLuqhA/sChwd/zg6MrFWM3rmuMuarsvbOFE2oip6PXKC7srb2ZcQ+EW+EgIxBBYQQ2ABMQQW8K6Jo5v3rRutqqwsYOXgK8dpnDh6/OzK5hYwug/j5p0KRwvx995KsYmjAH/5SgjEEFhADIEFxBBYQAyBBbx9RPLxEu/mwvCKxm7VUXOXd3RIdETH8qLG30zcYx+f8t+z5meAv3wlBGIILCCGwAJiCCzgXc3Pn0abRY+XqDa3wj5Q7Spt7uDdXIRtHIG98qrGE7lLH6jRjVTLPGEBMQQWEENgATEEFhBDYAFvrxLWLI5IfmDr4uaR0F0LWHR8AZtb+VY01shG23XvpjbM0VvQeChPWEAMgQXEEFhADIEFxBBYwLuqhMe3mawt6esCuup95dpiV83o+OTSxt660Zrgzju+qLGV72pqsz1eA13kCQuIIbCAGAILiCGwgBgCC3hXlXBzIWBzd2HNA6tIix44YfWBvYSbe2NHi3TX8/pAy+frCQuIIbCAGAILiCGwgBgCC/i9iaPlQk+tXrB507TNGyOWD77ydl2v2rykzXXDlMLlzqJk+fPbWDf0hAXEEFhADIEFxBBYQAyBBbx94uhov+Foa9toSa5rATWbR7wu/puuC95YF17RWNjqKjjea2/XNR13tOpd5gkLiCGwgBgCC4ghsIAYAguIIbCAGE8ckVx7u9Eq7PGtZDc3e9c8oUN79I9nZQFzrth9eY1IBn6Rr4RADIEFxBBYQAyBBfzeiORyDeUJc2aHihqLG22OdqvOjfodvXHlRXatqvHsui74Xb2/K6/azIhk4P18JQRiCCwghsACYggsIMbWjVTLL+za63TR6JaZtT7B0bbElVeVzY3QXayaHS/b1RbQOBD5buqWHW1mXOQJC4ghsIAYAguIIbCAGAILiHF1zVocrayNmuu9KtdJazb3EpZX1VU33Fy0atypt/Gm3Hvfbs7ijfOEBcQQWEAMgQXEEFhADIEFvKtKGFrWWVzDA/ekG728XRXPxvbGRnOtiyvv1fh25SrhtbeZ8dNos6onLCCGwAJiCCwghsACYggs4F0TR7uGZJYnNK4sqfGFKyvfXDU7PtB1xeaC7+Iauq7A5uJm2T12fxeroisLsC8h8H6+EgIxBBYQQ2ABMQQWEENgATEGm59HZ7w2mmt+fsLPOGoLeOCPNkYL/w9cUuMPWT41furn9m39yhMWEENgATEEFhBDYAExBBbw9ubnT8eLGrUjl184WiddeWFjb/ncGOWvNh985xDw8tvV7vifvROZyzO4G2vcnrCAGAILiCGwgBgCC4ghsIB3VQk3b83YdajFqlmtaFUbo7x4qONGSz+bW/lGBwTXXtg4o/k6XRXduXOtJywgia+EQAyBBcQQWEAMgQW8feJoowfu67m5KlpbwMqSRm0uD60soPG+HJ8o2ziw99PxjZA/mTgKvI2vhEAMgQXEEFhADIEFxBjcl3DlOF+NFnFqRud2bp7ZuPnS1Rbw6YHNbo1lyuN3vPz3vLk07AkLiCGwgBgCC4ghsIAYAgt4V5Vw6UCTvVdz/YZPmNA4er6Nwy3/9TijWwc2Gi3bbZ4fe28sqTdWCcuX1xMWEENgATEEFhBDYAExBBbwrn0Ju4wOUXzgpnibT2Rzq+ai442oc510X09k7g/s7ivCNrZzbu4M9YQFxBBYQAyBBcQQWEAMgQXEEFjA7zU/N9o80XXzzpddGifYHm8Gjijqfxpt9t7857Ri9BZofgbexldCIIbAAmIILCCGwAJiDDY/l7tVazWUxbfrqiI1zixeMdqNPPp2K5e3sbRXu7ybdzatuSdnNB+vei/yhAXEEFhADIEFxBBYQAyBBbyrl3B0HPDcwY8X8p6wsejOUc6NzZubi1aNG8eGjoRe8YTPuCcsIIbAAmIILCCGwAJiCCzg7b2EjbWJzSW5WmvbynE+NY4AXbG4r+fc+abo6jccNVr+uxN6J7/yhAXEEFhADIEFxBBYQAyBBbx9X8LGmsLmfeu6lrRisdes8eBzb/fASvEzNwHs+lttbF28JtsbG89lhScsIIbAAmIILCCGwAJiCCzgXb2Ex4cobh6AGTHgtHzwzZ2Dc/sSNg50Ha0kbm5dvErrPL7xpYmjwNv4SgjEEFhADIEFxBBYQAyBBby9+fnLgSb3uTy+0ebKAhqbRVcOtXgFar8PON5bPvqzhtE/sLnm583Kf2CfbKQK/CJfCYEYAguIIbCAGAILeHvz8+YqQ9eSvpor2x3fevP/+WdPc7xsd7yifVcnbm8u5DW+8JMnLCCGwAJiCCwghsACYggs4F29hA/c+zOiZpQyErrrVWXH9/VsPM7cTOpr8nzL9BICfOcrIRBDYAExBBYQQ2AB7+olfGBPXHkC5+guj7VXbW5tWzHaWbaykeqK0d1eG2/T8W7ZiCUt8oQFxBBYQAyBBcQQWEAMgQXEGJw42qhxmGdX61O5jja3LeAza4tdK1+sLe7sgtzcKzpaYt687WOZJywghsACYggsIIbAAmIILOBdVcLjhY+Vf7NYSawVNRrb/bpqguXqzFwfWWN34crBG69A49nNNavea3/PoY2ZizxhATEEFhBDYAExBBYQQ2ABb68SHi9alRfQVSMrjzxt7Is8W7JpbCJrrAAe73ud6x69+nbeHL13ozxhATEEFhBDYAExBBYQQ2ABMQQW8Hs/a9issc927ncVje2yjc2xc3Xo8vl2zaTePCJ5UcTM4rupJ39xSeVDecICYggsIIbAAmIILCCGwAJipFYJG3uPQzcWLb9dV1GysaW28Xy7uojLTeO1cxmdUHw11UlHZ1IvXgFPWEAMgQXEEFhADIEFxBBYwO9VCTdPSm2stc31Xu3fJvb4Ppe1t6stYHOrZlnXRrl3dWPgrrPTSwjwP/CVEIghsIAYAguIIbCAt1cJj09xjFhSuYw1WsjbPHG0VsZqLMIenyjbdajGzWVHm1VHl+QJC4ghsIAYAguIIbCAGAILiHFt7gEEKPOEBcQQWEAMgQXEEFhADIEFxBBYQAyBBcQQWEAMgQXEEFhADIEFxBBYwJ8U/wV9SUfSPiT74wAAAABJRU5ErkJggg==" alt="宣传片"><p>🎬 学域宣传片</p></div>
     <div class="q"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQgAAAEIAQAAAACLjVdSAAABk0lEQVR4nO1Z0Y7DMAizo/v/X/YJQ5Lb015OWTaWVi1JkUotAoZSeDLGMwV8NT4Xjx+AKQmEKEIAtVfb4QFvGQLGQrSktdoPDwQCvtFIrKlvt1g6jmsofaKur7Pj5f6xBhEBBN3xkEVq7RJqu8ktlo4jGjAIFvB4zMft/EMlKuJpDO8Z3WbpOKVBx40IHUraIWhhc5WlZzTkL/eVSToCjMy77fgHtUIoE4xiIDnUM9/KlJQWwyuKk7FnfpFPRPiotfmgX34Z6QdZxWHl38TCk4ssPRM/WFtDq2bJSFK5pp9/KN2CBYb5R/pKv3g6VgwNYUFi79B9lp7RIDgbHjIQmWyi+r/M0jP8VJusM3HZWfcmS0/VL6wCjpOTZl/o/94y3kaDxUyLi2lS9jntyNdr0LvEiFRT2dO2/Q8lBQmaWkecattfZxZzlWdn2u1Yz7EqOsTvBkXuLW56k6XjdD+ZVdGmewQuDev9sUXZM9bPKS+xcX8df8q44mWx0g8PpsjaMRFHeJ+l4zT/uNzS8dV4GGfw+AX1OMDuAyCdFwAAAABJRU5ErkJggg==" alt="课件带回家"><p>📲 本课件 · 带回家</p></div>
   </div>
+  <div class="s-sub" id="heroEnd" style="margin-top:2vh;text-align:center;font-weight:800"></div>
   <div class="ctaCard">📍 <b>接下来去哪？</b>　14:00–15:30 演讲厅A二楼走廊 · <b>DSA 摊位咨询</b>　｜　17:10–18:20 · <b>DSA 专业宣讲</b>（以现场指引为准）<br>想深聊的同学和家长——<b>摊位见！</b></div>
   <div id="endCredit">
     咨询邮箱：dsbd@hkust-gz.edu.cn ｜ dsa.hkust-gz.edu.cn<br>
@@ -919,6 +965,10 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
       <h3 style="font-size:clamp(22px,2.6vw,36px);margin:.4em 0">快速排序</h3>
       <div class="s-title" style="color:#3dff9d">≈ 30 秒</div>
       <p class="s-sub">3×10¹⁰ 次操作<br>你刷新一下就好了</p></div>
+    <div class="card" style="padding:1.6em 2em"><div style="font-size:60px">🎓</div>
+      <h3 style="font-size:clamp(20px,2.4vw,32px);margin:.4em 0">最切身的一次</h3>
+      <div class="s-title" style="color:#ffd84d;font-size:clamp(18px,2.2vw,30px)">千万考生 · 一夜排名</div>
+      <p class="s-sub">下周放榜：上千万份分数连夜排定名次<br>支撑它的，正是今天这两位选手的家族</p></div>
   </div>
   <div class="golden" style="margin-top:3vh">同一台电脑，差距 <u>一千万倍</u>。<br>电脑不是靠快，是靠聪明 —— 这就是算法。</div>
   <p class="s-sub" style="margin-top:2vh">（按每秒 10 亿次操作估算 ｜ 刚才押对的同学举手——掌声送给自己！）</p>
@@ -947,6 +997,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
     <div class="card"><div class="e">🧍</div><h4>体育课站队</h4><p>"比我高的站右边！"<br>每人喊一次，全班排好</p></div>
     <div class="card"><div class="e">📚</div><h4>归并两摞卷子</h4><p>两摞各自有序，<br>顶上比一比就能合一摞</p></div>
     <div class="card"><div class="e">🗂️</div><h4>整理任何东西</h4><p>先粗分大类，<br>再每类细分 —— 同一招</p></div>
+    <div class="card"><div class="e">📦</div><h4>快递分拣</h4><p>全国快递日均约 3 亿件<br>分拣机跑的就是排序</p></div>
   </div>
   <div class="golden" style="margin-top:2.6vh">大事化小，小事化了。<br>算法设计的头号心法，管理学也在用。</div>
   <div class="dsaTie">🎓 在 DSA ·〔系统层〕｜让 10 亿条数据排得又快又稳，是<b>高性能数据分析系统</b>方向（学域八大研究方向之一）的日常课题。</div>
@@ -1019,7 +1070,8 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
     你的字 → <span class="kw">784 个像素数字</span> → 神经网络（<span class="kw2">20 万个参数</span>）→ 10 个概率
   </div>
   <div class="golden" style="margin-top:3vh">没人教它规则 —— 它看了 60000 张手写图，自己学会的。<br>这就是机器学习 Machine Learning。</div>
-  <p class="s-sub" style="margin-top:2.6vh">悄悄说：这个 AI 是<b class="kw2">今天</b>在我这台电脑上现训的，准确率 97.9%。</p>
+  <p class="s-sub" style="margin-top:2.2vh">这 6 万张图的身世：上世纪 90 年代，AI 认数字的<b class="kw2">第一份工作</b>是帮美国邮局自动读手写邮编——30 年后，同一套思想开起了自动驾驶。</p>
+  <p class="s-sub" style="margin-top:1vh">悄悄说：今天这个 AI 是在我这台电脑上现训的，准确率 97.9%。</p>
   <div class="dsaTie">🎓 在 DSA ·〔模型层〕｜《机器学习》(DSAA 2011)、《深度学习》(DSAA 2012) 本科低年级就能修读——你很快就能亲手训练它；<b>高性能机器学习实验室</b>研究的是怎么让这种训练再快 100 倍。</div>
 </div>
 
@@ -1027,6 +1079,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   <h2>🤖 ChatGPT 写作文 = 把接龙玩 1000 次</h2>
   <div id="genDemo"></div>
   <div class="golden" style="margin-top:2.4vh">大模型没有在"思考" —— 它在玩世界上最大的文字接龙。<br>练习材料：整个互联网。</div>
+  <p class="s-sub" style="margin-top:1.2vh">其实你早就在用它：输入法的联想词，就是揣在你口袋里 20 年的迷你接龙模型。</p>
   <div class="dsaTie">🎓 在 DSA ·〔模型层〕｜NLP·大模型是学域最热的方向之一——一位<b>大二同学</b>以共同第一作者身份在 AI 顶会 ICLR 2026 发表了大模型论文。两年前，他也坐在你们现在的位置上。</div>
   <div class="flexCtl"><button class="btn sm" id="genReplay">🔄 再看一遍</button></div>
 </div>
@@ -1089,7 +1142,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   </div>
   <p class="s-sub" style="margin-top:1.2vh">刚才你们用手机亲手测出了这个差距——这就是编码理论里"错误 vs 擦除"的真实力量。</p>
   <div class="ideaRow">
-    <div class="card on" style="opacity:1"><div class="e">📡</div><h4>火星探测器</h4><p>亿公里外传照片<br>抗宇宙噪声靠它</p></div>
+    <div class="card on" style="opacity:1"><div class="e">🛰️</div><h4>旅行者 1 号</h4><p>240 亿公里外，传回的信号弱到<br>不足一块手表功率的十亿分之一——纠错码让照片依然清晰</p></div>
     <div class="card on" style="opacity:1"><div class="e">🗄️</div><h4>数据中心同款</h4><p>几万块硬盘天天有坏的<br>纠删码保数据毫发无损</p></div>
     <div class="card on" style="opacity:1"><div class="e">📱</div><h4>你每天都在用</h4><p>扫码支付、乘车码<br>都被它保护着</p></div>
   </div>
@@ -1103,6 +1156,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
     <span><kbd>→</kbd> <kbd>PgDn</kbd> <kbd>空格</kbd></span><span>下一步 / 下一页（支持翻页笔）</span>
     <span><kbd>←</kbd> <kbd>PgUp</kbd></span><span>上一页</span>
     <span><kbd>T</kbd></span><span>10 秒倒计时</span>
+    <span><kbd>C</kbd></span><span>课堂进度仪表盘（建议进度+快慢提示）</span>
     <span><kbd>M</kbd></span><span>静音开关</span>
     <span><kbd>N</kbd></span><span>提词条开关（给主讲人看的）</span>
     <span><kbd>R</kbd></span><span>直达第⑦关数据红娘（彩蛋页在菜单里）</span>
@@ -1117,6 +1171,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   <div class="list" id="menuList"></div>
   <div class="row">
     <button class="btn sm danger" id="resetScore">🧹 重置成就</button>
+    <button class="btn sm ghost" id="resetClock">⏱ 重置计时</button>
     <button class="btn sm ghost" id="menuMute">🔊 静音开关</button>
     <button class="btn sm ghost" id="menuHelp">⌨️ 快捷键</button>
     <button class="btn sm ghost" id="menuFull">⛶ 全屏</button>
@@ -1263,6 +1318,64 @@ function unlock(k) {
 function resetAchv() { achvOn.clear(); try { localStorage.removeItem("dsa-achv"); } catch (e) {} drawAchv(); finReset(); toast("成就已清零"); }
 drawAchv();
 
+/* ============ 三幕剧引擎：主角数据球 / 章节卡 / 进度仪表盘 ============ */
+const HERO = { n: null };
+function setHero(n) { HERO.n = n; $("actOrbN").textContent = n; }
+const ACTS = [
+  { num: "第 一 幕", title: "它被找到，被排好", sub: "千万考生的分数一夜排定名次——秩序，来自算法", trigger: "s-sort", from: 150, to: 390 },
+  { num: "第 二 幕", title: "它被机器读懂", sub: "三十年前，AI 的第一份工作是帮邮局认手写邮编", trigger: "s-ai", from: 390, to: 690 },
+  { num: "第 三 幕", title: "它被怀疑", sub: "直觉说不可能——这一次，数据要为自己作证", trigger: "s-bday", from: 690, to: 840 },
+  { num: "第 四 幕 · 高 潮", title: "它的生死劫", sub: "240 亿公里外，旅行者一号还活着——靠的是同一套数学", trigger: "s-qr", from: 840, to: 1020, climax: true },
+  { num: "终 幕", title: "它改变了一个决定", sub: "数据的终点，是一次更好的选择", trigger: "s-rec", from: 1020, to: 1200 },
+];
+const shownActs = new Set();
+function maybeAct(id) {
+  const a = ACTS.find(x => x.trigger === id);
+  if (!a || shownActs.has(id)) return false;
+  shownActs.add(id);
+  $("actNum").textContent = a.num;
+  $("actTitle").textContent = "《" + a.title + "》";
+  $("actSub").textContent = a.sub;
+  $("actOrbN").textContent = HERO.n === null ? "?" : HERO.n;
+  $("actOv").classList.toggle("climax", !!a.climax);
+  showOv("actOv");
+  if (a.climax) SND.tada(); else SND.ding();
+  return true;
+}
+const SLIDE_ACT = { "s-open": 0, "s-title": 1, "s-magic": 1, "s-sort": 1, "s-maze": 1,
+  "s-ai": 2, "s-llm": 2, "s-bday": 3, "s-qr": 4,
+  "s-rec": 5, "s-quiz": 5, "s-final": 5, "s-bridge": 5, "s-vs": 5, "s-dsa": 5, "s-end": 5 };
+const ACT_LABEL = ["序幕《一个数字诞生了》", "第一幕《它被找到，被排好》", "第二幕《它被机器读懂》",
+  "第三幕《它被怀疑》", "第四幕《它的生死劫》", "终幕《它改变了一个决定》"];
+const CLOCK = { t0: null, timer: null, visible: true };
+function actIdxByTime(sec) {
+  if (sec < ACTS[0].from) return 0;
+  for (let i = 0; i < ACTS.length; i++) if (sec < ACTS[i].to) return i + 1;
+  return ACTS.length;
+}
+function clockDraw() {
+  if (!CLOCK.t0) return;
+  const sec = Math.floor((Date.now() - CLOCK.t0) / 1000);
+  $("clockT").textContent = String(Math.floor(sec / 60)).padStart(2, "0") + ":" + String(sec % 60).padStart(2, "0");
+  const sug = Math.min(actIdxByTime(sec), ACT_LABEL.length - 1);
+  $("clockAct").textContent = sec >= 1200 ? "应已收尾 🎬" : ACT_LABEL[sug];
+  const curIdx = SLIDE_ACT[slides[cur].id] !== undefined ? SLIDE_ACT[slides[cur].id] : 5;
+  $("clockDot").textContent = curIdx > sug ? "🔵 偏快·多互动" : (curIdx === sug ? "🟢 正点" : "🟠 偏慢·收一点");
+}
+function clockStart() {
+  if (CLOCK.t0) return;
+  CLOCK.t0 = Date.now();
+  $("clock").style.display = CLOCK.visible ? "block" : "none";
+  CLOCK.timer = setInterval(clockDraw, 1000);
+  clockDraw();
+}
+function clockReset() {
+  clearInterval(CLOCK.timer);
+  CLOCK.t0 = null; CLOCK.timer = null;
+  $("clock").style.display = "none";
+  toast("计时已重置——离开第一页时自动重新开始");
+}
+
 /* ============ 倒计时 ============ */
 const CD_LEN = 326.7;
 let cdTimer = null;
@@ -1294,7 +1407,7 @@ function stopCountdown() {
 function showOv(id) { $(id).classList.add("show"); }
 function hideOv(id) { $(id).classList.remove("show"); }
 ["sortMath","mazeWord","aiHow","llmHow","helpOv","binHow","dncHow","sixDeg","gdHow","tempHow",
- "magicHow","mapHow","round2How","bogoHow","inkHow"].forEach(id =>
+ "magicHow","mapHow","round2How","bogoHow","inkHow","actOv"].forEach(id =>
   $(id).addEventListener("click", () => hideOv(id)));
 $("videoOv").addEventListener("click", e => { if (e.target.id === "videoOv") { $("promoVideo").pause(); hideOv("videoOv"); } });
 $("menuOv").addEventListener("click", e => { if (e.target.id === "menuOv") hideOv("menuOv"); });
@@ -1328,6 +1441,9 @@ function goToSlide(i) {
   s.classList.add("active");
   syncDots(); updateNote();
   if (ONENTER[s.id]) ONENTER[s.id]();
+  if (s.id !== "s-open" && !CLOCK.t0) clockStart();
+  maybeAct(s.id);
+  clockDraw();
 }
 function advance() {
   if (anyOvOpen()) { closeTopOv(); return; }
@@ -1364,6 +1480,11 @@ addEventListener("keydown", e => {
     case "ArrowRight": case "PageDown": case " ": e.preventDefault(); advance(); break;
     case "ArrowLeft": case "PageUp": e.preventDefault(); back(); break;
     case "t": case "T": cdTimer ? stopCountdown() : countdown(10); break;
+    case "c": case "C":
+      if (!CLOCK.t0) { toast("⏱ 离开第一页后自动开始计时"); break; }
+      CLOCK.visible = !CLOCK.visible;
+      $("clock").style.display = CLOCK.visible ? "block" : "none";
+      break;
     case "m": case "M":
       muted = !muted; toast(muted ? "🔇 已静音" : "🔊 声音开启"); break;
     case "n": case "N": noteOn = !noteOn; updateNote(); break;
@@ -1399,6 +1520,7 @@ slides.forEach((s, i) => {
 });
 $("menuBtn").addEventListener("click", () => showOv("menuOv"));
 $("resetScore").addEventListener("click", resetAchv);
+$("resetClock").addEventListener("click", clockReset);
 $("menuMute").addEventListener("click", () => { muted = !muted; toast(muted ? "🔇 已静音" : "🔊 声音开启"); });
 $("menuHelp").addEventListener("click", () => { hideOv("menuOv"); showOv("helpOv"); });
 $("menuFull").addEventListener("click", () => { hideOv("menuOv");
@@ -1407,18 +1529,21 @@ $("menuFull").addEventListener("click", () => { hideOv("menuOv");
 /* ================================================================
    S0 猜数字
    ================================================================ */
-const G = { secret: 0, lo: 1, hi: 100, tries: 0, done: false };
+const G = { secret: 0, lo: 1, hi: 100, max: 100, tries: 0, done: false };
 function guessReset() {
-  G.secret = 1 + Math.floor(Math.random() * 100);
-  G.lo = 1; G.hi = 100; G.tries = 0; G.done = false;
+  G.secret = 1 + Math.floor(Math.random() * G.max);
+  G.lo = 1; G.hi = G.max; G.tries = 0; G.done = false;
   $("guessMsg").textContent = ""; $("guessHist").innerHTML = "";
   $("cmpStrip").style.display = "none";
-  $("guessSlider").value = 50; $("guessVal").textContent = 50;
+  $("cmpStrip").innerHTML = '<div class="card">🐢 一个一个猜<br><span class="kw3">最坏 ' + G.max +
+    ' 次</span></div><div class="card">⚡ 每次猜中间<br><span class="kw">最多 ' + (G.max === 1000 ? 10 : 7) + ' 次</span></div>';
+  $("guessSlider").max = G.max;
+  $("guessSlider").value = G.max / 2; $("guessVal").textContent = G.max / 2;
   rangeDraw();
 }
 function rangeDraw() {
-  $("rangeFill").style.left = ((G.lo - 1) / 99 * 100) + "%";
-  $("rangeFill").style.right = (100 - (G.hi - 1) / 99 * 100) + "%";
+  $("rangeFill").style.left = ((G.lo - 1) / (G.max - 1) * 100) + "%";
+  $("rangeFill").style.right = (100 - (G.hi - 1) / (G.max - 1) * 100) + "%";
   $("loLab").textContent = G.lo; $("hiLab").textContent = G.hi;
   const left = G.done ? 1 : (G.hi - G.lo + 1);
   $("guessLeft").innerHTML = "剩余可能：<b class='kw2' style='font-size:1.3em'>" + left + "</b> 个" +
@@ -1434,9 +1559,10 @@ $("guessBtn").addEventListener("click", () => {
     G.done = true;
     chip.textContent = g + " 🎯"; $("guessHist").appendChild(chip);
     $("guessMsg").innerHTML = "🎉 就是 <span class='kw2'>" + g + "</span>！只用 <span class='kw'>" + G.tries +
-      "</span> 次就淘汰了 <span class='kw3'>99</span> 个错误答案！";
+      "</span> 次就淘汰了 <span class='kw3'>" + (G.max - 1) + "</span> 个错误答案！";
     SND.tada(); confetti(160); rangeDraw();
     $("cmpStrip").style.display = "flex";
+    setHero(G.secret);
     unlock("bin");
   } else if (g < G.secret) {
     G.lo = Math.max(G.lo, g + 1);
@@ -1452,6 +1578,13 @@ $("guessBtn").addEventListener("click", () => {
   if (!G.done) { const mid = Math.floor((G.lo + G.hi) / 2); $("guessSlider").value = mid; $("guessVal").textContent = mid; }
 });
 $("guessReset").addEventListener("click", guessReset);
+$("guessHard").addEventListener("click", () => {
+  G.max = G.max === 100 ? 1000 : 100;
+  $("guessHard").textContent = G.max === 1000 ? "↩️ 回到 1~100" : "🔥 升级 1~1000";
+  guessReset();
+  SND.pop();
+  toast(G.max === 1000 ? "🔥 升级！1000 个可能——每次砍一半，也只要 10 次" : "回到经典 1~100");
+});
 guessReset();
 
 /* ================================================================
@@ -2634,6 +2767,11 @@ const pv = $("promoVideo");
 pv.addEventListener("loadedmetadata", () => $("playVideo").style.display = "");
 pv.addEventListener("error", () => $("playVideo").style.display = "none");
 $("playVideo").addEventListener("click", () => { showOv("videoOv"); pv.play(); });
+ONENTER["s-end"] = () => {
+  $("heroEnd").innerHTML = HERO.n === null
+    ? "今天这条数据的奇幻漂流，到这里就结束了——<b class='kw2'>你们志愿表上的那条数据，旅程才刚刚开始。</b>"
+    : "数据『<b class='kw2'>" + HERO.n + "</b>』的奇幻漂流到这里结束——<b class='kw2'>你们志愿表上的那条数据，旅程才刚刚开始。</b>";
+};
 
 /* ================================================================
    S10 推荐系统（隐藏站）
@@ -2953,6 +3091,21 @@ if (location.hash === "#test") {
     SELFTEST.push(["互动调用", QUIZ.length === 10 && QUIZ_SRC.length === 10 && LLM_ROUNDS.length === 5
       && BRIDGE.length === 8 && PIPE.length === 6 && VS_DIFF.length === 3 && !!$("s-vs") && r5 > 0]);
   } catch (e) { SELFTEST.push(["互动异常:" + e.message, false]); }
+  try {
+    const sum = ACTS[0].from + ACTS.reduce((a, x) => a + (x.to - x.from), 0);
+    const trigOk = ACTS.every(x => !!$(x.trigger)) && ACTS.length === 5;
+    const cardOk = maybeAct("s-sort") && $("actOv").classList.contains("show");
+    $("actOv").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    const closed = !$("actOv").classList.contains("show");
+    setHero(42);
+    $("guessHard").click();
+    const hard = G.max === 1000 && $("guessSlider").max === "1000" && $("cmpStrip").innerHTML.indexOf("10 次") > -1;
+    $("guessHard").click();
+    clockStart();
+    const clk = !!CLOCK.t0 && actIdxByTime(60) === 0 && actIdxByTime(900) === 4 && ACT_LABEL[4].indexOf("生死劫") > -1;
+    SELFTEST.push(["三幕剧引擎(预算" + sum + "s)", sum === 1200 && trigOk && cardOk && closed
+      && HERO.n === 42 && hard && G.max === 100 && clk]);
+  } catch (e) { SELFTEST.push(["三幕剧异常:" + e.message, false]); }
   setTimeout(updateSelftest, 1800);
 }
 </script>
