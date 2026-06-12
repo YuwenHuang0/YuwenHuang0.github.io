@@ -305,30 +305,6 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   padding:.5em .8em; font-size:clamp(13px,1.4vw,19px); font-weight:800; }
 .miniCards .mc b { color:#ffd84d; font-size:1.3em; }
 
-/* ============ S-RPS 猜拳读心 ============ */
-#rpsArena { display:flex; gap:3vw; align-items:center; justify-content:center; flex-wrap:wrap; margin-top:1vh; }
-#rpsYou, #rpsAI { text-align:center; }
-#rpsYou h4, #rpsAI h4 { font-size:clamp(15px,1.6vw,22px); color:#8fa3cc; margin-bottom:.5em; }
-#rpsBtns { display:flex; gap:14px; }
-#rpsBtns button { font-size:clamp(40px,5.4vw,76px); background:rgba(255,255,255,.06);
-  border:2px solid rgba(255,255,255,.2); border-radius:22px; padding:.25em .35em; transition:all .15s; }
-#rpsBtns button:hover { transform:translateY(-4px) scale(1.06); border-color:#29e6ff; box-shadow:0 0 24px rgba(41,230,255,.35); }
-#rpsAIface { font-size:clamp(64px,8.5vw,120px); min-height:1.2em; line-height:1.2; }
-#rpsVs { text-align:center; }
-#rpsScore { font-size:clamp(30px,4vw,58px); font-weight:900; }
-#rpsScore .hu { color:#3dff9d; } #rpsScore .ai { color:#ff7aa8; }
-#rpsRound { color:#8fa3cc; font-weight:800; margin-top:.3em; font-size:clamp(13px,1.4vw,19px); }
-#rpsMsg { font-size:clamp(18px,2.2vw,32px); font-weight:900; margin-top:2vh; min-height:1.5em; text-align:center; }
-#rpsBrain { margin-top:1.2vh; color:#8fa3cc; font-size:clamp(12px,1.3vw,17px); text-align:center; }
-#rpsBrain .meter { display:inline-block; width:140px; height:10px; background:rgba(255,255,255,.08);
-  border-radius:99px; overflow:hidden; vertical-align:middle; margin:0 8px; }
-#rpsBrain .meter i { display:block; height:100%; width:0; background:linear-gradient(90deg,#2979ff,#ff4d8c); transition:width .4s; }
-.heatGrid { display:grid; grid-template-columns:auto repeat(3,1fr); gap:6px; margin-top:2.2vh; }
-.heatGrid div { padding:.45em .9em; border-radius:10px; font-weight:800; font-size:clamp(14px,1.5vw,21px); text-align:center; }
-.heatGrid .hd { color:#8fa3cc; background:none; }
-.heatGrid .cell { background:rgba(41,230,255,.10); border:1px solid rgba(255,255,255,.12); }
-.heatGrid .cell.hot { background:rgba(255,216,77,.30); border-color:#ffd84d; color:#ffd84d; }
-
 /* ============ 蒙眼下山 ============ */
 #gdCv { background:rgba(0,0,0,.32); border-radius:16px; width:min(820px,84vw); height:min(320px,38vh); }
 #gdInfo { font-size:clamp(16px,1.9vw,27px); font-weight:900; margin-top:1.4vh; }
@@ -408,6 +384,19 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 .bridgeRow span { color:#aebcdd; font-size:clamp(12px,1.3vw,18px); margin-left:auto; text-align:right; }
 .bridgeRow span i { font-style:normal; color:#ffd84d; font-weight:800; }
 
+/* ============ 数据的一生 · 管线图 ============ */
+#pipeRow { display:flex; justify-content:center; align-items:stretch; flex-wrap:wrap; margin-top:2.5vh; }
+.pipeCard { width:min(13vw,168px); background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.14);
+  border-radius:16px; padding:.85em .45em; text-align:center; opacity:0; position:relative; margin-right:36px; }
+.pipeCard:last-child { margin-right:0; }
+.pipeCard.on { animation:chainPop .4s forwards; }
+.pipeCard:not(:last-child)::after { content:"→"; position:absolute; right:-29px; top:50%; transform:translateY(-50%);
+  color:#ffd84d; font-size:24px; font-weight:900; }
+.pipeCard .e { font-size:clamp(22px,2.7vw,40px); }
+.pipeCard h4 { font-size:clamp(13px,1.5vw,21px); margin:.25em 0; color:#9ff0ff; }
+.pipeCard p { color:#8fa3cc; font-size:clamp(10px,1vw,14px); line-height:1.45; min-height:2.6em; }
+.pipeCard .st { margin-top:.3em; font-size:clamp(13px,1.5vw,21px); letter-spacing:2px; min-height:1.3em; }
+
 /* ============ S-QR 二维码手术室 ============ */
 #qrLab { display:flex; gap:3vw; align-items:center; justify-content:center; flex-wrap:wrap; margin-top:1vh; }
 #qrWebWrap { position:relative; display:inline-block; }
@@ -469,6 +458,9 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   #qrRow { gap:4vw; } #qrRow img { width:min(36vw,170px); height:min(36vw,170px); }
   #qrLab { flex-direction:column; gap:1.6vh; }
   #qrWebWrap img { width:min(64vw,30vh); height:min(64vw,30vh); }
+  #pipeRow { flex-direction:column; align-items:center; }
+  .pipeCard { width:82vw; margin-right:0; margin-bottom:30px; }
+  .pipeCard:not(:last-child)::after { content:"↓"; right:auto; left:50%; top:auto; bottom:-27px; transform:translateX(-50%); }
   #duelScores { gap:7vw; }
   #cdWrap { top:auto; bottom:12vh; transform:scale(.8); }
 }
@@ -499,7 +491,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 <!-- ================================================================ -->
 <section class="slide active" id="s-open" data-note="开场白→让全场喊数字→拖滑块点'猜！'→猜中后按 → 进入揭秘">
   <div class="s-head">
-    <div class="s-tag">热身挑战 WARM-UP</div>
+    <div class="s-tag">第一关 · 热身挑战</div>
     <div class="s-title">🎯 我想好了一个 <span class="kw2">1 ~ 100</span> 的数</div>
     <div class="s-sub">全场一起猜！我保证：最多 <b class="kw">7 次</b> 必被你们猜中 —— 不信？来！</div>
   </div>
@@ -543,7 +535,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
       <div class="card"><h3>🧩 Data <span class="kw">S</span>tructures &amp; <span class="kw">A</span>lgorithms</h3>
         <p><b>数据结构与算法</b><br>程序世界的内功心法<br>刚才的二分搜索就是它</p></div>
       <div class="card"><h3>📊 Data <span class="kw3">S</span>cience &amp; <span class="kw3">A</span>nalytics</h3>
-        <p><b>数据科学与分析</b><br>把数据变成决策的科学<br>港科广 <b class="kw2">最大学域</b> 的名字</p></div>
+        <p><b>数据科学与分析</b><br>官方定义：数学+数据+系统+AI → 决策<br>港科广 <b class="kw2">最大学域</b> 的名字</p></div>
     </div>
     <div class="s-sub" style="margin-top:3vh">今天 20 分钟，两个 DSA <b class="kw2">都带你玩一遍</b>——每玩通一关，全班解锁一枚成就（看右上角）｜ 主讲：黄钰文 · 数据科学与分析学域</div>
   </div>
@@ -578,7 +570,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 <!-- ================================================================ -->
 <section class="slide" id="s-sort" data-note="抛问题→按 → 全场举手押注(点声量大的一边)→按 → 开赛→按 → 10亿件换算→按 → 分治思想 | 彩蛋:第二场/猴子加赛">
   <div id="sortHook" class="center">
-    <div class="s-tag">第一关 · 算法赛马场</div>
+    <div class="s-tag">第二关 · 算法赛马场</div>
     <div class="hookBig">🛒 双十一，淘宝要把 <span class="kw2">10 亿件商品</span><br>按价格从低到高排好序</div>
     <div class="hookSub">你的手机一划就出来了 —— 它是怎么做到的？<br>方法不同，差距能有多大？我们让两位"选手"比一场。</div>
   </div>
@@ -643,7 +635,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 <!-- ================================================================ -->
 <section class="slide" id="s-ai" data-note="请同学上台写数字骗AI(骗过=英雄,送礼品) · 没人上→自己画自嘲 · 按 → 原理 → 再按 → 蒙眼下山">
   <div class="s-head" style="margin-bottom:1.2vh">
-    <div class="s-tag">第二关 · 人机大战</div>
+    <div class="s-tag">第三关 · 人机大战</div>
     <div class="s-title">✍️ 把数字写丑，<span class="kw3">骗过 AI</span> 你就是英雄！</div>
   </div>
   <div id="aiWrap">
@@ -666,38 +658,11 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 </section>
 
 <!-- ================================================================ -->
-<!-- S-RPS 猜拳读心 AI -->
-<!-- ================================================================ -->
-<section class="slide" id="s-rps" data-note="请同学上台和AI猜拳15回合(前几回随机,后面AI会赢)→按 → 揭秘它数出的习惯表">
-  <div class="s-head" style="margin-bottom:1vh">
-    <div class="s-tag">第三关 · 读心猜拳</div>
-    <div class="s-title">✊ 它刚学会"看"，现在要<span class="kw3">预测你</span></div>
-    <div class="s-sub">和 AI 猜拳 15 回合——它会越来越懂你（真的）</div>
-  </div>
-  <div id="rpsArena">
-    <div id="rpsYou"><h4>你出</h4>
-      <div id="rpsBtns">
-        <button data-m="0">✊</button><button data-m="1">✌️</button><button data-m="2">✋</button>
-      </div>
-    </div>
-    <div id="rpsVs">
-      <div id="rpsScore"><span class="hu" id="rpsHu">0</span> : <span class="ai" id="rpsAi">0</span></div>
-      <div id="rpsRound">人类 vs AI · 第 0 回合</div>
-    </div>
-    <div id="rpsAI"><h4>AI 出</h4><div id="rpsAIface">🤖</div></div>
-  </div>
-  <div id="rpsMsg">出拳吧！前几回合它还在观察你……</div>
-  <div id="rpsBrain">AI 对你的了解程度<span class="meter"><i id="rpsMeter"></i></span><span id="rpsConf">0%</span>
-    <button class="btn ghost sm" id="rpsReset" style="margin-left:14px">🔄 换人挑战</button></div>
-  <div id="rpsLead" style="margin-top:.8vh;color:#ffd84d;font-weight:800;font-size:clamp(13px,1.4vw,19px);min-height:1.4em;text-align:center"></div>
-</section>
-
-<!-- ================================================================ -->
 <!-- S5 文字接龙 -->
 <!-- ================================================================ -->
 <section class="slide" id="s-llm" data-note="全场抢答下一个词→点'翻牌'对比AI概率→5轮(最后1轮彩蛋)→按 → AI写作演示 → 再按 → 温度旋钮">
   <div class="s-head">
-    <div class="s-tag">第三关 · 大模型读心术</div>
+    <div class="s-tag">第四关 · 大模型读心术</div>
     <div class="s-title">💬 文字接龙：猜中 AI 心里的词</div>
     <div class="s-sub">两队抢答：横线上最可能填什么？答案与 <b class="kw">AI 概率表</b> 一致就加分</div>
   </div>
@@ -711,12 +676,30 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 </section>
 
 <!-- ================================================================ -->
+<!-- S-BDAY 生日悖论（彩蛋） -->
+<!-- ================================================================ -->
+<section class="slide" id="s-bday" data-note="先让大家凭直觉猜概率(多数人说10%)→点'模拟一个班'两三次→'自动20个班'看命中率逼近94%→念dsaTie">
+  <div class="s-head" style="margin-bottom:.8vh">
+    <div class="s-tag">第五关 · 统计的反直觉</div>
+    <div class="s-title">🎂 45 人的班，有两人<span class="kw2">同一天生日</span>的概率是？</div>
+    <div class="s-sub">先凭直觉猜一个数……然后我们用数据科学的方式：<b class="kw">直接做实验</b></div>
+  </div>
+  <canvas id="bdayCv"></canvas>
+  <div id="bdayStats">点下面的按钮，随机"生成"一个班试试</div>
+  <div class="flexCtl">
+    <button class="btn" id="bdayOnce">🎲 模拟一个班（45人）</button>
+    <button class="btn gold" id="bdayAuto">⚡ 自动模拟 20 个班</button>
+    <button class="btn ghost sm" id="bdayReset">🔄 清零</button>
+  </div>
+  <div class="dsaTie">🎓 在 DSA ·〔统计层〕｜"统计学习和建模"是学域八大研究方向之一，第一课就是用模拟和数据校准直觉——哈希碰撞检测、抽奖公平性验证，用的都是今天这招。</div>
+</section>
+
+<!-- ================================================================ -->
 <!-- S-QR 二维码手术室（纠错码） -->
 <!-- ================================================================ -->
-<section class="slide" id="s-qr" data-note="泼1-3勺→全场实扫成功→'一键泼穿'→实扫失败→手术修复→按 → 揭秘纠错码">
-  <div class="badgeFloat">⚡ 机动关 · 时间紧可跳过</div>
+<section class="slide" id="s-qr" data-note="泼1-3勺→全场实扫成功→'一键泼穿'→实扫失败→手术修复→按 → 揭秘纠错码与大数据存储">
   <div class="s-head" style="margin-bottom:.8vh">
-    <div class="s-tag">第五关 · 二维码手术室</div>
+    <div class="s-tag">第六关 · 二维码手术室</div>
     <div class="s-title">🏥 你的每一次扫码，都是一次<span class="kw2">数据抢救</span></div>
     <div class="s-sub">自带<b class="kw">纠错护甲</b>：标称 30%、实战约 15%（为什么缩水？揭秘见分晓）——来做个破坏性实验</div>
   </div>
@@ -738,6 +721,24 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
       <p style="color:#8fa3cc;font-size:clamp(12px,1.2vw,16px);text-align:center">每泼一次，全场掏手机扫一次——亲眼见证数学在工作 📱</p>
     </div>
   </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- S10 推荐系统（隐藏彩蛋站，按 R 进入） -->
+<!-- ================================================================ -->
+<section class="slide" id="s-rec" data-note="请1位同学上台选3个喜欢的→点'开始推荐'→念推荐理由→最后一条永远是DSA彩蛋→讲'抖音同款'">
+  <div class="s-head" style="margin-bottom:.6vh">
+    <div class="s-tag">第七关 · 数据红娘</div>
+    <div class="s-title">🔮 数据红娘——抖音为什么这么<span class="kw2">懂你</span>？</div>
+    <div class="s-sub">选出你最喜欢的 <b class="kw2">3 个</b>，算法当场给"你"和"内容"牵线——推荐系统</div>
+  </div>
+  <div id="recGrid"></div>
+  <div class="flexCtl">
+    <button class="btn gold" id="recGo">🔮 开始推荐</button>
+    <button class="btn ghost sm" id="recReset">🔄 重选</button>
+  </div>
+  <div id="recOut"></div>
+  <div class="dsaTie">🎓 在 DSA ·〔决策层〕｜推荐系统是"工业和商业分析"方向的看家本领；<b>量化投资金融科技实验室</b>用同类算法研究投资——我们一位大三本科生的金融时间序列预测，论文发在数据挖掘顶会 KDD 2025。数据的终点是<b>决策</b>，这就是 DSA 和纯 AI 的区别。</div>
 </section>
 
 <!-- ================================================================ -->
@@ -776,13 +777,38 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 <!-- ================================================================ -->
 <!-- S-BRIDGE 课程地图：每一关 = DSA 的一门课/一个实验室 -->
 <!-- ================================================================ -->
-<section class="slide" id="s-bridge" data-note="行自动弹入·点1-2行展开讲：本科生论文那两行最打动人 → 金句收尾进学域数据页">
+<section class="slide" id="s-bridge" data-note="管线图自动点亮·讲'数据的一生,AI只是一环'→按 → 切到8行课程对应(本科生论文行最打动人)">
   <div class="s-head" style="margin-bottom:.4vh">
     <div class="s-tag">解密时刻</div>
-    <div class="s-title">你玩的每一关，都是 DSA 的一门课 🎓</div>
+    <div class="s-title" id="bridgeTitle">这 8 关连起来，是<span class="kw2">数据的一生</span> 🌊</div>
   </div>
-  <div id="bridgeList"></div>
-  <div class="golden" style="margin-top:2vh">今天不是 20 分钟的游戏——<br>是数据科学与分析学域四年课程表的预告片。</div>
+  <div id="pipeView" class="center">
+    <div id="pipeRow"></div>
+    <div class="golden" style="margin-top:2.6vh">AI 宣讲只能讲其中一环；<br>DSA 把整条流水线交给你——这就是数据科学。</div>
+  </div>
+  <div id="courseView" class="center" style="display:none">
+    <div id="bridgeList"></div>
+    <div class="golden" style="margin-top:2vh">今天不是 20 分钟的游戏——<br>是数据科学与分析学域四年课程表的预告片。</div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- S-VS DSA vs AI 学域怎么选 -->
+<!-- ================================================================ -->
+<section class="slide" id="s-vs" data-note="家长必问→两卡对比(友好,不贬低AI学域)→三行差异逐行念→金句'整张拼图'收">
+  <div class="s-head" style="margin-bottom:.6vh">
+    <div class="s-tag">灵魂拷问 · 家长最爱问</div>
+    <div class="s-title">🤔 DSA 和 AI 学域，怎么选？</div>
+  </div>
+  <div class="betRow">
+    <div class="betCard card"><div class="emoji">🤖</div><h3>AI 学域</h3>
+      <p>聚焦<b class="kw3">智能模型本身</b><br>把"大脑"造得更聪明</p></div>
+    <div class="betCard card" style="border-color:rgba(255,216,77,.6)"><div class="emoji">📊</div><h3>DSA 学域</h3>
+      <p><b class="kw2">数据全链路</b><br>数学 + 数据 + 系统 + AI → 决策（官方定义）</p></div>
+  </div>
+  <div id="vsList"></div>
+  <div class="golden" style="margin-top:2vh">AI 是数据科学最亮的一块拼图；DSA 给你整张拼图。<br>模型 18 个月换一代，数据思维管一辈子。</div>
+  <p class="s-sub" style="margin-top:1.2vh">两个学域都在信息枢纽、都很强——区别只是：你想专注造大脑，还是想让数据从出生到决策都听你的。</p>
 </section>
 
 <!-- ================================================================ -->
@@ -829,44 +855,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   </div>
 </section>
 
-<!-- ================================================================ -->
-<!-- S10 推荐系统（隐藏彩蛋站，按 R 进入） -->
-<!-- ================================================================ -->
-<section class="slide" id="s-rec" data-note="隐藏站(按R)：请1位同学选3个喜欢的→点'开始推荐'→讲'抖音为什么懂你'">
-  <div class="badgeFloat">🥚 隐藏彩蛋站</div>
-  <div class="s-head" style="margin-bottom:.6vh">
-    <div class="s-tag">彩蛋 · 推荐系统</div>
-    <div class="s-title">📱 抖音为什么这么懂你？</div>
-    <div class="s-sub">选出你最喜欢的 <b class="kw2">3 个</b>，让算法猜猜你还会喜欢什么</div>
-  </div>
-  <div id="recGrid"></div>
-  <div class="flexCtl">
-    <button class="btn gold" id="recGo">🔮 开始推荐</button>
-    <button class="btn ghost sm" id="recReset">🔄 重选</button>
-  </div>
-  <div id="recOut"></div>
-  <div class="dsaTie">🎓 在 DSA｜推荐系统是"工业和商业分析"方向（学域八大方向之一）的看家本领——量化投资金融科技实验室用同类算法研究投资组合。</div>
-</section>
 
-<!-- ================================================================ -->
-<!-- S-BDAY 生日悖论（彩蛋） -->
-<!-- ================================================================ -->
-<section class="slide" id="s-bday" data-note="彩蛋页(菜单可进)：先让大家猜概率→点'模拟一个班'→连点几次→点'自动模拟20个班'看命中率">
-  <div class="badgeFloat">🥚 彩蛋 · 别信直觉，信数据</div>
-  <div class="s-head" style="margin-bottom:.8vh">
-    <div class="s-tag">概率的反直觉</div>
-    <div class="s-title">🎂 45 人的班，有两人<span class="kw2">同一天生日</span>的概率是？</div>
-    <div class="s-sub">先凭直觉猜一个数……然后我们用数据科学的方式：<b class="kw">直接做实验</b></div>
-  </div>
-  <canvas id="bdayCv"></canvas>
-  <div id="bdayStats">点下面的按钮，随机"生成"一个班试试</div>
-  <div class="flexCtl">
-    <button class="btn" id="bdayOnce">🎲 模拟一个班（45人）</button>
-    <button class="btn gold" id="bdayAuto">⚡ 自动模拟 20 个班</button>
-    <button class="btn ghost sm" id="bdayReset">🔄 清零</button>
-  </div>
-  <div class="dsaTie">🎓 在 DSA｜"统计学习和建模"是学域八大研究方向之一，第一课就是用模拟和数据校准直觉——哈希碰撞检测、抽奖公平性验证，用的都是今天这招。</div>
-</section>
 
 <!-- ================================================================ -->
 <!-- S-PI 扔飞镖算 π（彩蛋） -->
@@ -884,7 +873,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
     <button class="btn" id="piGo">🎯 开始扔飞镖</button>
     <button class="btn ghost sm" id="piReset">🔄 重置</button>
   </div>
-  <div class="dsaTie">🎓 在 DSA｜蒙特卡洛是 <b>AI for Science</b> 方向（学域八大方向之一）的主力工具——药物分子模拟、气候预测都靠"扔飞镖"。</div>
+  <div class="dsaTie">🎓 在 DSA ·〔统计层〕｜蒙特卡洛是 <b>AI for Science</b> 方向（学域八大方向之一）的主力工具——药物分子模拟、气候预测都靠"扔飞镖"。</div>
 </section>
 
 <!-- ================================================================ -->
@@ -944,7 +933,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
     <div class="card"><div class="e">🔧</div><h4>修水管 / 查线路</h4><p>从中间断开测：<br>问题在前半还是后半？</p></div>
   </div>
   <div class="golden" style="margin-top:3vh">每问一次，世界小一半。<br>10 亿条数据，30 刀就见底 —— 这就是 log 的力量。</div>
-  <div class="dsaTie">🎓 在 DSA｜二分搜索是《数据结构与算法》(DSAA 2043) 开学第一个月的内容；微信查账号背后的数据库索引，对应《数据库管理系统》(DSAA 2031, DBMS)——这两门都在学域核心课程路径上。</div>
+  <div class="dsaTie">🎓 在 DSA ·〔算法层〕｜二分搜索是《数据结构与算法》(DSAA 2043) 开学第一个月的内容；微信查账号背后的数据库索引，对应《数据库管理系统》(DSAA 2031, DBMS)——这两门都在学域核心课程路径上。</div>
 </div>
 
 <div class="ov" id="dncHow">
@@ -960,7 +949,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
     <div class="card"><div class="e">🗂️</div><h4>整理任何东西</h4><p>先粗分大类，<br>再每类细分 —— 同一招</p></div>
   </div>
   <div class="golden" style="margin-top:2.6vh">大事化小，小事化了。<br>算法设计的头号心法，管理学也在用。</div>
-  <div class="dsaTie">🎓 在 DSA｜让 10 亿条数据排得又快又稳，是<b>高性能数据分析系统</b>方向（学域八大研究方向之一）的日常课题。</div>
+  <div class="dsaTie">🎓 在 DSA ·〔系统层〕｜让 10 亿条数据排得又快又稳，是<b>高性能数据分析系统</b>方向（学域八大研究方向之一）的日常课题。</div>
 </div>
 
 <div class="ov" id="sixDeg">
@@ -968,7 +957,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   <canvas id="sixCv"></canvas>
   <div id="sixInfo">点哪里都行，看涟漪扩散 →</div>
   <div class="golden" style="margin-top:1.6vh">六度分隔：地球上任意两个人，平均只隔 6 次握手。<br>朋友圈是图，地图是图，万物皆图。</div>
-  <div class="dsaTie">🎓 在 DSA｜社交网络、分子结构、金融交易网全是图——<b>港科广-创邻图数据联合实验室</b>专门研究怎么在亿级节点的图上玩今天这个游戏。</div>
+  <div class="dsaTie">🎓 在 DSA ·〔算法层〕｜社交网络、分子结构、金融交易网全是图——<b>港科广-创邻图数据联合实验室</b>专门研究怎么在亿级节点的图上玩今天这个游戏。</div>
 </div>
 
 <div class="ov" id="gdHow">
@@ -983,7 +972,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   </div>
   <div class="golden" style="margin-top:2vh">学习 = 朝着错误变小的方向，挪一小步 × 一万次。<br>刚才那个 AI 的 20 万个参数，就是这样一起"下山"下出来的。</div>
   <p class="s-sub" style="margin-top:1.2vh">小坑 = 局部最优，踢一脚才能出来 ｜ 顺便：只会背训练题的 AI 叫"过拟合"——换张卷子就跪，和背答案的学霸一个下场 😏</p>
-  <div class="dsaTie">🎓 在 DSA｜怎么让 20 万乃至 2000 亿个参数高效"下山"，是《优化导论》课程和<b>高性能机器学习实验室</b>的正题——我们一位<b>大三本科生</b>让大模型在一张普通游戏显卡上跑了起来，论文发表在顶会 IPDPS 2026。</div>
+  <div class="dsaTie">🎓 在 DSA ·〔模型层〕｜怎么让 20 万乃至 2000 亿个参数高效"下山"，是《优化导论》课程和<b>高性能机器学习实验室</b>的正题——我们一位<b>大三本科生</b>让大模型在一张普通游戏显卡上跑了起来，论文发表在顶会 IPDPS 2026。</div>
 </div>
 
 <div class="ov" id="tempHow">
@@ -997,7 +986,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   <div id="genTemp" class="hookBig" style="font-size:clamp(20px,2.6vw,38px);margin-top:2.6vh;min-height:2.2em;color:#ffd84d"></div>
   <div class="golden" style="margin-top:2vh">温度越低，越保守（每次都挑概率第一）；温度越高，越敢冒险。</div>
   <p class="s-sub" style="margin-top:1.4vh">看到"放飞模式"一本正经地胡说八道了吗？这就是 AI <b class="kw3">幻觉</b>的来源——<br>它只学过"接得像"，从没学过"查证真假"。所以：AI 的话，要自己验证！</p>
-  <div class="dsaTie">🎓 在 DSA｜让 AI 少幻觉、会查证（<b>可信推理</b>）正是学域教授们攻关的前沿——教 AI"说真话"，可能是这个时代最重要的课题之一。</div>
+  <div class="dsaTie">🎓 在 DSA ·〔模型层〕｜让 AI 少幻觉、会查证（<b>可信推理</b>）正是学域教授们攻关的前沿——教 AI"说真话"，可能是这个时代最重要的课题之一。</div>
 </div>
 
 <div class="ov" id="magicHow">
@@ -1013,22 +1002,15 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
     所以你只会对第 1、2、5 张卡说"在" —— 我把"在"的卡左上角一加，就是答案
   </div>
   <div class="golden" style="margin-top:2.6vh">5 个"是/否" = 5 比特 = 32 种可能。<br>和"7 次猜中 1~100"是同一个数学 —— 信息，就是用来砍一半的。</div>
-  <div class="dsaTie">🎓 在 DSA｜比特与信息是数据科学的地基——《离散数学》(UFUG 2106) 和计算理论课程都从这里出发，数据压缩、加密通信全靠它。</div>
+  <div class="dsaTie">🎓 在 DSA ·〔数据层〕｜比特与信息是数据科学的地基——《离散数学》(UFUG 2106) 和计算理论课程都从这里出发，数据压缩、加密通信全靠它。</div>
 </div>
 
-<div class="ov" id="rpsHow">
-  <h2>✊ 猜拳读心揭秘：<span class="kw3">人类根本不会出随机</span></h2>
-  <div class="hookBig" style="font-size:clamp(17px,2.2vw,32px)">AI 一直在数：你出完某一招后，下一招最爱出什么——</div>
-  <div class="heatGrid" id="rpsHeat"></div>
-  <div class="golden" style="margin-top:2.6vh">它没有读心术，只有一张计数表。<br>预测你的下一步：输入法联想、抖音推荐、游戏 AI —— 全是同一招。</div>
-  <div class="dsaTie">🎓 在 DSA｜预测"下一步"是<b>量化投资金融科技实验室</b>的日常：我们一位大三本科生做金融时间序列预测，论文发在数据挖掘顶会 KDD 2025——预测市场和预测出拳，底层是同一套数学（马尔可夫链，《应用统计》基础内容）。</div>
-</div>
 
 <div class="ov" id="mazeWord">
   <h2>🧭 刚才这个游戏，叫 <span class="kw">最短路搜索</span></h2>
   <div class="golden">高德导航 = 在 1 亿个路口的地图上玩这个游戏<br>每次 0.1 秒</div>
   <p class="s-sub" style="margin-top:3vh">外卖派单 · 高铁调度 · 游戏 NPC 追你 —— 全是同一招</p>
-  <div class="dsaTie">🎓 在 DSA｜CityMind 城市思维智能交通实验室在用图算法+AI 研究城市红绿灯的智能调度——我们一位<b>大三本科生</b>正是用强化学习做交通信号控制，论文发表在数据库顶会 VLDB 2026。</div>
+  <div class="dsaTie">🎓 在 DSA ·〔算法层〕｜CityMind 城市思维智能交通实验室在用图算法+AI 研究城市红绿灯的智能调度——我们一位<b>大三本科生</b>正是用强化学习做交通信号控制，论文发表在数据库顶会 VLDB 2026。</div>
 </div>
 
 <div class="ov" id="aiHow">
@@ -1038,31 +1020,31 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   </div>
   <div class="golden" style="margin-top:3vh">没人教它规则 —— 它看了 60000 张手写图，自己学会的。<br>这就是机器学习 Machine Learning。</div>
   <p class="s-sub" style="margin-top:2.6vh">悄悄说：这个 AI 是<b class="kw2">今天</b>在我这台电脑上现训的，准确率 97.9%。</p>
-  <div class="dsaTie">🎓 在 DSA｜《机器学习》(DSAA 2011)、《深度学习》(DSAA 2012) 本科低年级就能修读——你很快就能亲手训练它；<b>高性能机器学习实验室</b>研究的是怎么让这种训练再快 100 倍。</div>
+  <div class="dsaTie">🎓 在 DSA ·〔模型层〕｜《机器学习》(DSAA 2011)、《深度学习》(DSAA 2012) 本科低年级就能修读——你很快就能亲手训练它；<b>高性能机器学习实验室</b>研究的是怎么让这种训练再快 100 倍。</div>
 </div>
 
 <div class="ov" id="llmHow">
   <h2>🤖 ChatGPT 写作文 = 把接龙玩 1000 次</h2>
   <div id="genDemo"></div>
   <div class="golden" style="margin-top:2.4vh">大模型没有在"思考" —— 它在玩世界上最大的文字接龙。<br>练习材料：整个互联网。</div>
-  <div class="dsaTie">🎓 在 DSA｜NLP·大模型是学域最热的方向之一——一位<b>大二同学</b>以共同第一作者身份在 AI 顶会 ICLR 2026 发表了大模型论文。两年前，他也坐在你们现在的位置上。</div>
+  <div class="dsaTie">🎓 在 DSA ·〔模型层〕｜NLP·大模型是学域最热的方向之一——一位<b>大二同学</b>以共同第一作者身份在 AI 顶会 ICLR 2026 发表了大模型论文。两年前，他也坐在你们现在的位置上。</div>
   <div class="flexCtl"><button class="btn sm" id="genReplay">🔄 再看一遍</button></div>
 </div>
 
 <div class="ov" id="mapHow">
   <h2>🗺️ 今日闯关地图：<span class="kw2">8 大主线关</span> + 4 个隐藏彩蛋</h2>
   <div id="mapGrid">
-    <div class="card"><div class="e">🔍</div><h4>① 猜数字</h4><p>二分搜索</p></div>
-    <div class="card"><div class="e">🏁</div><h4>② 排序赛马</h4><p>分而治之</p></div>
-    <div class="card"><div class="e">🧠</div><h4>③ 手写识别</h4><p>神经网络</p></div>
-    <div class="card"><div class="e">⛰️</div><h4>④ 蒙眼下山</h4><p>机器怎么学习</p></div>
-    <div class="card"><div class="e">✊</div><h4>⑤ 猜拳读心</h4><p>AI 预测你</p></div>
-    <div class="card"><div class="e">💬</div><h4>⑥ 文字接龙</h4><p>大模型本质</p></div>
-    <div class="card"><div class="e">🌡️</div><h4>⑦ 温度与幻觉</h4><p>AI 为何胡说</p></div>
+    <div class="card"><div class="e">🔍</div><h4>① 猜数字</h4><p>算法 · 二分搜索</p></div>
+    <div class="card"><div class="e">🏁</div><h4>② 排序赛马</h4><p>算法 · 分而治之</p></div>
+    <div class="card"><div class="e">🧠</div><h4>③ 手写识别</h4><p>AI · 神经网络</p></div>
+    <div class="card"><div class="e">💬</div><h4>④ 文字接龙</h4><p>AI · 大模型本质</p></div>
+    <div class="card"><div class="e">🎂</div><h4>⑤ 生日悖论</h4><p>统计 · 别信直觉</p></div>
+    <div class="card"><div class="e">🏥</div><h4>⑥ 二维码手术室</h4><p>数据 · 纠错码</p></div>
+    <div class="card"><div class="e">🔮</div><h4>⑦ 数据红娘</h4><p>决策 · 推荐系统</p></div>
     <div class="card"><div class="e">🏆</div><h4>⑧ 终极闯关</h4><p>10 题对决</p></div>
   </div>
-  <div id="mapEggs">🌟 隐藏/机动关：🃏 读心魔术 · 🗺️ 迷宫智能导航 · 🏥 二维码手术室 · 🎂 生日悖论 —— 解锁一关，右上角亮一枚成就，<b>集满有称号</b>！</div>
-  <div class="dsaTie">🎓 这不是随便挑的 8 个游戏——它们正好是港科广 <b>数据科学与分析（DSA）学域</b> 四年课程的缩影，结尾见分晓。</div>
+  <div id="mapEggs">🌟 机动关：🃏 读心魔术 · 🗺️ 迷宫智能导航 ｜ 课后彩蛋：🎯 扔飞镖算 π · 🚚 百万美元难题 —— 每过一关右上角亮一枚成就，<b>集满有称号</b>！</div>
+  <div class="dsaTie">🎓 注意每关前面的小字：算法 → AI → 统计 → 数据 → 决策——这 8 关连起来是<b>数据的一生</b>，也是 <b>DSA 学域</b>四年课程的缩影。AI 只是其中两关，这就是数据科学比 AI 更大的地方（结尾见分晓）。</div>
 </div>
 
 <div class="ov" id="round2How">
@@ -1079,7 +1061,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
       <div id="mergeRows"></div>
     </div>
   </div>
-  <div class="dsaTie">🎓 在 DSA｜《数据结构与算法》(DSAA 2043) 会带你亲手写出这四位选手，再实测谁快——我们的同学靠这身内功打进了 CCPC 全国总决赛。</div>
+  <div class="dsaTie">🎓 在 DSA ·〔算法层〕｜《数据结构与算法》(DSAA 2043) 会带你亲手写出这四位选手，再实测谁快——我们的同学靠这身内功打进了 CCPC 全国总决赛。</div>
   <p class="s-sub" style="margin-top:1.6vh">点击任意处关闭 → 点「🏁 开赛！」</p>
 </div>
 
@@ -1094,7 +1076,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
     <div class="card on" style="opacity:1"><div class="e">⏳</div><h4>预计耗时</h4><p>每秒扔 100 次<br>也要扔 55 天</p></div>
   </div>
   <div class="golden" style="margin-top:2.4vh">蛮力的尽头是绝望——算法的本质，是不靠运气靠策略。</div>
-  <div class="dsaTie">🎓 在 DSA｜"一个算法要多少步"叫<b>复杂度分析</b>——DSAA 2043 第一课，也是大厂面试必考题。</div>
+  <div class="dsaTie">🎓 在 DSA ·〔算法层〕｜"一个算法要多少步"叫<b>复杂度分析</b>——DSAA 2043 第一课，也是大厂面试必考题。</div>
   <p class="s-sub" style="margin-top:1.4vh">点击关闭后，让猴子在后台一直扔——讲完课它都排不好 😏</p>
 </div>
 
@@ -1107,12 +1089,12 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   </div>
   <p class="s-sub" style="margin-top:1.2vh">刚才你们用手机亲手测出了这个差距——这就是编码理论里"错误 vs 擦除"的真实力量。</p>
   <div class="ideaRow">
-    <div class="card on" style="opacity:1"><div class="e">📡</div><h4>同款技术</h4><p>火星探测器传照片<br>抗宇宙噪声</p></div>
-    <div class="card on" style="opacity:1"><div class="e">💿</div><h4>同款技术</h4><p>光盘划痕了照样放<br>就是它在兜底</p></div>
+    <div class="card on" style="opacity:1"><div class="e">📡</div><h4>火星探测器</h4><p>亿公里外传照片<br>抗宇宙噪声靠它</p></div>
+    <div class="card on" style="opacity:1"><div class="e">🗄️</div><h4>数据中心同款</h4><p>几万块硬盘天天有坏的<br>纠删码保数据毫发无损</p></div>
     <div class="card on" style="opacity:1"><div class="e">📱</div><h4>你每天都在用</h4><p>扫码支付、乘车码<br>都被它保护着</p></div>
   </div>
-  <div class="golden" style="margin-top:2.4vh">你的每一次扫码，都有一套数学在保驾护航。</div>
-  <div class="dsaTie">🎓 在 DSA｜编码与加密属于<b>安全与隐私</b>研究方向——数据科学不仅要算得快，还要保得住。</div>
+  <div class="golden" style="margin-top:2.4vh">数据是新石油（Data is the new oil）——纠错码就是油罐。</div>
+  <div class="dsaTie">🎓 在 DSA ·〔数据层〕｜大数据系统（如 HDFS、各家云存储）正是用<b>里德-所罗门家族的"纠删码"</b>守住几十 PB 的数据：坏几块硬盘，数据照样完整。这是《云计算与大数据系统》课程和"高性能数据分析系统"方向的日常——AI 的一切，都建在这层守护之上。</div>
 </div>
 
 <div class="ov" id="helpOv">
@@ -1123,7 +1105,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
     <span><kbd>T</kbd></span><span>10 秒倒计时</span>
     <span><kbd>M</kbd></span><span>静音开关</span>
     <span><kbd>N</kbd></span><span>提词条开关（给主讲人看的）</span>
-    <span><kbd>R</kbd></span><span>彩蛋站：推荐系统（更多彩蛋在菜单里）</span>
+    <span><kbd>R</kbd></span><span>直达第⑦关数据红娘（彩蛋页在菜单里）</span>
     <span><kbd>F</kbd></span><span>全屏</span>
     <span><kbd>Esc</kbd></span><span>菜单</span>
   </div>
@@ -1233,17 +1215,17 @@ const ACHV = [           // 主线 8 枚：标准流程走完必定全亮
   { k: "bin",  e: "🔍", n: "二分搜索" },
   { k: "sort", e: "🏁", n: "排序大师" },
   { k: "nn",   e: "🧠", n: "神经网络" },
-  { k: "gd",   e: "⛰️", n: "蒙眼下山" },
-  { k: "rps",  e: "✊", n: "读心猜拳" },
   { k: "llm",  e: "💬", n: "文字接龙" },
-  { k: "temp", e: "🌡️", n: "幻觉猎人" },
+  { k: "bday", e: "🎂", n: "反直觉大师" },
+  { k: "ink",  e: "🎨", n: "数据守护者" },
+  { k: "rec",  e: "🔮", n: "数据红娘" },
   { k: "quiz", e: "🏆", n: "终极闯关" },
 ];
-const ACHV_HIDDEN = [    // 隐藏 ★4 枚：机动站与彩蛋专属
+const ACHV_HIDDEN = [    // 隐藏 ★4 枚：机动站与深入步骤专属
   { k: "magic", e: "🃏", n: "读心魔术" },
   { k: "path",  e: "🗺️", n: "寻路高手" },
-  { k: "bday",  e: "🎂", n: "反直觉大师" },
-  { k: "ink",   e: "🎨", n: "泼墨大师" },
+  { k: "gd",    e: "⛰️", n: "蒙眼下山" },
+  { k: "temp",  e: "🌡️", n: "幻觉猎人" },
 ];
 const achvOn = new Set();
 try { JSON.parse(localStorage.getItem("dsa-achv") || "[]").forEach(k => achvOn.add(k)); } catch (e) {}
@@ -1312,7 +1294,7 @@ function stopCountdown() {
 function showOv(id) { $(id).classList.add("show"); }
 function hideOv(id) { $(id).classList.remove("show"); }
 ["sortMath","mazeWord","aiHow","llmHow","helpOv","binHow","dncHow","sixDeg","gdHow","tempHow",
- "magicHow","rpsHow","mapHow","round2How","bogoHow","inkHow"].forEach(id =>
+ "magicHow","mapHow","round2How","bogoHow","inkHow"].forEach(id =>
   $(id).addEventListener("click", () => hideOv(id)));
 $("videoOv").addEventListener("click", e => { if (e.target.id === "videoOv") { $("promoVideo").pause(); hideOv("videoOv"); } });
 $("menuOv").addEventListener("click", e => { if (e.target.id === "menuOv") hideOv("menuOv"); });
@@ -1321,7 +1303,7 @@ function closeTopOv() { const o = document.querySelector(".ov.show"); if (o) { i
 
 /* ============ 幻灯片引擎 ============ */
 const slides = [...document.querySelectorAll(".slide")];
-const HIDDEN = ["s-rec", "s-bday", "s-pi", "s-pnp"];   // 彩蛋站不进线性流程
+const HIDDEN = ["s-pi", "s-pnp"];   // 彩蛋页不进线性流程
 const LINEAR = slides.filter(s => !HIDDEN.includes(s.id));
 let cur = 0;
 const STEPS = {}, ONENTER = {}, stepIdx = {};
@@ -1398,15 +1380,15 @@ addEventListener("click", e => { if (e.target.closest("button")) e.target.closes
 
 /* ============ 菜单 ============ */
 const MENU_TITLES = {
-  "s-open": "🎯 热身：猜数字", "s-title": "🔍 揭秘二分 · 标题 · 关卡地图",
-  "s-magic": "🔮 读心魔术（机动）", "s-sort": "🏁 排序赛马 · 分治 · 第二场 · 猴子",
-  "s-maze": "🗺️ 迷宫 BFS/A* · 六度分隔（机动）", "s-ai": "🧠 手写识别 · 蒙眼下山",
-  "s-rps": "✊ 猜拳读心 AI", "s-llm": "💬 文字接龙 · 温度与幻觉",
-  "s-qr": "🏥 二维码手术室 · 纠错码（机动）",
-  "s-quiz": "🏆 终极闯关（4~10 题）", "s-final": "🎖️ 成就结算",
-  "s-bridge": "🌉 每一关 = DSA 的一门课", "s-dsa": "🎓 DSA 学域数据",
-  "s-end": "👋 结尾 · 二维码 · 泼墨彩蛋",
-  "s-rec": "🥚 彩蛋：推荐系统", "s-bday": "🥚 彩蛋：生日悖论",
+  "s-open": "① 热身：猜数字", "s-title": "🔍 揭秘二分 · 标题 · 关卡地图",
+  "s-magic": "🃏 读心魔术（机动）", "s-sort": "② 排序赛马 · 分治 · 第二场 · 猴子",
+  "s-maze": "🗺️ 迷宫 BFS/A* · 六度分隔（机动）", "s-ai": "③ 手写识别 · 蒙眼下山",
+  "s-llm": "④ 文字接龙 · 温度与幻觉",
+  "s-bday": "⑤ 生日悖论 · 统计", "s-qr": "⑥ 二维码手术室 · 纠错码",
+  "s-rec": "⑦ 数据红娘 · 推荐系统",
+  "s-quiz": "⑧ 终极闯关（4~10 题）", "s-final": "🎖️ 成就结算",
+  "s-bridge": "🌊 数据的一生 · 每关一门课", "s-vs": "🤔 DSA vs AI 学域怎么选",
+  "s-dsa": "🎓 DSA 学域数据", "s-end": "👋 结尾 · 二维码 · CTA",
   "s-pi": "🥚 彩蛋：扔飞镖算 π", "s-pnp": "🥚 彩蛋：百万美元难题",
 };
 slides.forEach((s, i) => {
@@ -1541,112 +1523,6 @@ $("magicNo").addEventListener("click", () => magicAnswer(false));
 $("magicRestart").addEventListener("click", () => { magicReset(); SND.pop(); });
 STEPS["s-magic"] = [() => showOv("magicHow")];
 magicReset();
-
-/* ================================================================
-   S-RPS 猜拳读心 AI（order-2 马尔可夫）
-   ================================================================ */
-const RPS_E = ["✊", "✌️", "✋"];
-const RPS = {
-  hist: [], aiHist: [], n: 0, hu: 0, ai: 0,
-  t2: {}, t1: {}, wls: {}, freq: [0, 0, 0],
-  scores: [0, 0, 0, 0, 0, 0], lastPreds: null, lastOutcome: 0,
-};
-function rpsArgmax(c) {
-  if (!c) return -1;
-  if (c[0] + c[1] + c[2] < 1) return -1;
-  let m = 0; if (c[1] > c[m]) m = 1; if (c[2] > c[m]) m = 2;
-  return m;
-}
-/* 六个小预测器投票团：各自猜"玩家下一手"，按最近准确率指数加权选用 */
-function rpsPredictors() {
-  const h = RPS.hist, a = RPS.aiHist;
-  return [
-    h.length >= 2 ? rpsArgmax(RPS.t2[h[h.length - 2] * 3 + h[h.length - 1]]) : -1, // 二阶习惯
-    h.length >= 1 ? rpsArgmax(RPS.t1[h[h.length - 1]]) : -1,                        // 一阶习惯
-    h.length >= 1 ? h[h.length - 1] : -1,                                            // 爱重复上一手
-    h.length >= 1 ? rpsArgmax(RPS.wls[h[h.length - 1] * 3 + RPS.lastOutcome]) : -1,  // 赢留输换
-    a.length >= 1 ? (a[a.length - 1] + 2) % 3 : -1,                                  // 想克制AI上一手
-    RPS.n >= 2 ? rpsArgmax(RPS.freq) : -1,                                           // 出拳总偏好
-  ];
-}
-const RPS_NAMES = ["二阶习惯模型", "一阶习惯模型", "『爱重复』模型", "『赢留输换』模型", "『想克我上一手』模型", "出拳偏好统计"];
-function rpsChoose() {
-  const preds = rpsPredictors();
-  RPS.lastPreds = preds;
-  let best = -1, bestScore = -1;
-  for (let i = 0; i < preds.length; i++) {
-    if (preds[i] < 0) continue;
-    if (RPS.scores[i] > bestScore) { bestScore = RPS.scores[i]; best = i; }
-  }
-  if (best < 0) return { move: (Math.random() * 3) | 0, conf: 0, who: -1 };
-  return { move: preds[best], conf: Math.min(1, Math.max(0, bestScore / 4)), who: best };
-}
-function rpsLearn(m, aiM) {
-  const h = RPS.hist;
-  if (RPS.lastPreds) for (let i = 0; i < RPS.lastPreds.length; i++)
-    RPS.scores[i] = RPS.scores[i] * 0.8 + (RPS.lastPreds[i] === m ? 1 : 0);
-  if (h.length >= 2) { const k = h[h.length - 2] * 3 + h[h.length - 1]; (RPS.t2[k] = RPS.t2[k] || [0, 0, 0])[m]++; }
-  if (h.length >= 1) {
-    const k1 = h[h.length - 1];
-    (RPS.t1[k1] = RPS.t1[k1] || [0, 0, 0])[m]++;
-    const kw = k1 * 3 + RPS.lastOutcome;
-    (RPS.wls[kw] = RPS.wls[kw] || [0, 0, 0])[m]++;
-  }
-  RPS.freq[m]++;
-  h.push(m); RPS.aiHist.push(aiM);
-  RPS.lastOutcome = aiM === m ? 0 : ((m + 1) % 3 === aiM ? 1 : 2); // 玩家视角 0平/1赢/2输
-}
-function rpsPlay(m) {
-  const pred = rpsChoose();
-  const aiM = (pred.move + 2) % 3;   // 出克制预测招的拳（x 克 (x+1)%3）
-  rpsLearn(m, aiM);
-  RPS.n++;
-  $("rpsAIface").textContent = RPS_E[aiM];
-  let msg;
-  if (aiM === m) { msg = "🤝 平局！它和你想到一块去了…"; SND.pop(); }
-  else if ((aiM + 1) % 3 === m) { RPS.ai++; msg = "🤖 AI 赢了！它越来越懂你了……"; SND.buzz(); }
-  else { RPS.hu++; msg = "🎉 你赢了！继续——它正在偷偷记你的套路"; SND.ding(); }
-  $("rpsHu").textContent = RPS.hu; $("rpsAi").textContent = RPS.ai;
-  $("rpsRound").textContent = "人类 vs AI · 第 " + RPS.n + " 回合";
-  $("rpsMsg").textContent = msg + (RPS.n === 15 ? "　⏰ 15 回合到，看比分！" : "");
-  const conf = Math.round(pred.conf * 100);
-  $("rpsMeter").style.width = conf + "%"; $("rpsConf").textContent = conf + "%";
-  $("rpsLead").textContent = (RPS.n >= 3 && pred.who >= 0)
-    ? "🧠 AI 战报：本回合押注『" + RPS_NAMES[pred.who] + "』——它最近猜你最准"
-    : "🧠 AI 战报：六个小模型正在观察你……";
-  if (RPS.n >= 10) unlock("rps");
-  return aiM === m ? 0 : ((aiM + 1) % 3 === m ? 1 : -1);
-}
-document.querySelectorAll("#rpsBtns button").forEach(b =>
-  b.addEventListener("click", () => rpsPlay(+b.getAttribute("data-m"))));
-$("rpsReset").addEventListener("click", () => {
-  RPS.hist = []; RPS.aiHist = []; RPS.t2 = {}; RPS.t1 = {}; RPS.wls = {};
-  RPS.freq = [0, 0, 0]; RPS.scores = [0, 0, 0, 0, 0, 0]; RPS.lastPreds = null; RPS.lastOutcome = 0;
-  RPS.hu = 0; RPS.ai = 0; RPS.n = 0;
-  $("rpsHu").textContent = "0"; $("rpsAi").textContent = "0";
-  $("rpsAIface").textContent = "🤖"; $("rpsRound").textContent = "人类 vs AI · 第 0 回合";
-  $("rpsMsg").textContent = "出拳吧！前几回合它还在观察你……";
-  $("rpsMeter").style.width = "0%"; $("rpsConf").textContent = "0%";
-  $("rpsLead").textContent = "";
-  SND.pop();
-});
-function rpsBuildHeat() {
-  const g = $("rpsHeat"); g.innerHTML = "";
-  g.appendChild(Object.assign(document.createElement("div"), { className: "hd", textContent: "你出完↓" }));
-  RPS_E.forEach(e => g.appendChild(Object.assign(document.createElement("div"), { className: "hd", textContent: "下手 " + e })));
-  for (let p = 0; p < 3; p++) {
-    g.appendChild(Object.assign(document.createElement("div"), { className: "hd", textContent: RPS_E[p] }));
-    const c = RPS.t1[p] || [0, 0, 0];
-    const mx = Math.max(c[0], c[1], c[2]);
-    for (let n = 0; n < 3; n++) {
-      const d = document.createElement("div");
-      d.className = "cell" + (mx > 0 && c[n] === mx ? " hot" : "");
-      d.textContent = c[n] + " 次";
-      g.appendChild(d);
-    }
-  }
-}
-STEPS["s-rps"] = [() => { rpsBuildHeat(); showOv("rpsHow"); }];
 
 /* ================================================================
    S2 排序赛马（4 选手 + 两场比赛 + 猴子加赛）
@@ -2501,8 +2377,8 @@ const QUIZ = [
     why: "启发式搜索 = 带方向感的探索。刚才迷宫里 A* 看的格子少一大半，找到的最短路却一样。" },
 ];
 const QUIZ_SRC = ["第①关 · 猜数字", "第②关 · 排序赛马", "第③关 · 手写识别", "DSA 真实战绩",
-  "机动关 · 六度分隔", "隐藏彩蛋 · 生日悖论", "第②关 · 猴子加赛", "第④关 · 文字接龙",
-  "第⑤关 · 二维码手术室", "机动关 · 智能导航 A*"];
+  "机动关 · 六度分隔", "第⑤关 · 生日悖论", "第②关 · 猴子加赛", "第④关 · 文字接龙",
+  "第⑥关 · 二维码手术室", "机动关 · 智能导航 A*"];
 let qi = 0, qRevealed = false;
 function quizShow(i) {
   qi = i; qRevealed = false;
@@ -2591,21 +2467,61 @@ $("revealWin").addEventListener("click", () => {
    ================================================================ */
 const BRIDGE = [
   ["🔍", "猜数字 · 排序赛马", "《数据结构与算法》DSAA 2043 核心内容"],
-  ["🧠", "手写识别", "《机器学习》DSAA 2011 ·《深度学习》DSAA 2012"],
-  ["⛰️", "蒙眼下山", "《优化导论》· 高性能机器学习实验室"],
-  ["✊", "猜拳读心", "《应用统计》· 量化投资金融科技实验室"],
+  ["🧠", "手写识别 · 蒙眼下山", "《机器学习》DSAA 2011 ·《深度学习》DSAA 2012 ·《优化导论》"],
   ["💬", "文字接龙 · 温度", "NLP·大模型方向——本科生发 ICLR 顶会的地方"],
+  ["🎂", "生日悖论", "《应用统计》· 统计学习和建模方向"],
+  ["🏥", "二维码手术室", "大数据存储纠删码 ·《云计算与大数据系统》· 高性能数据分析系统方向"],
+  ["🔮", "数据红娘（推荐）", "工业和商业分析方向 · 量化投资金融科技实验室（本科生 KDD 2025）"],
   ["🗺️", "迷宫 · 六度分隔", "图计算 · CityMind 城市思维智能交通实验室 · 创邻图数据联合实验室"],
-  ["🎂", "生日悖论", "统计学习和建模方向"],
-  ["🎨", "二维码泼墨", "安全与隐私方向 · 编码理论"],
+  ["🃏", "读心魔术 · 比特", "《离散数学》UFUG 2106 · 信息论基础"],
+];
+const PIPE = [
+  ["🌱", "采集", "你们喊的每个数、每次举手", "·"],
+  ["🗄️", "存储·传输", "纠错码守护数据", "🏥"],
+  ["⚙️", "算法", "找得到 · 排得快", "🔍 🏁 🗺️"],
+  ["📊", "统计", "让结论可信", "🎂 🎯"],
+  ["🧠", "模型 / AI", "从数据学规律", "🧠 💬"],
+  ["🎯", "决策", "数据变成行动", "🔮 + 志愿表"],
 ];
 ONENTER["s-bridge"] = () => {
-  const list = $("bridgeList"); list.innerHTML = "";
-  BRIDGE.forEach((b, i) => {
+  $("pipeView").style.display = ""; $("courseView").style.display = "none";
+  $("bridgeTitle").innerHTML = "这 8 关连起来，是<span class='kw2'>数据的一生</span> 🌊";
+  stepIdx["s-bridge"] = 0;
+  const row = $("pipeRow"); row.innerHTML = "";
+  PIPE.forEach((p, i) => {
+    const d = document.createElement("div"); d.className = "pipeCard";
+    d.innerHTML = "<div class='e'>" + p[0] + "</div><h4>" + p[1] + "</h4><p>" + p[2] + "</p><div class='st'>" + p[3] + "</div>";
+    row.appendChild(d);
+    setTimeout(() => { d.classList.add("on"); SND.tick(); }, 240 * i);
+  });
+};
+STEPS["s-bridge"] = [
+  () => {
+    $("pipeView").style.display = "none"; $("courseView").style.display = "";
+    $("bridgeTitle").innerHTML = "你玩的每一关，都是 DSA 的一门课 🎓";
+    const list = $("bridgeList"); list.innerHTML = "";
+    BRIDGE.forEach((b, i) => {
+      const d = document.createElement("div"); d.className = "bridgeRow";
+      d.innerHTML = "<div class='e'>" + b[0] + "</div><b>" + b[1] + "</b><span><i>" + b[2] + "</i></span>";
+      list.appendChild(d);
+      setTimeout(() => { d.classList.add("on"); SND.tick(); }, 170 * i);
+    });
+    SND.pop();
+  },
+];
+/* DSA vs AI 学域对比 */
+const VS_DIFF = [
+  ["✅", "AI 我们全都学", "《机器学习》《深度学习》是 DSA 核心课，NLP/CV/强化学习全覆盖——今天的 AI 关卡全是 DSA 课程内容"],
+  ["➕", "还学 AI 不主攻的", "数据库 · 云计算与大数据系统 · 统计建模 · 数据可视化——数据从哪来、存得住、算得快、信得过"],
+  ["🚀", "出口更宽", "AI 工程师 / 数据科学家 / 量化分析师 / 大数据架构师，全都对口（毕业去向见学域官方数据）"],
+];
+ONENTER["s-vs"] = () => {
+  const list = $("vsList"); list.innerHTML = "";
+  VS_DIFF.forEach((b, i) => {
     const d = document.createElement("div"); d.className = "bridgeRow";
-    d.innerHTML = "<div class='e'>" + b[0] + "</div><b>" + b[1] + "</b><span><i>" + b[2] + "</i></span>";
+    d.innerHTML = "<div class='e'>" + b[0] + "</div><b>" + b[1] + "</b><span>" + b[2] + "</span>";
     list.appendChild(d);
-    setTimeout(() => { d.classList.add("on"); SND.tick(); }, 170 * i);
+    setTimeout(() => { d.classList.add("on"); SND.pop(); }, 600 + 280 * i);
   });
 };
 
@@ -2750,6 +2666,7 @@ REC_ITEMS.forEach((it, i) => {
 });
 $("recGo").addEventListener("click", () => {
   if (recPick.size < 3) { toast("先选满 3 个！"); SND.fail(); return; }
+  unlock("rec");
   const u = new Array(8).fill(0);
   recPick.forEach(i => REC_ITEMS[i].v.forEach((x, k) => u[k] += x));
   const cos = (a, b) => {
@@ -2975,16 +2892,6 @@ if (location.hash === "#test") {
     SELFTEST.push(["前向概率和=1", Math.abs(p.reduce((a, b) => a + b, 0) - 1) < 1e-3]);
   } catch (e) { SELFTEST.push(["前向异常:" + e.message, false]); }
   try {
-    // 猜拳 AI：喂固定循环 36 手，热身后 AI 胜率应显著高于随机
-    let wins = 0, rounds = 0;
-    for (let i = 0; i < 36; i++) {
-      const res = rpsPlay(i % 3);
-      if (i >= 12) { rounds++; if (res === 1) wins++; }
-    }
-    SELFTEST.push(["猜拳AI收敛(" + wins + "/" + rounds + ")", wins / rounds > 0.55 && $("rpsLead").textContent.length > 3]);
-    $("rpsReset").click();
-  } catch (e) { SELFTEST.push(["猜拳异常:" + e.message, false]); }
-  try {
     // 读心魔术：想 19 = 10011 → 卡1,2,5 答“在”
     magicReset();
     [true, true, false, false, true].forEach(v => magicAnswer(v));
@@ -3044,7 +2951,7 @@ if (location.hash === "#test") {
     quizShow(QUIZ.length - 1); $("quizReveal").click();
     const r5 = tspDist([0, 1, 2, 3, 4]);
     SELFTEST.push(["互动调用", QUIZ.length === 10 && QUIZ_SRC.length === 10 && LLM_ROUNDS.length === 5
-      && RPS_E[2] === "✋" && BRIDGE.length === 8 && r5 > 0]);
+      && BRIDGE.length === 8 && PIPE.length === 6 && VS_DIFF.length === 3 && !!$("s-vs") && r5 > 0]);
   } catch (e) { SELFTEST.push(["互动异常:" + e.message, false]); }
   setTimeout(updateSelftest, 1800);
 }
