@@ -62,19 +62,16 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 #menuBtn { position:fixed; top:2vh; right:1.6vw; z-index:60; background:rgba(255,255,255,.07);
   border:1px solid rgba(255,255,255,.18); color:#cfe0ff; width:44px; height:44px; border-radius:12px; font-size:20px; }
 
-/* ============ 记分牌 ============ */
-.team {
-  position:fixed; top:2vh; z-index:55; min-width:130px; text-align:center; padding:.5em .9em .6em;
-  border-radius:18px; cursor:pointer; transition:transform .15s; border:2px solid;
-}
-.team:hover { transform:scale(1.05); }
-#teamR { left:1.6vw; background:rgba(255,77,140,.13); border-color:rgba(255,77,140,.6); }
-#teamB { right:calc(1.6vw + 56px); background:rgba(41,230,255,.10); border-color:rgba(41,230,255,.55); }
-.team .tname { font-size:clamp(13px,1.1vw,17px); font-weight:800; letter-spacing:.15em; }
-#teamR .tname { color:#ff7aa8; } #teamB .tname { color:#56e0ff; }
-.team .tscore { font-size:clamp(26px,2.6vw,40px); font-weight:900; line-height:1.1; }
-.team .thint { font-size:10px; color:rgba(255,255,255,.45); }
-.team.bump .tscore { animation:bump .4s; }
+/* ============ 全班成就栏 ============ */
+#achv { position:fixed; top:2vh; right:calc(1.6vw + 56px); z-index:55; display:flex; gap:7px;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.15); border-radius:999px;
+  padding:.45em .9em; align-items:center; }
+#achv::before { content:"成就"; font-size:11px; font-weight:800; letter-spacing:.2em; color:#8fa3cc; margin-right:2px; }
+#achv .a { width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:19px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14);
+  filter:grayscale(1); opacity:.35; transition:all .3s; }
+#achv .a.on { filter:none; opacity:1; border-color:rgba(255,216,77,.7);
+  background:rgba(255,216,77,.14); box-shadow:0 0 14px rgba(255,216,77,.45); animation:bump .5s; }
 @keyframes bump { 30% { transform:scale(1.5); } }
 
 /* ============ 倒计时 ============ */
@@ -132,17 +129,6 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 .dsaCards .card { width:min(34vw,430px); padding:2em 1.6em; text-align:center; animation:popIn .5s; }
 .dsaCards h3 { font-size:clamp(19px,2.1vw,30px); margin-bottom:.5em; }
 .dsaCards p { color:#aebcdd; font-size:clamp(14px,1.4vw,20px); line-height:1.55; }
-#teamSplit { display:none; position:absolute; inset:0; z-index:5; }
-#teamSplit.show { display:flex; }
-#teamSplit .half { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1vh; }
-#teamSplit .half h2 { font-size:clamp(50px,7vw,110px); font-weight:900; }
-#teamSplit .hr { background:linear-gradient(135deg,rgba(255,77,140,.30),rgba(255,77,140,.06)); animation:slamL .5s; }
-#teamSplit .hb { background:linear-gradient(225deg,rgba(41,230,255,.28),rgba(41,230,255,.05)); animation:slamR .5s; }
-@keyframes slamL { from { transform:translateX(-100%); } }
-@keyframes slamR { from { transform:translateX(100%); } }
-#teamSplit .vs { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-  font-size:clamp(40px,5vw,72px); font-weight:900; color:#ffd84d; text-shadow:0 0 30px rgba(255,216,77,.6); }
-
 /* ============ S2 排序赛马 ============ */
 .betRow { display:flex; gap:3vw; justify-content:center; flex-wrap:wrap; }
 .betCard { width:min(36vw,470px); padding:1.6em 1.4em; text-align:center; position:relative; }
@@ -150,11 +136,8 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 .betCard p { color:#aebcdd; font-size:clamp(14px,1.4vw,20px); line-height:1.5; }
 .betCard .emoji { font-size:clamp(40px,5vw,72px); }
 .betBtns { display:flex; gap:10px; justify-content:center; margin-top:1.2em; }
-.betR { background:linear-gradient(135deg,#ff5e8e,#d23369)!important; }
-.betB { background:linear-gradient(135deg,#2bd2f0,#2979ff)!important; }
-.betCard.pickR { border-color:#ff5e8e; box-shadow:0 0 28px rgba(255,94,142,.4); }
-.betCard.pickB { border-color:#2bd2f0; box-shadow:0 0 28px rgba(43,210,240,.4); }
-.betCard .flag { position:absolute; top:-16px; right:14px; font-size:26px; }
+.betCard.pick { border-color:#ffd84d; box-shadow:0 0 28px rgba(255,216,77,.45); }
+.betCard .flag { position:absolute; top:-18px; right:14px; font-size:30px; animation:popIn .3s; }
 #raceWrap { display:none; width:100%; max-width:1500px; gap:2vw; }
 #raceWrap .lane { flex:1; padding:1em 1.2em 1.2em; }
 #raceWrap h4 { display:flex; justify-content:space-between; align-items:baseline; font-size:clamp(16px,1.7vw,24px); margin-bottom:.5em; }
@@ -231,20 +214,17 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 #quizCtl { margin-top:2vh; display:flex; gap:14px; }
 #quizProg { color:#8fa3cc; font-weight:800; letter-spacing:.2em; margin-bottom:1.2vh; }
 
-/* ============ S7 结算 ============ */
-#duelScores { display:flex; gap:6vw; align-items:center; margin:3vh 0; }
-#duelScores .d { text-align:center; }
-#duelScores .d h3 { font-size:clamp(22px,2.6vw,36px); }
-#duelScores .d .n { font-size:clamp(70px,10vw,150px); font-weight:900; line-height:1.1; }
-#duelScores .dr .n { color:#ff7aa8; text-shadow:0 0 36px rgba(255,77,140,.55); }
-#duelScores .db .n { color:#56e0ff; text-shadow:0 0 36px rgba(41,230,255,.55); }
-#winBanner { display:none; font-size:clamp(40px,6.5vw,96px); font-weight:900; animation:titleIn .6s; text-align:center; }
-#badges { display:none; gap:2vw; margin-top:3vh; flex-wrap:wrap; justify-content:center; }
-#badges .card { padding:1.3em 1.5em; text-align:center; width:min(20vw,250px); opacity:0; }
+/* ============ S7 成就结算 ============ */
+#finCount { display:none; font-size:clamp(26px,3.4vw,52px); font-weight:900; margin-top:1vh; }
+#finCount b { color:#ffd84d; font-size:1.4em; }
+#badges { display:none; grid-template-columns:repeat(4,1fr); gap:1.6vh 1.6vw; margin-top:2.6vh; width:min(1150px,92vw); }
+#badges .card { padding:1em .6em; text-align:center; opacity:0; }
 #badges .card.on { animation:chainPop .45s forwards; }
-#badges .e { font-size:clamp(34px,4.4vw,62px); }
-#badges h4 { font-size:clamp(15px,1.6vw,23px); margin-top:.4em; }
-#titleCard { display:none; margin-top:3.4vh; padding:1.2em 2.4em; border-color:rgba(255,216,77,.55);
+#badges .card.locked { filter:grayscale(1); }
+#badges .card.locked .e, #badges .card.locked h4 { opacity:.32; }
+#badges .e { font-size:clamp(30px,3.8vw,54px); }
+#badges h4 { font-size:clamp(13px,1.4vw,20px); margin-top:.4em; }
+#titleCard { display:none; margin-top:3vh; padding:1.2em 2.4em; border-color:rgba(255,216,77,.55);
   box-shadow:0 0 44px rgba(255,216,77,.25); }
 
 /* ============ S8 学域数据 ============ */
@@ -294,6 +274,90 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 .hookSub { margin-top:2.4vh; color:#aebcdd; font-size:clamp(16px,1.9vw,28px); text-align:center; }
 .center { display:flex; flex-direction:column; align-items:center; justify-content:center; }
 
+/* ============ 通用：思想例子卡片 ============ */
+.ideaRow { display:flex; gap:1.6vw; flex-wrap:wrap; justify-content:center; margin-top:3vh; max-width:1250px; }
+.ideaRow .card { width:min(21vw,270px); padding:1.1em .9em; text-align:center; opacity:0; }
+.ideaRow .card.on { animation:chainPop .45s forwards; }
+.ideaRow .e { font-size:clamp(28px,3.2vw,46px); }
+.ideaRow h4 { font-size:clamp(15px,1.6vw,22px); margin:.4em 0 .25em; }
+.ideaRow p { color:#aebcdd; font-size:clamp(12px,1.2vw,17px); line-height:1.5; }
+
+/* ============ S-MAGIC 读心魔术 ============ */
+#magicCard { width:min(680px,86vw); padding:1.4em 1.2em; margin-top:1.5vh; }
+#magicCard h3 { text-align:center; font-size:clamp(18px,2vw,28px); margin-bottom:.6em; color:#ffd84d; }
+#magicNums { display:grid; grid-template-columns:repeat(8,1fr); gap:8px; }
+#magicNums span { background:rgba(41,230,255,.10); border:1px solid rgba(41,230,255,.3); border-radius:10px;
+  text-align:center; font-weight:900; font-size:clamp(16px,1.9vw,28px); padding:.25em 0; }
+#magicCtl { display:flex; gap:16px; margin-top:2.6vh; }
+#magicAsk { font-size:clamp(20px,2.4vw,34px); font-weight:900; margin-top:2vh; min-height:1.5em; text-align:center; }
+#magicResult { display:none; font-size:clamp(60px,9vw,140px); font-weight:900; color:#ffd84d;
+  text-shadow:0 0 40px rgba(255,216,77,.6); animation:titleIn .6s; }
+#magicProg { display:flex; gap:8px; margin-top:1.2vh; }
+#magicProg span { width:11px; height:11px; border-radius:50%; background:rgba(255,255,255,.2); }
+#magicProg span.on { background:#ffd84d; }
+.miniCards { display:flex; gap:1.2vw; justify-content:center; flex-wrap:wrap; margin-top:2.5vh; }
+.miniCards .mc { background:rgba(255,255,255,.06); border:1px solid rgba(255,216,77,.5); border-radius:12px;
+  padding:.5em .8em; font-size:clamp(13px,1.4vw,19px); font-weight:800; }
+.miniCards .mc b { color:#ffd84d; font-size:1.3em; }
+
+/* ============ S-RPS 猜拳读心 ============ */
+#rpsArena { display:flex; gap:3vw; align-items:center; justify-content:center; flex-wrap:wrap; margin-top:1vh; }
+#rpsYou, #rpsAI { text-align:center; }
+#rpsYou h4, #rpsAI h4 { font-size:clamp(15px,1.6vw,22px); color:#8fa3cc; margin-bottom:.5em; }
+#rpsBtns { display:flex; gap:14px; }
+#rpsBtns button { font-size:clamp(40px,5.4vw,76px); background:rgba(255,255,255,.06);
+  border:2px solid rgba(255,255,255,.2); border-radius:22px; padding:.25em .35em; transition:all .15s; }
+#rpsBtns button:hover { transform:translateY(-4px) scale(1.06); border-color:#29e6ff; box-shadow:0 0 24px rgba(41,230,255,.35); }
+#rpsAIface { font-size:clamp(64px,8.5vw,120px); min-height:1.2em; line-height:1.2; }
+#rpsVs { text-align:center; }
+#rpsScore { font-size:clamp(30px,4vw,58px); font-weight:900; }
+#rpsScore .hu { color:#3dff9d; } #rpsScore .ai { color:#ff7aa8; }
+#rpsRound { color:#8fa3cc; font-weight:800; margin-top:.3em; font-size:clamp(13px,1.4vw,19px); }
+#rpsMsg { font-size:clamp(18px,2.2vw,32px); font-weight:900; margin-top:2vh; min-height:1.5em; text-align:center; }
+#rpsBrain { margin-top:1.2vh; color:#8fa3cc; font-size:clamp(12px,1.3vw,17px); text-align:center; }
+#rpsBrain .meter { display:inline-block; width:140px; height:10px; background:rgba(255,255,255,.08);
+  border-radius:99px; overflow:hidden; vertical-align:middle; margin:0 8px; }
+#rpsBrain .meter i { display:block; height:100%; width:0; background:linear-gradient(90deg,#2979ff,#ff4d8c); transition:width .4s; }
+.heatGrid { display:grid; grid-template-columns:auto repeat(3,1fr); gap:6px; margin-top:2.2vh; }
+.heatGrid div { padding:.45em .9em; border-radius:10px; font-weight:800; font-size:clamp(14px,1.5vw,21px); text-align:center; }
+.heatGrid .hd { color:#8fa3cc; background:none; }
+.heatGrid .cell { background:rgba(41,230,255,.10); border:1px solid rgba(255,255,255,.12); }
+.heatGrid .cell.hot { background:rgba(255,216,77,.30); border-color:#ffd84d; color:#ffd84d; }
+
+/* ============ 蒙眼下山 ============ */
+#gdCv { background:rgba(0,0,0,.32); border-radius:16px; width:min(820px,84vw); height:min(320px,38vh); }
+#gdInfo { font-size:clamp(16px,1.9vw,27px); font-weight:900; margin-top:1.4vh; }
+#gdInfo b { color:#ffd84d; font-variant-numeric:tabular-nums; }
+
+/* ============ 六度分隔 ============ */
+#sixCv { background:rgba(0,0,0,.3); border-radius:16px; width:min(560px,80vw); height:min(420px,46vh); }
+#sixInfo { font-size:clamp(16px,2vw,30px); font-weight:900; margin-top:1.2vh; min-height:1.5em; }
+
+/* ============ 生日悖论 ============ */
+#bdayCv { background:rgba(0,0,0,.3); border-radius:16px; width:min(440px,76vw); height:min(440px,46vh); }
+#bdayStats { font-size:clamp(15px,1.8vw,26px); font-weight:800; margin-top:1.2vh; min-height:3em; text-align:center; }
+#bdayStats b { color:#ffd84d; }
+
+/* ============ 扔飞镖算 π ============ */
+#piCv { background:rgba(0,0,0,.3); border-radius:16px; width:min(420px,72vw); height:min(420px,46vh); }
+#piStats { font-size:clamp(18px,2.4vw,38px); font-weight:900; margin-top:1.2vh; }
+#piStats b { color:#ffd84d; font-variant-numeric:tabular-nums; }
+
+/* ============ 百万难题 ============ */
+#tspWrap { display:flex; gap:3vw; align-items:center; justify-content:center; flex-wrap:wrap; }
+#tspCv { background:rgba(0,0,0,.3); border-radius:16px; width:min(420px,76vw); height:min(330px,38vh); }
+#tspInfo { width:min(480px,86vw); text-align:center; }
+#tspInfo .n1 { font-size:clamp(22px,2.6vw,38px); font-weight:900; color:#3dff9d; }
+#tspInfo .n2 { font-size:clamp(20px,2.4vw,34px); font-weight:900; color:#ff7aa8; line-height:1.4; }
+#tspCount { color:#ffd84d; font-weight:900; font-variant-numeric:tabular-nums; }
+
+/* ============ 猴子排序面板 ============ */
+#bogoPanel { display:none; margin-top:1.6vh; width:min(560px,86vw); padding:.9em 1.1em; }
+#bogoPanel h4 { display:flex; justify-content:space-between; font-size:clamp(14px,1.5vw,21px); margin-bottom:.4em; }
+#bogoPanel h4 b { color:#ffd84d; font-variant-numeric:tabular-nums; }
+#bogoCv { width:100%; height:80px; border-radius:10px; background:rgba(0,0,0,.3); display:block; }
+#bogoNote { color:#8fa3cc; font-size:clamp(12px,1.2vw,16px); margin-top:.4em; text-align:center; }
+
 /* ============ 自带二维码（仅托管版显示） ============ */
 .selfQR { position:absolute; right:2vw; bottom:8vh; z-index:4; text-align:center;
   background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.18); border-radius:16px; padding:10px; }
@@ -306,8 +370,15 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   padding:.55em 1em; text-align:center; }
 @media (max-width: 760px) {
   #mobileTip { display:block; }
-  .team, #noteBar, .selfQR { display:none !important; }
-  .slide { padding:6vh 4vw 9vh; }
+  #noteBar, .selfQR { display:none !important; }
+  #achv { top:auto; bottom:9vh; right:50%; transform:translateX(50%); padding:.3em .6em; }
+  #achv .a { width:24px; height:24px; font-size:13px; }
+  .slide { padding:6vh 4vw 12vh; }
+  #magicNums { grid-template-columns:repeat(4,1fr); }
+  #rpsBtns button { font-size:44px; }
+  #badges { grid-template-columns:repeat(2,1fr); }
+  .ideaRow .card { width:44vw; }
+  #tspWrap { flex-direction:column; }
   #quizOpts { grid-template-columns:1fr; gap:1.2vh; width:94vw; }
   #statGrid { grid-template-columns:1fr 1fr; width:94vw; }
   #recGrid { grid-template-columns:repeat(3,1fr); width:94vw; }
@@ -328,13 +399,8 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 </head>
 <body>
 
-<!-- ============ 记分牌 ============ -->
-<div class="team" id="teamR" title="点击+1，右键-1（快捷键 Q）">
-  <div class="tname">❤️‍🔥 红队</div><div class="tscore" id="scoreR">0</div><div class="thint">点击+1 · 右键-1</div>
-</div>
-<div class="team" id="teamB" title="点击+1，右键-1（快捷键 P）">
-  <div class="tname">💙 蓝队</div><div class="tscore" id="scoreB">0</div><div class="thint">点击+1 · 右键-1</div>
-</div>
+<!-- ============ 全班成就栏 ============ -->
+<div id="achv" title="全班成就：每玩通一站自动点亮"></div>
 <button id="menuBtn" title="菜单 (Esc)">☰</button>
 
 <!-- ============ 倒计时 ============ -->
@@ -376,13 +442,12 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
     <div class="card">🐢 一个一个猜<br><span class="kw3">最坏 100 次</span></div>
     <div class="card">⚡ 每次猜中间<br><span class="kw">最多 7 次</span></div>
   </div>
-  <div class="selfQR"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQgAAAEIAQAAAACLjVdSAAABk0lEQVR4nO1Z0Y7DMAizo/v/X/YJQ5Lb015OWTaWVi1JkUotAoZSeDLGMwV8NT4Xjx+AKQmEKEIAtVfb4QFvGQLGQrSktdoPDwQCvtFIrKlvt1g6jmsofaKur7Pj5f6xBhEBBN3xkEVq7RJqu8ktlo4jGjAIFvB4zMft/EMlKuJpDO8Z3WbpOKVBx40IHUraIWhhc5WlZzTkL/eVSToCjMy77fgHtUIoE4xiIDnUM9/KlJQWwyuKk7FnfpFPRPiotfmgX34Z6QdZxWHl38TCk4ssPRM/WFtDq2bJSFK5pp9/KN2CBYb5R/pKv3g6VgwNYUFi79B9lp7RIDgbHjIQmWyi+r/M0jP8VJusM3HZWfcmS0/VL6wCjpOTZl/o/94y3kaDxUyLi2lS9jntyNdr0LvEiFRT2dO2/Q8lBQmaWkecattfZxZzlWdn2u1Yz7EqOsTvBkXuLW56k6XjdD+ZVdGmewQuDev9sUXZM9bPKS+xcX8df8q44mWx0g8PpsjaMRFHeJ+l4zT/uNzS8dV4GGfw+AX1OMDuAyCdFwAAAABJRU5ErkJggg==" alt="扫码同步玩"><p>📱 扫码<br>同屏一起玩</p></div>
 </section>
 
 <!-- ================================================================ -->
 <!-- S1 揭秘 + 标题 + 分队 -->
 <!-- ================================================================ -->
-<section class="slide" id="s-title" data-note="讲二分→按 → 出标题讲DSA双关→再按 → 分队仪式（左红右蓝）→ 进排序">
+<section class="slide" id="s-title" data-note="讲二分→按 → 弹出4个生活例子讲透'排除'思想→按 → 出标题讲DSA双关→进魔术(机动)或排序">
   <div id="revealView" class="center">
     <div class="s-tag">你们刚刚用出了一个算法</div>
     <div class="s-title" style="margin-top:1.5vh">🔍 二分搜索 <span class="kw">Binary Search</span></div>
@@ -401,19 +466,38 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
       <div class="card"><h3>📊 Data <span class="kw3">S</span>cience &amp; <span class="kw3">A</span>nalytics</h3>
         <p><b>数据科学与分析</b><br>把数据变成决策的科学<br>港科广 <b class="kw2">最大学域</b> 的名字</p></div>
     </div>
-    <div class="s-sub" style="margin-top:3vh">今天 20 分钟，两个 DSA <b class="kw2">都带你玩一遍</b> ｜ 主讲：黄钰文 · 数据科学与分析学域</div>
+    <div class="s-sub" style="margin-top:3vh">今天 20 分钟，两个 DSA <b class="kw2">都带你玩一遍</b>——每玩通一关，全班解锁一枚成就（看右上角）｜ 主讲：黄钰文 · 数据科学与分析学域</div>
   </div>
-  <div id="teamSplit">
-    <div class="half hr"><h2>❤️‍🔥</h2><h2 style="color:#ff7aa8">红 队</h2><p class="s-sub">教室左半边</p></div>
-    <div class="half hb"><h2>💙</h2><h2 style="color:#56e0ff">蓝 队</h2><p class="s-sub">教室右半边</p></div>
-    <div class="vs">VS<br><span style="font-size:.4em;font-weight:700;color:#fff">整堂课就是一场比赛 · 结尾见分晓</span></div>
+</section>
+
+<!-- ================================================================ -->
+<!-- S-MAGIC 二进制读心魔术（机动站） -->
+<!-- ================================================================ -->
+<section class="slide" id="s-magic" data-note="机动站：请1位同学心想1~31的数→逐卡问'在不在'→点按钮→5张后报数字→按 → 揭秘二进制">
+  <div class="badgeFloat">⚡ 机动加赛 · 时间紧可跳过</div>
+  <div class="s-head" style="margin-bottom:1vh">
+    <div class="s-tag">加赛 · 读心魔术</div>
+    <div class="s-title">🔮 心里想一个 <span class="kw2">1 ~ 31</span> 的数</div>
+    <div class="s-sub">别说出来！我只问 5 个"在不在"，就能读出你的心</div>
+  </div>
+  <div id="magicCard" class="card">
+    <h3 id="magicCardTitle">第 1 张卡</h3>
+    <div id="magicNums"></div>
+  </div>
+  <div id="magicAsk">你想的数，在这张卡上吗？</div>
+  <div id="magicResult"></div>
+  <div id="magicProg"></div>
+  <div id="magicCtl">
+    <button class="btn" id="magicYes">✅ 在</button>
+    <button class="btn ghost" id="magicNo">❌ 不在</button>
+    <button class="btn ghost sm" id="magicRestart">🔄 再来一次</button>
   </div>
 </section>
 
 <!-- ================================================================ -->
 <!-- S2 排序赛马 -->
 <!-- ================================================================ -->
-<section class="slide" id="s-sort" data-note="抛问题→按 → 两队押注→按 → 开赛！跑完按 → 看'10亿件'换算→给押对的队加分">
+<section class="slide" id="s-sort" data-note="抛问题→按 → 全场举手押注(点声量大的一边)→按 → 开赛→按 → 10亿件换算→按 → 分治思想 | 彩蛋:第二场/猴子加赛">
   <div id="sortHook" class="center">
     <div class="s-tag">第一关 · 算法赛马场</div>
     <div class="hookBig">🛒 双十一，淘宝要把 <span class="kw2">10 亿件商品</span><br>按价格从低到高排好序</div>
@@ -421,39 +505,44 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   </div>
   <div id="sortBet" class="center" style="display:none; width:100%">
     <div class="s-head"><div class="s-title">🏁 赛前押注：谁会赢？</div>
-      <div class="s-sub">红队蓝队，举手亮出你们的押注！</div></div>
+      <div class="s-sub">全场举手押注——押谁的喊得响，🙋 就插在谁那边！</div></div>
     <div class="betRow">
       <div class="betCard card" id="betA">
         <div class="emoji">🐢</div><h3>冒泡排序</h3>
         <p>老实人选手：相邻两个比一比，<br>大的往后挪一挪，挪到天荒地老</p>
-        <div class="betBtns"><button class="btn sm betR" data-side="A">红队押它</button>
-          <button class="btn sm betB" data-side="A">蓝队押它</button></div>
+        <div class="betBtns"><button class="btn sm gold" data-side="A">🙋 全场押它</button></div>
       </div>
       <div class="betCard card" id="betB">
         <div class="emoji">🚀</div><h3>快速排序</h3>
         <p>聪明人选手：先把数分成两堆，<br>小问题各自解决 —— 分而治之</p>
-        <div class="betBtns"><button class="btn sm betR" data-side="B">红队押它</button>
-          <button class="btn sm betB" data-side="B">蓝队押它</button></div>
+        <div class="betBtns"><button class="btn sm gold" data-side="B">🙋 全场押它</button></div>
       </div>
     </div>
   </div>
   <div id="raceWrap">
-    <div class="lane card"><h4>🐢 冒泡排序 <span class="ops" id="opsA">0 次操作</span></h4>
+    <div class="lane card"><h4><span id="algoA">🐢 冒泡排序</span> <span class="ops" id="opsA">0 次操作</span></h4>
       <canvas id="cvA"></canvas><div class="laneDone" id="doneA"></div></div>
-    <div class="lane card"><h4>🚀 快速排序 <span class="ops" id="opsB">0 次操作</span></h4>
+    <div class="lane card"><h4><span id="algoB">🚀 快速排序</span> <span class="ops" id="opsB">0 次操作</span></h4>
       <canvas id="cvB"></canvas><div class="laneDone" id="doneB"></div></div>
   </div>
   <div id="sortCtl" style="display:none">
     <button class="btn" id="raceGo">🏁 开赛！</button>
     <button class="btn ghost" id="raceSkip">⏩ 跳到结局</button>
     <button class="btn ghost" id="raceReset">🔄 重赛</button>
+    <button class="btn ghost" id="race2">🥈 第二场：插入 vs 归并</button>
+    <button class="btn ghost" id="bogoBtn">🐒 加赛：猴子选手</button>
+  </div>
+  <div id="bogoPanel" class="card">
+    <h4>🐒 猴子排序（Bogosort）：把牌扔上天，捡起来看好了没 <b id="bogoCount">0 次</b></h4>
+    <canvas id="bogoCv"></canvas>
+    <div id="bogoNote">只排 12 张牌 · 平均要扔 <b>4.79 亿次</b> 才能撞对 —— 蛮力的尽头是绝望</div>
   </div>
 </section>
 
 <!-- ================================================================ -->
 <!-- S3 迷宫寻路（机动） -->
 <!-- ================================================================ -->
-<section class="slide" id="s-maze" data-note="机动站(可跳过)：请学生喊在哪堵墙→点出发→看探索动画→按 → 金句">
+<section class="slide" id="s-maze" data-note="机动站(可跳过)：学生喊堵哪→点出发看探索→按 → 导航金句 → 再按 → 六度分隔彩蛋">
   <div class="badgeFloat">⚡ 机动加赛 · 时间紧可跳过</div>
   <div class="s-head">
     <div class="s-tag">加赛 · 导航的秘密</div>
@@ -472,10 +561,10 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 <!-- ================================================================ -->
 <!-- S4 手写识别 人机大战 -->
 <!-- ================================================================ -->
-<section class="slide" id="s-ai" data-note="两队各派1人上台写数字骗AI：骗过+2分 · 没人上→自己画自嘲 · 按 → 揭秘原理">
+<section class="slide" id="s-ai" data-note="请同学上台写数字骗AI(骗过=英雄,送礼品) · 没人上→自己画自嘲 · 按 → 原理 → 再按 → 蒙眼下山">
   <div class="s-head" style="margin-bottom:1.2vh">
     <div class="s-tag">第二关 · 人机大战</div>
-    <div class="s-title">✍️ 把数字写丑，<span class="kw3">骗过 AI</span> 就加 2 分！</div>
+    <div class="s-title">✍️ 把数字写丑，<span class="kw3">骗过 AI</span> 你就是英雄！</div>
   </div>
   <div id="aiWrap">
     <div id="drawCol">
@@ -496,9 +585,35 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 </section>
 
 <!-- ================================================================ -->
+<!-- S-RPS 猜拳读心 AI -->
+<!-- ================================================================ -->
+<section class="slide" id="s-rps" data-note="请同学上台和AI猜拳15回合(前几回随机,后面AI会赢)→按 → 揭秘它数出的习惯表">
+  <div class="s-head" style="margin-bottom:1vh">
+    <div class="s-tag">第三关 · 读心猜拳</div>
+    <div class="s-title">✊ 它刚学会"看"，现在要<span class="kw3">预测你</span></div>
+    <div class="s-sub">和 AI 猜拳 15 回合——它会越来越懂你（真的）</div>
+  </div>
+  <div id="rpsArena">
+    <div id="rpsYou"><h4>你出</h4>
+      <div id="rpsBtns">
+        <button data-m="0">✊</button><button data-m="1">✌️</button><button data-m="2">🖐</button>
+      </div>
+    </div>
+    <div id="rpsVs">
+      <div id="rpsScore"><span class="hu" id="rpsHu">0</span> : <span class="ai" id="rpsAi">0</span></div>
+      <div id="rpsRound">人类 vs AI · 第 0 回合</div>
+    </div>
+    <div id="rpsAI"><h4>AI 出</h4><div id="rpsAIface">🤖</div></div>
+  </div>
+  <div id="rpsMsg">出拳吧！前几回合它还在观察你……</div>
+  <div id="rpsBrain">AI 对你的了解程度<span class="meter"><i id="rpsMeter"></i></span><span id="rpsConf">0%</span>
+    <button class="btn ghost sm" id="rpsReset" style="margin-left:14px">🔄 换人挑战</button></div>
+</section>
+
+<!-- ================================================================ -->
 <!-- S5 文字接龙 -->
 <!-- ================================================================ -->
-<section class="slide" id="s-llm" data-note="两队抢答下一个词→点'翻牌'对比AI概率→3轮(第3轮有彩蛋)→按 → AI写作演示">
+<section class="slide" id="s-llm" data-note="全场抢答下一个词→点'翻牌'对比AI概率→5轮(最后1轮彩蛋)→按 → AI写作演示 → 再按 → 温度旋钮">
   <div class="s-head">
     <div class="s-tag">第三关 · 大模型读心术</div>
     <div class="s-title">💬 文字接龙：猜中 AI 心里的词</div>
@@ -516,7 +631,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
 <!-- ================================================================ -->
 <!-- S6 终极闯关 -->
 <!-- ================================================================ -->
-<section class="slide" id="s-quiz" data-note="每题10秒倒计时,两队举手选ABCD→点'揭晓'→给答对多的队加分→下一题">
+<section class="slide" id="s-quiz" data-note="每题10秒倒计时,全场举手选ABCD→点'揭晓'→欢呼→下一题 | 共8题,时间紧任意题后点'直接进入结算'">
   <div id="quizProg">终极闯关 QUIZ · 第 1 / 4 题</div>
   <div id="quizQ"></div>
   <div id="quizOpts"></div>
@@ -524,32 +639,24 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   <div id="quizCtl">
     <button class="btn gold" id="quizReveal">💡 揭晓答案</button>
     <button class="btn" id="quizNext" style="display:none">下一题 →</button>
+    <button class="btn ghost" id="quizEnd" style="display:none">⏭ 直接进入结算</button>
   </div>
 </section>
 
 <!-- ================================================================ -->
 <!-- S7 结算 -->
 <!-- ================================================================ -->
-<section class="slide" id="s-final" data-note="点'揭晓胜负'→欢呼→按 → 出4枚徽章+全员称号">
-  <div id="duelView" class="center">
-    <div class="s-tag">FINAL · 终极结算</div>
-    <div id="duelScores">
-      <div class="d dr"><h3>❤️‍🔥 红队</h3><div class="n" id="finR">0</div></div>
-      <div style="font-size:clamp(30px,4vw,56px);font-weight:900;color:#8fa3cc">VS</div>
-      <div class="d db"><h3>💙 蓝队</h3><div class="n" id="finB">0</div></div>
-    </div>
-    <div id="winBanner"></div>
-    <button class="btn gold" id="revealWin" style="margin-top:2vh">🥁 揭晓胜负</button>
+<section class="slide" id="s-final" data-note="点'揭晓成就'→鼓点→徽章逐枚点亮→全员称号+欢呼">
+  <div class="s-head">
+    <div class="s-tag">FINAL · 成就结算</div>
+    <div class="s-title">🏆 这 20 分钟，全班解锁了多少成就？</div>
   </div>
-  <div id="badges">
-    <div class="card"><div class="e">🔍</div><h4>二分搜索</h4></div>
-    <div class="card"><div class="e">🏁</div><h4>排序算法</h4></div>
-    <div class="card"><div class="e">🧠</div><h4>神经网络</h4></div>
-    <div class="card"><div class="e">💬</div><h4>大语言模型</h4></div>
-  </div>
+  <button class="btn gold" id="revealWin" style="margin-top:2vh">🥁 揭晓成就</button>
+  <div id="finCount">全班解锁 <b id="finN">0</b> / <span id="finT">8</span> 项成就</div>
+  <div id="badges"></div>
   <div id="titleCard" class="card">
-    <div class="golden">🎓 全员获得称号：未来数据科学家（预备役）</div>
-    <p class="s-sub" style="text-align:center;margin-top:.6em">刚才这四样东西，就是 DSA 学域每天的日常。</p>
+    <div class="golden" id="finTitle">🎓 全员获得称号：未来数据科学家（预备役）</div>
+    <p class="s-sub" style="text-align:center;margin-top:.6em">刚才玩的每一样，都是 DSA 学域每天的日常。</p>
   </div>
 </section>
 
@@ -612,6 +719,69 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   <div id="recOut"></div>
 </section>
 
+<!-- ================================================================ -->
+<!-- S-BDAY 生日悖论（彩蛋） -->
+<!-- ================================================================ -->
+<section class="slide" id="s-bday" data-note="彩蛋页(菜单可进)：先让大家猜概率→点'模拟一个班'→连点几次→点'自动模拟20个班'看命中率">
+  <div class="badgeFloat">🥚 彩蛋 · 别信直觉，信数据</div>
+  <div class="s-head" style="margin-bottom:.8vh">
+    <div class="s-tag">概率的反直觉</div>
+    <div class="s-title">🎂 45 人的班，有两人<span class="kw2">同一天生日</span>的概率是？</div>
+    <div class="s-sub">先凭直觉猜一个数……然后我们用数据科学的方式：<b class="kw">直接做实验</b></div>
+  </div>
+  <canvas id="bdayCv"></canvas>
+  <div id="bdayStats">点下面的按钮，随机"生成"一个班试试</div>
+  <div class="flexCtl">
+    <button class="btn" id="bdayOnce">🎲 模拟一个班（45人）</button>
+    <button class="btn gold" id="bdayAuto">⚡ 自动模拟 20 个班</button>
+    <button class="btn ghost sm" id="bdayReset">🔄 清零</button>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- S-PI 扔飞镖算 π（彩蛋） -->
+<!-- ================================================================ -->
+<section class="slide" id="s-pi" data-note="彩蛋页(菜单可进)：点'开始扔飞镖'→看 π 从随机里浮现→讲蒙特卡洛">
+  <div class="badgeFloat">🥚 彩蛋 · 用随机回答确定</div>
+  <div class="s-head" style="margin-bottom:.8vh">
+    <div class="s-tag">蒙特卡洛方法</div>
+    <div class="s-title">🎯 闭着眼睛扔飞镖，居然能算出 <span class="kw2">π</span>？</div>
+    <div class="s-sub">落进圆里的比例 × 4 ≈ π —— 扔得越多越准。AI 训练里到处是这种"随机的智慧"</div>
+  </div>
+  <canvas id="piCv"></canvas>
+  <div id="piStats">π ≈ <b id="piVal">?</b>　<span style="color:#8fa3cc;font-size:.7em" id="piN">已扔 0 镖</span></div>
+  <div class="flexCtl">
+    <button class="btn" id="piGo">🎯 开始扔飞镖</button>
+    <button class="btn ghost sm" id="piReset">🔄 重置</button>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- S-PNP 百万美元难题（彩蛋） -->
+<!-- ================================================================ -->
+<section class="slide" id="s-pnp" data-note="彩蛋页(菜单可进)：点'暴力穷举'看120条路线→指着右边讲20城就算不完→100万美元悬赏">
+  <div class="badgeFloat">🥚 彩蛋 · 计算机的极限</div>
+  <div class="s-head" style="margin-bottom:.8vh">
+    <div class="s-tag">P vs NP · 千禧年大奖难题</div>
+    <div class="s-title">🚚 快递员跑遍所有城市，怎么走<span class="kw2">最短</span>？</div>
+    <div class="s-sub">听起来很简单？这是计算机科学最深的坑之一（旅行商问题）</div>
+  </div>
+  <div id="tspWrap">
+    <div>
+      <canvas id="tspCv"></canvas>
+      <div class="flexCtl"><button class="btn" id="tspGo">💪 暴力穷举：5 个城市</button></div>
+    </div>
+    <div id="tspInfo">
+      <p class="n1">5 城 = 120 条路线<br><span id="tspCount">还没开始</span></p>
+      <p class="n2" style="margin-top:2vh">20 城 = 2,432,902,008,176,640,000 条<br>超级计算机算到太阳熄灭 🥵</p>
+      <div class="card" style="padding:1em;margin-top:2.4vh">
+        <p class="golden" style="font-size:clamp(16px,1.8vw,26px)">找到聪明解法 = 解开 P vs NP<br>千禧年七大难题 · 悬赏 <u>100 万美元</u></p>
+        <p class="s-sub" style="margin-top:.5em">也许就是在座的哪位 —— 我们 DSA 等你来解 🎓</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 导航 ============ -->
 <button class="navArr" id="navPrev">‹</button>
 <button class="navArr" id="navNext">›</button>
@@ -631,7 +801,89 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
       <p class="s-sub">3×10¹⁰ 次操作<br>你刷新一下就好了</p></div>
   </div>
   <div class="golden" style="margin-top:3vh">同一台电脑，差距 <u>一千万倍</u>。<br>电脑不是靠快，是靠聪明 —— 这就是算法。</div>
-  <p class="s-sub" style="margin-top:2vh">（按每秒 10 亿次操作估算 ｜ 给押对的队伍加分吧！）</p>
+  <p class="s-sub" style="margin-top:2vh">（按每秒 10 亿次操作估算 ｜ 刚才押对的同学举手——掌声送给自己！）</p>
+</div>
+
+<div class="ov" id="binHow">
+  <h2>🔍 二分的本质：不是更快地试，是<span class="kw2">更快地排除</span></h2>
+  <div class="ideaRow" id="binIdeas">
+    <div class="card"><div class="e">📖</div><h4>查字典</h4><p>没人从第 1 页翻起——<br>翻到中间，往前或往后</p></div>
+    <div class="card"><div class="e">💰</div><h4>综艺猜价格</h4><p>"高了！""低了！"<br>你早就是二分高手</p></div>
+    <div class="card"><div class="e">🐛</div><h4>程序员抓 bug</h4><p>1000 行代码哪行错了？<br>砍一半试，砍一半试</p></div>
+    <div class="card"><div class="e">🔧</div><h4>修水管 / 查线路</h4><p>从中间断开测：<br>问题在前半还是后半？</p></div>
+  </div>
+  <div class="golden" style="margin-top:3vh">每问一次，世界小一半。<br>10 亿条数据，30 刀就见底 —— 这就是 log 的力量。</div>
+</div>
+
+<div class="ov" id="dncHow">
+  <h2>🍰 快排的心法：<span class="kw">分而治之</span> Divide &amp; Conquer</h2>
+  <div class="hookBig" style="font-size:clamp(20px,2.8vw,40px);line-height:1.8">
+    随便挑一个数当<span class="kw2">基准</span> → 比它小的甩左边，大的甩右边<br>
+    ↓<br>
+    两堆<span class="kw">各自再切</span>，越切越小，小到不用排 —— 收工
+  </div>
+  <div class="ideaRow" id="dncIdeas">
+    <div class="card"><div class="e">🧍</div><h4>体育课站队</h4><p>"比我高的站右边！"<br>每人喊一次，全班排好</p></div>
+    <div class="card"><div class="e">📚</div><h4>归并两摞卷子</h4><p>两摞各自有序，<br>顶上比一比就能合一摞</p></div>
+    <div class="card"><div class="e">🗂️</div><h4>整理任何东西</h4><p>先粗分大类，<br>再每类细分 —— 同一招</p></div>
+  </div>
+  <div class="golden" style="margin-top:2.6vh">大事化小，小事化了。<br>算法设计的头号心法，管理学也在用。</div>
+</div>
+
+<div class="ov" id="sixDeg">
+  <h2>🌍 彩蛋：你和<span class="kw2">马斯克</span>之间，隔几个人？</h2>
+  <canvas id="sixCv"></canvas>
+  <div id="sixInfo">点哪里都行，看涟漪扩散 →</div>
+  <div class="golden" style="margin-top:1.6vh">六度分隔：地球上任意两个人，平均只隔 6 次握手。<br>朋友圈是图，地图是图，万物皆图 —— 图算法是 DSA 的大方向之一。</div>
+</div>
+
+<div class="ov" id="gdHow">
+  <h2>⛰️ AI 是怎么"学"的？——<span class="kw">蒙着眼下山</span></h2>
+  <canvas id="gdCv"></canvas>
+  <div id="gdInfo">当前错误率：<b id="gdLoss">--</b>　<span style="color:#8fa3cc;font-size:.75em">山的高度 = AI 犯错的程度</span></div>
+  <div class="flexCtl">
+    <button class="btn sm" id="gdStep">👣 走一步</button>
+    <button class="btn sm gold" id="gdAuto">🏃 自动下山</button>
+    <button class="btn sm ghost" id="gdKick">🦵 踢一脚（出小坑）</button>
+    <button class="btn sm ghost" id="gdReset">🔄 重来</button>
+  </div>
+  <div class="golden" style="margin-top:2vh">学习 = 朝着错误变小的方向，挪一小步 × 一万次。<br>刚才那个 AI 的 20 万个参数，就是这样一起"下山"下出来的。</div>
+  <p class="s-sub" style="margin-top:1.2vh">小坑 = 局部最优，踢一脚才能出来 ｜ 顺便：只会背训练题的 AI 叫"过拟合"——换张卷子就跪，和背答案的学霸一个下场 😏</p>
+</div>
+
+<div class="ov" id="tempHow">
+  <h2>🌡️ 大模型的"温度旋钮"：敢不敢选<span class="kw2">冷门词</span></h2>
+  <div class="hookBig" style="font-size:clamp(22px,3vw,42px)">"周末我最想做的事是______"</div>
+  <div class="flexCtl" style="margin-top:2.4vh">
+    <button class="btn sm" id="tmp0">🧊 温度 0 · 课代表模式</button>
+    <button class="btn sm gold" id="tmp1">🙂 温度 1 · 正常人模式</button>
+    <button class="btn sm danger" id="tmp2">🔥 温度 2 · 放飞模式</button>
+  </div>
+  <div id="genTemp" class="hookBig" style="font-size:clamp(20px,2.6vw,38px);margin-top:2.6vh;min-height:2.2em;color:#ffd84d"></div>
+  <div class="golden" style="margin-top:2vh">温度越低，越保守（每次都挑概率第一）；温度越高，越敢冒险。</div>
+  <p class="s-sub" style="margin-top:1.4vh">看到"放飞模式"一本正经地胡说八道了吗？这就是 AI <b class="kw3">幻觉</b>的来源——<br>它只学过"接得像"，从没学过"查证真假"。所以：AI 的话，要自己验证！</p>
+</div>
+
+<div class="ov" id="magicHow">
+  <h2>🔮 魔术揭秘：你的秘密被拆成了 <span class="kw">5 个比特</span></h2>
+  <div class="hookBig" style="font-size:clamp(18px,2.4vw,36px)">每张卡 = 二进制的一位 · 你说"在" = 这一位是 1</div>
+  <div class="miniCards">
+    <div class="mc">卡1 左上角 <b>1</b></div><div class="mc">卡2 左上角 <b>2</b></div>
+    <div class="mc">卡3 左上角 <b>4</b></div><div class="mc">卡4 左上角 <b>8</b></div>
+    <div class="mc">卡5 左上角 <b>16</b></div>
+  </div>
+  <div class="hookBig" style="font-size:clamp(18px,2.4vw,34px);margin-top:2.4vh">
+    比如你想的是 19：　19 = <span class="kw2">16 + 2 + 1</span> = 二进制 <span class="kw">10011</span><br>
+    所以你只会对第 1、2、5 张卡说"在" —— 我把"在"的卡左上角一加，就是答案
+  </div>
+  <div class="golden" style="margin-top:2.6vh">5 个"是/否" = 5 比特 = 32 种可能。<br>和"7 次猜中 1~100"是同一个数学 —— 信息，就是用来砍一半的。</div>
+</div>
+
+<div class="ov" id="rpsHow">
+  <h2>✊ 猜拳读心揭秘：<span class="kw3">人类根本不会出随机</span></h2>
+  <div class="hookBig" style="font-size:clamp(17px,2.2vw,32px)">AI 一直在数：你出完某一招后，下一招最爱出什么——</div>
+  <div class="heatGrid" id="rpsHeat"></div>
+  <div class="golden" style="margin-top:2.6vh">它没有读心术，只有一张计数表。<br>预测你的下一步：输入法联想、抖音推荐、游戏 AI —— 全是同一招。</div>
 </div>
 
 <div class="ov" id="mazeWord">
@@ -661,11 +913,10 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   <div class="grid">
     <span><kbd>→</kbd> <kbd>PgDn</kbd> <kbd>空格</kbd></span><span>下一步 / 下一页（支持翻页笔）</span>
     <span><kbd>←</kbd> <kbd>PgUp</kbd></span><span>上一页</span>
-    <span><kbd>Q</kbd> / <kbd>P</kbd></span><span>红队 +1 / 蓝队 +1（Shift 为 -1）</span>
     <span><kbd>T</kbd></span><span>10 秒倒计时</span>
     <span><kbd>M</kbd></span><span>静音开关</span>
     <span><kbd>N</kbd></span><span>提词条开关（给主讲人看的）</span>
-    <span><kbd>R</kbd></span><span>隐藏彩蛋站：推荐系统</span>
+    <span><kbd>R</kbd></span><span>彩蛋站：推荐系统（更多彩蛋在菜单里）</span>
     <span><kbd>F</kbd></span><span>全屏</span>
     <span><kbd>Esc</kbd></span><span>菜单</span>
   </div>
@@ -676,7 +927,7 @@ button { font-family:inherit; cursor:pointer; border:none; outline:none; }
   <h2>📋 菜单 · 跳转</h2>
   <div class="list" id="menuList"></div>
   <div class="row">
-    <button class="btn sm danger" id="resetScore">🧹 重置比分</button>
+    <button class="btn sm danger" id="resetScore">🧹 重置成就</button>
     <button class="btn sm ghost" id="menuMute">🔊 静音开关</button>
     <button class="btn sm ghost" id="menuHelp">⌨️ 快捷键</button>
     <button class="btn sm ghost" id="menuFull">⛶ 全屏</button>
@@ -770,31 +1021,38 @@ function fxLoop() {
   if (parts.length) requestAnimationFrame(fxLoop); else { fxRun = false; fctx.clearRect(0,0,fx.width,fx.height); }
 }
 
-/* ============ 记分牌 ============ */
-const score = { R: 0, B: 0 };
-try { const s = JSON.parse(localStorage.getItem("dsa-score")||"null"); if (s) { score.R=s.R|0; score.B=s.B|0; } } catch(e){}
-function drawScore() {
-  $("scoreR").textContent = score.R; $("scoreB").textContent = score.B;
-  $("finR").textContent = score.R; $("finB").textContent = score.B;
-  try { localStorage.setItem("dsa-score", JSON.stringify(score)); } catch(e){}
+/* ============ 全班成就系统 ============ */
+const ACHV = [
+  { k: "bin",   e: "🔍", n: "二分搜索" },
+  { k: "magic", e: "🃏", n: "读心魔术" },
+  { k: "sort",  e: "🏁", n: "排序大师" },
+  { k: "path",  e: "🗺️", n: "寻路高手" },
+  { k: "nn",    e: "🧠", n: "神经网络" },
+  { k: "rps",   e: "✊", n: "读心猜拳" },
+  { k: "llm",   e: "💬", n: "文字接龙" },
+  { k: "quiz",  e: "🏆", n: "终极闯关" },
+];
+const achvOn = new Set();
+try { JSON.parse(localStorage.getItem("dsa-achv") || "[]").forEach(k => achvOn.add(k)); } catch (e) {}
+ACHV.forEach(a => {
+  const d = document.createElement("div");
+  d.className = "a"; d.id = "achv-" + a.k; d.textContent = a.e; d.title = a.n;
+  $("achv").appendChild(d);
+});
+function drawAchv() { ACHV.forEach(a => $("achv-" + a.k).classList.toggle("on", achvOn.has(a.k))); }
+function unlock(k) {
+  if (achvOn.has(k)) return;
+  achvOn.add(k);
+  try { localStorage.setItem("dsa-achv", JSON.stringify([...achvOn])); } catch (e) {}
+  drawAchv();
+  const a = ACHV.find(x => x.k === k);
+  SND.coin();
+  const el = $("achv-" + k), r = el.getBoundingClientRect();
+  confetti(16, r.left + r.width / 2, r.bottom + 6, .8);
+  toast("🎉 全班解锁成就：" + a.e + " " + a.n + "！", 2200);
 }
-function addScore(team, d) {
-  score[team] = Math.max(0, score[team] + d);
-  drawScore();
-  const el = team === "R" ? $("teamR") : $("teamB");
-  el.classList.remove("bump"); void el.offsetWidth; el.classList.add("bump");
-  if (d > 0) {
-    SND.coin();
-    const r = el.getBoundingClientRect();
-    confetti(14, r.left + r.width/2, r.bottom, .8);
-    toast(team === "R" ? "❤️‍🔥 红队 +" + d + "！" : "💙 蓝队 +" + d + "！");
-  } else { SND.pop(); }
-}
-$("teamR").addEventListener("click", () => addScore("R", 1));
-$("teamB").addEventListener("click", () => addScore("B", 1));
-$("teamR").addEventListener("contextmenu", e => { e.preventDefault(); addScore("R", -1); });
-$("teamB").addEventListener("contextmenu", e => { e.preventDefault(); addScore("B", -1); });
-drawScore();
+function resetAchv() { achvOn.clear(); try { localStorage.removeItem("dsa-achv"); } catch (e) {} drawAchv(); finReset(); toast("成就已清零"); }
+drawAchv();
 
 /* ============ 倒计时 ============ */
 const CD_LEN = 326.7;
@@ -826,7 +1084,7 @@ function stopCountdown() {
 /* ============ 遮罩层通用 ============ */
 function showOv(id) { $(id).classList.add("show"); }
 function hideOv(id) { $(id).classList.remove("show"); }
-["sortMath","mazeWord","aiHow","llmHow","helpOv"].forEach(id =>
+["sortMath","mazeWord","aiHow","llmHow","helpOv","binHow","dncHow","sixDeg","gdHow","tempHow","magicHow","rpsHow"].forEach(id =>
   $(id).addEventListener("click", () => hideOv(id)));
 $("videoOv").addEventListener("click", e => { if (e.target.id === "videoOv") { $("promoVideo").pause(); hideOv("videoOv"); } });
 $("menuOv").addEventListener("click", e => { if (e.target.id === "menuOv") hideOv("menuOv"); });
@@ -835,7 +1093,8 @@ function closeTopOv() { const o = document.querySelector(".ov.show"); if (o) { i
 
 /* ============ 幻灯片引擎 ============ */
 const slides = [...document.querySelectorAll(".slide")];
-const LINEAR = slides.filter(s => s.id !== "s-rec");   // 线性流程不含隐藏站
+const HIDDEN = ["s-rec", "s-bday", "s-pi", "s-pnp"];   // 彩蛋站不进线性流程
+const LINEAR = slides.filter(s => !HIDDEN.includes(s.id));
 let cur = 0;
 const STEPS = {}, ONENTER = {}, stepIdx = {};
 const dots = $("dots");
@@ -850,7 +1109,7 @@ function syncDots() {
 }
 function goToSlide(i) {
   if (i < 0 || i >= slides.length || i === cur) return;
-  closeTopOv(); stopCountdown();
+  closeTopOv(); stopCountdown(); stopBogo(); stopPi();
   slides[cur].classList.remove("active");
   slides[cur].classList.toggle("left", i > cur);
   cur = i;
@@ -867,14 +1126,14 @@ function advance() {
   else {
     const li = LINEAR.indexOf(slides[cur]);
     if (li >= 0 && li < LINEAR.length - 1) goToSlide(slides.indexOf(LINEAR[li + 1]));
-    else if (slides[cur].id === "s-rec") goToSlide(slides.findIndex(s => s.id === "s-end"));
+    else if (li < 0) goToSlide(slides.findIndex(s => s.id === "s-end"));
   }
 }
 function back() {
   if (closeTopOv()) return;
   const li = LINEAR.indexOf(slides[cur]);
   if (li > 0) goToSlide(slides.indexOf(LINEAR[li - 1]));
-  else if (slides[cur].id === "s-rec") goToSlide(slides.findIndex(s => s.id === "s-end"));
+  else if (li < 0) goToSlide(slides.findIndex(s => s.id === "s-end"));
 }
 $("navNext").addEventListener("click", advance);
 $("navPrev").addEventListener("click", back);
@@ -894,10 +1153,6 @@ addEventListener("keydown", e => {
   switch (e.key) {
     case "ArrowRight": case "PageDown": case " ": e.preventDefault(); advance(); break;
     case "ArrowLeft": case "PageUp": e.preventDefault(); back(); break;
-    case "q": addScore("R", 1); break;
-    case "Q": addScore("R", e.shiftKey ? -1 : 1); break;
-    case "p": addScore("B", 1); break;
-    case "P": addScore("B", e.shiftKey ? -1 : 1); break;
     case "t": case "T": cdTimer ? stopCountdown() : countdown(10); break;
     case "m": case "M":
       muted = !muted; toast(muted ? "🔇 已静音" : "🔊 声音开启"); break;
@@ -915,10 +1170,14 @@ addEventListener("click", e => { if (e.target.closest("button")) e.target.closes
 
 /* ============ 菜单 ============ */
 const MENU_TITLES = {
-  "s-open":"0️⃣ 热身：猜数字", "s-title":"1️⃣ 揭秘 · 标题 · 分队", "s-sort":"2️⃣ 排序赛马",
-  "s-maze":"3️⃣ 迷宫寻路（机动）", "s-ai":"4️⃣ 手写识别 · 人机大战", "s-llm":"5️⃣ 文字接龙",
-  "s-quiz":"6️⃣ 终极闯关", "s-final":"7️⃣ 结算", "s-dsa":"8️⃣ DSA 学域彩蛋", "s-end":"9️⃣ 结尾 · 二维码",
-  "s-rec":"🥚 隐藏站：推荐系统",
+  "s-open": "🎯 热身：猜数字", "s-title": "🔍 揭秘二分 · 标题",
+  "s-magic": "🔮 读心魔术（机动）", "s-sort": "🏁 排序赛马 · 分治",
+  "s-maze": "🗺️ 迷宫寻路 · 六度分隔（机动）", "s-ai": "🧠 手写识别 · 人机大战",
+  "s-rps": "✊ 猜拳读心 AI", "s-llm": "💬 文字接龙 · 温度",
+  "s-quiz": "🏆 终极闯关（4~8 题）", "s-final": "🎖️ 成就结算", "s-dsa": "🎓 DSA 学域彩蛋",
+  "s-end": "👋 结尾 · 二维码",
+  "s-rec": "🥚 彩蛋：推荐系统", "s-bday": "🥚 彩蛋：生日悖论",
+  "s-pi": "🥚 彩蛋：扔飞镖算 π", "s-pnp": "🥚 彩蛋：百万美元难题",
 };
 slides.forEach((s, i) => {
   const b = document.createElement("button");
@@ -927,7 +1186,7 @@ slides.forEach((s, i) => {
   $("menuList").appendChild(b);
 });
 $("menuBtn").addEventListener("click", () => showOv("menuOv"));
-$("resetScore").addEventListener("click", () => { score.R = 0; score.B = 0; drawScore(); toast("比分已清零"); });
+$("resetScore").addEventListener("click", resetAchv);
 $("menuMute").addEventListener("click", () => { muted = !muted; toast(muted ? "🔇 已静音" : "🔊 声音开启"); });
 $("menuHelp").addEventListener("click", () => { hideOv("menuOv"); showOv("helpOv"); });
 $("menuFull").addEventListener("click", () => { hideOv("menuOv");
@@ -962,6 +1221,7 @@ $("guessBtn").addEventListener("click", () => {
     $("guessMsg").innerHTML = "🎉 就是 <span class='kw2'>" + g + "</span>！只用了 <span class='kw'>" + G.tries + "</span> 次！";
     SND.tada(); confetti(160);
     $("cmpStrip").style.display = "flex";
+    unlock("bin");
   } else if (g < G.secret) {
     G.lo = Math.max(G.lo, g + 1);
     chip.textContent = g + " ↑"; $("guessHist").appendChild(chip);
@@ -986,40 +1246,220 @@ ONENTER["s-title"] = () => {
     setTimeout(() => { b.classList.add("on"); SND.tick(); }, 250 + i * 220));
 };
 STEPS["s-title"] = [
+  () => {
+    showOv("binHow");
+    [...document.querySelectorAll("#binIdeas .card")].forEach((c, i) => {
+      c.classList.remove("on");
+      setTimeout(() => { c.classList.add("on"); SND.pop(); }, 200 + 230 * i);
+    });
+  },
   () => { $("revealView").style.display = "none"; $("titleView").style.display = "flex"; SND.tada(); confetti(80); },
-  () => { $("teamSplit").classList.add("show"); SND.ding(); setTimeout(()=>SND.coin(), 300); },
 ];
 
 /* ================================================================
-   S2 排序赛马
+   S-MAGIC 二进制读心魔术
    ================================================================ */
-const RACE = { n: 90, arr0: [], ops: { A: [], B: [] }, i: { A: 0, B: 0 }, state: "idle", raf: null, speed: 3 };
-function raceInit() {
-  RACE.arr0 = Array.from({ length: RACE.n }, (_, i) => i + 1);
-  for (let i = RACE.arr0.length - 1; i > 0; i--) { const j = (Math.random() * (i + 1)) | 0; [RACE.arr0[i], RACE.arr0[j]] = [RACE.arr0[j], RACE.arr0[i]]; }
-  // 录制冒泡
-  const a = RACE.arr0.slice(), opsA = [];
-  for (let i = 0; i < a.length; i++) for (let j = 0; j < a.length - 1 - i; j++) {
-    opsA.push({ t: "c", i: j, j: j + 1 });
-    if (a[j] > a[j + 1]) { [a[j], a[j + 1]] = [a[j + 1], a[j]]; opsA.push({ t: "s", i: j, j: j + 1 }); }
+const MG = { i: 0, sum: 0, done: false };
+function magicBuild(card) {
+  $("magicCardTitle").textContent = "第 " + (card + 1) + " 张卡（共 5 张）";
+  const box = $("magicNums"); box.innerHTML = "";
+  for (let n = 1; n <= 31; n++) if (n & (1 << card)) {
+    const s = document.createElement("span"); s.textContent = n; box.appendChild(s);
   }
-  // 录制快排 (Lomuto)
-  const b = RACE.arr0.slice(), opsB = [];
+  $("magicProg").innerHTML = Array.from({ length: 5 }, (_, k) => "<span class='" + (k < card ? "on" : "") + "'></span>").join("");
+}
+function magicReset() {
+  MG.i = 0; MG.sum = 0; MG.done = false;
+  $("magicResult").style.display = "none";
+  $("magicCard").style.display = "";
+  $("magicAsk").textContent = "你想的数，在这张卡上吗？";
+  magicBuild(0);
+}
+function magicAnswer(yes) {
+  if (MG.done) return;
+  if (yes) MG.sum += 1 << MG.i;
+  MG.i++; SND.pop();
+  if (MG.i < 5) { magicBuild(MG.i); return; }
+  MG.done = true;
+  $("magicCard").style.display = "none";
+  $("magicProg").innerHTML = "";
+  if (MG.sum === 0) {
+    $("magicAsk").textContent = "🤔 五张都不在？1~31 里可没有这样的数——你是想偷袭我吧？点'再来一次'！";
+    SND.buzz(); return;
+  }
+  $("magicAsk").textContent = "🔮 我感应到了……你心里想的是——";
+  let i = 0; const dr = setInterval(() => SND.drum(i++), 100);
+  setTimeout(() => {
+    clearInterval(dr);
+    const r = $("magicResult"); r.style.display = "block"; r.textContent = MG.sum;
+    SND.tada(); confetti(160); unlock("magic");
+  }, 1300);
+}
+$("magicYes").addEventListener("click", () => magicAnswer(true));
+$("magicNo").addEventListener("click", () => magicAnswer(false));
+$("magicRestart").addEventListener("click", () => { magicReset(); SND.pop(); });
+STEPS["s-magic"] = [() => showOv("magicHow")];
+magicReset();
+
+/* ================================================================
+   S-RPS 猜拳读心 AI（order-2 马尔可夫）
+   ================================================================ */
+const RPS_E = ["✊", "✌️", "🖐"];
+const RPS = { hist: [], t2: {}, t1: {}, hu: 0, ai: 0, n: 0 };
+function rpsPredict() {
+  const h = RPS.hist;
+  if (h.length >= 2) {
+    const c = RPS.t2[h[h.length - 2] * 3 + h[h.length - 1]];
+    if (c) {
+      const tot = c[0] + c[1] + c[2];
+      if (tot >= 2) { let m = 0; if (c[1] > c[m]) m = 1; if (c[2] > c[m]) m = 2; return { move: m, conf: c[m] / tot }; }
+    }
+  }
+  if (h.length >= 1) {
+    const c = RPS.t1[h[h.length - 1]];
+    if (c) {
+      const tot = c[0] + c[1] + c[2];
+      if (tot >= 2) { let m = 0; if (c[1] > c[m]) m = 1; if (c[2] > c[m]) m = 2; return { move: m, conf: c[m] / tot * 0.8 }; }
+    }
+  }
+  return { move: (Math.random() * 3) | 0, conf: 0 };
+}
+function rpsLearn(next) {
+  const h = RPS.hist;
+  if (h.length >= 2) {
+    const k = h[h.length - 2] * 3 + h[h.length - 1];
+    (RPS.t2[k] = RPS.t2[k] || [0, 0, 0])[next]++;
+  }
+  if (h.length >= 1) {
+    const k = h[h.length - 1];
+    (RPS.t1[k] = RPS.t1[k] || [0, 0, 0])[next]++;
+  }
+  h.push(next);
+}
+function rpsPlay(m) {
+  const pred = rpsPredict();
+  const aiM = (pred.move + 2) % 3;   // 出克制预测招的拳（x 克 (x+1)%3）
+  rpsLearn(m);
+  RPS.n++;
+  $("rpsAIface").textContent = RPS_E[aiM];
+  let msg;
+  if (aiM === m) { msg = "🤝 平局！它和你想到一块去了…"; SND.pop(); }
+  else if ((aiM + 1) % 3 === m) { RPS.ai++; msg = "🤖 AI 赢了！它越来越懂你了……"; SND.buzz(); }
+  else { RPS.hu++; msg = "🎉 你赢了！继续——它正在偷偷记你的套路"; SND.ding(); }
+  $("rpsHu").textContent = RPS.hu; $("rpsAi").textContent = RPS.ai;
+  $("rpsRound").textContent = "人类 vs AI · 第 " + RPS.n + " 回合";
+  $("rpsMsg").textContent = msg + (RPS.n === 15 ? "　⏱ 15 回合到，看比分！" : "");
+  const conf = Math.round(pred.conf * 100);
+  $("rpsMeter").style.width = conf + "%"; $("rpsConf").textContent = conf + "%";
+  if (RPS.n >= 10) unlock("rps");
+  return aiM === m ? 0 : ((aiM + 1) % 3 === m ? 1 : -1);
+}
+document.querySelectorAll("#rpsBtns button").forEach(b =>
+  b.addEventListener("click", () => rpsPlay(+b.getAttribute("data-m"))));
+$("rpsReset").addEventListener("click", () => {
+  RPS.hist = []; RPS.t2 = {}; RPS.t1 = {}; RPS.hu = 0; RPS.ai = 0; RPS.n = 0;
+  $("rpsHu").textContent = "0"; $("rpsAi").textContent = "0";
+  $("rpsAIface").textContent = "🤖"; $("rpsRound").textContent = "人类 vs AI · 第 0 回合";
+  $("rpsMsg").textContent = "出拳吧！前几回合它还在观察你……";
+  $("rpsMeter").style.width = "0%"; $("rpsConf").textContent = "0%";
+  SND.pop();
+});
+function rpsBuildHeat() {
+  const g = $("rpsHeat"); g.innerHTML = "";
+  g.appendChild(Object.assign(document.createElement("div"), { className: "hd", textContent: "你出完↓" }));
+  RPS_E.forEach(e => g.appendChild(Object.assign(document.createElement("div"), { className: "hd", textContent: "下手 " + e })));
+  for (let p = 0; p < 3; p++) {
+    g.appendChild(Object.assign(document.createElement("div"), { className: "hd", textContent: RPS_E[p] }));
+    const c = RPS.t1[p] || [0, 0, 0];
+    const mx = Math.max(c[0], c[1], c[2]);
+    for (let n = 0; n < 3; n++) {
+      const d = document.createElement("div");
+      d.className = "cell" + (mx > 0 && c[n] === mx ? " hot" : "");
+      d.textContent = c[n] + " 次";
+      g.appendChild(d);
+    }
+  }
+}
+STEPS["s-rps"] = [() => { rpsBuildHeat(); showOv("rpsHow"); }];
+
+/* ================================================================
+   S2 排序赛马（4 选手 + 两场比赛 + 猴子加赛）
+   ================================================================ */
+function recBubble(src) {
+  const a = src.slice(), ops = [];
+  for (let i = 0; i < a.length; i++) for (let j = 0; j < a.length - 1 - i; j++) {
+    ops.push({ t: "c", i: j, j: j + 1 });
+    if (a[j] > a[j + 1]) { [a[j], a[j + 1]] = [a[j + 1], a[j]]; ops.push({ t: "s", i: j, j: j + 1 }); }
+  }
+  return { ops, out: a };
+}
+function recQuick(src) {
+  const b = src.slice(), ops = [];
   (function qs(lo, hi) {
     if (lo >= hi) return;
     const p = b[hi]; let k = lo - 1;
     for (let x = lo; x < hi; x++) {
-      opsB.push({ t: "c", i: x, j: hi });
-      if (b[x] < p) { k++; if (k !== x) { [b[k], b[x]] = [b[x], b[k]]; opsB.push({ t: "s", i: k, j: x }); } }
+      ops.push({ t: "c", i: x, j: hi });
+      if (b[x] < p) { k++; if (k !== x) { [b[k], b[x]] = [b[x], b[k]]; ops.push({ t: "s", i: k, j: x }); } }
     }
-    k++; if (k !== hi) { [b[k], b[hi]] = [b[hi], b[k]]; opsB.push({ t: "s", i: k, j: hi }); }
+    k++; if (k !== hi) { [b[k], b[hi]] = [b[hi], b[k]]; ops.push({ t: "s", i: k, j: hi }); }
     qs(lo, k - 1); qs(k + 1, hi);
   })(0, b.length - 1);
-  SELFTEST.push(["排序自检", a.every((v, i) => v === i + 1) && b.every((v, i) => v === i + 1)]);
-  RACE.ops = { A: opsA, B: opsB };
+  return { ops, out: b };
+}
+function recInsert(src) {
+  const a = src.slice(), ops = [];
+  for (let i = 1; i < a.length; i++) {
+    const v = a[i]; let j = i - 1;
+    while (j >= 0) {
+      ops.push({ t: "c", i: j, j: i });
+      if (a[j] > v) { a[j + 1] = a[j]; ops.push({ t: "w", i: j + 1, v: a[j + 1] }); j--; }
+      else break;
+    }
+    a[j + 1] = v; ops.push({ t: "w", i: j + 1, v: v });
+  }
+  return { ops, out: a };
+}
+function recMerge(src) {
+  const a = src.slice(), ops = [];
+  (function ms(lo, hi) {
+    if (hi - lo < 2) return;
+    const mid = (lo + hi) >> 1;
+    ms(lo, mid); ms(mid, hi);
+    const tmp = []; let i = lo, j = mid;
+    while (i < mid && j < hi) { ops.push({ t: "c", i: i, j: j }); tmp.push(a[i] <= a[j] ? a[i++] : a[j++]); }
+    while (i < mid) tmp.push(a[i++]);
+    while (j < hi) tmp.push(a[j++]);
+    for (let k = 0; k < tmp.length; k++) { a[lo + k] = tmp[k]; ops.push({ t: "w", i: lo + k, v: tmp[k] }); }
+  })(0, a.length);
+  return { ops, out: a };
+}
+const ALGOS = {
+  bubble: { name: "🐢 冒泡排序", rec: recBubble },
+  quick:  { name: "🚀 快速排序", rec: recQuick },
+  insert: { name: "🃏 插入排序", rec: recInsert },
+  merge:  { name: "🪄 归并排序", rec: recMerge },
+};
+const PAIRS = { r1: ["bubble", "quick"], r2: ["insert", "merge"] };
+const RACE = { n: 90, pair: "r1", arr0: [], ops: { A: [], B: [] }, i: { A: 0, B: 0 },
+  state: "idle", raf: null, speed: 3, winner: null, tested: {} };
+function raceInit(pair) {
+  if (pair) RACE.pair = pair;
+  const [ka, kb] = PAIRS[RACE.pair];
+  RACE.arr0 = Array.from({ length: RACE.n }, (_, i) => i + 1);
+  for (let i = RACE.arr0.length - 1; i > 0; i--) { const j = (Math.random() * (i + 1)) | 0; [RACE.arr0[i], RACE.arr0[j]] = [RACE.arr0[j], RACE.arr0[i]]; }
+  const ra = ALGOS[ka].rec(RACE.arr0), rb = ALGOS[kb].rec(RACE.arr0);
+  if (!RACE.tested[RACE.pair]) {
+    RACE.tested[RACE.pair] = true;
+    SELFTEST.push(["排序自检:" + ka + "+" + kb,
+      ra.out.every((v, i) => v === i + 1) && rb.out.every((v, i) => v === i + 1)]);
+  }
+  $("algoA").textContent = ALGOS[ka].name; $("algoB").textContent = ALGOS[kb].name;
+  RACE.ops = { A: ra.ops, B: rb.ops };
   RACE.live = { A: RACE.arr0.slice(), B: RACE.arr0.slice() };
   RACE.i = { A: 0, B: 0 };
   RACE.hot = { A: [-1,-1], B: [-1,-1] };
+  RACE.winner = null;
   $("opsA").textContent = "0 次操作"; $("opsB").textContent = "0 次操作";
   $("doneA").textContent = ""; $("doneB").textContent = "";
   raceDraw("A"); raceDraw("B");
@@ -1047,16 +1487,28 @@ function raceTick() {
       busy = true;
       for (let s = 0; s < RACE.speed && i < ops.length; s++, i++) {
         const op = ops[i];
-        RACE.hot[k] = [op.i, op.j];
-        if (op.t === "s") { const L = RACE.live[k]; [L[op.i], L[op.j]] = [L[op.j], L[op.i]]; }
+        RACE.hot[k] = [op.i, op.j === undefined ? -1 : op.j];
+        const L = RACE.live[k];
+        if (op.t === "s") { [L[op.i], L[op.j]] = [L[op.j], L[op.i]]; }
+        else if (op.t === "w") { L[op.i] = op.v; RACE.hot[k] = [op.i, -1]; }
       }
       RACE.i[k] = i;
       $(k === "A" ? "opsA" : "opsB").textContent = i.toLocaleString() + " 次操作";
       raceDraw(k);
       if (i >= ops.length) {
-        $(k === "A" ? "doneA" : "doneB").innerHTML = (k === "B" ? "🏆 <span class='kw'>完成！共 " : "😮‍💨 <span class='kw3'>终于完成…共 ") + ops.length.toLocaleString() + " 次</span>";
-        if (k === "B") { SND.tada(); const r = raceCv("B").getBoundingClientRect(); confetti(60, r.left + r.width/2, r.top); $("doneA").innerHTML = $("doneA").innerHTML || "🐢 还在搬砖……"; }
-        else SND.fail();
+        const el = $(k === "A" ? "doneA" : "doneB"), other = $(k === "A" ? "doneB" : "doneA");
+        if (!RACE.winner) {
+          RACE.winner = k;
+          el.innerHTML = "🏆 <span class='kw'>冲线！共 " + ops.length.toLocaleString() + " 次</span>";
+          if (!other.innerHTML) other.innerHTML = "⏳ 还在搬砖……";
+          SND.tada();
+          const r = raceCv(k).getBoundingClientRect();
+          confetti(60, r.left + r.width / 2, r.top);
+          unlock("sort");
+        } else {
+          el.innerHTML = "😮‍💨 <span class='kw3'>终于完成…共 " + ops.length.toLocaleString() + " 次</span>";
+          SND.fail();
+        }
       }
     }
   }
@@ -1066,19 +1518,24 @@ function raceTick() {
 STEPS["s-sort"] = [
   () => { $("sortHook").style.display = "none"; $("sortBet").style.display = "flex"; SND.pop(); },
   () => { $("sortBet").style.display = "none"; $("raceWrap").style.display = "flex"; $("sortCtl").style.display = "flex";
-          raceInit(); toast("点 🏁 开赛！"); },
+          raceInit("r1"); toast("点 🏁 开赛！"); },
   () => showOv("sortMath"),
+  () => {
+    showOv("dncHow");
+    [...document.querySelectorAll("#dncIdeas .card")].forEach((c, i) => {
+      c.classList.remove("on");
+      setTimeout(() => { c.classList.add("on"); SND.pop(); }, 200 + 230 * i);
+    });
+  },
 ];
-document.querySelectorAll(".betBtns button").forEach(btn => btn.addEventListener("click", e => {
-  const side = btn.getAttribute("data-side"), team = btn.classList.contains("betR") ? "R" : "B";
-  const cardA = $("betA"), cardB = $("betB");
-  [cardA, cardB].forEach(c => c.classList.remove("pick" + team));
-  (side === "A" ? cardA : cardB).classList.add("pick" + team);
-  const flagId = "flag" + team;
-  let f = $(flagId); if (!f) { f = document.createElement("div"); f.id = flagId; f.className = "flag"; }
-  f.textContent = team === "R" ? "❤️‍🔥" : "💙"; f.style.right = team === "R" ? "14px" : "54px";
-  (side === "A" ? cardA : cardB).appendChild(f);
-  SND.pop(); toast((team === "R" ? "红队" : "蓝队") + " 押注 " + (side === "A" ? "🐢 冒泡" : "🚀 快排"));
+document.querySelectorAll(".betBtns button").forEach(btn => btn.addEventListener("click", () => {
+  const side = btn.getAttribute("data-side");
+  $("betA").classList.toggle("pick", side === "A");
+  $("betB").classList.toggle("pick", side === "B");
+  let f = $("betFlag");
+  if (!f) { f = document.createElement("div"); f.id = "betFlag"; f.className = "flag"; f.textContent = "🙋"; }
+  (side === "A" ? $("betA") : $("betB")).appendChild(f);
+  SND.pop(); toast("全场押注：" + (side === "A" ? "🐢 冒泡" : "🚀 快排"));
 }));
 $("raceGo").addEventListener("click", () => {
   if (RACE.state === "run") return;
@@ -1087,6 +1544,48 @@ $("raceGo").addEventListener("click", () => {
 });
 $("raceSkip").addEventListener("click", () => { RACE.speed = 120; if (RACE.state !== "run") { RACE.state = "run"; raceTick(); } });
 $("raceReset").addEventListener("click", () => { RACE.state = "idle"; RACE.speed = 3; if (RACE.raf) cancelAnimationFrame(RACE.raf); raceInit(); });
+$("race2").addEventListener("click", () => {
+  RACE.state = "idle"; RACE.speed = 3;
+  if (RACE.raf) cancelAnimationFrame(RACE.raf);
+  raceInit("r2");
+  toast("🥈 第二场：🃏 插入（打牌理牌） vs 🪄 归并（分治模范）——点 🏁 开赛！", 2600);
+});
+/* 猴子排序 */
+const BOGO = { arr: [], n: 0, run: false };
+function stopBogo() { BOGO.run = false; }
+function bogoDraw() {
+  const cv = $("bogoCv"), ctx = cv.getContext("2d");
+  const W = cv.width = cv.clientWidth * (devicePixelRatio || 1), H = cv.height = cv.clientHeight * (devicePixelRatio || 1);
+  ctx.clearRect(0, 0, W, H);
+  const n = BOGO.arr.length, bw = W / n;
+  for (let i = 0; i < n; i++) {
+    const h = BOGO.arr[i] / n * (H - 6);
+    ctx.fillStyle = "#ffb84d";
+    ctx.fillRect(i * bw + 1, H - h, Math.max(1, bw - 2), h);
+  }
+}
+function bogoTick() {
+  if (!BOGO.run) return;
+  for (let r = 0; r < 2; r++) {
+    for (let i = BOGO.arr.length - 1; i > 0; i--) { const j = (Math.random() * (i + 1)) | 0; [BOGO.arr[i], BOGO.arr[j]] = [BOGO.arr[j], BOGO.arr[i]]; }
+    BOGO.n++;
+    if (BOGO.arr.every((v, i) => v === i + 1)) {
+      BOGO.run = false;
+      $("bogoCount").textContent = BOGO.n.toLocaleString() + " 次 — 居然中奖了？！";
+      SND.tada(); confetti(200); bogoDraw(); return;
+    }
+  }
+  $("bogoCount").textContent = BOGO.n.toLocaleString() + " 次";
+  bogoDraw();
+  requestAnimationFrame(bogoTick);
+}
+$("bogoBtn").addEventListener("click", () => {
+  if (BOGO.run) { stopBogo(); $("bogoBtn").textContent = "🐒 加赛：猴子选手"; return; }
+  $("bogoPanel").style.display = "block";
+  if (!BOGO.arr.length) BOGO.arr = Array.from({ length: 12 }, (_, i) => i + 1);
+  BOGO.run = true; $("bogoBtn").textContent = "🛑 让猴子歇会";
+  SND.pop(); bogoTick();
+});
 
 /* ================================================================
    S3 迷宫
@@ -1167,7 +1666,7 @@ $("mazeGo").addEventListener("click", () => {
       (function drawPath() {
         mazeDrawAll(dist, path.slice(0, k+1), maxD);
         if (k < path.length-1) { k++; MZ.anim = setTimeout(drawPath, 26); }
-        else { SND.ding(); $("mazeStats").innerHTML = "✅ 探索 <span class='kw'>" + explored0 + "</span> 格 → 最短路 <span class='kw2'>" + (path.length-1) + "</span> 步！高德导航同款思路"; MZ.running = false; }
+        else { SND.ding(); $("mazeStats").innerHTML = "✅ 探索 <span class='kw'>" + explored0 + "</span> 格 → 最短路 <span class='kw2'>" + (path.length-1) + "</span> 步！高德导航同款思路"; MZ.running = false; unlock("path"); }
       })();
       SELFTEST.push(["迷宫自检", path.length > 1]);
     } else {
@@ -1202,7 +1701,58 @@ mazeCv.addEventListener("pointermove", e => {
   if (MZ.walls[y][x] !== mazePaint) { MZ.walls[y][x] = mazePaint; mazeDrawAll(); }
 });
 addEventListener("pointerup", () => mazePaint = -1);
-STEPS["s-maze"] = [() => showOv("mazeWord")];
+/* 六度分隔 */
+const SIX = { rings: [6, 9, 12, 14, 9, 9], timer: null };
+const SIX_REACH = ["", "45 人", "2,025 人", "9.1 万人", "410 万人", "1.8 亿人", ""];
+function sixDraw(hop) {
+  const cv = $("sixCv"), ctx = cv.getContext("2d");
+  const W = cv.width = cv.clientWidth * (devicePixelRatio || 1), H = cv.height = cv.clientHeight * (devicePixelRatio || 1);
+  ctx.clearRect(0, 0, W, H);
+  const cx = W / 2, cy = H / 2, R = Math.min(W, H) / 2 - 12;
+  const rings = SIX.rings;
+  function pos(r, i) {
+    const count = rings[r - 1];
+    const a = i / count * Math.PI * 2 + r * 0.45;
+    const rad = R * r / 6.4 + 6;
+    return [cx + Math.cos(a) * rad, cy + Math.sin(a) * rad];
+  }
+  for (let r = 1; r <= 6; r++) {
+    const count = rings[r - 1], prev = r === 1 ? 1 : rings[r - 2];
+    for (let i = 0; i < count; i++) {
+      const [x, y] = pos(r, i);
+      const [px, py] = r === 1 ? [cx, cy] : pos(r - 1, Math.floor(i * prev / count));
+      ctx.strokeStyle = r <= hop ? "rgba(41,230,255,.75)" : "rgba(255,255,255,.10)";
+      ctx.lineWidth = (r <= hop ? 1.8 : 1) * (devicePixelRatio || 1);
+      ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(x, y); ctx.stroke();
+    }
+  }
+  for (let r = 1; r <= 6; r++) for (let i = 0; i < rings[r - 1]; i++) {
+    const [x, y] = pos(r, i);
+    ctx.fillStyle = r <= hop ? "#29e6ff" : "rgba(255,255,255,.28)";
+    ctx.beginPath(); ctx.arc(x, y, (r <= hop ? 5 : 3.5) * (devicePixelRatio || 1), 0, 7); ctx.fill();
+  }
+  ctx.fillStyle = "#ffd84d"; ctx.beginPath(); ctx.arc(cx, cy, 9 * (devicePixelRatio || 1), 0, 7); ctx.fill();
+  ctx.font = "bold " + 15 * (devicePixelRatio || 1) + "px sans-serif"; ctx.textAlign = "center";
+  ctx.fillText("你", cx, cy - 14 * (devicePixelRatio || 1));
+}
+function sixAnim() {
+  clearInterval(SIX.timer);
+  let h = 0; sixDraw(0);
+  $("sixInfo").textContent = "假设每人有 45 个好友——开始握手！";
+  SIX.timer = setInterval(() => {
+    if (!$("sixDeg").classList.contains("show")) { clearInterval(SIX.timer); return; }
+    h++; sixDraw(h);
+    if (h >= 6) {
+      clearInterval(SIX.timer);
+      $("sixInfo").innerHTML = "第 6 次握手 → 45⁶ ≈ <span class='kw2'>83 亿 ＞ 全球人口</span> 🌍 必然连到马斯克";
+      SND.ding();
+    } else {
+      $("sixInfo").innerHTML = "第 " + h + " 次握手 → 能联系到 <span class='kw'>" + SIX_REACH[h] + "</span>";
+      SND.tick();
+    }
+  }, 850);
+}
+STEPS["s-maze"] = [() => showOv("mazeWord"), () => { showOv("sixDeg"); sixAnim(); }];
 mazeDefault();
 
 /* ================================================================
@@ -1335,7 +1885,7 @@ function drawBars(p) {
 }
 const TAUNT_HI = ["就这？我 {p}% 确定是 {d}！", "再丑我也认识 —— {d}！", "想骗我？{d}，没跑了。", "这题我闭着眼都会：{d}！"];
 const TAUNT_MID = ["嗯…… {p}% 像 {d}。你的字体有点狂野啊 😅", "我猜 {d}（{p}% 把握）。建议练练字 😏"];
-const TAUNT_LO = ["这是地球上的数字吗？我蒙一个：{d}（仅 {p}% 把握）🤯", "你赢了……我只有 {p}% 的把握说它是 {d} 🫠（可以加分了）"];
+const TAUNT_LO = ["这是地球上的数字吗？我蒙一个：{d}（仅 {p}% 把握）🤯", "你赢了……我只有 {p}% 的把握说它是 {d} 🫠 你是英雄！"];
 function aiPredict() {
   if (!MODEL.ok) { $("aiSay").textContent = "⚠️ 模型未加载（请用构建后的正式版文件）"; return; }
   if (!hasInk) return;
@@ -1350,6 +1900,7 @@ function aiPredict() {
   const line = pool[(Math.random() * pool.length) | 0].replace("{d}", d).replace("{p}", (conf * 100).toFixed(0));
   $("aiSay").innerHTML = "🤖 " + line;
   if (conf > 0.85) SND.ding(); else if (conf > 0.5) SND.pop(); else { SND.fail(); }
+  unlock("nn");
 }
 /* 样例 */
 function buildSamples() {
@@ -1369,7 +1920,59 @@ function buildSamples() {
   }
 }
 buildSamples();
-STEPS["s-ai"] = [() => showOv("aiHow")];
+/* 蒙眼下山（梯度下降） */
+const GD = { x: 0.06, timer: null };
+function gdF(x) {
+  return 0.60 - 0.38 * Math.exp(-Math.pow((x - 0.72) / 0.20, 2))
+              - 0.20 * Math.exp(-Math.pow((x - 0.28) / 0.12, 2));
+}
+function gdGrad(x) { return (gdF(x + 1e-4) - gdF(x - 1e-4)) / 2e-4; }
+function gdDraw() {
+  const cv = $("gdCv"), ctx = cv.getContext("2d");
+  const W = cv.width = cv.clientWidth * (devicePixelRatio || 1), H = cv.height = cv.clientHeight * (devicePixelRatio || 1);
+  ctx.clearRect(0, 0, W, H);
+  const X = x => x * (W - 40) + 20, Y = v => 20 + (1 - v / 0.65) * (H - 56);
+  ctx.strokeStyle = "#7a8cff"; ctx.lineWidth = 3 * (devicePixelRatio || 1); ctx.beginPath();
+  for (let i = 0; i <= 200; i++) { const x = i / 200, y = gdF(x); i ? ctx.lineTo(X(x), Y(y)) : ctx.moveTo(X(x), Y(y)); }
+  ctx.stroke();
+  const dpr = devicePixelRatio || 1;
+  ctx.font = "bold " + 13 * dpr + "px sans-serif"; ctx.fillStyle = "#8fa3cc"; ctx.textAlign = "center";
+  ctx.fillText("小坑（局部最优）", X(0.30), Y(gdF(0.30)) + 22 * dpr);
+  ctx.fillText("大峡谷（全局最优）", X(0.72), Y(gdF(0.72)) + 22 * dpr);
+  const bx = X(GD.x), by = Y(gdF(GD.x));
+  ctx.fillStyle = "#ffd84d"; ctx.beginPath(); ctx.arc(bx, by - 8 * dpr, 9 * dpr, 0, 7); ctx.fill();
+  ctx.fillText("⛷️", bx, by - 22 * dpr);
+  $("gdLoss").textContent = (gdF(GD.x) / 0.60 * 100).toFixed(1) + "%";
+}
+function gdStep() {
+  const g = gdGrad(GD.x);
+  const dx = Math.max(-0.025, Math.min(0.025, -0.05 * g));
+  GD.x = Math.min(0.98, Math.max(0.02, GD.x + dx));
+  gdDraw();
+  SND.tick();
+  return Math.abs(g);
+}
+function gdStop() { clearInterval(GD.timer); GD.timer = null; }
+$("gdStep").addEventListener("click", e => { e.stopPropagation(); gdStep(); });
+$("gdAuto").addEventListener("click", e => {
+  e.stopPropagation();
+  if (GD.timer) { gdStop(); return; }
+  GD.timer = setInterval(() => {
+    if (!$("gdHow").classList.contains("show")) { gdStop(); return; }
+    const g = gdStep();
+    if (g < 0.03) { gdStop(); SND.ding(); }
+  }, 80);
+});
+$("gdKick").addEventListener("click", e => {
+  e.stopPropagation();
+  GD.x = Math.min(0.98, Math.max(0.02, GD.x + (Math.random() < 0.5 ? -0.17 : 0.17)));
+  SND.pop(); gdDraw();
+});
+$("gdReset").addEventListener("click", e => { e.stopPropagation(); gdStop(); GD.x = 0.06; gdDraw(); });
+STEPS["s-ai"] = [
+  () => showOv("aiHow"),
+  () => { showOv("gdHow"); gdStop(); GD.x = 0.06; gdDraw(); },
+];
 
 /* ================================================================
    S5 文字接龙
@@ -1377,6 +1980,8 @@ STEPS["s-ai"] = [() => showOv("aiHow")];
 const LLM_ROUNDS = [
   { pre: "下课铃一响，我冲向", post: "", words: [["食堂", 41], ["小卖部", 23], ["厕所", 15], ["操场", 13], ["老师办公室", 2]] },
   { pre: "数学卷最后一道大题，我先", post: "", words: [["蒙个答案", 35], ["硬算", 22], ["跳过", 20], ["画辅助线", 15], ["检查前面", 8]] },
+  { pre: "体育老师说：今天体育课改上", post: "", words: [["数学", 48], ["自习", 24], ["英语", 14], ["物理", 9], ["体育（惊喜）", 5]] },
+  { pre: "妈妈喊我全名的那一刻，说明", post: "", words: [["我完了", 52], ["有大事", 21], ["作业被发现了", 16], ["她心情很好", 4], ["要给零花钱", 2]] },
   { pre: "高考出分那晚，我打开手机先", post: "", gold: "搜「港科广 DSA」", words: [["查分", 58], ["发朋友圈", 18], ["查录取线", 14], ["告诉爸妈", 8]] },
 ];
 let llmRound = 0, llmFlipped = false;
@@ -1390,6 +1995,7 @@ function llmShow(i) {
 $("llmFlip").addEventListener("click", () => {
   if (llmFlipped) return;
   llmFlipped = true;
+  unlock("llm");
   const r = LLM_ROUNDS[llmRound];
   const bars = $("llmBars"); bars.style.display = "block"; bars.innerHTML = "";
   const list = r.words.map(w => ({ w: w[0], p: w[1], gold: false }));
@@ -1438,7 +2044,31 @@ function genRun() {
   })();
 }
 $("genReplay").addEventListener("click", e => { e.stopPropagation(); genRun(); });
-STEPS["s-llm"] = [() => { showOv("llmHow"); setTimeout(genRun, 400); }];
+/* 温度旋钮 */
+const TEMPS = {
+  tmp0: "写作业，预习下周的课，再把这周的错题整理一遍。",
+  tmp1: "和朋友打一场球，然后去吃一顿好的，晚上看部电影。",
+  tmp2: "骑着扫帚冲进食堂抢最后一个鸡腿，顺路报名火星一日游，再统治一下银河系。",
+};
+let tmpTimer = null;
+function tempType(key) {
+  clearInterval(tmpTimer);
+  const el = $("genTemp"), text = TEMPS[key];
+  el.textContent = "";
+  let i = 0;
+  tmpTimer = setInterval(() => {
+    if (!$("tempHow").classList.contains("show")) { clearInterval(tmpTimer); return; }
+    el.textContent = text.slice(0, ++i);
+    if (i % 3 === 0) SND.tick();
+    if (i >= text.length) { clearInterval(tmpTimer); SND.pop(); }
+  }, 50);
+}
+["tmp0", "tmp1", "tmp2"].forEach(k =>
+  $(k).addEventListener("click", e => { e.stopPropagation(); tempType(k); }));
+STEPS["s-llm"] = [
+  () => { showOv("llmHow"); setTimeout(genRun, 400); },
+  () => { showOv("tempHow"); $("genTemp").textContent = ""; },
+];
 
 /* ================================================================
    S6 终极闯关
@@ -1456,6 +2086,18 @@ const QUIZ = [
   { q: "在港科广 DSA 学域，本科生最早大几就在全球顶级 AI 会议上发表了论文？",
     o: ["博士才行", "大四", "大三", "大二"], a: 3,
     why: "真事：大二同学以共同第一作者身份在 ICLR 发表论文（还有大三发 ICML/KDD/VLDB 的）。" },
+  { q: "地球上随便挑两个人（比如你和马斯克），平均隔几个'朋友的朋友'就能连上？",
+    o: ["6 个", "60 个", "600 个", "根本连不上"], a: 0,
+    why: "六度分隔：朋友数指数爆炸，45⁶ ≈ 83 亿 > 全球人口。社交网络 = 图，研究它的就是图算法。" },
+  { q: "一个 45 人的班级，存在两人同一天生日的概率大约是？",
+    o: ["不到 12%", "大约一半", "约 94%", "不可能"], a: 2,
+    why: "生日悖论：要比的是'任意两人'，一共有 990 对！直觉会骗你，数据不会——这就是为什么要算。" },
+  { q: "猴子排序：随机把 12 张牌扔上天，捡起来正好有序。平均要扔多少次？",
+    o: ["12 次", "1 万次", "约 5 亿次", "永远不可能"], a: 2,
+    why: "12! = 479,001,600 ≈ 4.8 亿。蛮力的尽头是绝望，所以才需要聪明的算法。" },
+  { q: "大模型有时会'一本正经地胡说八道'（幻觉），根本原因是？",
+    o: ["它在故意骗你", "它只学过'接得像'，没学过'查证真假'", "网速不好", "它心情不好"], a: 1,
+    why: "它的目标是把文字接得最像，不是最真。所以 AI 的话要自己验证——这也是数据素养。" },
 ];
 let qi = 0, qRevealed = false;
 function quizShow(i) {
@@ -1470,7 +2112,7 @@ function quizShow(i) {
     d.innerHTML = "<b>" + L + ".</b> " + q.o[k];
     box.appendChild(d);
   });
-  $("quizReveal").style.display = ""; $("quizNext").style.display = "none";
+  $("quizReveal").style.display = ""; $("quizNext").style.display = "none"; $("quizEnd").style.display = "none";
   countdown(10);
 }
 $("quizReveal").addEventListener("click", () => {
@@ -1483,37 +2125,51 @@ $("quizReveal").addEventListener("click", () => {
   $("quizReveal").style.display = "none";
   $("quizNext").style.display = "";
   $("quizNext").textContent = qi < QUIZ.length - 1 ? "下一题 →" : "进入终极结算 🏆";
+  if (qi < QUIZ.length - 1) $("quizEnd").style.display = "";
 });
 $("quizNext").addEventListener("click", () => {
   if (qi < QUIZ.length - 1) quizShow(qi + 1);
-  else advance();
+  else { unlock("quiz"); advance(); }
 });
+$("quizEnd").addEventListener("click", () => { unlock("quiz"); advance(); });
 ONENTER["s-quiz"] = () => quizShow(0);
 
 /* ================================================================
-   S7 结算
+   S7 成就结算
    ================================================================ */
+function finReset() {
+  $("revealWin").style.display = "";
+  $("finCount").style.display = "none";
+  $("badges").style.display = "none"; $("badges").innerHTML = "";
+  $("titleCard").style.display = "none";
+}
 $("revealWin").addEventListener("click", () => {
   $("revealWin").style.display = "none";
   let i = 0;
   const dr = setInterval(() => { SND.drum(i); i++; }, 110);
   setTimeout(() => {
     clearInterval(dr);
-    const b = $("winBanner"); b.style.display = "block";
-    if (score.R > score.B) b.innerHTML = "🏆 ❤️‍🔥 <span style='color:#ff7aa8'>红队获胜！</span>";
-    else if (score.B > score.R) b.innerHTML = "🏆 💙 <span style='color:#56e0ff'>蓝队获胜！</span>";
-    else b.innerHTML = "🤝 <span class='kw2'>平局 —— 全员胜利！</span>";
-    SND.tada(); confetti(260); setTimeout(() => confetti(200), 500);
+    const got = ACHV.filter(a => achvOn.has(a.k)).length;
+    $("badges").style.display = "grid"; $("badges").innerHTML = "";
+    ACHV.forEach((a, idx) => {
+      const on = achvOn.has(a.k);
+      const c = document.createElement("div");
+      c.className = "card" + (on ? "" : " locked");
+      c.innerHTML = "<div class='e'>" + (on ? a.e : "❓") + "</div><h4>" + (on ? a.n : "未解锁") + "</h4>";
+      $("badges").appendChild(c);
+      setTimeout(() => { c.classList.add("on"); if (on) SND.pop(); }, 220 * idx);
+    });
+    setTimeout(() => {
+      $("finCount").style.display = "block";
+      $("finN").textContent = got; $("finT").textContent = ACHV.length;
+      $("finTitle").innerHTML = got >= 5
+        ? "🎓 全员获得称号：未来数据科学家（满级预备役）"
+        : "🎓 全员获得称号：未来数据科学家（预备役）";
+      $("titleCard").style.display = "block";
+      SND.tada(); confetti(260); setTimeout(() => confetti(200), 500);
+    }, 220 * ACHV.length + 500);
   }, 1700);
 });
-STEPS["s-final"] = [
-  () => {
-    $("duelView").style.display = "none";
-    $("badges").style.display = "flex"; $("titleCard").style.display = "block";
-    [...$("badges").children].forEach((c, i) => setTimeout(() => { c.classList.add("on"); SND.pop(); }, 300 * i));
-    setTimeout(() => { SND.tada(); confetti(120); }, 1400);
-  },
-];
 
 /* ================================================================
    S8 学域数据
@@ -1605,6 +2261,179 @@ $("recReset").addEventListener("click", () => {
   $("recOut").style.display = "none"; $("recOut").innerHTML = "";
 });
 
+/* ================================================================
+   S-BDAY 生日悖论
+   ================================================================ */
+const BD = { hit: 0, total: 0, timer: null };
+function bdaySim(n) {
+  const days = new Array(n), seen = new Set();
+  let coll = false;
+  for (let i = 0; i < n; i++) {
+    const d = (Math.random() * 365) | 0;
+    days[i] = d;
+    if (seen.has(d)) coll = true;
+    seen.add(d);
+  }
+  return { days, coll };
+}
+function bdayDraw(days) {
+  const cv = $("bdayCv"), ctx = cv.getContext("2d");
+  const dpr = devicePixelRatio || 1;
+  const W = cv.width = cv.clientWidth * dpr, H = cv.height = cv.clientHeight * dpr;
+  ctx.clearRect(0, 0, W, H);
+  const cx = W / 2, cy = H / 2, R = Math.min(W, H) / 2 - 16 * dpr;
+  ctx.strokeStyle = "rgba(255,255,255,.18)"; ctx.lineWidth = dpr;
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.stroke();
+  ctx.font = "bold " + 12 * dpr + "px sans-serif"; ctx.fillStyle = "#8fa3cc"; ctx.textAlign = "center";
+  ctx.fillText("一圈 = 365 天", cx, cy);
+  if (!days) return;
+  const m = {};
+  days.forEach(d => m[d] = (m[d] || 0) + 1);
+  days.forEach(d => {
+    const a = d / 365 * Math.PI * 2 - Math.PI / 2;
+    const hot = m[d] > 1;
+    ctx.fillStyle = hot ? "#ff5577" : "#29e6ff";
+    ctx.beginPath();
+    ctx.arc(cx + Math.cos(a) * R, cy + Math.sin(a) * R, (hot ? 7 : 4) * dpr, 0, 7);
+    ctx.fill();
+  });
+}
+function bdayRun(quiet) {
+  const { days, coll } = bdaySim(45);
+  BD.total++; if (coll) BD.hit++;
+  bdayDraw(days);
+  const m = {};
+  days.forEach(d => m[d] = (m[d] || 0) + 1);
+  const collDays = Object.values(m).filter(c => c > 1).length;
+  $("bdayStats").innerHTML =
+    (coll ? "💥 这个班有 <b>" + collDays + "</b> 组同生日（红点）！" : "😶 这个班居然没有撞日（少见）") +
+    "<br>累计：<b>" + BD.hit + " / " + BD.total + "</b> 个班出现同生日 = <b>" +
+    Math.round(BD.hit / BD.total * 100) + "%</b>　（数学理论值 ≈ 94%）";
+  if (!quiet) SND[coll ? "ding" : "fail"]();
+}
+$("bdayOnce").addEventListener("click", () => bdayRun(false));
+$("bdayAuto").addEventListener("click", () => {
+  if (BD.timer) { clearInterval(BD.timer); BD.timer = null; return; }
+  let c = 0;
+  BD.timer = setInterval(() => {
+    if (!$("s-bday").classList.contains("active")) { clearInterval(BD.timer); BD.timer = null; return; }
+    bdayRun(true); SND.tick();
+    if (++c >= 20) { clearInterval(BD.timer); BD.timer = null; SND.tada(); }
+  }, 230);
+});
+$("bdayReset").addEventListener("click", () => { BD.hit = 0; BD.total = 0; bdayDraw(null); $("bdayStats").textContent = "点下面的按钮，随机“生成”一个班试试"; });
+ONENTER["s-bday"] = () => bdayDraw(null);
+
+/* ================================================================
+   S-PI 蒙特卡洛算 π
+   ================================================================ */
+const PI = { inside: 0, n: 0, run: false };
+function stopPi() { PI.run = false; $("piGo").textContent = "🎯 开始扔飞镖"; }
+function piBase() {
+  const cv = $("piCv"), ctx = cv.getContext("2d");
+  const dpr = devicePixelRatio || 1;
+  const W = cv.width = cv.clientWidth * dpr, H = cv.height = cv.clientHeight * dpr;
+  ctx.clearRect(0, 0, W, H);
+  ctx.strokeStyle = "rgba(255,255,255,.35)"; ctx.lineWidth = 2 * dpr;
+  ctx.strokeRect(6 * dpr, 6 * dpr, W - 12 * dpr, H - 12 * dpr);
+  ctx.beginPath(); ctx.arc(W / 2, H / 2, (Math.min(W, H) - 12 * dpr) / 2, 0, 7); ctx.stroke();
+}
+function piReset() {
+  stopPi(); PI.inside = 0; PI.n = 0;
+  piBase();
+  $("piVal").textContent = "?"; $("piN").textContent = "已扔 0 镖";
+}
+function piTick() {
+  if (!PI.run) return;
+  const cv = $("piCv"), ctx = cv.getContext("2d");
+  const dpr = devicePixelRatio || 1, W = cv.width, H = cv.height;
+  for (let k = 0; k < 80; k++) {
+    const x = Math.random(), y = Math.random();
+    const inside = (x - 0.5) * (x - 0.5) + (y - 0.5) * (y - 0.5) <= 0.25;
+    if (inside) PI.inside++;
+    PI.n++;
+    ctx.fillStyle = inside ? "rgba(41,230,255,.75)" : "rgba(255,77,140,.75)";
+    ctx.fillRect(6 * dpr + x * (W - 12 * dpr), 6 * dpr + y * (H - 12 * dpr), 2 * dpr, 2 * dpr);
+  }
+  $("piVal").textContent = (4 * PI.inside / PI.n).toFixed(5);
+  $("piN").textContent = "已扔 " + PI.n.toLocaleString() + " 镖（真值 3.14159…）";
+  requestAnimationFrame(piTick);
+}
+$("piGo").addEventListener("click", () => {
+  if (PI.run) { stopPi(); return; }
+  if (PI.n === 0) piReset();
+  PI.run = true; $("piGo").textContent = "⏸ 暂停";
+  SND.pop(); piTick();
+});
+$("piReset").addEventListener("click", piReset);
+ONENTER["s-pi"] = () => { if (PI.n === 0) piReset(); };
+
+/* ================================================================
+   S-PNP 旅行商 · 百万难题
+   ================================================================ */
+const TSP = {
+  cities: [[0.12, 0.3], [0.5, 0.12], [0.88, 0.32], [0.3, 0.85], [0.75, 0.8]],
+  names: ["广州", "北京", "上海", "昆明", "杭州"],
+  perms: [], i: 0, best: null, bestD: 1e9, run: false,
+};
+function tspAllPerms() {
+  const out = [], a = [0, 1, 2, 3, 4];
+  (function heap(k) {
+    if (k === 1) { out.push(a.slice()); return; }
+    for (let i = 0; i < k; i++) {
+      heap(k - 1);
+      if (k % 2 === 0) [a[i], a[k - 1]] = [a[k - 1], a[i]];
+      else [a[0], a[k - 1]] = [a[k - 1], a[0]];
+    }
+  })(5);
+  return out;
+}
+function tspDist(p) {
+  let d = 0;
+  for (let i = 0; i < p.length; i++) {
+    const [x1, y1] = TSP.cities[p[i]], [x2, y2] = TSP.cities[p[(i + 1) % p.length]];
+    d += Math.hypot(x2 - x1, y2 - y1);
+  }
+  return d;
+}
+function tspDraw(route, best) {
+  const cv = $("tspCv"), ctx = cv.getContext("2d");
+  const dpr = devicePixelRatio || 1;
+  const W = cv.width = cv.clientWidth * dpr, H = cv.height = cv.clientHeight * dpr;
+  ctx.clearRect(0, 0, W, H);
+  const P = c => [16 * dpr + TSP.cities[c][0] * (W - 32 * dpr), 16 * dpr + TSP.cities[c][1] * (H - 32 * dpr)];
+  function line(p, color, w) {
+    ctx.strokeStyle = color; ctx.lineWidth = w * dpr; ctx.beginPath();
+    p.forEach((c, i) => { const [x, y] = P(c); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); });
+    const [x0, y0] = P(p[0]); ctx.lineTo(x0, y0); ctx.stroke();
+  }
+  if (route) line(route, "rgba(255,255,255,.25)", 1.5);
+  if (best) line(best, "#ffd84d", 3);
+  TSP.cities.forEach((c, i) => {
+    const [x, y] = P(i);
+    ctx.fillStyle = "#29e6ff"; ctx.beginPath(); ctx.arc(x, y, 7 * dpr, 0, 7); ctx.fill();
+    ctx.fillStyle = "#fff"; ctx.font = "bold " + 12 * dpr + "px sans-serif"; ctx.textAlign = "center";
+    ctx.fillText(TSP.names[i], x, y - 12 * dpr);
+  });
+}
+$("tspGo").addEventListener("click", () => {
+  if (TSP.run) return;
+  TSP.perms = tspAllPerms(); TSP.i = 0; TSP.best = null; TSP.bestD = 1e9; TSP.run = true;
+  (function step() {
+    if (!$("s-pnp").classList.contains("active")) { TSP.run = false; return; }
+    for (let k = 0; k < 3 && TSP.i < TSP.perms.length; k++, TSP.i++) {
+      const p = TSP.perms[TSP.i], d = tspDist(p);
+      if (d < TSP.bestD) { TSP.bestD = d; TSP.best = p; }
+    }
+    tspDraw(TSP.perms[Math.min(TSP.i, TSP.perms.length - 1)], TSP.best);
+    $("tspCount").textContent = "已试 " + TSP.i + " / 120 条";
+    if (TSP.i % 12 === 0) SND.tick();
+    if (TSP.i < TSP.perms.length) requestAnimationFrame(step);
+    else { TSP.run = false; tspDraw(null, TSP.best); $("tspCount").textContent = "120 / 120 ✅ 找到最短环线！"; SND.ding(); }
+  })();
+});
+ONENTER["s-pnp"] = () => tspDraw(null, null);
+
 /* ============ 自检汇总 ============ */
 function updateSelftest() {
   const ok = SELFTEST.filter(s => s[1]).length;
@@ -1617,7 +2446,7 @@ syncDots(); updateNote();
 
 /* ============ 无头测试钩子（仅 #test 时触发，正常放映不会运行） ============ */
 if (location.hash === "#test") {
-  try { raceInit(); } catch (e) { SELFTEST.push(["排序异常:" + e.message, false]); }
+  try { raceInit("r1"); raceInit("r2"); } catch (e) { SELFTEST.push(["排序异常:" + e.message, false]); }
   try { const r = mazeBFS(); SELFTEST.push(["迷宫BFS", r.found && r.dist[MZ_GOAL.y][MZ_GOAL.x] >= 24]); }
   catch (e) { SELFTEST.push(["迷宫异常:" + e.message, false]); }
   try {
@@ -1625,9 +2454,47 @@ if (location.hash === "#test") {
     const p = mlpForward(x);
     SELFTEST.push(["前向概率和=1", Math.abs(p.reduce((a, b) => a + b, 0) - 1) < 1e-3]);
   } catch (e) { SELFTEST.push(["前向异常:" + e.message, false]); }
-  try { llmShow(2); $("llmFlip").click(); quizShow(0); $("quizReveal").click(); SELFTEST.push(["互动调用", true]); }
-  catch (e) { SELFTEST.push(["互动异常:" + e.message, false]); }
-  setTimeout(updateSelftest, 1500);
+  try {
+    // 猜拳 AI：喂固定循环 36 手，热身后 AI 胜率应显著高于随机
+    let wins = 0, rounds = 0;
+    for (let i = 0; i < 36; i++) {
+      const res = rpsPlay(i % 3);
+      if (i >= 12) { rounds++; if (res === 1) wins++; }
+    }
+    SELFTEST.push(["猜拳AI收敛(" + wins + "/" + rounds + ")", wins / rounds > 0.55]);
+    $("rpsReset").click();
+  } catch (e) { SELFTEST.push(["猜拳异常:" + e.message, false]); }
+  try {
+    // 读心魔术：想 19 = 10011 → 卡1,2,5 答“在”
+    magicReset();
+    [true, true, false, false, true].forEach(v => magicAnswer(v));
+    SELFTEST.push(["魔术还原19", MG.sum === 19]);
+    magicReset();
+  } catch (e) { SELFTEST.push(["魔术异常:" + e.message, false]); }
+  try {
+    let hit = 0; const N = 600;
+    for (let i = 0; i < N; i++) if (bdaySim(45).coll) hit++;
+    const rate = hit / N;
+    SELFTEST.push(["生日悖论率" + Math.round(rate * 100) + "%", rate > 0.85 && rate < 0.99]);
+  } catch (e) { SELFTEST.push(["生日异常:" + e.message, false]); }
+  try {
+    GD.x = 0.06;
+    const l0 = gdF(GD.x);
+    for (let i = 0; i < 40; i++) gdStep();
+    SELFTEST.push(["下山误差下降", gdF(GD.x) < l0 - 0.05]);
+    GD.x = 0.06;
+  } catch (e) { SELFTEST.push(["下山异常:" + e.message, false]); }
+  try {
+    unlock("bin"); unlock("quiz");
+    SELFTEST.push(["成就解锁", achvOn.has("bin") && achvOn.has("quiz") && !!$("achv-bin")]);
+  } catch (e) { SELFTEST.push(["成就异常:" + e.message, false]); }
+  try {
+    llmShow(4); $("llmFlip").click(); tempType("tmp2");
+    quizShow(QUIZ.length - 1); $("quizReveal").click();
+    const r5 = tspDist([0, 1, 2, 3, 4]);
+    SELFTEST.push(["互动调用", QUIZ.length === 8 && LLM_ROUNDS.length === 5 && r5 > 0]);
+  } catch (e) { SELFTEST.push(["互动异常:" + e.message, false]); }
+  setTimeout(updateSelftest, 1800);
 }
 </script>
 </body>
