@@ -92,7 +92,6 @@ redirect_from:
 
 <div class="inner-page" style="padding-top:clamp(1.5rem,3vw,2.5rem);">
 <h1 class="inner-page-title" style="margin-bottom:.8rem;">CV</h1>
-<p style="margin-bottom:1rem !important;"><a href="{{ '/files/cv_yuwenhuang_072026.pdf' | relative_url }}" style="font-size:.85rem;font-weight:600;color:#7c3aed !important;">Download PDF version →</a></p>
 
 <div class="cv-section">
 <h2>Education</h2>
