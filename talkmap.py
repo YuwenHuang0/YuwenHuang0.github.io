@@ -1,56 +1,58 @@
 # Leaflet cluster map of talk locations
 #
-# Run this from the _talks/ directory, which contains .md files of all your
-# talks. This scrapes the location YAML field from each .md file, geolocates it
-# with geopy/Nominatim, and uses the getorg library to output data, HTML, and
-# Javascript for a standalone cluster map. This is functionally the same as the
-# #talkmap Jupyter notebook.
-import frontmatter
+# Run this from the repo root. It scrapes the location YAML field from each
+# .md file in _talks/, geolocates it with geopy/Nominatim, and uses the getorg
+# library to output data, HTML, and Javascript for a standalone cluster map
+# in talkmap/.
 import glob
+import sys
+import time
+
+import frontmatter
 import getorg
 from geopy import Nominatim
-from geopy.exc import GeocoderTimedOut
 
-# Set the default timeout, in seconds
-TIMEOUT = 5
+TIMEOUT = 10  # seconds per geocoding request
+RATE_LIMIT_SECONDS = 1.1  # Nominatim usage policy: max 1 request/second
 
-# Collect the Markdown files
-g = glob.glob("_talks/*.md")
-
-# Prepare to geolocate
-geocoder = Nominatim(user_agent="academicpages.github.io")
+geocoder = Nominatim(user_agent="yuwenhuang0.github.io talkmap")
 location_dict = {}
-location = ""
-permalink = ""
-title = ""
+failures = []
 
-# Perform geolocation
-for file in g:
-    # Read the file
-    data = frontmatter.load(file)
-    data = data.to_dict()
-
-    # Press on if the location is not present
+for file in sorted(glob.glob("_talks/*.md")):
+    data = frontmatter.load(file).to_dict()
     if 'location' not in data:
         continue
 
-    # Prepare the description
     title = data['title'].strip()
     venue = data['venue'].strip()
     location = data['location'].strip()
+    # "(virtual)" and similar suffixes confuse the geocoder
+    query = location.replace("(virtual)", "").strip()
     description = f"{title}<br />{venue}; {location}"
 
-    # Geocode the location and report the status
     try:
-        location_dict[description] = geocoder.geocode(location, timeout=TIMEOUT)
-        print(description, location_dict[description])
-    except ValueError as ex:
-        print(f"Error: geocode failed on input {location} with message {ex}")
-    except GeocoderTimedOut as ex:
-        print(f"Error: geocode timed out on input {location} with message {ex}")
+        result = geocoder.geocode(query, timeout=TIMEOUT)
     except Exception as ex:
-        print(f"An unhandled exception occurred while processing input {location} with message {ex}")
+        print(f"Error: geocode raised on input {query}: {type(ex).__name__}: {ex}")
+        failures.append(query)
+        continue
+    finally:
+        time.sleep(RATE_LIMIT_SECONDS)
 
-# Save the map
-m = getorg.orgmap.create_map_obj()
+    if result is None:
+        print(f"Warning: no geocode result for {query}")
+        failures.append(query)
+        continue
+
+    location_dict[description] = result
+    print(description, "->", result)
+
+if not location_dict:
+    # Nothing geocoded (e.g. Nominatim unreachable). Keep the existing map
+    # rather than overwriting it with an empty one.
+    print("No locations geocoded; leaving existing talkmap/ untouched.")
+    sys.exit(1)
+
 getorg.orgmap.output_html_cluster_map(location_dict, folder_name="talkmap", hashed_usernames=False)
+print(f"Map written: {len(location_dict)} located, {len(failures)} failed ({failures})")
