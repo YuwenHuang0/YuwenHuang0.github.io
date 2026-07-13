@@ -685,7 +685,6 @@ redirect_from:
 
   <div class="roles">
     <span class="role">RA</span>
-    <span class="role">MPhil</span>
     <span class="role">PhD</span>
     <span class="role">Postdoc</span>
   </div>
