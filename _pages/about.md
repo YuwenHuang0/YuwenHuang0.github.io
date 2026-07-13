@@ -607,8 +607,12 @@ redirect_from:
   <h2 class="heading">What's new</h2>
   <div class="timeline">
     <div class="tl-row">
+      <div class="tl-date">Jul 2026</div>
+      <div><div class="tl-title">Two research grants awarded as Principal Investigator <span class="tl-badge">New</span></div><div class="tl-venue">Guangzhou Municipal Education Bureau · Department of Education of Guangdong Province</div></div>
+    </div>
+    <div class="tl-row">
       <div class="tl-date">May 2026</div>
-      <div><div class="tl-title">Started as Assistant Professor at HKUST (GZ) <span class="tl-badge">New</span></div><div class="tl-venue">DSA Thrust, Information Hub</div></div>
+      <div><div class="tl-title">Started as Assistant Professor at HKUST (GZ)</div><div class="tl-venue">DSA Thrust, Information Hub</div></div>
     </div>
     <div class="tl-row">
       <div class="tl-date">May 2026</div>
@@ -625,6 +629,41 @@ redirect_from:
     <div class="tl-row">
       <div class="tl-date">2024</div>
       <div><div class="tl-title"><a href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">Degree-M Bethe &amp; Sinkhorn Permanent</a></div><div class="tl-venue">Published in IEEE TIT</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ════ TEAM ════ -->
+<section class="sec s-white" aria-label="Team">
+<div class="sec-in">
+  <div class="label">Team</div>
+  <h2 class="heading">Research assistants</h2>
+  <p class="subtext">Members of the group since 2026.</p>
+  <div class="sub-grid">
+    <div>
+      <div class="sub-title"><a href="https://liumaoli.me/">Maoli Liu</a></div>
+      <div class="sub-desc">PhD graduate, CSE, CUHK</div>
+    </div>
+    <div>
+      <div class="sub-title"><a href="https://sites.google.com/view/michael-shiu">Chun Hei Shiu</a></div>
+      <div class="sub-desc">PhD student (Year 2), ECE, UBC</div>
+    </div>
+    <div>
+      <div class="sub-title"><a href="https://zeyuzhangzyz.github.io/">Zeyu Zhang</a></div>
+      <div class="sub-desc">PhD student (Year 2), CSE, CUHK</div>
+    </div>
+    <div>
+      <div class="sub-title">Yu Jiang</div>
+      <div class="sub-desc">PhD student (Year 1), CSE, CUHK</div>
+    </div>
+    <div>
+      <div class="sub-title">Deyun Zhang</div>
+      <div class="sub-desc">Master's graduate, Mathematics, SUSTech</div>
+    </div>
+    <div>
+      <div class="sub-title">Yingxian Hui</div>
+      <div class="sub-desc">Undergraduate, Mathematics, CUHK (Shenzhen)</div>
     </div>
   </div>
 </div>

@@ -92,6 +92,7 @@ redirect_from:
 
 <div class="inner-page" style="padding-top:clamp(1.5rem,3vw,2.5rem);">
 <h1 class="inner-page-title" style="margin-bottom:.8rem;">CV</h1>
+<p style="margin-bottom:1rem !important;"><a href="{{ '/files/cv_yuwenhuang_072026.pdf' | relative_url }}" style="font-size:.85rem;font-weight:600;color:#7c3aed !important;">Download PDF version →</a></p>
 
 <div class="cv-section">
 <h2>Education</h2>
@@ -112,7 +113,7 @@ redirect_from:
 <p class="cv-entry-detail"><a href="https://dsa.hkust-gz.edu.cn/">Thrust of Data Science and Analytics</a>, Information Hub</p>
 </div>
 <div class="cv-entry">
-<p class="cv-entry-main"><span class="cv-entry-date">11/2024–04/2026</span> · Postdoc, CSE, CUHK</p>
+<p class="cv-entry-main"><span class="cv-entry-date">11/2024–05/2026</span> · Postdoc, CSE, CUHK</p>
 <p class="cv-entry-detail">Supervisor: <a href="https://www.cse.cuhk.edu.hk/~cslui/">Prof. John C.S. Lui</a> · Distributed quantum computing</p>
 </div>
 </div>
@@ -120,19 +121,43 @@ redirect_from:
 <div class="cv-section">
 <h2>Research Interests</h2>
 <div class="cv-tags">
+<span class="cv-tag">Quantum networks</span>
+<span class="cv-tag">Quantum information processing</span>
 <span class="cv-tag">Probabilistic graphical models</span>
 <span class="cv-tag">Optimization</span>
 <span class="cv-tag">Information theory</span>
-<span class="cv-tag">Foundations of data science</span>
-<span class="cv-tag">Quantum information</span>
 </div>
+</div>
+
+<div class="cv-section">
+<h2>Research Grants</h2>
+<div class="cv-entry">
+<p class="cv-entry-main"><span class="cv-entry-date">10/2026–09/2028</span> · Throughput guarantees for quantum computing networks via hop-by-hop error correction</p>
+<p class="cv-entry-detail">Young Talent Development Program, Guangzhou Municipal Education Bureau · Principal Investigator · RMB 50,000</p>
+</div>
+<div class="cv-entry">
+<p class="cv-entry-main"><span class="cv-entry-date">10/2026–10/2028</span> · Provable belief-propagation decoding of quantum LDPC codes for fault-tolerant quantum computing</p>
+<p class="cv-entry-detail">Young Innovative Talents Program, Department of Education of Guangdong Province · Principal Investigator · RMB 100,000</p>
+</div>
+</div>
+
+<div class="cv-section">
+<h2>Research Assistants</h2>
+<ul class="cv-list">
+<li><strong>2026–present</strong> · <a href="https://liumaoli.me/">Ms. Maoli Liu</a> — PhD graduate, Dept. of Computer Science and Engineering, CUHK</li>
+<li><strong>2026–present</strong> · <a href="https://sites.google.com/view/michael-shiu">Mr. Chun Hei Shiu</a> — PhD student (Year 2), Dept. of Electrical and Computer Engineering, UBC</li>
+<li><strong>2026–present</strong> · <a href="https://zeyuzhangzyz.github.io/">Mr. Zeyu Zhang</a> — PhD student (Year 2), Dept. of Computer Science and Engineering, CUHK</li>
+<li><strong>2026–present</strong> · Ms. Yu Jiang — PhD student (Year 1), Dept. of Computer Science and Engineering, CUHK</li>
+<li><strong>2026–present</strong> · Mr. Deyun Zhang — Master's graduate, Dept. of Mathematics, SUSTech</li>
+<li><strong>2026–present</strong> · Mr. Yingxian Hui — Undergraduate student, Dept. of Mathematics, CUHK (Shenzhen)</li>
+</ul>
 </div>
 
 <div class="cv-section">
 <h2>Service</h2>
 <ul class="cv-list">
 <li>Journal reviewer: <em>IEEE Commun. Mag.</em>, <em>IEEE Trans. Commun.</em>, <em>IEEE J. Sel. Topics Signal Process.</em>, <em>IEEE Commun. Lett.</em></li>
-<li>Conference reviewer: IEEE ISIT, IEEE ICC, IEEE WCNC</li>
+<li>Conference reviewer: IEEE ISIT, ICML</li>
 </ul>
 </div>
 
