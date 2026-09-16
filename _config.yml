@@ -234,6 +234,11 @@ collections:
 
 # These settings control how pages and collections are included in the site
 defaults:
+  # unlisted lecture slides: keep out of sitemap.xml (robots.txt also disallows them)
+  - scope:
+      path: "files/slides/dsaa4011-week3.pdf"
+    values:
+      sitemap: false
   # _posts
   - scope:
       path: ""

@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /files/slides/dsaa4011-week3.pdf
+
+Sitemap: https://yuwenhuang0.github.io/sitemap.xml
