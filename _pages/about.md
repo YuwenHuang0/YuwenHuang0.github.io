@@ -595,6 +595,13 @@ redirect_from:
         <a class="cite" href="{{ '/publication/plash-linear-attention' | relative_url }}">ICML'26</a>
       </div>
     </div>
+    <div>
+      <div class="sub-title">LLM pruning</div>
+      <div class="sub-desc">Block reconstruction and Gauss–Seidel refinement for post-training pruning.</div>
+      <div class="cites">
+        <a class="cite" href="{{ '/publication/block-obs-gs' | relative_url }}">NeurIPS'26</a>
+      </div>
+    </div>
   </div>
   <div class="view-all"><a href="{{ '/publications/' | relative_url }}">All publications</a></div>
 </div>
@@ -606,6 +613,10 @@ redirect_from:
   <div class="label">Latest</div>
   <h2 class="heading">What's new</h2>
   <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">Sep 2026</div>
+      <div><div class="tl-title"><a href="{{ '/publication/block-obs-gs' | relative_url }}">Block-OBS-GS: Exact Per-Block Joint Brain Surgery with Gauss–Seidel Refinement for LLM Pruning</a> <span class="tl-badge">Accepted</span></div><div class="tl-venue">NeurIPS 2026 · Yuwen Huang and Xiang Pan</div></div>
+    </div>
     <div class="tl-row">
       <div class="tl-date">Jul 2026</div>
       <div><div class="tl-title">Two research grants awarded as Principal Investigator <span class="tl-badge">New</span></div><div class="tl-venue">Guangzhou Municipal Education Bureau · Department of Education of Guangdong Province</div></div>
