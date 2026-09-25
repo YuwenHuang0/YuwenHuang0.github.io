@@ -615,7 +615,7 @@ redirect_from:
   <div class="timeline">
     <div class="tl-row">
       <div class="tl-date">Sep 2026</div>
-      <div><div class="tl-title"><a href="{{ '/publication/block-obs-gs' | relative_url }}">Block-OBS-GS: Exact Per-Block Joint Brain Surgery with Gauss–Seidel Refinement for LLM Pruning</a> <span class="tl-badge">Accepted</span></div><div class="tl-venue">NeurIPS 2026 · Yuwen Huang and Xiang Pan</div></div>
+      <div><div class="tl-title"><a href="{{ '/publication/block-obs-gs' | relative_url }}">Block-OBS-GS: Exact Per-Block Joint Brain Surgery with Gauss–Seidel Refinement for LLM Pruning</a> <span class="tl-badge">To appear</span></div><div class="tl-venue">NeurIPS 2026, Dec. 2026 · Yuwen Huang and Xiang Pan</div></div>
     </div>
     <div class="tl-row">
       <div class="tl-date">Jul 2026</div>
