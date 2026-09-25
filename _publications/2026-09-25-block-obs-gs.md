@@ -9,7 +9,6 @@ permalink: /publication/block-obs-gs
 excerpt: "A post-training LLM pruning method that jointly reconstructs surviving weights within blocks and refines the fixed-mask solution with Gauss–Seidel updates."
 date: '2026-09-25'
 venue: "Conference on Neural Information Processing Systems (NeurIPS)"
-paperurl: https://openreview.net/forum?id=TgdviE0ING
 topic: machine-learning
 ---
 
