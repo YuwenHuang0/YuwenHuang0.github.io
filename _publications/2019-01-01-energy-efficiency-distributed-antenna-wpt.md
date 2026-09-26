@@ -13,6 +13,7 @@ date: '2019-01-01'
 venue: IEEE Journal on Selected Areas in Communications
 paperurl: https://arxiv.org/abs/1810.04385
 topic: wireless
+sole_first: true
 corresponding_authors:
   - Yuan Liu
 # citation: "Y. Huang, Y. Liu and G. Y. Li, 'Energy efficiency of distributed antenna\

@@ -12,6 +12,7 @@ date: '2018-12-19'
 venue: IEEE International Conference on Communication Systems (ICCS)
 paperurl: https://ieeexplore.ieee.org/document/8689256/
 topic: wireless
+sole_first: true
 corresponding_authors:
   - Yuan Liu
 # citation: "Y. Huang and Y. Liu, 'User cooperation for NOMA-based mobile edge computing,'\

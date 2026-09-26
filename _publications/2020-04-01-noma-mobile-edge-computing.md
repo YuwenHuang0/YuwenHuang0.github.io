@@ -12,6 +12,7 @@ date: '2020-04-01'
 venue: IEEE Transactions on Communications
 paperurl: https://arxiv.org/abs/1912.13139
 topic: wireless
+sole_first: true
 corresponding_authors:
   - Yuan Liu
 # citation: "Y. Huang, Y. Liu and F. Chen, 'NOMA-aided mobile edge computing via user\

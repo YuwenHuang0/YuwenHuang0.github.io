@@ -12,6 +12,7 @@ date: '2018-08-01'
 venue: IEEE Internet of Things Journal
 paperurl: https://arxiv.org/abs/1801.06374
 topic: wireless
+sole_first: true
 corresponding_authors:
   - Yuan Liu
 # citation: "Y. Huang, M. Liu and Y. Liu, 'Energy-efficient SWIPT in IoT distributed\
