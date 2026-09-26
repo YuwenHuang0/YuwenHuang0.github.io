@@ -107,8 +107,8 @@ author_profile: false
           <div class="pub-row">
             {% if post.paperurl %}<a href="{{ post.paperurl }}"><span class="t">{{ post.title }}</span></a>{% else %}<span class="t">{{ post.title }}</span>{% endif %}
             <br>{% if post.authors %}{% include publication-authors.html publication=post %}.{% endif %}
-            {% if post.status %}{% if post.status == "Submitted" %}Submitted to{% else %}{{ post.status }} in{% endif %}{% else %}Published in{% endif %}
-            <em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}.{% capture lnk %}{% if post.paperurl %}<a class="r rp" href="{{ post.paperurl }}">Paper</a>{% endif %}{% if post.slidesurl %}<a class="r rs" href="{{ post.slidesurl }}">Slides</a>{% endif %}{% if post.slidesurl_alt %}<a class="r rs" href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "Slides" }}</a>{% endif %}{% if post.videourl %}<a class="r rv" href="{{ post.videourl }}">Video</a>{% endif %}{% if post.bibtexurl %}<a class="r rb" href="{{ post.bibtexurl }}">BibTeX</a>{% endif %}{% endcapture %}{% if lnk | strip != "" %} {{ lnk | strip }}{% endif %}
+            {% if post.status %}{% if post.status == "Submitted" or post.status == "Major revision resubmitted" %}{{ post.status }} to{% else %}{{ post.status }} in{% endif %}{% else %}Published in{% endif %}
+            <em>{{ post.venue }}</em>, {% if post.status_date %}{{ post.status_date | date: "%B %Y" }}{% else %}{{ post.date | date: "%Y" }}{% endif %}.{% capture lnk %}{% if post.paperurl %}<a class="r rp" href="{{ post.paperurl }}">Paper</a>{% endif %}{% if post.slidesurl %}<a class="r rs" href="{{ post.slidesurl }}">Slides</a>{% endif %}{% if post.slidesurl_alt %}<a class="r rs" href="{{ post.slidesurl_alt }}">{{ post.slideslabel_alt | default: "Slides" }}</a>{% endif %}{% if post.videourl %}<a class="r rv" href="{{ post.videourl }}">Video</a>{% endif %}{% if post.bibtexurl %}<a class="r rb" href="{{ post.bibtexurl }}">BibTeX</a>{% endif %}{% endcapture %}{% if lnk | strip != "" %} {{ lnk | strip }}{% endif %}
           </div>
         {% endfor %}
       {% endif %}

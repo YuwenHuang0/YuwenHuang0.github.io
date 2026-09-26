@@ -14,7 +14,8 @@ venue: IEEE Transactions on Information Theory
 #   of double-edge factor graphs via graph covers (extended version),' submitted to
 #   IEEE Transactions on Information Theory, 2024.
 paperurl: https://arxiv.org/abs/2506.16250
-status: Submitted
+status: Major revision resubmitted
+status_date: '2026-08-01'
 topic: quantum-info
 sole_corresponding: true
 sole_first: true

@@ -87,7 +87,9 @@ layout: default
           <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif page.collection == 'publications' and page.venue %}
           {% assign page_status = page.status | default: "" | downcase %}
-          {% if page_status contains 'submitted' %}
+          {% if page_status == 'major revision resubmitted' %}
+            <p>Major revision resubmitted to <i>{{ page.venue }}</i>, {{ page.status_date | date: "%B %Y" }}.</p>
+          {% elsif page_status contains 'submitted' %}
             <p>Submitted to <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
           {% elsif page_status contains 'to appear' %}
             <p>To appear in <i>{{ page.venue }}</i>, {{ page.publication_date | default: page.date | date: "%b. %Y" }}.</p>

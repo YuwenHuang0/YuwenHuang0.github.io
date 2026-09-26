@@ -616,6 +616,10 @@ redirect_from:
       <div><div class="tl-title"><a href="{{ '/publication/block-obs-gs' | relative_url }}">Block-OBS-GS: Exact Per-Block Joint Brain Surgery with Gauss–Seidel Refinement for LLM Pruning</a> <span class="tl-badge">To appear</span></div><div class="tl-venue">NeurIPS 2026, Dec. 2026 · Yuwen Huang and Xiang Pan</div></div>
     </div>
     <div class="tl-row">
+      <div class="tl-date">Aug 2026</div>
+      <div><div class="tl-title"><a href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">Graph-Cover-based Bethe Partition Function</a></div><div class="tl-venue">Major revision resubmitted to IEEE Transactions on Information Theory</div></div>
+    </div>
+    <div class="tl-row">
       <div class="tl-date">Jul 2026</div>
       <div><div class="tl-title">Two research grants awarded as Principal Investigator <span class="tl-badge">New</span></div><div class="tl-venue">Guangzhou Municipal Education Bureau · Department of Education of Guangdong Province</div></div>
     </div>
@@ -630,10 +634,6 @@ redirect_from:
     <div class="tl-row">
       <div class="tl-date">Mar 2026</div>
       <div><div class="tl-title"><a href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">Scalable Distributed Quantum Optimization</a></div><div class="tl-venue">Submitted to Quantum</div></div>
-    </div>
-    <div class="tl-row">
-      <div class="tl-date">Jul 2025</div>
-      <div><div class="tl-title"><a href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">Graph-Cover-based Bethe Partition Function</a></div><div class="tl-venue">Submitted to IEEE TIT</div></div>
     </div>
     <div class="tl-row">
       <div class="tl-date">2024</div>
