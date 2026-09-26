@@ -589,16 +589,10 @@ redirect_from:
       </div>
     </div>
     <div>
-      <div class="sub-title">Efficient attention</div>
-      <div class="sub-desc">Provably linear-time attention mechanisms.</div>
+      <div class="sub-title">Efficient LLMs</div>
+      <div class="sub-desc">Provably linear-time attention and post-training pruning through block reconstruction and Gauss–Seidel refinement.</div>
       <div class="cites">
         <a class="cite" href="{{ '/publication/plash-linear-attention' | relative_url }}">ICML'26</a>
-      </div>
-    </div>
-    <div>
-      <div class="sub-title">LLM pruning</div>
-      <div class="sub-desc">Block reconstruction and Gauss–Seidel refinement for post-training pruning.</div>
-      <div class="cites">
         <a class="cite" href="{{ '/publication/block-obs-gs' | relative_url }}">NeurIPS'26</a>
       </div>
     </div>
