@@ -615,6 +615,10 @@ redirect_from:
   <div class="timeline">
     <div class="tl-row">
       <div class="tl-date">Sep 2026</div>
+      <div><div class="tl-title"><a href="{{ '/publication/parametric-bandits-coarsened-feedback' | relative_url }}">Near-Optimal Learning in Parametric Bandits with Action-Dependent Coarsened Feedback</a> <span class="tl-badge">To appear</span></div><div class="tl-venue">NeurIPS 2026, Dec. 2026 · Zhuohua Li, Maoli Liu, Yuwen Huang, Cheng Wen, Jie Su, Cong Tian, Shengchao Qin, and John C.S. Lui</div></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Sep 2026</div>
       <div><div class="tl-title"><a href="{{ '/publication/block-obs-gs' | relative_url }}">Block-OBS-GS: Exact Per-Block Joint Brain Surgery with Gauss–Seidel Refinement for LLM Pruning</a> <span class="tl-badge">To appear</span></div><div class="tl-venue">NeurIPS 2026, Dec. 2026 · Yuwen Huang and Xiang Pan</div></div>
     </div>
     <div class="tl-row">
