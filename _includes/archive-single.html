@@ -99,7 +99,7 @@
         {% endif %}
 
     {% if post.authors %}
-      <p>Authors: {{ post.authors | array_to_sentence_string }}</p>
+      <p>Authors: {% include publication-authors.html publication=post %}</p>
     {% endif %}
 
     {% if post.excerpt and site.read_more != 'enabled' %}

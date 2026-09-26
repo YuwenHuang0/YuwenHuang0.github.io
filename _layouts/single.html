@@ -103,7 +103,8 @@ layout: default
         {% endif %}    
 
         {% if page.authors %}
-          <p>Authors: {{ page.authors | array_to_sentence_string }}</p>
+          <p>Authors: {% include publication-authors.html publication=page %}</p>
+          {% if page.sole_first or page.sole_corresponding or page.corresponding_authors %}<p><small>* denotes corresponding author; &dagger; denotes sole first author.</small></p>{% endif %}
         {% endif %}
         </header>
       {% endunless %}

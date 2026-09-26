@@ -1,0 +1,7 @@
+{%- assign publication = include.publication -%}
+{%- for name in publication.authors -%}
+  {%- if forloop.first == false -%}{%- if forloop.last %} and {% else %}, {% endif -%}{%- endif -%}
+  {%- if name == 'Yuwen Huang' -%}<b>{{ name }}</b>{%- else -%}{{ name }}{%- endif -%}
+  {%- if publication.corresponding_authors contains name -%}*{%- elsif name == 'Yuwen Huang' and publication.sole_corresponding -%}*{%- endif -%}
+  {%- if name == 'Yuwen Huang' and publication.sole_first -%}&dagger;{%- endif -%}
+{%- endfor -%}
