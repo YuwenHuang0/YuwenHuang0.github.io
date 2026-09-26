@@ -635,10 +635,6 @@ redirect_from:
       <div class="tl-date">Mar 2026</div>
       <div><div class="tl-title"><a href="{{ '/publication/scalable-distributed-quantum-optimization-factor-graph' | relative_url }}">Scalable Distributed Quantum Optimization</a></div><div class="tl-venue">Submitted to Quantum</div></div>
     </div>
-    <div class="tl-row">
-      <div class="tl-date">2024</div>
-      <div><div class="tl-title"><a href="{{ '/publication/degree-m-bethe-sinkhorn-permanent' | relative_url }}">Degree-M Bethe &amp; Sinkhorn Permanent</a></div><div class="tl-venue">Published in IEEE TIT</div></div>
-    </div>
   </div>
 </div>
 </section>
