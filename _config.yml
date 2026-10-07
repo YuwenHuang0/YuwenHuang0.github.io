@@ -239,6 +239,11 @@ defaults:
       path: "files/slides/dsaa4011-week3.pdf"
     values:
       sitemap: false
+  # unlisted DSAA 4011 course site and its slides
+  - scope:
+      path: "dsaa4011"
+    values:
+      sitemap: false
   # _posts
   - scope:
       path: ""
