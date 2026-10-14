@@ -501,6 +501,7 @@ redirect_from:
     <div class="hero-meta">
       <div class="hero-name">Yuwen Huang</div>
       <div class="hero-aff">Assistant Professor, <a href="https://dsa.hkust-gz.edu.cn/">DSA Thrust, HKUST (Guangzhou)</a></div>
+      <div class="hero-aff"><a href="mailto:yuwenhuang@hkust-gz.edu.cn">yuwenhuang (at) hkust-gz.edu.cn</a></div>
     </div>
   </div>
 
@@ -695,7 +696,7 @@ redirect_from:
   </div>
 
   <div class="join-cta">
-    <a class="btn btn-accent" href="mailto:{{ site.author.email }}">Get in touch</a>
+    <a class="btn btn-accent" href="mailto:{{ site.author.email }}">Get in touch: yuwenhuang (at) hkust-gz.edu.cn</a>
   </div>
 
   <div class="join-links">
