@@ -609,16 +609,16 @@ redirect_from:
   <h2 class="heading">What's new</h2>
   <div class="timeline">
     <div class="tl-row">
+      <div class="tl-date">Oct 2026</div>
+      <div><div class="tl-title"><a href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">Graph-Cover-based Characterization of the Bethe Partition Function of Double-Edge Factor Graphs</a> <span class="tl-badge">Accepted</span></div><div class="tl-venue">IEEE Transactions on Information Theory · Yuwen Huang and Pascal O. Vontobel</div></div>
+    </div>
+    <div class="tl-row">
       <div class="tl-date">Sep 2026</div>
       <div><div class="tl-title"><a href="{{ '/publication/parametric-bandits-coarsened-feedback' | relative_url }}">Near-Optimal Learning in Parametric Bandits with Action-Dependent Coarsened Feedback</a> <span class="tl-badge">To appear</span></div><div class="tl-venue">NeurIPS 2026, Dec. 2026 · Zhuohua Li, Maoli Liu, Yuwen Huang, Cheng Wen, Jie Su, Cong Tian, Shengchao Qin, and John C.S. Lui</div></div>
     </div>
     <div class="tl-row">
       <div class="tl-date">Sep 2026</div>
       <div><div class="tl-title"><a href="{{ '/publication/block-obs-gs' | relative_url }}">Block-OBS-GS: Exact Per-Block Joint Brain Surgery with Gauss–Seidel Refinement for LLM Pruning</a> <span class="tl-badge">To appear</span></div><div class="tl-venue">NeurIPS 2026, Dec. 2026 · Yuwen Huang and Xiang Pan</div></div>
-    </div>
-    <div class="tl-row">
-      <div class="tl-date">Aug 2026</div>
-      <div><div class="tl-title"><a href="{{ '/publication/bethe-partition-function-graph-covers-extended' | relative_url }}">Graph-Cover-based Bethe Partition Function</a></div><div class="tl-venue">Major revision resubmitted to IEEE Transactions on Information Theory</div></div>
     </div>
     <div class="tl-row">
       <div class="tl-date">Jul 2026</div>

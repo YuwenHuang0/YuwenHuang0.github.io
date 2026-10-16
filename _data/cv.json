@@ -131,11 +131,11 @@
       "summary": "Submitted manuscript with Xiaojun Lin, Bin Luo, and John C.S. Lui."
     },
     {
-      "name": "Characterizing the Bethe partition function of double-edge factor graphs via graph covers (extended version)",
+      "name": "Graph-Cover-based Characterization of the Bethe Partition Function of Double-Edge Factor Graphs",
       "publisher": "IEEE Transactions on Information Theory",
-      "releaseDate": "2024",
-      "website": "https://arxiv.org/abs/2412.05942",
-      "summary": "Submitted manuscript co-authored with Pascal O. Vontobel."
+      "releaseDate": "2026",
+      "website": "https://arxiv.org/abs/2506.16250",
+      "summary": "Accepted for publication; co-authored with Pascal O. Vontobel."
     },
     {
       "name": "Factor graph-based scalable distributed quantum optimization with provable quadratic-like speedup",

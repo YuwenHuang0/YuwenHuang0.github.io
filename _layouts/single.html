@@ -89,6 +89,8 @@ layout: default
           {% assign page_status = page.status | default: "" | downcase %}
           {% if page_status == 'major revision resubmitted' %}
             <p>Major revision resubmitted to <i>{{ page.venue }}</i>, {{ page.status_date | date: "%B %Y" }}.</p>
+          {% elsif page_status == 'accepted' %}
+            <p>Accepted for publication in <i>{{ page.venue }}</i>, {{ page.status_date | date: "%B %Y" }}.</p>
           {% elsif page_status contains 'submitted' %}
             <p>Submitted to <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
           {% elsif page_status contains 'to appear' %}

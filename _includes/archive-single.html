@@ -89,6 +89,8 @@
           {% assign post_status = post.status | default: "" | downcase %}
           {% if post_status == 'major revision resubmitted' %}
             <p>Major revision resubmitted to <i>{{ post.venue }}</i>, {{ post.status_date | date: "%B %Y" }}.</p>
+          {% elsif post_status == 'accepted' %}
+            <p>Accepted for publication in <i>{{ post.venue }}</i>, {{ post.status_date | date: "%B %Y" }}.</p>
           {% elsif post_status contains 'submitted' %}
             <p>Submitted to <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
           {% elsif post_status contains 'in preparation' %}

@@ -10,12 +10,12 @@ permalink: /publication/bethe-partition-function-graph-covers-extended
 excerpt: Extended study of Bethe partition functions and graph covers.
 date: '2024-12-01'
 venue: IEEE Transactions on Information Theory
-# citation: Y. Huang and P. O. Vontobel, 'Characterizing the Bethe partition function
-#   of double-edge factor graphs via graph covers (extended version),' submitted to
-#   IEEE Transactions on Information Theory, 2024.
+# citation: Y. Huang and P. O. Vontobel, 'Graph-cover-based characterization of the
+#   Bethe partition function of double-edge factor graphs,' accepted for publication in
+#   IEEE Transactions on Information Theory, 2026.
 paperurl: https://arxiv.org/abs/2506.16250
-status: Major revision resubmitted
-status_date: '2026-08-01'
+status: Accepted
+status_date: '2026-10-16'
 topic: quantum-info
 sole_corresponding: true
 sole_first: true
