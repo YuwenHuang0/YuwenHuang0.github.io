@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "site_id": "dqi-preresearch-local",
+  "title": "DQI 解码协同设计｜预研材料",
+  "language": "zh-CN",
+  "public_base_url": "https://yuwenhuang0.github.io/dqi-preresearch/",
+  "indexing": {
+    "robots": "noindex,nofollow,noarchive",
+    "robots_txt": "Disallow: /",
+    "note": "申请人授权发布的内部预研资料；不索引声明不是访问控制。"
+  },
+  "navigation": [
+    {
+      "id": "page-home",
+      "label": "首页",
+      "path": "index.html"
+    },
+    {
+      "id": "page-theorem",
+      "label": "定理",
+      "path": "theorem.html"
+    },
+    {
+      "id": "page-bp-osd",
+      "label": "BP-OSD",
+      "path": "bp-osd.html"
+    },
+    {
+      "id": "page-exact-ml",
+      "label": "精确 ML",
+      "path": "exact-ml.html"
+    },
+    {
+      "id": "page-code",
+      "label": "代码与复现",
+      "path": "code.html"
+    },
+    {
+      "id": "page-scope",
+      "label": "适用范围",
+      "path": "scope.html"
+    }
+  ],
+  "documents": [
+    {
+      "id": "doc-theorem-manuscript-v1",
+      "alias": "内部预研定理",
+      "title": "Optimal Maximum-Likelihood Tie-Breaking and a Reliability–Sensitivity Identity for DQI",
+      "path": "docs/dqi_ml_tie_ieee_tit_draft.pdf",
+      "source_path": "docs/dqi_ml_tie_ieee_tit_draft.tex",
+      "kind": "theorem-manuscript"
+    },
+    {
+      "id": "cert-reliability-sensitivity-v1",
+      "title": "径向与非对称可靠性—灵敏度精确证书",
+      "path": "code/dqi_reliability_sensitivity_audit.py",
+      "kind": "certificate"
+    },
+    {
+      "id": "exp-bp-osd-260902-v1",
+      "alias": "内部预研实验",
+      "title": "72 bits / 45 checks 固定重量 BP-OSD 探针",
+      "page": "bp-osd.html",
+      "dataset": "code/results/bp_osd_dqi_probe_confirm.csv",
+      "kind": "aggregate-experiment"
+    },
+    {
+      "id": "exp-exact-ml-matched-cost-v1",
+      "alias": "内部预研实验",
+      "title": "小码全综合征精确枚举与同成本对照",
+      "page": "exact-ml.html",
+      "dataset": "code/dqi_bp_osd_matched_cost_results/decoder_metrics.csv",
+      "kind": "exact-finite-code-experiment"
+    }
+  ],
+  "terminology": {
+    "相邻接受错误对": "accepted pair",
+    "接受边": "accepted edge",
+    "接受边加权和": "accepted-edge mass",
+    "attribution": "本站工作术语，不宣称为 Jordan 等人原文术语。"
+  }
+}

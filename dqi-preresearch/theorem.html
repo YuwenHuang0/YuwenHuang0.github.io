@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="DQI 最大似然并列选择、接受边加权和与可靠性—灵敏度恒等式定理材料及精确证书。">
+  <title>定理材料｜DQI 预研材料</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="site-header"><div class="container header-inner">
+  <a class="brand" href="index.html"><span class="brand-mark">DQI</span><span class="brand-copy"><strong>解码协同设计</strong><small>Pre-research dossier</small></span></a>
+  <nav class="site-nav" aria-label="主导航"><ul><li><a href="index.html">首页</a></li><li><a href="theorem.html" aria-current="page">定理</a></li><li><a href="bp-osd.html">BP-OSD</a></li><li><a href="exact-ml.html">精确 ML</a></li><li><a href="code.html">代码与复现</a></li><li><a href="scope.html">适用范围</a></li></ul></nav>
+</div><div class="local-strip"><div class="container"><span>THEOREM · 定理与精确证书</span><span>doc-theorem-manuscript-v1</span></div></div></header>
+
+<section class="page-head"><div class="container">
+  <div class="eyebrow">内部预研定理手稿 · Mathematical basis</div><h1>内部预研定理手稿｜定理手稿</h1>
+  <p>从 ML 并列选择到可靠性灵敏度：在保持每个综合征最大似然性能不变的前提下，优化相邻接受错误对形成的接受边加权和。</p>
+  <div class="head-meta"><span><strong>资料类型：内部预研定理</strong></span><span class="doc-id">ID: doc-theorem-manuscript-v1</span><span>手稿：IEEEtran / 英文</span></div>
+  <div class="actions"><a class="button" href="docs/dqi_ml_tie_ieee_tit_draft.pdf">打开内部预研定理手稿（PDF）</a><a class="button secondary" href="docs/dqi_ml_tie_ieee_tit_draft.tex">下载原始 TeX</a></div>
+</div></section>
+
+<main class="section"><div class="narrow">
+  <nav class="anchor-links" aria-label="页内导航"><a href="#checklist">PDF 核对表</a><a href="#rule">最优规则</a><a href="#identity">可靠性恒等式</a><a href="#radial">径向最优性</a><a href="#certificate">精确证书</a><a href="#scope">理论边界</a></nav>
+
+  <div class="callout"><strong>术语说明：</strong>“相邻接受错误对”（accepted pair）指两个均被截面接受、汉明距离为 1 的错误；“接受边”（accepted edge）是连接它们的汉明立方体边。这里的模型采用独立二进制错误先验，并对约束符号造成的相位作平均。Jordan 等人的不完美译码分析已经包含正确恢复错误之间的一比特配对项（补充材料第 10 节）；本研究的新增问题是在保持精确最大似然成功概率时优化错误选择。“接受边”等只是便于画图和引用的工作称谓，不作为 Jordan 原文术语。</div>
+
+  <section id="checklist" class="mt-36">
+    <div class="eyebrow">PDF quick reference</div><h2>内部预研定理手稿 · 定理核对表</h2>
+    <p>编号对应当前实际编译 PDF，<strong>不是 Jordan 等人原文的定理编号或命题</strong>。式（3）定义接受边加权和；定理 1 的输出关系见式（4）—（5）。</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>PDF 编号及实际页码</th><th class="wrap">核对内容</th><th class="wrap">适用范围</th></tr></thead>
+      <tbody>
+        <tr><td class="mono"><a href="docs/dqi_ml_tie_ieee_tit_draft.pdf#page=2">定理 1 · 第 2 页</a></td><td class="wrap">接受边与输出关系（式 3；输出关系见式 4—5）</td><td class="wrap">相位平均、可分离二元 DQI；确定性截面、非负归一化振幅与正坐标奖励</td></tr>
+        <tr><td class="mono"><a href="docs/dqi_ml_tie_ieee_tit_draft.pdf#page=3">定理 3 · 第 3 页</a></td><td class="wrap">最优 ML 候选规则</td><td class="wrap">独立乘积先验、正坐标奖励及全部确定性精确 ML 截面</td></tr>
+        <tr><td class="mono"><a href="docs/dqi_ml_tie_ieee_tit_draft.pdf#page=4">定理 4 · 第 4 页</a></td><td class="wrap">可靠性—敏感性恒等式</td><td class="wrap">定理 3 的乘积先验与奖励设定；特定方向的右方向导数</td></tr>
+        <tr><td class="mono"><a href="docs/dqi_ml_tie_ieee_tit_draft.pdf#page=5">定理 7 · 第 5 页</a></td><td class="wrap">线性校验映射序列的香农参照</td><td class="wrap">固定综合征率的存在性序列及渐近极限；不是任一有限码或通用 LDPC 结论</td></tr>
+        <tr><td class="mono"><a href="docs/dqi_ml_tie_ieee_tit_draft.pdf#page=9">定理 13 · 第 9 页</a></td><td class="wrap">正码率多项式时间精确 ML 分离</td><td class="wrap">显式对数块构造的可行性族；非自然 LDPC 系综或通用量子优势声明</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="rule" class="mt-36">
+    <div class="eyebrow">01 / Ordered ML rule</div><h2>显式最优 ML 并列规则</h2>
+    <p>对独立比特先验 <code>0 &lt; pᵢ &lt; 1/2</code> 与正坐标奖励 <code>γᵢ</code>，定义：</p>
+    <div class="formula">λᵢ = log((1 − pᵢ) / pᵢ),    rᵢ = √((1 − pᵢ) / pᵢ)
+L(e) = Σᵢ λᵢeᵢ,          Gγ(e) = Σᵢ:eᵢ=1 γᵢrᵢ</div>
+    <div class="definition"><h3>每个综合征内依次执行</h3><ol><li><strong>主规则：</strong>最小化 <code>L(e)</code>，即精确 ML；</li><li><strong>次规则：</strong>在 ML 纤维内最大化 <code>Gγ(e)</code>；</li><li><strong>末规则：</strong>按固定、次数相容的乘法单项式序取最小代表。</li></ol><p class="mb-0">所得像集向下闭，并在所有确定性 ML 截面中全局最大化接受边加权和。手稿进一步给出“纤维内势损失 + 缺失向下边界”的精确两项缺陷，刻画全部最优解。</p></div>
+  </section>
+
+  <section id="identity" class="mt-36">
+    <div class="eyebrow">02 / Reliability–sensitivity</div><h2>最优接受边加权和 = 理想项 + 可靠性方向导数</h2>
+    <p>令 <code>Z<sub>ML</sub>(p)</code> 为经典 ML 成功概率。对特定方向 <code>vᵢ = γᵢ√pᵢ(1−pᵢ)<sup>3/2</sup></code>，定理给出：</p>
+    <div class="formula">max<sub>T: ML</sub> ℰγ,T
+  = Dᵥ⁺ Z<sub>ML</sub>(p) + bγ(p) Z<sub>ML</sub>(p)
+
+bγ(p) = Σᵢ γᵢ √(pᵢ(1−pᵢ))</div>
+    <p>方向导数非正，因此理想乘积态项是上界，其精确损失由经典 ML 可靠性的方向灵敏度给出。在相同比特、均匀奖励情形，还得到有限码长微分式与面积恒等式。</p>
+  </section>
+
+  <section id="radial" class="mt-36">
+    <div class="eyebrow">03 / Coefficientwise optimum</div><h2>径向振幅下的逐系数最优性</h2>
+    <p>对任意二元线性码，按重量优先、再以固定字典序选择每个陪集的最小重量代表，可使每个汉明层的接受边数同时达到上界 <code>Nₖ = k nₖ</code>。因此同一规范截面同时优化所有非负径向振幅剖面。</p>
+    <div class="formula">max<sub>D: ML</sub> P<sub>D</sub>(q) = W′<sub>ML</sub>(q)
+P<sub>T</sub>(q) = W′<sub>ML</sub>(q) − Δ↓(T; q)</div>
+    <p class="small muted">这里 <code>W<sub>ML</sub>(q) = Σₖ nₖqᵏ</code>；<code>Δ↓</code> 精确记录缺失的向下接受边。</p>
+  </section>
+
+  <section id="certificate" class="mt-36">
+    <div class="eyebrow">04 / Exact arithmetic certificate</div><h2>237 个径向及 79 个非对称恒等式</h2>
+    <p>证书使用 Python 标准库 <code>Fraction</code> 进行有理数精确运算，在穷举的小二元码上独立检查径向导数恒等式及非对称方向导数扩展，不以浮点近似代替证明。</p>
+    <div class="grid-2 mt-24"><div class="kpi"><strong>237</strong><span>径向精确恒等式通过</span></div><div class="kpi"><strong>79</strong><span>非对称方向恒等式通过</span></div></div>
+    <pre class="command"><span class="prompt">$ </span>python code/dqi_reliability_sensitivity_audit.py
+<span class="output">radial exact identities passed: 237
+asymmetric directional identities passed: 79</span></pre>
+    <p class="small">本次本地复跑输出如上。源代码：<a href="code/dqi_reliability_sensitivity_audit.py">dqi_reliability_sensitivity_audit.py</a>。另有 <a href="code/dqi_no_duplicate_ml_tie_certificate.py">不可分解 ML 并列分离族证书</a>。</p>
+  </section>
+
+  <section id="scope" class="mt-36">
+    <div class="callout warning"><strong>理论边界：</strong>定理解决的是给定模型内的 ML 并列设计，不会使任意码的精确 ML 译码变为多项式时间，也不蕴含通用 DQI 增益或渐近量子优势。完整假设、构造、反例范围与文献关系以手稿为准。</div>
+  </section>
+</div></main>
+
+<footer class="site-footer"><div class="container footer-grid"><div><strong>定理材料</strong><p>手稿由原始 TeX 在临时目录真实编译；未在网站中改写证明。</p></div><div class="footer-links"><a href="index.html">首页</a><a href="bp-osd.html">BP-OSD</a><a href="exact-ml.html">精确 ML</a><a href="code.html">代码与复现</a><a href="scope.html">适用范围</a></div></div><div class="container footer-bottom">PRELIMINARY RESEARCH · NOINDEX, NOFOLLOW, NOARCHIVE</div></footer>
+</body></html>

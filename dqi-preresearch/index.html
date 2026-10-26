@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="DQI 最大似然并列选择与 BP-OSD 协同设计的内部预研材料：定理、实验、代码及复现边界。">
+  <title>DQI 解码协同设计｜预研材料</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="预研材料首页">
+      <span class="brand-mark">DQI</span>
+      <span class="brand-copy"><strong>解码协同设计</strong><small>Pre-research dossier</small></span>
+    </a>
+    <nav class="site-nav" aria-label="主导航"><ul>
+      <li><a href="index.html" aria-current="page">首页</a></li>
+      <li><a href="theorem.html">定理</a></li>
+      <li><a href="bp-osd.html">BP-OSD</a></li>
+      <li><a href="exact-ml.html">精确 ML</a></li>
+      <li><a href="code.html">代码与复现</a></li>
+      <li><a href="scope.html">适用范围</a></li>
+    </ul></nav>
+  </div>
+  <div class="local-strip"><div class="container"><span>INTERNAL PRELIMINARY RESEARCH · 定理与复现资料</span><span>NOINDEX / NO EXTERNAL ASSETS</span></div></div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Theorem · Experiment · Reproduction</div>
+      <h1>让定理、实验与复现证据<br>在同一条链路上</h1>
+      <p class="hero-lead">围绕译码量子干涉（DQI）中的最大似然并列选择，集中呈现接受边加权和的精确优化、可靠性—灵敏度恒等式，以及有限码长 BP-OSD 对照实验。每项结论均附材料来源与适用边界。</p>
+      <div class="actions">
+        <a class="button" href="theorem.html">内部预研定理手稿 · 定理手稿 <span aria-hidden="true">&nbsp;→</span></a>
+        <a class="button secondary" href="exact-ml.html">内部预研实验记录 · 实验结果</a>
+      </div>
+      <div class="badges"><span class="badge">定理与证明</span><span class="badge">实验与复现</span><span class="badge">静态研究资料</span><span class="badge">无外部依赖</span><span class="badge">已设置不索引声明</span></div>
+    </div>
+    <aside class="evidence-panel" aria-label="证据总览">
+      <div class="panel-label">Evidence at a glance</div>
+      <h2>证据总览</h2>
+      <div class="stat-list">
+        <div class="stat-row"><span>径向精确恒等式</span><strong>237</strong></div>
+        <div class="stat-row"><span>非对称方向恒等式</span><strong>79</strong></div>
+        <div class="stat-row"><span>达到精确 ML 的小码实例</span><strong>2</strong></div>
+        <div class="stat-row"><span>探针每组聚合试验</span><strong>300</strong></div>
+      </div>
+      <p class="panel-note">计数来自已执行证书及原始结果文件。有限实例结果不外推为渐近量子优势。</p>
+    </aside>
+  </div>
+</section>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Review pathway</div><h2>建议审阅路径</h2><p>先核查理论命题，再区分两组实验的参数与证据强度，最后运行复现命令。</p></div><span class="section-index">01—04</span></div>
+      <div class="grid-2">
+        <a class="card card-link" href="theorem.html"><span class="card-number">01 / THEOREM</span><h3>ML 并列选择与可靠性恒等式</h3><p>查看规范选择规则、接受边加权和的最优性缺陷式，以及 237 + 79 个有理数精确证书。</p><span class="more">进入定理材料 →</span></a>
+        <a class="card card-link" href="bp-osd.html"><span class="card-number">02 / BP–OSD</span><h3>固定重量错误译码探针</h3><p>72 bits、45 checks、7 errors；3 个矩阵 × 100 次试验，比较 BP、OSD-0/1/2 的聚合成功率。</p><span class="more">核对参数与表值 →</span></a>
+        <a class="card card-link" href="exact-ml.html"><span class="card-number">03 / EXACT ML</span><h3>同接受概率下的严格增益</h3><p>9×6 与 12×7 小码达到精确 ML；分别获得 0.003937104 与 0.004217472 的条件得分增益。</p><span class="more">查看精确枚举 →</span></a>
+        <a class="card card-link" href="code.html"><span class="card-number">04 / REPRODUCE</span><h3>代码、原始数据与复现命令</h3><p>下载脚本、CSV、JSON 和实验报告；区分标准库证书与依赖 NumPy 的数值实验。</p><span class="more">打开复现清单 →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Principal findings</div><h2>三项可核查结论</h2></div><span class="section-index">A—C</span></div>
+      <div class="grid-3">
+        <article class="card"><h3>最优并列规则是显式的</h3><p>在乘积先验与正坐标奖励模型内，先最小化加权对数似然，再最大化向下边势，最后用固定次数相容单项式序破并列。证明给出精确两项缺陷。</p></article>
+        <article class="card"><h3>增益不改变经典 ML 表现</h3><p>两个精确小码实例中，对照使用相同 OSD 候选列表和最小重量主指标；接受概率 Z 完全相同，仅接受边加权和及相应得分改变。</p></article>
+        <article class="card"><h3>有限结果不等于渐近优势</h3><p>其他实例只具有受限候选列表意义；BP-OSD 探针只保存聚合数据。本站不作通用增益、量子霸权或超多项式加速声明。</p></article>
+      </div>
+      <div class="callout mt-24"><strong>统一术语：</strong>本站使用“相邻接受错误对 / 接受边”（<span lang="en">accepted pair / accepted edge</span>）及“接受边加权和”（<span lang="en">accepted-edge mass</span>）。这些是本站为清晰表述采用的工作术语，<strong>不是 Jordan 等人原文术语</strong>。</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Document registry</div><h2>材料索引</h2><p>稳定文档 ID 集中登记于 <a href="site_config.json">site_config.json</a>，公开基础 URL 留空。</p></div></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>稳定 ID</th><th class="wrap">材料</th><th>类型</th><th>入口</th></tr></thead>
+        <tbody>
+          <tr><td class="doc-id">doc-theorem-manuscript-v1</td><td class="wrap">DQI 最优 ML 并列选择定理手稿</td><td>PDF / TeX</td><td><a href="theorem.html">定理页</a></td></tr>
+          <tr><td class="doc-id">cert-reliability-sensitivity-v1</td><td class="wrap">径向与非对称恒等式精确证书</td><td>Python</td><td><a href="code/dqi_reliability_sensitivity_audit.py">源文件</a></td></tr>
+          <tr><td class="doc-id">exp-bp-osd-260902-v1</td><td class="wrap">72×45 固定重量 BP-OSD 探针</td><td>HTML / CSV</td><td><a href="bp-osd.html">实验页</a></td></tr>
+          <tr><td class="doc-id">exp-exact-ml-matched-cost-v1</td><td class="wrap">小码精确 ML 与同成本对照</td><td>HTML / CSV</td><td><a href="exact-ml.html">实验页</a></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid"><div><strong>DQI 解码协同设计 · 预研材料</strong><p>本地静态评审副本。robots 指令用于声明不索引意图，不构成访问控制。</p></div><div class="footer-links"><a href="theorem.html">定理</a><a href="bp-osd.html">BP-OSD</a><a href="exact-ml.html">精确 ML</a><a href="code.html">代码与复现</a><a href="scope.html">适用范围</a><a href="site_config.json">配置</a></div></div>
+  <div class="container footer-bottom">NO PUBLIC DEPLOYMENT · NO EXTERNAL TRACKING · STABLE DOCUMENT IDS</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="72 bits、45 checks、7 errors 的 BP-OSD 固定重量探针：真实参数、聚合结果与复现命令。">
+  <title>BP-OSD 探针｜DQI 预研材料</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="site-header"><div class="container header-inner">
+  <a class="brand" href="index.html"><span class="brand-mark">DQI</span><span class="brand-copy"><strong>解码协同设计</strong><small>Pre-research dossier</small></span></a>
+  <nav class="site-nav" aria-label="主导航"><ul><li><a href="index.html">首页</a></li><li><a href="theorem.html">定理</a></li><li><a href="bp-osd.html" aria-current="page">BP-OSD</a></li><li><a href="exact-ml.html">精确 ML</a></li><li><a href="code.html">代码与复现</a></li><li><a href="scope.html">适用范围</a></li></ul></nav>
+</div><div class="local-strip"><div class="container"><span>EXPERIMENT 01 · 固定重量错误探针</span><span>SEED 260902</span></div></div></header>
+
+<section class="page-head"><div class="container">
+  <div class="eyebrow">内部预研实验记录 · BP + ordered-statistics decoding</div><h1>内部预研实验记录｜72 × 45 BP-OSD 探针</h1>
+  <p>比较列重 5 与 9 的满行秩随机列规则稀疏矩阵，在固定 7 个错误下，BP 与 OSD-0/1/2 的精确错误恢复成功率。</p>
+  <div class="head-meta"><span><strong>资料类型：内部预研实验</strong></span><span class="doc-id">ID: exp-bp-osd-260902-v1</span><span>3 个矩阵 × 100 次试验 / 配置</span></div>
+  <div class="actions"><a class="button" href="code/results/bp_osd_dqi_probe_confirm.csv">下载原始 CSV</a><a class="button secondary" href="#reproduce">复现命令</a></div>
+</div></section>
+
+<main class="section"><div class="container">
+  <nav class="anchor-links" aria-label="页内导航"><a href="#parameters">参数</a><a href="#results">结果</a><a href="#evidence">证据边界</a><a href="#reproduce">复现</a></nav>
+  <section id="parameters">
+    <div class="section-head"><div><div class="eyebrow">01 / Parameters</div><h2>实验设置</h2><p>下表对应原始确认数据，不与另一组小码全综合征实验混用。</p></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>参数</th><th>值</th><th class="wrap">说明</th></tr></thead>
+      <tbody>
+        <tr><td>随机种子</td><td class="mono">260902</td><td class="wrap">NumPy PCG64 默认随机数生成器</td></tr>
+        <tr><td>码长 / 校验数</td><td class="mono">72 bits / 45 checks</td><td class="wrap">每个矩阵均检查满行秩</td></tr>
+        <tr><td>列重</td><td class="mono">5, 9</td><td class="wrap">每列无重复地选择校验位置</td></tr>
+        <tr><td>错误</td><td class="mono">7 errors</td><td class="wrap">固定重量；7/72 ≈ 0.097222，不是逐比特独立 BSC 抽样</td></tr>
+        <tr><td>试验规模</td><td class="mono">3 × 100 = 300</td><td class="wrap">每个“列重 × 错误重量”配置 3 个矩阵，每个矩阵 100 次</td></tr>
+        <tr><td>BP 迭代</td><td class="mono">25</td><td class="wrap">实数 sum-product；默认阻尼参数 0.25</td></tr>
+        <tr><td>OSD 阶数</td><td class="mono">0, 1, 2</td><td class="wrap">以汉明重量为主指标，输出均校验 He = s</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="results" class="mt-36">
+    <div class="section-head"><div><div class="eyebrow">02 / Aggregate results</div><h2>聚合成功率</h2><p>每个数值均基于 300 次试验；保留原始 CSV 的三位小数展示。</p></div></div>
+    <div class="table-wrap"><table>
+      <caption>成功率 = 精确恢复原错误向量的次数 / 300；越高越好。</caption>
+      <thead><tr><th>列重</th><th class="num">BP</th><th class="num">OSD-0</th><th class="num">OSD-1</th><th class="num">OSD-2</th></tr></thead>
+      <tbody><tr><td class="mono">5</td><td class="num">0.077</td><td class="num">0.723</td><td class="num">0.900</td><td class="num positive">0.973</td></tr><tr><td class="mono">9</td><td class="num">0.000</td><td class="num">0.160</td><td class="num">0.460</td><td class="num positive">0.793</td></tr></tbody>
+    </table></div>
+    <div class="table-wrap"><table>
+      <caption>原始 CSV 同时记录的平均候选数；可用于核对 OSD 搜索规模。</caption>
+      <thead><tr><th>列重</th><th class="num">OSD-0</th><th class="num">OSD-1</th><th class="num">OSD-2</th></tr></thead>
+      <tbody><tr><td class="mono">5</td><td class="num">1.0</td><td class="num">28.0</td><td class="num">379.0</td></tr><tr><td class="mono">9</td><td class="num">1.0</td><td class="num">28.0</td><td class="num">379.0</td></tr></tbody>
+    </table></div>
+    <div class="callout"><strong>读数：</strong>在这两组有限参数下，提高 OSD 阶数带来明显恢复率提升；列重 9 的对应数值整体低于列重 5。该比较不估计量子线路成本，也不证明任何渐近标度。</div>
+  </section>
+
+  <section id="evidence" class="mt-36">
+    <div class="eyebrow">03 / Evidence boundary</div><h2>原始 CSV 不含逐次日志</h2>
+    <div class="callout warning"><p><strong>必须保留的限制：</strong>原始文件只有两行聚合数据及均值字段，没有逐矩阵、逐试验的错误向量、综合征、译码输出、运行时间或失败原因日志。</p><p class="mb-0">因此不能从该 CSV 重建每次试验，也不能据此进行逐次配对检验或重新计算置信区间。复跑会生成新的聚合结果；这里不声称存在未保存的逐次证据。</p></div>
+  </section>
+
+  <section id="reproduce" class="mt-36">
+    <div class="eyebrow">04 / Reproduction</div><h2>复现两行聚合结果</h2>
+    <p>需要 Python 与 NumPy。在网站根目录执行以下命令；包装脚本显式固定列重列表 <code>[5, 9]</code>、错误率输入 <code>[0.1]</code>（经程序取整为 7 errors）及全部其余参数。</p>
+    <pre class="command"><span class="prompt">$ </span>python -m pip install -r code/requirements.txt
+<span class="prompt">$ </span>python code/reproduce_bp_osd_confirm.py</pre>
+    <p>默认写入 <code>code/results/bp_osd_dqi_probe_confirm.reproduced.csv</code>，避免覆盖原始 CSV。也可指定输出：</p>
+    <pre class="command"><span class="prompt">$ </span>python code/reproduce_bp_osd_confirm.py --output code/results/my_confirm.csv</pre>
+    <ul class="file-list">
+      <li><div><strong><a href="code/reproduce_bp_osd_confirm.py">reproduce_bp_osd_confirm.py</a></strong><small>参数固定的复现入口</small></div><span class="tag">wrapper</span></li>
+      <li><div><strong><a href="code/bp_osd_dqi_probe.py">bp_osd_dqi_probe.py</a></strong><small>BP、OSD、矩阵生成与聚合实现</small></div><span class="tag">source</span></li>
+      <li><div><strong><a href="code/results/bp_osd_dqi_probe_confirm.csv">bp_osd_dqi_probe_confirm.csv</a></strong><small>保留的原始聚合数据</small></div><span class="tag">2 rows</span></li>
+    </ul>
+  </section>
+</div></main>
+
+<footer class="site-footer"><div class="container footer-grid"><div><strong>BP-OSD 探针</strong><p>有限长度、固定错误重量、聚合结果；不附会未保存的逐次日志。</p></div><div class="footer-links"><a href="index.html">首页</a><a href="theorem.html">定理</a><a href="exact-ml.html">精确 ML</a><a href="code.html">代码与复现</a><a href="scope.html">适用范围</a></div></div><div class="container footer-bottom">PRELIMINARY RESEARCH · NOINDEX, NOFOLLOW, NOARCHIVE</div></footer>
+</body></html>

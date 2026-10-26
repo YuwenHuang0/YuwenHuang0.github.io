@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="DQI 预研材料的结论范围、实验限制、术语约定与不索引声明。">
+  <title>适用范围｜DQI 预研材料</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="site-header"><div class="container header-inner">
+  <a class="brand" href="index.html"><span class="brand-mark">DQI</span><span class="brand-copy"><strong>解码协同设计</strong><small>Pre-research dossier</small></span></a>
+  <nav class="site-nav" aria-label="主导航"><ul><li><a href="index.html">首页</a></li><li><a href="theorem.html">定理</a></li><li><a href="bp-osd.html">BP-OSD</a></li><li><a href="exact-ml.html">精确 ML</a></li><li><a href="code.html">代码与复现</a></li><li><a href="scope.html" aria-current="page">适用范围</a></li></ul></nav>
+</div><div class="local-strip"><div class="container"><span>SCOPE · 结论边界与阅读约定</span><span>FINITE EVIDENCE</span></div></div></header>
+
+<section class="page-head"><div class="container">
+  <div class="eyebrow">Claims and limitations</div><h1>把结论限定在证据能够支持的范围</h1>
+  <p>理论最优性、有限码长实验和可扩展量子算法是三个不同层次。本站分别标注，避免从局部严格结果跨层外推。</p>
+</div></section>
+
+<main class="section"><div class="container">
+  <section>
+    <div class="section-head"><div><div class="eyebrow">01 / Supported claims</div><h2>现有材料支持的结论</h2></div></div>
+    <div class="grid-2">
+      <article class="card"><h3>定理层面</h3><ul class="check-list"><li>在相位平均、可分离二元 DQI 模型与乘积先验下，给出完整确定性精确 ML 并列类的显式最优规则。</li><li>最优接受边加权和与经典 ML 成功概率的方向导数之间存在精确恒等式。</li><li>径向情形下规范截面对所有非负径向振幅逐系数最优。</li><li>有理数证书通过 237 个径向和 79 个非对称恒等式。</li></ul></article>
+      <article class="card"><h3>实验层面</h3><ul class="check-list"><li>9×6、12×7 两个实例达到精确 ML，并在 Z 完全相同下分别得到 ΔJ = 0.003937104 与 0.004217472。</li><li>另外三个实例在受限 OSD 列表内保持同 Z 并改善 J、R。</li><li>72×45 探针给出列重 5、9 在 7 errors 下的 BP 与 OSD-0/1/2 聚合成功率。</li><li>配对采样提供无偏的接受边加权和估计路径。</li></ul></article>
+    </div>
+  </section>
+
+  <section class="mt-36">
+    <div class="section-head"><div><div class="eyebrow">02 / Unsupported extrapolations</div><h2>现有材料不支持的结论</h2></div></div>
+    <div class="grid-2">
+      <article class="card"><h3>算法与复杂性</h3><ul class="cross-list"><li>不声称任意码的精确 ML 可多项式时间实现。</li><li>不声称对一般 LDPC 系综存在非消失渐近增益。</li><li>不声称已有完整、低开销的相干软 BP-OSD 线路。</li><li>不声称超多项式量子加速、量子霸权或通用 DQI 优势。</li></ul></article>
+      <article class="card"><h3>数据与统计</h3><ul class="cross-list"><li>不把两个精确小码的结果推广到其他实例。</li><li>不把受限列表结果称为全局精确 ML。</li><li>不从聚合 CSV 虚构逐次日志、失败类型或置信区间。</li><li>不把枚举表的离线运行时间当作可扩展在线成本。</li></ul></article>
+    </div>
+  </section>
+
+  <section class="mt-36">
+    <div class="eyebrow">03 / No-gain regimes</div><h2>并列选择路线何时没有增益</h2>
+    <div class="definition"><ul><li>所有相关综合征都有唯一最小成本代表；</li><li>基线已经采用规范、向下闭的 ML 截面；</li><li>DQI 完全处于保证唯一译码的半径内；</li><li>连续软可靠性消除了所有精确 ML 并列；</li><li>接受概率趋于 1 且对并列敏感的边界质量消失；</li><li>OSD 测试模式数量或相干实现成本抵消潜在收益。</li></ul><p class="small muted mb-0">这些是否定条件用于约束研究叙事，不是对所有实际系统的完整分类。</p></div>
+  </section>
+
+  <section class="mt-36">
+    <div class="eyebrow">04 / Terminology</div><h2>术语与归属</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>本站中文</th><th>英文</th><th class="wrap">含义</th></tr></thead>
+      <tbody>
+        <tr><td>相邻接受错误对</td><td class="mono">accepted pair</td><td class="wrap">两个均被接受且汉明距离为 1 的错误向量</td></tr>
+        <tr><td>接受边</td><td class="mono">accepted edge</td><td class="wrap">汉明立方体中连接上述一对错误的无向边</td></tr>
+        <tr><td>接受边加权和</td><td class="mono">accepted-edge mass</td><td class="wrap">接受边对应振幅乘积（及可选坐标奖励）的总和</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout warning"><strong>归属声明：</strong>上述为本站为统一表达采用的工作术语，<strong>不是 Jordan 等人原文术语</strong>。定理手稿中的引用关系与已有工具归属以原始参考文献和论述为准。</div>
+  </section>
+
+  <section class="mt-36">
+    <div class="eyebrow">05 / Research materials on the author website</div><h2>网站阅读与不索引声明</h2>
+    <div class="grid-2">
+      <article class="card"><h3>已采取的技术声明</h3><p>每个 HTML 页面均含 <code>noindex,nofollow,noarchive</code>；本站附有 <a href="robots.txt">robots.txt</a> 声明，个人网站根目录另对本资料目录设置不抓取路径。全站只使用相对本地资源，无第三方脚本、字体、图片或统计服务。</p></article>
+      <article class="card"><h3>声明不等于访问控制</h3><p>robots 与 meta 只表达不希望索引、跟随或存档的意图，不能阻止文件被访问或复制。材料发布于申请人个人网站的 <code>/dqi-preresearch/</code> 目录。HTML 页面设置不索引声明，主站 robots.txt 对该目录声明不抓取；这些声明不是访问控制，也不能保证 PDF 不被搜索引擎收录。</p></article>
+    </div>
+  </section>
+</div></main>
+
+<footer class="site-footer"><div class="container footer-grid"><div><strong>适用范围</strong><p>严格的结论需要同样严格的边界。</p></div><div class="footer-links"><a href="index.html">首页</a><a href="theorem.html">定理</a><a href="bp-osd.html">BP-OSD</a><a href="exact-ml.html">精确 ML</a><a href="code.html">代码与复现</a><a href="site_config.json">配置</a></div></div><div class="container footer-bottom">PRELIMINARY RESEARCH · NOINDEX, NOFOLLOW, NOARCHIVE</div></footer>
+</body></html>

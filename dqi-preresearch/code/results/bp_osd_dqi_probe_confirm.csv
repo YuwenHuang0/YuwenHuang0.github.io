@@ -1,0 +1,3 @@
+n_bits,n_checks,column_degree,mean_row_degree,error_weight,error_rate,trials,bp_success,osd0_success,osd0_mean_candidates,osd1_success,osd1_mean_candidates,osd2_success,osd2_mean_candidates
+72,45,5,8.0,7,0.09722222222222222,300,0.07666666666666666,0.7233333333333334,1.0,0.9,28.0,0.9733333333333334,379.0
+72,45,9,14.4,7,0.09722222222222222,300,0.0,0.16,1.0,0.46,28.0,0.7933333333333333,379.0

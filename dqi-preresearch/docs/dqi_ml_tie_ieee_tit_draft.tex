@@ -1,0 +1,2165 @@
+\documentclass[journal]{IEEEtran}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,multirow}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\allowdisplaybreaks
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\F}{\mathbb F}
+\newcommand{\ind}{\mathbf 1}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\Cut}{\operatorname{Cut}}
+\newcommand{\BSC}{\operatorname{BSC}}
+
+\title{Optimal Maximum-Likelihood Tie-Breaking and a Reliability--Sensitivity Identity for Decoded Quantum Interferometry}
+
+\author{Yuwen Huang and Wai Ho Mow%
+\thanks{Manuscript draft, August 2026. Author affiliations and funding acknowledgments will be inserted before submission.}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+A deterministic syndrome decoder used coherently in decoded quantum
+interferometry (DQI) determines both its accepted probability and which
+accepted errors interfere through one-bit pairs.  We optimize the latter
+quantity while holding classical maximum-likelihood (ML) performance fixed.
+The model is the phase-averaged separable binary DQI accepted-pair functional,
+with independent probabilities $0<p_i<1/2$, positive coordinate rewards, and
+deterministic exact-ML syndrome sections.  We solve this complete tie class.
+The optimal rule minimizes weighted log-likelihood, maximizes an explicit
+reward-weighted downward-edge potential within every ML tie, and resolves the
+remaining tie by a degree-compatible monomial order.  Its representatives are
+downward closed, and an exact two-term defect quantifies every competing ML
+section.
+
+The same optimizer yields a reliability--sensitivity identity: its optimal
+interference mass equals an ideal product-state term plus a directional
+derivative of the classical ML success probability.  In the identical-bit,
+uniform-reward case, integration gives a finite-blocklength area law that
+makes the complete optimal DQI-deficit curve and the ML reliability curve
+determine one another.  At every syndrome rate $r$, there exist full-rank
+linear syndrome-map sequences whose optimal exact-ML score has the explicit
+Shannon-threshold limit
+$1/2+\min\{p,q_r\}\sqrt{(1-p)/p}$ for the optimal score, where
+$h_2(q_r)=r$.  The canonical section is also coefficientwise optimal
+for every nonnegative radial amplitude profile.  Finally, a sharpened
+ambiguity-mass bound identifies a no-gain regime.  Complementary constructions
+give a positive-rate separation with polynomial-time exact ML and a connected,
+coordinate-indecomposable linear-time witness without weight-two codewords.
+Independent exhaustive
+certificates verify the identities, constants, and stated scope.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Decoded quantum interferometry, maximum-likelihood decoding, decoder ties,
+reliability functions, coset leaders, product measures.
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+\IEEEPARstart{M}{aximum-likelihood} decoding treats each received syndrome
+separately.  If several representatives have the same largest likelihood,
+any deterministic tie rule gives the same frame-success probability.  This
+observation makes tie-breaking largely invisible to conventional block-error
+analysis; indeed, decoder ties do not change the error exponent of a code
+sequence on the binary symmetric channel (BSC)~\cite{chang2021ties,chang2023ties}.
+
+Decoded quantum interferometry (DQI) changes the performance functional.
+DQI uses a reversible classical decoder inside a quantum circuit to reduce a
+structured optimization problem to decoding~\cite{jordan2025dqi}.  After
+postselection, the output quality depends both on the probability mass
+accepted by the decoder and on coherent pairs of accepted errors.  Two
+decoders can therefore have the same likelihood in every syndrome and still
+prepare different states.  The distinction is operational: changing a tie at
+one syndrome can destroy a one-bit pair with a neighboring syndrome even
+though neither decoder incurs an additional classical frame error.
+
+This paper asks a narrow coding-theoretic question.
+
+\begin{quote}
+\emph{Among deterministic ML syndrome decoders with identical conventional
+performance, which tie rule maximizes the DQI accepted-pair objective?}
+\end{quote}
+
+The question differs from designing a decoder for bit-error probability or
+another classical loss~\cite{kiely1995}.  It also differs from improving the
+shell-wise imperfect-decoding bounds in the original DQI analysis and recent
+extensions~\cite{jordan2025dqi,gao2026}.  Shell counts describe how much
+probability mass a decoder accepts at each Hamming weight.  The exact DQI term
+also records how those accepted errors are joined by edges of the Hamming
+cube.  The latter is a two-point statistic.
+The main result below nevertheless shows that its unrestricted ML optimum has
+a universal canonical form.
+
+\subsection{Contributions and scope}
+
+Within the phase-averaged separable binary accepted-pair model, the paper
+makes four principal contributions.
+
+\begin{enumerate}
+\item We solve the complete class of deterministic exact-ML syndrome sections
+for independent binary product priors $0<p_i<1/2$ and positive coordinate
+rewards.  The optimal syndrome-local rule minimizes weighted log-likelihood,
+maximizes an explicit reward-weighted downward-edge potential, and then uses a
+fixed degree-compatible multiplicative monomial order.  Its image is downward
+closed.  An exact gap identity separates fiberwise potential loss from missing
+boundary edges and characterizes every optimizer.
+
+\item We connect the optimum exactly to classical decoding reliability.  The
+optimal accepted-edge mass is an ideal product-state term plus a one-sided
+directional derivative of $Z_{\rm ML}(\boldsymbol p)$.  In the radial case this
+becomes a differential identity and a finite-blocklength area law for
+$-m^{-1}\log Z_{\rm ML}(p)$.  Product-measure derivative formulas are
+classical~\cite{margulis1974,russo1981}; the new point is that DQI-optimal ML
+  tie-breaking realizes the active directional derivative and converts it into
+  an exact interference score.  As a concrete coding consequence, we prove the
+  existence of full-rank linear syndrome-map sequences at every fixed syndrome rate and
+  derive for those sequences a sharp Shannon threshold, correct-decoding exponent, limiting
+optimal DQI score, and integrated DQI deficit.
+
+\item In the identical-bit, uniform-reward setting, one canonical section is
+coefficientwise optimal in every Hamming layer and therefore maximizes every
+nonnegative radial accepted-edge mass simultaneously.  The monotone structure
+of suitably ordered coset leaders is classical
+\cite{helleseth2005,yasunaga2010,borges2010coset,borges2012leaders}; our result
+is its DQI coefficientwise optimality, closed-form optimum, and exact defect.
+
+\item We prove a stability bound in terms of the total selected ML mass on
+ambiguous syndromes.  If this mass vanishes relative to acceptance, all
+deterministic ML tie rules have asymptotically identical DQI scores.  A
+  quotient lift and a coordinate-indecomposable fixed-distance family show that
+  a nonvanishing separation is possible when an ambiguity budget remains.  A
+  logarithmic-block construction further gives positive rate, nonvanishing
+  acceptance, and polynomial-time exact ML.  In all cases the compared rules
+  have identical ML likelihood, acceptance, Hamming-layer profile, and matched
+  asymptotic decoding cost.
+\end{enumerate}
+
+The accepted-pair expression itself comes from the imperfect-decoder DQI
+analysis~\cite{jordan2025dqi}; coordinate-weighted versions appear in
+multivariate DQI~\cite{bu2026}.  Weighted-Hamming ML decoding, canonical
+coset-leader down-sets, Maximum Section, and DE-NFG theory are also prior
+tools~\cite{bitzer2024,grochow2018,cao2017}.  We use them without claiming
+their invention.  Secondary sections record a paired estimator, a restricted
+compatible-section formulation, and a real-PSD DE-NFG realization for offline
+evaluation.
+
+The results do not establish quantum supremacy, a universal gain over all ML
+decoders, or an asymptotic gain for generic LDPC ensembles.  Such claims depend
+on the optimization instance and on the full reversible cost.  Recent work
+likewise emphasizes that DQI advantage is structure dependent
+\cite{anschuetz2025,kramer2026}.
+
+\section{Decoder Sections and the DQI Pair Functional}
+\label{sec:metric}
+
+Unless a base is displayed explicitly, $\log$ denotes the natural logarithm.
+
+Let $H\in\F_2^{\rho\times m}$ have full row rank, let
+$C=\ker H$, and let $\mathcal S=\im H=\F_2^\rho$.  A deterministic syndrome
+decoder is a section
+\begin{equation}
+ D:\mathcal S\longrightarrow\F_2^m,\qquad HD(s)=s.
+ \label{eq:section}
+\end{equation}
+Its image $T_D=D(\mathcal S)$ contains one representative from every coset of
+$C$.  We interchangeably call $D$ a decoder and $T_D$ a transversal.
+
+Write $\mathbf e_i$ for the $i$th unit vector and $e_i$ for coordinate $i$ of
+$e$.  Let $\{a_e:e\in\F_2^m\}$ be nonnegative real amplitudes normalized by
+$\sum_ea_e^2=1$.  Let coordinate $i$ have reward $\gamma_i>0$ and put
+$\Gamma=\sum_i\gamma_i$.  Define the accepted norm and weighted undirected
+accepted-edge mass
+\begin{align}
+ Z_{D,a}&=\sum_{e\in T_D}a_e^2,
+ \label{eq:radial-Z}\\
+ \mathcal E_{D,a,\gamma}
+ &=\sum_{e\in T_D}\sum_{\substack{i:e_i=0\\e+\mathbf e_i\in T_D}}
+ \gamma_i a_ea_{e+\mathbf e_i}.
+ \label{eq:radial-E}
+\end{align}
+Every Hamming-cube edge is counted once.
+
+\begin{theorem}[Generalized accepted-pair identity]
+\label{thm:section-identity}
+For the phase-averaged binary DQI objective,
+\begin{align}
+ \mathcal J_{D,a,\gamma}
+ &=\frac12+\frac{\mathcal E_{D,a,\gamma}}{\Gamma Z_{D,a}},
+ \label{eq:radial-J}\\
+ R_{D,a,\gamma}&:=Z_{D,a}
+ \left(\mathcal J_{D,a,\gamma}-\frac12\right)
+          =\frac{\mathcal E_{D,a,\gamma}}\Gamma.
+ \label{eq:radial-R}
+\end{align}
+\end{theorem}
+
+\begin{proof}
+Jordan \emph{et al.} derive the deterministic imperfect-decoder pair
+expression for shell amplitudes, and Bu \emph{et al.} give its weighted
+block-objective extension~\cite[Supplementary Secs.~10.3--10.4]{jordan2025dqi}%
+~\cite{bu2026}.  For completeness, the phase-averaged functional is the
+expectation of the following normalized accepted-state observable:
+\begin{equation}
+ |\phi_{D,a}\rangle=\frac1{\sqrt{Z_{D,a}}}
+    \sum_{e\in T_D}a_e|e\rangle,\qquad
+ O_\gamma=\frac12I+\frac1{2\Gamma}\sum_i\gamma_iX_i.
+ \label{eq:accepted-state-observable}
+\end{equation}
+Expanding $\langle\phi_{D,a}|O_\gamma|\phi_{D,a}\rangle$ counts both
+orientations of every accepted $i$-edge through $X_i$; the factor $1/2$
+leaves each undirected edge once.  This proves~\eqref{eq:radial-J}, and
+multiplication by $Z_{D,a}$ proves~\eqref{eq:radial-R}.
+\end{proof}
+
+The theorem is a direct arbitrary-amplitude, separable-reward extension of
+the cited DQI identities; the results below optimize the decoder within this
+functional.  The rewards $\gamma_i$ cover the separable coordinate-weighted
+binary case motivated by multivariate DQI~\cite{bu2026}; they do not cover its
+complete polynomial family.  A radial profile has
+$a_e=a_{\wt(e)}$ and normalization
+$\sum_k\binom{m}{k}a_k^2=1$.  For the Bernoulli radial profile, fix
+$0<p<1/2$, set $\gamma_i=1$, and write
+\begin{equation}
+ a_k=p^{k/2}(1-p)^{(m-k)/2},\qquad q=\frac{p}{1-p}.
+ \label{eq:prior}
+\end{equation}
+The product-amplitude specialization is operationally elementary: for
+independent probabilities $p_i$, the input state is
+\begin{equation}
+ |\psi_{\boldsymbol p}\rangle
+ =\bigotimes_{i=1}^m
+ \left(\sqrt{1-p_i}\,|0\rangle+\sqrt{p_i}\,|1\rangle\right).
+ \label{eq:product-state}
+\end{equation}
+It is prepared by one single-qubit rotation per coordinate, followed by the
+same coherent evaluation and uncomputation of the deterministic decoder used
+in DQI.  Thus the product-prior results optimize an efficiently preparable
+separable specialization of the phase-averaged binary functional rather than
+an abstract amplitude oracle.  We do not assert that every finite-degree
+shell-polynomial state in the original DQI construction has this product
+form.
+Define
+\begin{align}
+ W_D(q)&=\sum_{e\in T_D}q^{\wt(e)},
+ \label{eq:W}\\
+ P_D(q)&=\sum_{\substack{\{e,e'\}\subseteq T_D\\d_H(e,e')=1}}
+ q^{\min\{\wt(e),\wt(e')\}}.
+ \label{eq:P}
+\end{align}
+Then Theorem~\ref{thm:section-identity} specializes to
+\begin{align}
+ Z_D&=(1-p)^mW_D(q),
+ \label{eq:Z}\\
+ \mathcal J_D&=\frac12+\frac{\sqrt q}{m}\frac{P_D(q)}{W_D(q)},
+ \label{eq:J}\\
+ R_D&=(1-p)^m\frac{\sqrt q}{m}P_D(q).
+ \label{eq:R}
+\end{align}
+
+The decomposition is central.  Conventional ML decoding maximizes one vertex
+weight independently in every coset.  Equation~\eqref{eq:P} couples adjacent
+cosets.  Consequently, equal $W_D$ does not imply equal $P_D$.
+
+\subsection{A paired-sampling identity}
+
+The pair term can be estimated without enumerating the transversal.  Draw a
+coordinate $I$ uniformly from $\{1,\ldots,m\}$ and draw the other $m-1$ bits
+i.i.d. from $\operatorname{Bernoulli}(p)$.  Let $E^{(0)}$ and $E^{(1)}$ be the
+two errors obtained by fixing bit $I$ to zero and one.  Define
+$A_D(e)=\ind\{D(He)=e\}$.
+
+\begin{proposition}[Unbiased pair estimator]
+\label{prop:paired-sampling}
+Put
+\begin{equation}
+ \Xi_D:=\Pr\{A_D(E^{(0)})=1,\ A_D(E^{(1)})=1\}.
+ \label{eq:paired-event}
+\end{equation}
+Then
+\begin{equation}
+ R_D=\frac{(1-p)^m\sqrt q}{m}P_D(q)
+     =\sqrt{p(1-p)}\,\Xi_D.
+ \label{eq:paired-sampling}
+\end{equation}
+Thus two deterministic decoder calls give a bounded unbiased sample of
+$R_D$.
+\end{proposition}
+
+\begin{proof}
+For a fixed coordinate and fixed values of the other bits, the sampling
+probability of the common $m-1$-bit pattern is exactly the product prior with
+the varying bit removed.  Multiplication by $\sqrt{p(1-p)}$ restores the
+geometric mean of the two endpoint probabilities.  Averaging over $I$ counts
+every accepted undirected edge once and divides by $m$.
+\end{proof}
+
+Hoeffding's inequality gives additive accuracy $\varepsilon$ with
+$O(\varepsilon^{-2}\log(1/\delta))$ paired samples at confidence $1-\delta$,
+independent of blocklength.  Estimating the conditional score additionally
+requires stable division by $Z_D$; this is well conditioned when $Z_D$ is
+bounded below.  Equation~\eqref{eq:paired-sampling} is the matched baseline
+for any approximate DE-NFG or Bethe estimator.
+
+\section{Universal Optima over ML Tie Rules}
+\label{sec:universal-ml}
+
+\subsection{Asymmetric product priors}
+
+First consider independent, nonidentical error bits with
+$0<p_i<1/2$ and
+\begin{equation}
+ \pi(e)=\prod_{i=1}^m p_i^{e_i}(1-p_i)^{1-e_i}.
+ \label{eq:product-prior}
+\end{equation}
+Use the product amplitudes $a_e=\sqrt{\pi(e)}$ and retain arbitrary positive
+coordinate rewards $\gamma_i$ from Section~\ref{sec:metric}.
+In this subsection, write
+$\mathcal E_{\gamma,T}:=\mathcal E_{T,\sqrt{\pi},\gamma}$ and
+$Z_T:=Z_{T,\sqrt{\pi}}$.
+Define
+\begin{equation}
+ \lambda_i=\log\frac{1-p_i}{p_i},\qquad
+ r_i=e^{\lambda_i/2}=\sqrt{\frac{1-p_i}{p_i}},
+ \label{eq:lambda-r}
+\end{equation}
+and, for a binary word $e$,
+\begin{equation}
+ L(e)=\sum_i\lambda_i e_i,\qquad
+ G_\gamma(e)=\sum_{i:e_i=1}\gamma_i r_i.
+ \label{eq:L-G}
+\end{equation}
+Exact ML decoding minimizes $L(e)$ within each syndrome class.  The second
+quantity is the total reward-weighted amplitude of all downward incidences
+charged to $e$.
+
+\begin{theorem}[Optimal ML tie rule for product priors and coordinate rewards]
+\label{thm:asymmetric-optimum}
+For every product prior~\eqref{eq:product-prior} and every $\gamma_i>0$, apply
+the ordered rule
+\begin{align}
+ &\text{primary: minimize }L(e),\nonumber\\
+ &\text{secondary: maximize }G_\gamma(e),\nonumber\\
+ &\text{tertiary: take the least word in a fixed degree-compatible}
+ \nonumber\\[-0.2em]
+ &\hspace{5.7em}\text{multiplicative monomial order}.
+ \label{eq:product-rule}
+\end{align}
+Its image $T_\star$ is downward closed and globally maximizes the DQI
+accepted-edge mass over all deterministic ML sections.
+
+More precisely, let $e_s$ be the representative chosen by any ML section
+$T$, let $e_s^\star$ be the choice in~\eqref{eq:product-rule}, and let
+$\pi_s=\pi(e_s)=\pi(e_s^\star)$.  Define
+\begin{equation}
+ B_\downarrow(T)=\sum_s\pi_s\sum_{i:e_{s,i}=1}\gamma_i r_i
+ \ind\{e_s+\mathbf e_i\notin T\}.
+ \label{eq:asym-boundary}
+\end{equation}
+Then the exact accepted-edge mass and exact optimality gap are
+\begin{align}
+ \mathcal E_{\gamma,T}
+ &=\sum_s\pi_sG_\gamma(e_s)-B_\downarrow(T),
+ \label{eq:asym-edge}\\
+ \mathcal E_{\gamma,T_\star}-\mathcal E_{\gamma,T}
+ &=\sum_s\pi_s\,[G_\gamma(e_s^\star)-G_\gamma(e_s)]
+   +B_\downarrow(T).
+ \label{eq:asym-defect}
+\end{align}
+ Both terms in~\eqref{eq:asym-defect} are nonnegative.  Consequently, an ML
+ section is optimal if and only if it maximizes $G_\gamma$ in every ML fiber
+ and its image is downward closed.  All ML sections have
+the same acceptance $Z_{\rm ML}=\sum_s\pi_s$, so $T_\star$ also maximizes the
+conditional score $1/2+\mathcal E_{\gamma,T}/(\Gamma Z_{\rm ML})$ and its
+acceptance-weighted per-attempt excess.  Scaling all $\gamma_i$ by a common
+constant does not change the optimizer.
+\end{theorem}
+
+\begin{proof}
+If $e_i=1$, then
+\begin{equation}
+ \gamma_i\sqrt{\pi(e)\pi(e+\mathbf e_i)}=\pi(e)\gamma_i r_i.
+ \label{eq:asym-edge-charge}
+\end{equation}
+Charging every accepted edge to its endpoint containing the one in its
+varying coordinate proves~\eqref{eq:asym-edge}.  The rule in
+\eqref{eq:product-rule} maximizes the first term independently in every ML
+fiber.
+
+It remains to prove downward closure.  Let $e$ be selected with $e_i=1$ and
+put $f=e+\mathbf e_i$.  The word $f$ is ML in its coset.  Indeed, if a coset mate
+$v$ had $L(v)<L(f)$, then $v+\mathbf e_i$ would lie in the coset of $e$ and have
+cost at most $L(v)+\lambda_i<L(e)$.  Suppose that the rule selects
+$f'\ne f$ in the coset of
+$f$.  Both have the same cost.  Coordinate $i$ cannot belong to
+$\operatorname{supp}(f')$, because then
+$L(f'+\mathbf e_i)=L(e)-2\lambda_i$.  Hence $f'+\mathbf e_i$ is an ML candidate in the coset
+of $e$, and
+\begin{equation}
+ G_\gamma(f'+\mathbf e_i)-G_\gamma(e)=G_\gamma(f')-G_\gamma(f).
+ \label{eq:asym-G-transfer}
+\end{equation}
+If $G_\gamma(f')>G_\gamma(f)$, this contradicts the secondary choice of $e$.
+If the two values agree, adjoining the same absent coordinate preserves the
+multiplicative monomial order and contradicts the tertiary choice.  Thus $f$ is
+selected.  Downward closure gives $B_\downarrow(T_\star)=0$; subtracting
+\eqref{eq:asym-edge} for $T$ from that for $T_\star$ proves
+\eqref{eq:asym-defect}.
+\end{proof}
+
+The rule remains syndrome-local.  An exact weighted-ML list decoder first
+retains all minimum-$L$ candidates, then takes the largest $G_\gamma$, and finally
+uses the fixed monomial-order key.  A trellis or junction-tree solver can
+carry $(L,-G_\gamma,\text{key})$ as its ordered path metric.  This resolves tie
+design; it does not make exact ML decoding polynomial for arbitrary codes.
+The asymmetric theorem is most relevant when reliabilities repeat or are
+grouped or quantized; with generic incommensurate likelihoods, most fibers have
+no ML tie and the secondary rule is vacuous.
+
+The same rule has a second interpretation that links the DQI optimum directly
+to a standard classical reliability function.  Define the optimal ML success
+probability
+\begin{equation}
+ Z_{\rm ML}(\boldsymbol p)
+ :=\sum_{s\in\mathcal S}\max_{e:He=s}\pi_{\boldsymbol p}(e).
+ \label{eq:asym-ZML}
+\end{equation}
+For a direction $\boldsymbol v$, let
+$D_{\boldsymbol v}^{+}$ denote the right directional derivative.
+
+\begin{theorem}[Reliability-sensitivity identity]
+\label{thm:reliability-sensitivity}
+Fix $0<p_i<1/2$ and $\gamma_i>0$, and define
+\begin{align}
+ v_i&=\gamma_i\sqrt{p_i}(1-p_i)^{3/2},
+ \label{eq:sensitivity-direction}\\
+ b_\gamma(\boldsymbol p)
+ &=\sum_{i=1}^m\gamma_i\sqrt{p_i(1-p_i)}.
+ \label{eq:ideal-bias}
+\end{align}
+Then the right directional derivative of~\eqref{eq:asym-ZML} exists and
+\begin{align}
+ \max_{T\ {\rm ML}}\mathcal E_{\gamma,T}
+ &=D_{\boldsymbol v}^{+}Z_{\rm ML}(\boldsymbol p)
+   +b_\gamma(\boldsymbol p)Z_{\rm ML}(\boldsymbol p),
+ \label{eq:sensitivity-edge}\\
+ \max_{T\ {\rm ML}}\mathcal J_{\gamma,T}
+ &=\frac12+\frac{b_\gamma(\boldsymbol p)}{\Gamma}
+   +\frac1\Gamma D_{\boldsymbol v}^{+}
+       \log Z_{\rm ML}(\boldsymbol p).
+ \label{eq:sensitivity-score}
+\end{align}
+The directional derivative is nonpositive.  Hence the ideal product-state
+bias $b_\gamma/\Gamma$ is an upper bound, and its exact loss is the
+directional sensitivity of the classical ML success probability.
+\end{theorem}
+
+\begin{proof}
+Along $\boldsymbol p+t\boldsymbol v$,
+\begin{equation}
+ \left.\frac{d}{dt}\log\pi_{\boldsymbol p+t\boldsymbol v}(e)
+ \right|_{t=0}
+ =G_\gamma(e)-b_\gamma(\boldsymbol p).
+ \label{eq:score-derivative}
+\end{equation}
+The maximum in each syndrome fiber is over a finite set.  The right
+derivative of that maximum is therefore the largest derivative among its
+active ML candidates.  The secondary rule in
+Theorem~\ref{thm:asymmetric-optimum} selects exactly that candidate.  Summing
+\eqref{eq:score-derivative} over syndrome fibers gives
+\eqref{eq:sensitivity-edge}; division by the common acceptance and by
+$\Gamma$ gives~\eqref{eq:sensitivity-score}.
+
+The selected set is downward closed.  The probability of any fixed downward-
+closed subset of the Boolean cube is nonincreasing when any $p_i$ increases,
+by the standard monotone coupling of product Bernoulli measures.  The active
+section selected above realizes the right derivative of $Z_{\rm ML}$, so
+$D_{\boldsymbol v}^{+}Z_{\rm ML}\le0$.
+\end{proof}
+
+For the identical-bit Bernoulli profile, the sensitivity identity has an
+exact integral form.  Let $\mathcal J_{\rm ML}^{\star}(p)$ denote the optimum
+over deterministic ML sections and define its deficit from the full-cube
+bias by
+\begin{equation}
+ \mathcal L_{\rm DQI}(p)
+ :=\frac12+\sqrt{p(1-p)}-\mathcal J_{\rm ML}^{\star}(p)\ge0.
+ \label{eq:dqi-deficit}
+\end{equation}
+
+\begin{corollary}[Radial derivative and area identities]
+\label{cor:radial-sensitivity}
+For $0<p<1/2$,
+\begin{align}
+ \mathcal J_{\rm ML}^{\star}(p)
+ &=\frac12+\sqrt{p(1-p)}
+ \nonumber\\
+ &\quad
+ +\frac{\sqrt p(1-p)^{3/2}}{m}
+   \frac{d}{dp}\log Z_{\rm ML}(p),
+ \label{eq:radial-sensitivity}\\
+ -\frac1m\log Z_{\rm ML}(p)
+ &=\int_0^p
+ \frac{\mathcal L_{\rm DQI}(u)}
+ {\sqrt u(1-u)^{3/2}}\,du.
+ \label{eq:radial-area}
+\end{align}
+Thus the complete optimal DQI deficit curve and the classical ML reliability
+curve determine one another.
+\end{corollary}
+
+\begin{proof}
+When all $p_i=p$ and all $\gamma_i=1$, the direction in
+\eqref{eq:sensitivity-direction} is constant across coordinates.  Hence
+ $D_{\boldsymbol v}^{+}\log Z_{\rm ML}
+=\sqrt p(1-p)^{3/2}(d/dp)\log Z_{\rm ML}$, while
+$b_\gamma=m\sqrt{p(1-p)}$ and $\Gamma=m$.  Equation
+\eqref{eq:sensitivity-score} therefore gives
+\eqref{eq:radial-sensitivity}.  Rearranging and integrating from zero, where
+$Z_{\rm ML}(0)=1$, proves~\eqref{eq:radial-area}.
+\end{proof}
+
+This identity is distinct from the EXIT/GEXIT area theorem for channel
+decoding~\cite{measson2009}.  EXIT/GEXIT integrates an extrinsic-information
+quantity and connects iterative and a posteriori decoding thresholds.  Here
+the integrand is the phase-averaged DQI accepted-pair deficit, and the identity
+holds because the DQI-optimal ML tie rule realizes the active derivative of
+the exact correct-decoding probability.  No belief-propagation approximation
+or extrinsic-information interpretation enters the statement.
+
+Define the normalized classical ML reliability exponent
+\begin{equation}
+ I_m(p):=-\frac1m\log Z_{{\rm ML},m}(p).
+ \label{eq:normalized-reliability-exponent}
+\end{equation}
+
+\begin{corollary}[Asymptotic area law]
+\label{cor:asymptotic-area}
+For every code sequence and $0\le a<b<1/2$,
+\begin{equation}
+ \int_a^b\frac{\mathcal L_{{\rm DQI},m}(u)}
+ {\sqrt u(1-u)^{3/2}}\,du=I_m(b)-I_m(a).
+ \label{eq:interval-area}
+\end{equation}
+Hence convergence of $I_m$ at the two endpoints determines the limiting
+weighted area on $[a,b]$ without any exchange of derivatives and limits.  In
+particular, subexponential ML success loss at $p$,
+$Z_{{\rm ML},m}(p)=\exp[-o(m)]$, forces the weighted area on $[0,p]$ to vanish;
+an exponent $Z_{{\rm ML},m}(p)=\exp[-mI(p)+o(m)]$ gives limiting area $I(p)$.
+\end{corollary}
+
+\begin{proof}
+Subtract~\eqref{eq:radial-area} at $a$ and $b$.  The two asymptotic statements
+then follow directly and require no pointwise convergence of the deficit.
+\end{proof}
+
+\subsection{A Shannon-threshold consequence for linear syndrome maps}
+
+The area law becomes explicit for fixed-rate linear source coding.  Write
+\begin{align}
+ h_2(x)&=-x\log_2x-(1-x)\log_2(1-x),\\
+ D_{\rm b}(x\Vert p)&=x\log\frac{x}{p}
+ +(1-x)\log\frac{1-x}{1-p}.
+ \label{eq:binary-entropy-divergence}
+\end{align}
+For a syndrome rate $r=\rho/m\in(0,1)$, equivalently a channel-code rate
+$1-r$, let $q_r\in(0,1/2)$ be the unique solution
+of $h_2(q_r)=r$.  The exponent below is the Bernoulli specialization of the
+fixed-rate correct-decoding exponent; attainability by linear syndrome codes
+is classical~\cite{chen2009duality}.  We include a direct argument because the
+resulting DQI score law is new.
+
+\begin{theorem}[Linear-syndrome Shannon threshold]
+\label{thm:linear-shannon-dqi}
+For every $r\in(0,1)$, with $\rho_m=\lfloor rm\rfloor$, there exists a
+sequence of full-row-rank binary maps
+$H_m\in\F_2^{\rho_m\times m}$ such that, simultaneously for
+every fixed $0<p<1/2$,
+\begin{equation}
+ \lim_{m\to\infty} I_m(p)=I_r(p):=
+ \begin{cases}
+  0, & p\le q_r,\\
+  D_{\rm b}(q_r\Vert p), & p>q_r.
+ \end{cases}
+ \label{eq:linear-source-exponent}
+\end{equation}
+For the canonical DQI-optimal deterministic exact-ML section with uniform
+coordinate rewards,
+\begin{equation}
+ \lim_{m\to\infty}\mathcal J_{{\rm ML},m}^{\star}(p)
+ =\frac12+\min\{p,q_r\}\sqrt{\frac{1-p}{p}}.
+ \label{eq:linear-source-dqi-score}
+\end{equation}
+Consequently,
+\begin{equation}
+ \lim_{m\to\infty}
+ \int_0^p\frac{\mathcal L_{{\rm DQI},m}(u)}
+ {\sqrt u(1-u)^{3/2}}\,du=I_r(p).
+ \label{eq:linear-source-dqi-area}
+\end{equation}
+Thus the classical source-coding threshold $r=h_2(p)$ is also the point at
+which the limiting optimal DQI score leaves its full-cube value.
+\end{theorem}
+
+\begin{proof}
+Every syndrome transversal contains exactly $2^{\rho_m}$ words.  Since
+$p<1/2$, Bernoulli word probabilities decrease with Hamming weight.  Hence
+the success mass of any transversal is at most the mass of the
+$2^{\rho_m}$ most probable words.  Hamming-ball asymptotics and the method of
+types give the universal lower bound
+\begin{equation}
+ \liminf_{m\to\infty}I_m(p)\ge I_r(p).
+ \label{eq:linear-source-converse}
+\end{equation}
+
+For achievability, draw a $\rho_m\times m$ binary matrix with independent
+uniform entries, where $\rho_m=\lfloor rm\rfloor$.  Put
+$\epsilon_m=m^{-1/3}$ and
+$a_m=\lfloor m(q_r-\epsilon_m)\rfloor$.  For an error $e$ of weight $w$, a
+union bound gives
+\begin{align}
+ &\Pr_H\{\exists e'\ne e:\ \wt(e')\le w,\ He'=He\}
+ \nonumber\\
+ &\hspace{28mm}\le 2^{-\rho_m}\sum_{j=0}^{w}\binom mj.
+ \label{eq:random-syndrome-collision}
+\end{align}
+Uniformly for $w\le a_m$, the right side is at most
+$\exp[-c m^{2/3}]$ for some $c=c(r)>0$ and all sufficiently large $m$.
+Markov's inequality at level $\exp[-c m^{2/3}/2]$, followed by a union bound
+over the $m+1$ shells, shows that, with probability tending to one, the
+fraction of colliding words in every shell $w\le a_m$ is $o(1)$.  A random
+rectangular binary matrix is also full row rank with probability tending to
+one.  Select one matrix satisfying both properties.  Every noncolliding word
+is the unique ML representative of
+its syndrome, so its ML success probability obeys
+\begin{equation}
+ Z_{{\rm ML},m}(p)\ge(1-o(1))
+ \Pr\{\operatorname{Bin}(m,p)\le a_m\}.
+ \label{eq:random-syndrome-lower}
+\end{equation}
+For $p<q_r$ the right side tends to one.  For $p=q_r$ it is
+$\exp[-o(m)]$, and for $p>q_r$ its exponent tends to
+$D_{\rm b}(q_r\Vert p)$.  Together with
+\eqref{eq:linear-source-converse}, this proves
+\eqref{eq:linear-source-exponent}.  The shell property is independent of
+$p$, so the selected sequence works simultaneously for every fixed $p$.
+At the boundary $p=q_r$, the conclusion is only a zero normalized exponent;
+it does not assert that $Z_{{\rm ML},m}(q_r)$ tends to one.
+
+Let $T_m$ be the canonical downward-closed ML section and define its
+accepted conditional relative weight
+\begin{equation}
+ \bar w_m(p):=\frac{1}{mZ_{{\rm ML},m}(p)}
+ \sum_{e\in T_m}\pi_p(e)\wt(e).
+ \label{eq:accepted-relative-weight}
+\end{equation}
+If $p<q_r$, \eqref{eq:random-syndrome-lower} gives $Z_{{\rm ML},m}(p)\to1$;
+because $0\le \wt(e)/m\le1$, conditioning on acceptance then gives
+$\bar w_m(p)\to p$.  Let $p\ge q_r$ and fix a sufficiently small
+$\delta>0$.  The accepted mass below $(q_r-\delta)m$ is bounded by the
+corresponding Bernoulli lower tail, whose exponent is strictly larger than
+$I_r(p)$.  The accepted mass above $(q_r+\delta)m$ is at most
+$2^{\rho_m}$ times the largest probability of a word in that range; its
+exponent is also strictly larger than $I_r(p)$.  Dividing these two bounds by
+$Z_{{\rm ML},m}(p)=\exp[-mI_r(p)+o(m)]$ shows that both conditional tails
+vanish.  Since $\delta>0$ is arbitrary, $\bar w_m(p)\to q_r$.
+
+Every one-bit edge of a downward-closed section can be charged to its upper
+endpoint.  Therefore the exact optimal score is
+\begin{equation}
+ \mathcal J_{{\rm ML},m}^{\star}(p)
+ =\frac12+\sqrt{\frac{1-p}{p}}\,\bar w_m(p),
+ \label{eq:score-from-accepted-weight}
+\end{equation}
+which proves~\eqref{eq:linear-source-dqi-score}.  Finally,
+\eqref{eq:linear-source-dqi-area} follows from
+Corollary~\ref{cor:asymptotic-area} and
+\eqref{eq:linear-source-exponent}.
+\end{proof}
+
+The limiting score in~\eqref{eq:linear-source-dqi-score} is continuous and
+strictly increases up to $p=q_r$, then strictly decreases.  It therefore has
+a unique cusp maximum $1/2+\sqrt{q_r(1-q_r)}$ at the Shannon threshold.  Above
+threshold, the limiting deficit is explicitly
+$(p-q_r)\sqrt{(1-p)/p}$, whose area-law integrand is
+$\frac{d}{dp}D_{\rm b}(q_r\Vert p)$.
+
+\subsection{A coefficientwise radial companion}
+
+Set $\gamma_i=1$, suppress $\gamma$ from the notation, and let the amplitudes
+depend only on Hamming weight.
+For each syndrome $s$, let
+\begin{equation}
+ \mathcal L_s=\operatorname*{arg\,min}_{e:He=s}\wt(e),
+ \qquad \ell_s=\wt(e)\quad(e\in\mathcal L_s),
+ \label{eq:ml-list}
+\end{equation}
+and let $n_k=|\{s:\ell_s=k\}|$.  Every deterministic ML section selects
+exactly $n_k$ words in layer $k$.  For an ML transversal $T$, let $N_k(T)$
+be the number of accepted Hamming edges between layers $k-1$ and $k$.
+
+\begin{theorem}[Coefficientwise optimal ML section]
+\label{thm:universal-ml}
+For every binary linear code and every deterministic ML section $T$,
+\begin{equation}
+ N_k(T)\le k n_k,\qquad 1\le k\le m.
+ \label{eq:layer-bound}
+\end{equation}
+Fix a coordinate order and, within every coset, choose a minimum-weight word;
+among ties, choose the lexicographically first word with $0<1$.  The resulting
+section $T_{\rm glex}$ attains equality simultaneously for every $k$.
+Consequently, $T_{\rm glex}$ maximizes $\mathcal E_{T,a}$ and $R_{T,a}$ for
+every nonnegative radial amplitude profile $a$.  It also maximizes the
+conditional score $\mathcal J_{T,a}$ whenever the common ML acceptance
+$Z_{{\rm ML},a}$ is positive.
+
+More precisely, define the layer defect
+\begin{equation}
+ \delta_k(T):=k n_k-N_k(T).
+ \label{eq:layer-defect}
+\end{equation}
+Then
+\begin{align}
+ Z_{{\rm ML},a}&=\sum_{k=0}^m n_k a_k^2,
+ \label{eq:general-ml-Z}\\
+ \mathcal E_{T,a}
+ &=\sum_{k=1}^m a_{k-1}a_k\,[k n_k-\delta_k(T)].
+ \label{eq:general-defect}
+\end{align}
+The optimum has every $\delta_k=0$.  If $a_{k-1}a_k>0$ for all occupied
+layers, an ML section is optimal exactly when its selected set is downward
+closed.
+\end{theorem}
+
+\begin{proof}
+Every selected word $e$ of weight $k$ has exactly $k$ downward neighbors
+$e+\mathbf e_i$, one for each coordinate $i$ with $e_i=1$.  Charge each
+accepted edge to its upper endpoint.
+This gives~\eqref{eq:layer-bound}, and the missing downward incidences are
+exactly $\delta_k(T)$.  Every edge between layers $k-1$ and $k$ contributes
+$a_{k-1}a_k$, which proves~\eqref{eq:general-defect}.
+
+It remains to prove the claimed closure.  Graded lexicographic order is a
+degree-compatible multiplicative monomial order $\prec$ on squarefree
+monomials.  More generally, choose the $\prec$-least binary word in every code
+coset under any such order.
+Degree compatibility makes each choice an ML representative.  We show that
+the selected set is downward closed.  Let $e$ be selected, let $e_i=1$, and
+ put $f=e+\mathbf e_i$.  The word $f$ is a coset leader: a lower-weight word in its
+coset would, after toggling coordinate $i$, give a word lighter than $e$ in
+the coset of $e$.  If $f$ were not selected, the selected word $f'$ in its
+coset would have the same weight and satisfy $f'\prec f$.  Coordinate $i$
+cannot lie in the support of $f'$, since $f'+\mathbf e_i$ would then be lighter than
+$e$ in the coset of $e$.  Multiplicativity therefore gives
+$f'+\mathbf e_i\prec f+\mathbf e_i=e$, again contradicting the choice of $e$.  Hence every
+downward neighbor of every selected word is selected.
+\end{proof}
+
+The rule is syndrome-local, yet its complete image is globally downward
+closed.  The monotone structure of correctable errors, weight-compatible
+orders, and Gr\"obner representations of binary codes are classical
+\cite{helleseth2005,yasunaga2010,borges2010coset,borges2012leaders}.  The new
+conclusion here is that
+their downward-closed canonical section is coefficientwise optimal for the
+DQI pair functional.  Constructing the complete coset-leader table can still
+be exponential in the code codimension.  The theorem gives the exact global
+target; compact realizations require additional code structure.
+
+For the Bernoulli profile, put
+\begin{equation}
+ W_{\rm ML}(q)=\sum_{k=0}^m n_kq^k.
+ \label{eq:ml-weight-enumerator}
+\end{equation}
+Theorem~\ref{thm:universal-ml} yields the closed form
+\begin{align}
+ \max_{D\ {\rm ML}}P_D(q)&=W'_{\rm ML}(q),
+ \label{eq:ml-P-opt}\\
+ \max_{D\ {\rm ML}}\mathcal J_D
+ &=\frac12+\frac{\sqrt q}{m}
+   \frac{W'_{\rm ML}(q)}{W_{\rm ML}(q)}.
+ \label{eq:ml-J-opt}
+\end{align}
+For any ML section $T$, the exact polynomial defect is
+\begin{align}
+ P_T(q)&=W'_{\rm ML}(q)-\Delta_\downarrow(T;q),
+ \label{eq:down-defect}\\
+ \Delta_\downarrow(T;q)
+ &=\sum_{e\in T}\sum_{i:e_i=1}q^{\wt(e)-1}
+   \ind\{e+\mathbf e_i\notin T\}.
+ \label{eq:down-defect-def}
+\end{align}
+Thus the same canonical section is optimal for every $0<p<1/2$, without
+retuning the tie rule.
+
+\section{ML Candidate Compatibility and Restricted Tie Design}
+\label{sec:general-ml}
+
+Let $h_i=H\mathbf e_i$ denote column $i$ of $H$.  For each syndrome $s$, use the
+complete minimum-weight list $\mathcal L_s$ from~\eqref{eq:ml-list}.
+Every deterministic ML decoder is a selection $D(s)\in\mathcal L_s$.
+
+\begin{theorem}[Exact compatible-section objective for ML ties]
+\label{thm:general-maximum-section}
+Every deterministic ML selection has the same denominator
+\begin{equation}
+ W_{\rm ML}(q)=\sum_s q^{\ell_s},\qquad
+ Z_{\rm ML}=(1-p)^mW_{\rm ML}(q).
+ \label{eq:ml-denominator}
+\end{equation}
+Its accepted-edge polynomial is
+\begin{equation}
+ P(D;q)=\frac12\sum_{s\in\mathcal S}\sum_{i=1}^m
+ q^{\min\{\ell_s,\ell_{s+h_i}\}}
+ \ind\{D(s+h_i)=D(s)+\mathbf e_i\}.
+ \label{eq:general-max-section}
+\end{equation}
+Thus every ML tie rule has an exact finite weighted compatible-section
+representation.
+\end{theorem}
+
+\begin{proof}
+All candidates in $\mathcal L_s$ have weight $\ell_s$, which proves
+\eqref{eq:ml-denominator}.  Representatives at syndromes $s$ and $s+h_i$
+form a physical one-bit pair in coordinate $i$ precisely when the indicator
+in~\eqref{eq:general-max-section} equals one.  The factor $1/2$ removes the two
+orientations of a syndrome edge.  Repeated columns of $H$ remain distinct
+physical coordinates and are retained in the inner sum.  Since the
+denominator is fixed, all three optimization criteria have the same maximizers.
+\end{proof}
+
+An equivalent graph construction makes the optimization precise.  Place the list
+$\mathcal L_s$ above each syndrome vertex $s$.  Connect $e\in\mathcal L_s$ to
+$e+\mathbf e_i\in\mathcal L_{s+h_i}$ with the weight in
+\eqref{eq:general-max-section}.  A decoder selects one lifted vertex above
+each base vertex, and its reward is the weight of compatible selected pairs.
+For arbitrary ML lists, an edge may induce only a partial matching, so this is
+a partial-permutation label problem rather than a covering graph in general.
+When every edge induces a full bijection on a common label set, it is Maximum
+Section of a covering graph.  The relation of that subclass to Unique Games
+and Max-2Lin is known~\cite{grochow2018}.  The structure added here is the
+code-induced quotient, the Bernoulli radial weights, and the DQI pair
+functional.  Theorem~\ref{thm:universal-ml} already solves the unrestricted
+ML optimization.  The candidate graph remains useful when an implementation
+restricts the available labels or when a larger, possibly non-ML, candidate
+set is optimized.
+
+If every list contains two labels and every active edge gives a full matching,
+label the candidates by $b_s\in\F_2$.  Compatibility then has the form
+\begin{equation}
+ b_t=b_s+\delta_{st}.
+ \label{eq:max2lin}
+\end{equation}
+On a tree, labels propagate exactly.  On a loopy graph, zero frustration is
+equivalent to the XOR of $\delta_{st}$ vanishing around every cycle.  For a
+label alphabet of size $L$, exact max-sum on a tree costs
+$O(\sum_{(s,t)}|\mathcal L_s||\mathcal L_t|)$, and a graph with $N$ vertices
+and treewidth $\kappa$ admits exact junction-tree optimization in
+$O(NL^{\kappa+1})$ time and $O(NL^\kappa)$ memory.  These are structural
+algorithms: the explicit syndrome graph has $2^\rho$ vertices, so scalable
+use requires a compact decoder architecture or an exploitable factorization.
+
+\section{A Quotient Lift with an Exact Weighted-Cut Objective}
+\label{sec:lift}
+
+We next construct a class in which a restricted but complete fiber tie has an
+exact local cut description.  The result makes strict losses transparent and
+gives compact implementations of the canonical optimum.
+
+Let $H_0\in\F_2^{\rho\times n}$ be a full-row-rank parity-check matrix for a
+base code $C_0=\ker H_0$.  Write a base word as $y=(a,z)$, where
+$a\in\F_2$ and $z\in\F_2^{n-1}$.  Define the quotient map
+\begin{equation}
+ \begin{aligned}
+ Q&:\F_2^{n+1}\longrightarrow\F_2^n,\\
+ Qx&=(x_1+x_2,x_3,\ldots,x_{n+1}),
+ \end{aligned}
+ \label{eq:Q}
+\end{equation}
+and set
+\begin{equation}
+ H=H_0Q.
+ \label{eq:lift-H}
+\end{equation}
+The lifted code $C=\ker H$ contains $g=e_1+e_2$, and
+$C/\langle g\rangle\cong C_0$.
+
+Let $D_0$ be any deterministic base section with image $T_0$.  A binary tie
+field $\tau$ on the selected words $(1,z)\in T_0$ defines
+\begin{equation}
+ L_\tau(a,z)=
+ \begin{cases}
+  (0,0,z),&a=0,\\
+  (\tau(a,z),1+\tau(a,z),z),&a=1.
+ \end{cases}
+ \label{eq:tie-lift}
+\end{equation}
+Equivalently, the first two bits are
+\begin{equation}
+ (a\tau(a,z),\,a+a\tau(a,z)).
+ \label{eq:tie-prefix}
+\end{equation}
+The factors $a$ in~\eqref{eq:tie-prefix} are essential: on an $a=0$ fiber,
+the prefix $00$ is the unique ML choice for $p<1/2$.
+
+Let $\Gamma_1(T_0)$ be the graph with vertex set
+\begin{equation}
+ V_1=\{(1,z)\in T_0\},
+\end{equation}
+where two vertices are adjacent if they differ in one $z$ coordinate.  Give an
+edge $e=\{y,y'\}$ weight
+\begin{equation}
+ w_e(q)=q^{\min\{\wt(y),\wt(y')\}}.
+ \label{eq:cut-weight}
+\end{equation}
+
+\begin{theorem}[Exact weighted cut over the complete fiber-lift ML class]
+\label{thm:weighted-cut}
+For every tie field $\tau$, $L_\tau\circ D_0$ is a valid section of $H$.  If
+$D_0$ is exact ML for the base code, every lifted section is exact ML for the
+lifted code.  All tie fields choose a representative of the same weight in
+every syndrome and satisfy
+\begin{equation}
+ W_\tau(q)=W_0(q),\qquad
+ Z_\tau(p)=(1-p)Z_0(p).
+ \label{eq:lift-mass}
+\end{equation}
+If $P_0(q)$ is the accepted-edge polynomial of the base section, then
+\begin{align}
+ P_\tau(q)&=P_0(q)-\Cut_\tau(q),
+ \label{eq:lift-cut}\\
+ \Cut_\tau(q)&=\sum_{e=\{y,y'\}\in E(\Gamma_1)}
+ w_e(q)\ind\{\tau(y)\ne\tau(y')\}.
+ \label{eq:cut}
+\end{align}
+A constant field is therefore globally DQI-optimal over the complete
+pointwise-ML-equivalent class obtained from the fixed base section $D_0$.
+The optimizers are exactly the fields that are constant on each connected
+component of $\Gamma_1(T_0)$.
+\end{theorem}
+
+\begin{proof}
+The fiber $Q^{-1}(a,z)$ contains two words that differ by $g$.  For $a=0$,
+their prefixes are $00$ and $11$, so $00$ is the unique fiberwise ML choice.
+For $a=1$, their prefixes are $01$ and $10$, which tie.  In either case,
+\begin{equation}
+ \max_{Qx=y}\pi_p^{(n+1)}(x)=(1-p)\pi_p^{(n)}(y).
+ \label{eq:fiber-prob}
+\end{equation}
+Thus a lifted base ML word is full-code ML and
+$\wt(L_\tau(y))=\wt(y)$, proving~\eqref{eq:lift-mass}.
+
+It remains to classify physical one-bit pairs.  A selected base edge in
+coordinate $a$ lifts from $00$ to either $01$ or $10$ and remains a physical
+edge.  A $z$ edge in the $a=0$ slice keeps prefix $00$ and also remains.  A
+$z$ edge in the $a=1$ slice remains precisely when its endpoint labels agree.
+If they disagree, the prefix changes from $01$ to $10$ while one $z$ bit also
+changes, so the lifted distance is three.  Conversely, every physical unit
+vector maps under $Q$ to a base unit vector, so no extra pair is created.
+This proves~\eqref{eq:lift-cut}.  Since all cut weights are positive, zero cut
+is attainable and optimal.  It is attained exactly by fields constant on each
+connected component.
+\end{proof}
+
+The scope in Theorem~\ref{thm:weighted-cut} matters.  The result is global over
+all choices of the $01/10$ ambiguity above the fixed base ML section.  It does
+not assert optimality over arbitrary non-ML transversals or over ML base
+sections outside this fiber-lift class.
+
+\subsection{Cover, gauge, and algorithmic interpretations}
+
+The tie graph gives a literal two-sheet covering graph: lift $v\in V_1$ to
+$(v,b)$, $b\in\F_2$, and connect equal labels above every base edge.  A tie
+field is a section of the cover, and~\eqref{eq:cut} is the cover-edge weight
+lost by that section.  A constant field fixes one sheet globally.  With
+several binary tie coordinates and translation constraints
+$u_t=u_s+\delta_{st}$, the label group becomes $\F_2^t$ and the problem is
+Abelian Max-2Lin.  The cycle sum of $\delta_{st}$ is the cover holonomy.  A
+vertex relabeling gauges all offsets to zero exactly when every cycle sum
+vanishes.
+
+The aligned lifted decoder has a particularly compact implementation:
+\begin{equation}
+ s\xmapsto{D_0}(a,z)\longmapsto(0,a,z).
+ \label{eq:aligned-algorithm}
+\end{equation}
+It calls the base decoder once and performs $O(n)$ reversible bit operations.
+No exponential syndrome table, fractional-programming loop, or complex
+message is involved.  In a general unfrustrated Abelian lift, choose one root
+label per component and propagate offsets.  For $L=2^t$ labels, translation
+constraints reduce exact tree max-sum from $O(|E|L^2)$ to $O(|E|L)$ by keeping
+the largest and second-largest incoming values.
+
+\section{Reliable Connected Families}
+\label{sec:reliable}
+
+The weighted-cut identity would have limited operational force if the common
+postselection probability vanished.  The next result rules out that failure
+mode.
+
+\begin{corollary}[Any reliable base section gives a constant gap]
+\label{cor:reliable}
+Let $\{D_{0,n}\}$ be deterministic base sections with success probabilities
+$Z_{0,n}=1-\varepsilon_n$, where $\varepsilon_n\to0$.  In the quotient lift,
+compare a constant tie field with
+\begin{equation}
+ \tau_{\rm par}(1,z)=\bigoplus_{j=1}^{n-1}z_j.
+ \label{eq:parity-field}
+\end{equation}
+Then
+\begin{align}
+ Z_{\rm const}=Z_{\rm par}
+  &=(1-p)Z_{0,n}\longrightarrow1-p,
+ \label{eq:reliable-Z}\\
+ \mathcal J_{\rm const}-\mathcal J_{\rm par}
+  &\longrightarrow p\sqrt{p(1-p)},
+ \label{eq:reliable-J}\\
+ R_{\rm const}-R_{\rm par}
+  &\longrightarrow[p(1-p)]^{3/2}.
+ \label{eq:reliable-R}
+\end{align}
+Consequently, the expected number of independent postselection attempts
+$1/Z$ tends to $1/(1-p)$.  If amplitude amplification is available, its
+repetition factor $1/\sqrt Z$ tends separately to $1/\sqrt{1-p}$, before the
+cost of the reversible decoder oracle is charged.
+No ML property is needed for these limits.  If $D_{0,n}$ is exact ML, both
+lifted sections are exact ML by Theorem~\ref{thm:weighted-cut}.
+\end{corollary}
+
+\begin{proof}
+Equation~\eqref{eq:reliable-Z} follows from~\eqref{eq:lift-mass}.  Parity
+changes on every $z$ edge, so it cuts every accepted edge of the $a=1$ slice.
+For each of the $n-1$ outside coordinates, the complete $a=1$ edge mass equals
+$p\sqrt{p(1-p)}$.  Relative to the complete slice, a pair is missing only if
+at least one base endpoint is a decoding failure.  With $q=p/(1-p)$, the
+missing normalized mass in one coordinate is at most
+$(\sqrt q+1/\sqrt q)\varepsilon_n$.  Summing over the outside coordinates,
+dividing by the lifted length $n+1$, and using $Z_{0,n}\to1$ proves
+\eqref{eq:reliable-J}.  Multiplication by the common acceptance proves
+\eqref{eq:reliable-R}.
+\end{proof}
+
+The lift also transfers rate and decoding complexity exactly.  A base
+$[n,k_n]$ code becomes an $[n+1,k_n+1]$ code, so its rate has the same limit.
+If $D_{0,n}$ runs in time $T(n)$, both lifted sections run in
+$T(n)+O(n)$ time.  Their selected weights and acceptance are identical to
+each other; the common full-code acceptance is $(1-p)Z_{0,n}$, not
+$Z_{0,n}$.  Hence any reliable positive-rate decoder family gives a
+positive-rate strict DQI separation.  Exact ML status transfers when the base
+decoder itself is exact ML.
+
+Taking an odd repetition code as the base in Corollary~\ref{cor:reliable}
+already gives a connected degree-three realization, but the quotient lift
+contains the weight-two word $e_1+e_2$.  The next family removes this artifact
+and gives the principal explicit witness.
+
+\begin{theorem}[Indecomposable fixed-distance strict-gain family]
+\label{thm:twisted-family}
+Fix even $d\ge4$ and odd $n\ge d-1$, and put $N=d+n$.  On coordinates
+$(x_1,\ldots,x_d,z_1,\ldots,z_n)$, define
+\begin{equation}
+ g=(\ind^d,0^n),\qquad h=(e_1,\ind^n),\qquad
+ C_{d,n}=\operatorname{span}\{g,h\}.
+ \label{eq:twisted-code}
+\end{equation}
+For the inner repetition code $\operatorname{span}\{\ind^d\}$, let $A_0$
+and $A_1$ choose the unique lighter member of every antipodal pair off the
+middle layer.  On a middle-layer pair, $A_b$ chooses the member whose first
+bit is $b$.  Let
+\begin{equation}
+ T_n=\{z\in\F_2^n:\wt(z)\le(n-1)/2\},
+ \label{eq:outer-ball}
+\end{equation}
+and define
+\begin{align}
+ T_{\rm const}&=A_0\times T_n,
+ \label{eq:twisted-const}\\
+ T_{\rm par}&=\{(x,z):z\in T_n,
+                  x\in A_{\wt(z)\bmod2}\}.
+ \label{eq:twisted-par}
+\end{align}
+Both sets are exact ML transversals of $C_{d,n}$ and select a word of the
+same weight in every coset.  Moreover, $T_{\rm const}$ is downward closed and
+therefore globally DQI-optimal over all deterministic ML sections.
+
+For the Bernoulli profile, put
+\begin{align}
+ t_d(p)&=\frac12\binom d{d/2}[p(1-p)]^{d/2},
+ \label{eq:td}\\
+ \zeta_d(p)&=\sum_{j<d/2}\binom djp^j(1-p)^{d-j}+t_d(p),
+ \label{eq:zeta-d}\\
+ Z_n^{\rm rep}&=\sum_{j=0}^{(n-1)/2}\binom njp^j(1-p)^{n-j},
+ \label{eq:outer-Z}\\
+ E_n^{\rm rep}&=\sum_{j=0}^{(n-3)/2}(n-j)\binom nj
+ p^{j+1/2}(1-p)^{n-j-1/2}.
+ \label{eq:outer-E}
+\end{align}
+The two sections have common acceptance $\zeta_dZ_n^{\rm rep}$ and exact
+accepted-edge separation
+\begin{equation}
+ \mathcal E_{\rm const}-\mathcal E_{\rm par}
+ =t_d E_n^{\rm rep}.
+ \label{eq:twisted-exact-gap}
+\end{equation}
+For fixed $d$ and $0<p<1/2$, as odd $n\to\infty$,
+\begin{align}
+ \mathcal J_{\rm const}-\mathcal J_{\rm par}
+ &\longrightarrow\frac{t_d(p)}{\zeta_d(p)}\sqrt{p(1-p)},
+ \label{eq:twisted-J-limit}\\
+ R_{\rm const}-R_{\rm par}
+ &\longrightarrow t_d(p)\sqrt{p(1-p)}.
+ \label{eq:twisted-R-limit}
+\end{align}
+The code has minimum distance $d$, nonzero distinct parity-check columns, a
+connected check representation of maximum degree three, and linear-time exact
+ML decoding.  It is coordinate-indecomposable.
+\end{theorem}
+
+\begin{proof}
+Each $A_b$ is a transversal of $\operatorname{span}\{\ind^d\}$, and $T_n$
+contains one word from every outer antipodal pair.  Hence neither selected set
+contains two words differing by $g$, $h$, or $g+h$; its cardinality is
+$2^{N-2}$, so it is a transversal of~\eqref{eq:twisted-code}.
+
+Every selected $(x,z)$ satisfies $\wt(x)\le d/2$ and
+$\wt(z)\le(n-1)/2$.  Adding $g$, $h$, and $g+h$ changes its weight by,
+respectively,
+\begin{align}
+ \Delta_g&=d-2\wt(x),\nonumber\\
+ \Delta_h&=(1-2x_1)+n-2\wt(z),\nonumber\\
+ \Delta_{g+h}&=d-1-2(\wt(x)-x_1)+n-2\wt(z).
+ \label{eq:twisted-ml-differences}
+\end{align}
+All three quantities are nonnegative.  Thus both sections are exact ML.
+Their inner representatives have equal weight syndrome by syndrome, which
+also proves pointwise weight equivalence.
+
+The mass selected by either inner section is $\zeta_d$, and the mass of its
+selected middle layer is $t_d$.  Along an accepted outer edge, the parity rule
+switches the inner representative exactly on these middle-layer ties and
+destroys that one-bit pair; the constant rule preserves it.  The inner-edge
+masses of $A_0$ and $A_1$ are equal because every selected middle-layer word
+has exactly $d/2$ selected downward neighbors.  Product factorization then
+gives~\eqref{eq:twisted-exact-gap}.  Also,
+\begin{equation}
+ \frac{E_n^{\rm rep}}n=\sqrt{p(1-p)}
+ \Pr\{\operatorname{Bin}(n-1,p)\le(n-3)/2\},
+ \label{eq:outer-E-limit}
+\end{equation}
+so $Z_n^{\rm rep}\to1$ and $E_n^{\rm rep}/n\to\sqrt{p(1-p)}$.
+Equations~\eqref{eq:twisted-J-limit} and~\eqref{eq:twisted-R-limit} follow.
+
+The sets $A_0$ and $T_n$ are downward closed, as is their product
+$T_{\rm const}$.  Theorem~\ref{thm:universal-ml} proves global optimality.
+The sparse checks
+\begin{equation}
+ x_2=\cdots=x_d,\qquad z_1=\cdots=z_n,\qquad
+ x_1+x_2+z_1=0
+ \label{eq:twisted-checks}
+\end{equation}
+have rank $N-2$, maximum degree three, and a connected Tanner graph.  The
+three nonzero codeword weights are $d$, $n+1$, and $n+d-1$, so
+$d_{\min}=d$.  This excludes zero and repeated parity-check columns.  Every
+pair among $g,h,g+h$ has intersecting support; a decomposable binary
+dimension-two code would have a disjoint-support basis.  Finally, an arbitrary
+coset representative has only four codeword shifts.  Comparing their weights
+and applying the stated tie rule gives exact ML decoding in $O(N)$ time.
+\end{proof}
+
+The fixed $d$ is substantive: Stirling's formula gives
+$t_d=\Theta([2\sqrt{p(1-p)}]^d/\sqrt d)$.  Thus any chosen fixed even
+distance retains a strict constant gap, whereas this particular gap vanishes
+if $d$ grows.  The theorem is an exact-ML structural witness, not a
+capacity-achieving ensemble or a generic quantum-advantage claim.
+
+\subsection{A positive-rate polynomial-time feasibility family}
+
+The preceding indecomposable family has vanishing rate.  The following
+complementary construction shows that positive rate, polynomial-time exact ML,
+nonvanishing acceptance, and a strict DQI separation can coexist.  Its
+logarithmic block decomposition is deliberately explicit; it is a feasibility
+result, not a claim about natural LDPC ensembles.
+
+\begin{theorem}[Positive-rate polynomial-time exact-ML separation]
+\label{thm:positive-rate-family}
+Fix $0<p<1/2$, a target channel-code rate
+$0<R<1-h_2(p)$, and an even integer $d\ge4$.  There exist binary linear codes
+$\widetilde C_N$ and two deterministic exact-ML sections
+$D_N^{\rm const},D_N^{\rm par}$ with the following properties:
+\begin{enumerate}
+\item $\dim(\widetilde C_N)/N\to R$ and
+$d_{\min}(\widetilde C_N)=d$ for all sufficiently large $N$.  A full-rank
+parity-check representation has nonzero distinct columns, a connected Tanner
+graph, $O(N\log N)$ nonzero entries, and maximum row weight $O(\log N)$.
+\item Both sections run in $N^{O(1)}$ time and select representatives of the
+same weight syndrome by syndrome.  Their common acceptance satisfies
+\begin{equation}
+ Z_N^{\rm const}=Z_N^{\rm par}\longrightarrow\zeta_d(p)>0.
+ \label{eq:positive-rate-Z}
+\end{equation}
+\item In the phase-averaged binary accepted-pair model,
+\begin{align}
+ \mathcal J_N^{\rm const}-\mathcal J_N^{\rm par}
+ &\longrightarrow \frac{t_d(p)}{\zeta_d(p)}\sqrt{p(1-p)}>0,
+ \label{eq:positive-rate-J}\\
+ R_N^{\rm const}-R_N^{\rm par}
+ &\longrightarrow t_d(p)\sqrt{p(1-p)}>0.
+ \label{eq:positive-rate-R}
+\end{align}
+\end{enumerate}
+For every fixed $\eta>0$, $d$ can be chosen once so that
+$\zeta_d(p)>1-\eta$; the two limits in
+\eqref{eq:positive-rate-J}--\eqref{eq:positive-rate-R} then remain positive
+constants as $N\to\infty$.
+\end{theorem}
+
+\begin{proof}
+Choose $\tau\in(p,1/2)$ with $h_2(\tau)<1-R$, and choose
+$\delta>0$ with $h_2(\delta)<1-R$.  For a block length $b$, draw a binary
+$\rho_b\times b$ matrix with
+$\rho_b=\lceil(1-R)b\rceil$.  For an error $e$ of weight at most $\tau b$,
+the collision union bound gives
+\begin{equation}
+ \begin{aligned}
+ &\Pr_H\{\exists e'\ne e:\ He'=He,\ \wt(e')\le\wt(e)\}\\
+ &\hspace{12mm}\le 2^{-\rho_b}\sum_{j=0}^{\wt(e)}\binom bj.
+ \end{aligned}
+ \label{eq:log-block-collision}
+\end{equation}
+Together with the Bernoulli tail above $\tau b$, this shows that the expected
+ML block-error probability is at most $\exp(-2\kappa b)$ for some
+$\kappa=\kappa(p,R)>0$ and all sufficiently large $b$.  Also,
+\begin{equation}
+ \Pr_H\{d_{\min}(\ker H)<\delta b\}
+ \le 2^{-\rho_b}\sum_{j<\delta b}\binom bj=\exp[-\Omega(b)].
+ \label{eq:log-block-distance}
+\end{equation}
+A random rectangular matrix is full row rank with probability tending to one.
+Markov's inequality at level $\exp(-\kappa b)$ therefore selects full-row-rank
+block matrices $H_b$ for which the ML block-error probability is at most
+$\exp(-\kappa b)$ and the distance bound holds.
+
+Let $L\to\infty$, put $b_L=\lceil A\log L\rceil$ with fixed
+$A>1/\kappa$, and take the direct sum of $L$ copies of $\ker H_{b_L}$.
+Its exact ML decoder acts independently on the blocks.  The outer success
+probability $Z_{0,L}$ obeys
+\begin{equation}
+ 1-Z_{0,L}\le L\exp(-\kappa b_L)\longrightarrow0.
+ \label{eq:log-block-success}
+\end{equation}
+Exhaustive ML decoding of one block costs $2^{O(b_L)}$; over all blocks this is
+polynomial in the outer length $n_L=Lb_L$.  The outer rate tends to $R$ and
+its minimum distance is at least $\delta b_L$.
+
+Now take the direct product with the fixed inner repetition code
+$\operatorname{span}\{\ind^d\}$.  Use $A_0$ on every inner antipodal coset for
+$D_N^{\rm const}$.  For $D_N^{\rm par}$, replace $A_0$ by $A_1$ on the inner
+middle-layer ties exactly when the selected outer representative has odd
+Hamming weight.  Direct-product ML factorization proves that both are exact ML,
+and their selected weights agree in every full syndrome.  The common
+acceptance is $\zeta_d Z_{0,L}$.
+
+Let $E_{0,L}$ be the accepted-edge mass of the outer section.  Switching the
+inner orientation destroys precisely the outer accepted edges paired with an
+inner middle-layer representative.  The inner edge masses of $A_0$ and $A_1$
+are equal, so the finite identity is
+\begin{equation}
+ \mathcal E_N^{\rm const}-\mathcal E_N^{\rm par}=t_d(p)E_{0,L}.
+ \label{eq:positive-rate-finite-gap}
+\end{equation}
+The complete $n_L$-cube has edge mass
+$n_L\sqrt{p(1-p)}$.  Every edge absent from the selected outer set touches a
+failure word; summing incident edge mass at such words gives
+\begin{equation}
+ 0\le n_L\sqrt{p(1-p)}-E_{0,L}
+ \le \frac{n_L(1-Z_{0,L})}{\sqrt{p/(1-p)}}.
+ \label{eq:outer-edge-reliability}
+\end{equation}
+Hence $E_{0,L}/n_L\to\sqrt{p(1-p)}$.  Since $N=n_L+d$,
+\eqref{eq:positive-rate-Z}--\eqref{eq:positive-rate-R} follow.
+
+The full code has dimension $1+L(b_L-\rho_{b_L})$, rate tending to $R$, and
+minimum distance $\min\{d,\delta b_L\}=d$.  Minimum distance at least four
+excludes zero and repeated parity-check columns.  Start from any full-rank
+block-diagonal parity-check matrix.  In each Tanner component choose one row
+$r_j$ and replace the selected rows by
+$r_0,r_0+r_1,r_1+r_2,\ldots$.  This is an invertible row operation, connects
+all components, and raises row weight by at most a factor of two.  Because
+$b_L=O(\log N)$, the resulting representation has the claimed sparsity.
+Finally, $\zeta_d(p)\to1$ as even $d\to\infty$ by a binomial-tail bound,
+while $t_d(p)>0$ for every finite $d$.
+\end{proof}
+
+\section{How Much Can ML Tie-Breaking Change the DQI Score?}
+\label{sec:ambiguity}
+
+The quotient lift introduces persistent weight-two ambiguity.  We next show
+that a nonvanishing selected ambiguous mass relative to acceptance is necessary
+for an asymptotic conditional-score gap.
+
+For an ML decoder, the mass of one selected representative from syndrome $s$
+is unambiguous because every element of $\mathcal L_s$ has the same weight.
+Define the total selected ML mass on ambiguous syndromes
+\begin{equation}
+ A_{\rm tie}:=\sum_{s:\,|\mathcal L_s|>1}\pi_p(e_s),
+ \qquad e_s\in\mathcal L_s.
+ \label{eq:tie-mass}
+\end{equation}
+For two deterministic ML sections $D,D'$, define the one-sided changed mass
+\begin{equation}
+ \alpha(D,D'):=\sum_{s:\,D(s)\ne D'(s)}\pi_p(D(s)).
+ \label{eq:alpha}
+\end{equation}
+
+\begin{theorem}[DQI diameter of the ML tie class]
+\label{thm:tie-diameter}
+Let $D,D'$ be deterministic ML sections of the same code, and let $Z$ be
+their common acceptance.  Then
+\begin{align}
+ \alpha(D,D')&\le A_{\rm tie}\le1-Z,
+ \label{eq:alpha-order}\\
+ |\mathcal J_D-\mathcal J_{D'}|
+ &\le \frac{\alpha(D,D')}{Z\sqrt q}
+ =\frac{\alpha(D,D')}{Z}\sqrt{\frac{1-p}{p}}.
+ \label{eq:diameter-pair}
+\end{align}
+Consequently, the diameter of the complete deterministic ML tie class obeys
+\begin{equation}
+ \operatorname{diam}(\mathcal J_{\rm ML})
+ \le\frac{A_{\rm tie}}{Z}\sqrt{\frac{1-p}{p}}
+ \le\frac{1-Z}{Z}\sqrt{\frac{1-p}{p}}.
+ \label{eq:diameter}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The first inequality in~\eqref{eq:alpha-order} follows because two ML rules
+can differ only at an ambiguous syndrome.  At each such syndrome, at least one
+unselected ML representative has the same probability as the selected one.
+These unselected representatives are decoding failures, so their total mass
+is at most $1-Z$.  This proves the second inequality.
+
+Suppose first that $\mathcal E_D\ge\mathcal E_{D'}$ and put
+$\Delta_+=T_D\setminus T_{D'}$.  Equal ML weights give
+$\pi_p(\Delta_+)=\alpha(D,D')$.  Every edge counted by $T_D$ but not by
+$T_{D'}$ has an endpoint in $\Delta_+$.  Charge such an edge to one such
+endpoint.  If $\wt(e)=j$, the total
+geometric-amplitude mass of all $m$ incident edges is
+\begin{equation}
+ \pi_p(e)\left(\frac{j}{\sqrt q}+(m-j)\sqrt q\right)
+ \le \frac{m\pi_p(e)}{\sqrt q},
+ \label{eq:incident-bound}
+\end{equation}
+where $0<q<1$.  Summing~\eqref{eq:incident-bound} over $\Delta_+$ and dividing
+by $mZ$ proves~\eqref{eq:diameter-pair}.  If the ordering of the two edge
+masses is reversed, exchange $D$ and $D'$.  Maximization over $D,D'$ gives
+\eqref{eq:diameter}.
+\end{proof}
+
+In particular, for fixed $p\in(0,1/2)$, if $A_{\rm tie}=o(Z)$, every
+deterministic ML tie rule has the same asymptotic DQI score.  The stronger,
+simpler condition $Z\to1$ also forces the diameter to zero.  The reliable
+quotient lift avoids this no-gain regime because its
+common acceptance tends to $1-p$, not to one, and its controlled fiber tie has
+constant probability mass.
+
+\subsection{A secondary weight-enumerator estimate}
+
+The following classical estimate relates ambiguity to the code spectrum.  If
+$c\in C\setminus\{0\}$ has weight $d$, then $e$ and $e+c$ have equal weight
+only when $d$ is even and $e$ has $d/2$ ones on $\operatorname{supp}(c)$.
+Under $\BSC(p)$ this event has probability
+\begin{align}
+ B_d(p)&=\ind\{d\text{ even}\}\binom{d}{d/2}
+ [p(1-p)]^{d/2},\\
+ B_d(p)&\le \theta(p)^d,\qquad
+ \theta(p)=2\sqrt{p(1-p)}<1.
+ \label{eq:bhattacharyya}
+\end{align}
+A union bound yields
+\begin{equation}
+ \alpha(D,D')\le
+ \sum_{c\in C\setminus\{0\}}B_{\wt(c)}(p)
+ \le\sum_{c\in C\setminus\{0\}}\theta(p)^{\wt(c)}.
+ \label{eq:weight-envelope}
+\end{equation}
+This is a sufficient classical envelope, not the principal novelty.  It can be
+looser than~\eqref{eq:alpha-order}, especially for reliable decoders.  For an
+$[m,k,d_{\min}]$ family, the simple condition
+$2^k\theta(p)^{d_{\min}}\to0$ makes the right-hand side vanish.
+
+\section{A Secondary DE-NFG Evaluator and the Role of Bethe Analysis}
+\label{sec:denfg}
+
+The pair functional is naturally a two-copy contraction.  This section makes
+that statement exact and separates it from any approximation claim.
+
+For a deterministic decoder $D$, define the unnormalized accepted vector
+\begin{equation}
+ |v_D\rangle=\sum_{e\in\F_2^m}
+ p^{\wt(e)/2}(1-p)^{(m-\wt(e))/2}A_D(e)|e\rangle.
+ \label{eq:accepted-vector}
+\end{equation}
+Let $E_{D,i}$ denote the undirected geometric-amplitude mass of accepted
+hypercube edges in coordinate $i$, so that
+$\sum_iE_{D,i}=mR_D$.
+
+\begin{theorem}[Deterministic decoder circuit to a strict DE-NFG]
+\label{thm:denfg}
+Suppose $D$ is represented by a finite deterministic circuit with a unique
+internal-wire assignment for every input.  Double every wire and replace a
+local Boolean indicator $\phi_g(u)$ by
+\begin{equation}
+ \Phi_g(u,u')=\phi_g(u)\phi_g(u').
+ \label{eq:doubled-gate}
+\end{equation}
+The resulting strict DE-NFG has closed contractions
+\begin{align}
+ Z_D&=\langle v_D|v_D\rangle,
+ \label{eq:denfg-Z}\\
+ C_{D,i}&=\langle v_D|(I+X_i)|v_D\rangle
+          =Z_D+2E_{D,i}.
+ \label{eq:denfg-C}
+\end{align}
+Consequently,
+\begin{equation}
+ R_D=\frac{1}{2m}\sum_{i=1}^m(C_{D,i}-Z_D).
+ \label{eq:denfg-R}
+\end{equation}
+Every doubled deterministic local factor in~\eqref{eq:doubled-gate} is
+rank-one positive semidefinite.  The Bernoulli boundary is an outer product,
+and the inserted boundary matrix $I+X_i$ is real, entrywise nonnegative, and
+positive semidefinite.
+\end{theorem}
+
+\begin{proof}
+Expanding the doubled deterministic circuit produces
+$A_D(e)A_D(e')$ with the two Bernoulli amplitudes in
+\eqref{eq:accepted-vector}.  Closing corresponding wires with the identity
+sets $e'=e$ and gives~\eqref{eq:denfg-Z}.  The $X_i$ term sets
+$e'=e+\mathbf e_i$.  Both orientations of every undirected accepted edge are present,
+which gives the factor two in~\eqref{eq:denfg-C}.  Summing the coordinate
+identities yields~\eqref{eq:denfg-R}.  Finally,
+$\Phi_g=\phi_g\phi_g^T$ and the Bernoulli boundary are outer products, while
+$I+X_i=\left[\begin{smallmatrix}1&1\\1&1\end{smallmatrix}\right]$ on bit $i$.
+These observations prove the stated positivity properties.
+\end{proof}
+
+The phase-averaged binary compilation is therefore real.  Complex messages
+carry no additional exact information for this contraction.  Before averaging
+a fixed binary instance, signed real factors can remain; over nonbinary
+alphabets, group characters can be genuinely complex.  Neither case implies
+a decoding gain without a uniform algorithm and matched computational cost.
+
+\subsection{Exact and approximate inference boundaries}
+
+If the compiled normal factor graph is acyclic, one inward and one outward SPA
+sweep evaluates the relevant contractions exactly~\cite{kschischang2001}.
+If its treewidth is $w$ and the original wire alphabet has size $d$, exact
+elimination is polynomial in network size and exponential in the doubled
+width, with a representative factor $d^{2(w+1)}$.  A private auxiliary tree
+whose exact contraction equals one original factor merely changes the
+elimination order.  After a complete internal sweep it produces the same
+boundary update, the same partition function, and the same decoder.  Such a
+refinement cannot create a strict gain by itself.
+
+On a loopy compilation, the Bethe partition function and its stationary
+points supply approximations to the exact contractions.  Every factor in the
+phase-averaged construction above is entrywise nonnegative.  Treating each
+paired variable as one enlarged-alphabet variable therefore makes it an
+ordinary nonnegative factor graph, to which the standard finite-cover
+characterization applies~\cite{vontobel2013}.  No general complex DE-NFG cover
+theorem is needed here.  For genuinely complex DE-NFGs, the analogous theorem
+is proved under a stated sufficient condition, while the unrestricted
+statement remains a conjecture~\cite{huang2025}.  We use the present network as
+an exact offline evaluator on trees or bounded-width graphs and treat loopy
+Bethe quantities as candidate surrogates.  A surrogate earns an
+algorithmic claim only after it predicts decoder rankings more accurately or
+more cheaply than exact paired sampling in~\eqref{eq:paired-sampling}.
+
+\subsection{When one copy is enough}
+
+The universal optimizer in Theorem~\ref{thm:universal-ml} satisfies
+$P(q)=W'_{\rm ML}(q)$.  Hence a single-copy partition function and its
+derivative determine the optimal ML pair term; no doubled graph is needed if
+$W_{\rm ML}$ is already available.  The DE-NFG remains useful for a restricted
+or non-ML decoder, whose exact loss is the two-point downward defect in
+\eqref{eq:down-defect}.  Paired sampling provides the direct statistical
+baseline in either case.
+
+\section{Algorithms}
+\label{sec:algorithms}
+
+The theorems yield exact targets and compact algorithms at different levels
+of structure.
+
+\subsection{Canonical ML section}
+
+For unequal bit probabilities, compare candidates by the ordered metric
+$(L,-G_\gamma,\text{monomial-order key})$ from~\eqref{eq:product-rule}; retain
+the first word with each new syndrome.  When the probabilities and coordinate
+rewards are both uniform, this reduces to Hamming weight followed by the fixed
+monomial order.  The resulting table is the
+globally DQI-optimal ML section from Theorems~\ref{thm:asymmetric-optimum} and
+\ref{thm:universal-ml}.  An exact ML trellis or junction-tree solver can carry
+$-G_\gamma$ and the word key as secondary metrics, and an ML list decoder can apply
+the same rule to its minimum-likelihood candidates.  The full table can be
+exponential in the codimension, so this is not a general polynomial-time ML
+construction.  For
+$C_{d,n}$ in Theorem~\ref{thm:twisted-family}, the same canonical rule reduces
+to four weight comparisons and a deterministic tie test, hence runs in
+$O(N)$ time.
+
+\subsection{Aligned quotient-lift decoder}
+
+Given a base decoder $D_0$, the optimal member of the fixed-base fiber-lift ML
+class is the aligned rule in~\eqref{eq:aligned-algorithm}.  It preserves the
+base representative weight syndrome by syndrome.  Its cost is one base
+decoder call plus $O(n)$ bit operations, and its reversible implementation
+uses the same asymptotic work.  The competing parity field in
+\eqref{eq:parity-field} also costs $O(n)$; hence the separation in
+Section~\ref{sec:reliable} is matched in decoding order and pointwise ML
+likelihood.
+
+\subsection{Restricted optimization on an explicit candidate graph}
+
+When an architecture restricts the available candidates, construct the
+pairwise compatibility rewards in~\eqref{eq:general-max-section}.  On a tree,
+a max-sum message from syndrome
+$s$ to $t$ is
+\begin{equation}
+ M_{s\to t}(b)=
+ \sum_{u\in N(s)\setminus t}
+ \max_{a\in\mathcal L_u}
+ \{M_{u\to s}(a)+\psi_{us}(a,b)\},
+ \label{eq:maxsum}
+\end{equation}
+where $b\in\mathcal L_s$ and $\psi_{us}$ is the weighted one-bit
+compatibility indicator.  Backtracking returns the exact section.  A junction
+tree gives the bounded-treewidth complexities stated after
+Theorem~\ref{thm:general-maximum-section}.  For two-label full matchings,
+offset propagation solves the zero-frustration case.  For the quotient lift,
+the offsets vanish and the aligned field is immediate.
+
+\subsection{Stochastic selection among compact decoder architectures}
+
+When the full candidate graph is exponential, restrict attention to a compact
+family $\{D_\vartheta\}$, such as equivalent parity-check representations,
+redundant-check choices, message schedules, or damping parameters.  If all
+candidates output minimum-weight representatives, $Z$ is exactly common and
+the design objective is simply $R_{D_\vartheta}$.  Proposition
+\ref{prop:paired-sampling} supplies a direct unbiased estimator:
+
+\begin{enumerate}
+\item sample a coordinate and the remaining Bernoulli error bits;
+\item run $D_\vartheta$ on the two forced-bit syndromes;
+\item record one if both returned representatives equal their inputs;
+\item average and multiply by $\sqrt{p(1-p)}$.
+\end{enumerate}
+
+The same random pairs can evaluate all candidates, reducing comparison
+variance.  If the candidate family allows different acceptance, estimate $Z$
+separately and report both $\mathcal J$ and $R$; optimizing a conditional score
+alone can conceal an exponential retry penalty.  A Bethe or DE-NFG surrogate
+is useful only in a regime where exact pair sampling is too costly and the
+surrogate's ranking is validated at matched compute.
+
+\section{Reproducible Numerical Audit}
+\label{sec:numerics}
+
+The numerical study certifies the asymmetric and radial optima, the
+reliability--sensitivity identity, the robust strict-gain family, and the
+quotient-lift identities; it also tests which
+broader algorithmic claims are supported.  All reported decoders are
+deterministic and classical.  The main experiments use real arithmetic; no BP
+with quantum messages is included.  Machine-readable outputs, deterministic
+scripts, and a compact command list accompany this draft.
+
+\subsection{Asymmetric-product certificate}
+
+An exact-rational program tested Theorem~\ref{thm:asymmetric-optimum} on 20
+seeded random codes of lengths five through seven and five unequal
+log-likelihood patterns, each paired with unequal positive coordinate
+rewards.  It chose $r_i=2^{w_i}$ and
+$p_i=1/(1+4^{w_i})$, so every probability and edge mass was rational.
+Every deterministic ML section was enumerated, with as many as 384 sections
+in one test.  Every case passed downward closure of the canonical rule, the
+edge-charge identity~\eqref{eq:asym-edge}, the two-term defect
+\eqref{eq:asym-defect}, and global optimality.
+
+\subsection{Reliability--sensitivity certificate}
+
+An exact-rational implementation independently computed $Z_{\rm ML}$, its
+active one-sided directional derivative, the optimal accepted-edge mass, and
+the radial derivative and area identities.  It passed 237 radial identities
+and 79 asymmetric directional identities.  A separate adversarial enumerator
+checked 4,974 syndrome maps and 96,704 asymmetric ML sections, including
+rank-deficient representations, zero columns, repeated columns, and parameters
+near both open endpoints.  It also found explicit counterexamples when the
+assumptions $p_i<1/2$ or $\gamma_i>0$ are removed.
+
+\subsection{Coefficientwise optimum certificate}
+
+An independent exhaustive program enumerated every deterministic ML section
+for the $[5,2]$ code in~\eqref{eq:five-code} and for 16 seeded random full-
+rank parity-check matrices of lengths five through seven.  Individual tests
+contained up to 3072 ML sections.  In every case, it verified
+$N_k(T)\le k n_k$ coefficient by coefficient, the exact layer-defect
+identity, downward closure of the graded-lexicographic section, and
+$N_k(T_{\rm glex})=k n_k$ for all $k$.  At a positive test value of $q$, the
+enumerated maximizers were exactly the downward-closed ML sections.
+
+\subsection{Linear-source threshold certificate}
+
+An independent exact-arithmetic program checked the finite bridge used in
+Theorem~\ref{thm:linear-shannon-dqi}.  On 312 seeded full-rank maps of lengths
+four through ten, it verified transversal cardinality, downward closure, the
+accepted-edge/conditional-weight identity, and the top-mass converse.  It
+also exhaustively enumerated every binary matrix in 104 small collision tests
+and verified the random-syndrome union bound, including rank-deficient maps.
+Exact rational checks confirmed the exponent derivative and DQI-deficit
+algebra above threshold.
+
+\subsection{Indecomposable-family certificate}
+
+Exact enumeration checked Theorem~\ref{thm:twisted-family} for
+$d\in\{4,6\}$ and three odd outer lengths beginning at $d-1$, at $p=0.24$.
+It verified the full coset partition, pointwise ML equality, minimum distance,
+rank, distinct columns, Tanner connectedness, indecomposability, and
+\eqref{eq:twisted-exact-gap}; the largest displayed edge-identity residual was
+$3.1\times10^{-14}$.  At $n=401$, the $d=4$ conditional gap was $0.049372$
+against the limit $0.049865$, and the acceptance-weighted per-attempt gap was
+$0.042206$ against $0.042627$.  The corresponding $d=6$ values were
+$0.028161$ against $0.028582$ and $0.025535$ against $0.025917$.
+
+\subsection{Positive-rate feasibility certificate}
+
+An independent exact certificate pairs the inner $\operatorname{Rep}_4$
+gadget with the self-dual $[8,4,4]$ $\operatorname{RM}(1,3)$ outer code.  It
+exhaustively verifies pointwise exact-ML equality, the coefficientwise version
+of~\eqref{eq:positive-rate-finite-gap}, minimum distance four, nonzero distinct
+columns, and a connected row-equivalent check representation.  A separate
+exponent audit evaluates~\eqref{eq:log-block-collision} and
+\eqref{eq:log-block-distance} for a representative parameter choice and checks
+that the logarithmic-block union bound decreases to zero.  These computations
+test the finite algebra and constants; the asymptotic existence statement in
+Theorem~\ref{thm:positive-rate-family} follows from its analytic proof.
+
+\subsection{Quotient-lift certificate}
+
+For the lifted repetition family, exact enumeration was performed through
+full length $m=20$.  The tests checked syndrome consistency, equality of the
+selected weights, global ML optimality within every full coset, the matrix
+identity $H=H_0Q$, connectedness of the Tanner graph, and
+\eqref{eq:lift-cut} for five distinct tie fields.  Every count of a failed
+identity was zero.  The largest score-versus-cut residual was
+$9.98\times10^{-17}$.
+
+Growing-length evaluation used $m\in\{8,12,20,40,80,120,200\}$.  Table
+\ref{tab:lift-scaling} reports the common acceptance and the separation between
+the constant and parity fields at $m=200$.  The predicted limits are
+\eqref{eq:reliable-J} and~\eqref{eq:reliable-R}.  Convergence slows as
+$p\uparrow1/2$ because the repetition-code binomial tail decays more slowly.
+
+\begin{table*}[t]
+\centering
+\caption{Quotient-lift validation at full length $m=200$.  The two decoders
+are exact ML, pointwise equal in likelihood, and have the displayed common
+acceptance.}
+\label{tab:lift-scaling}
+\begin{tabular}{@{}cccccc@{}}
+\toprule
+$p$ & Common $Z$ & $\Delta\mathcal J$ & Limit of $\Delta\mathcal J$
+& $\Delta R$ & Limit of $\Delta R$\\
+\midrule
+0.05 & 0.950000 & 0.010788 & 0.010897 & 0.010249 & 0.010352\\
+0.15 & 0.850000 & 0.053025 & 0.053561 & 0.045071 & 0.045527\\
+0.25 & 0.750000 & 0.107171 & 0.108253 & 0.080378 & 0.081190\\
+0.35 & 0.649995 & 0.165269 & 0.166939 & 0.107424 & 0.108511\\
+0.45 & 0.506887 & 0.215787 & 0.223872 & 0.109379 & 0.123130\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Measured decoding time rose from approximately $0.66\,\mu$s at $m=8$ to
+$18.3\,\mu$s at $m=200$.  Linear fits for the aligned and parity rules both
+had $R^2>0.9995$.  These timings are supporting checks, not hardware-independent
+complexity claims; the explicit bit-operation count is at most linear in $m$
+in addition to the base decoder.
+
+\subsection{Finite-code optimization beyond ML representatives}
+
+The main theorem compares ML tie fields.  A separate exhaustive experiment
+asked whether allowing non-ML representatives can improve the
+acceptance-weighted per-attempt objective at a controlled acceptance loss.  For
+the $[5,2]$ code
+\begin{equation}
+ C=\operatorname{span}\{00111,11100\}
+ \label{eq:five-code}
+\end{equation}
+at $p=0.40$, all $4^8=65{,}536$ transversals were enumerated.  Table
+\ref{tab:five-code} gives the exact optima under two acceptance constraints.
+The finite-code improvement is genuine because $R$ increases.  It is not a
+growing-family theorem.
+
+\begin{table}[t]
+\centering
+\caption{Exact $[5,2]$ transversal audit at $p=0.40$.}
+\label{tab:five-code}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Decoder constraint & $Z$ & $\mathcal J$ & $R$\\
+\midrule
+ML/coset leader & 0.406080 & 0.739737 & 0.097353\\
+$Z\ge0.95Z_{\rm ML}$ & 0.388800 & 0.761279 & 0.101585\\
+$Z\ge0.80Z_{\rm ML}$ & 0.360000 & 0.793939 & 0.105818\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Coordinate ascent and zero-temperature Bethe/max-sum followed by coordinate
+polishing reached the exact optimum in this small candidate space.  A broader
+scan near the low-noise decoding threshold was negative: across sparse random
+matrices of lengths $10,12,16,20$, no positive pair-mass gain over the
+compressed ML leader was found within the tested top-six candidate lists and
+acceptance fractions.  The contrast prevents the five-bit example from being
+presented as an asymptotic phenomenon.
+
+\subsection{Equivalent-factor-graph selection at fixed ML acceptance}
+
+A practical compact candidate family varied invertible row representations,
+a small set of redundant checks, input scaling, and damping.  Each output was
+projected to a stored minimum-weight tie, so all compared rules had identical
+ML acceptance.  The total edge-update budget was fixed, and the baseline was
+the best tuned real BP rule on the identity representation.  Offline selection
+used the exact pair metric.  Results are summarized in
+Table~\ref{tab:graph-selection}.
+
+\begin{table}[t]
+\centering
+\caption{Matched-acceptance factor-graph selection.}
+\label{tab:graph-selection}
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+$m$ & Codes & Gains & Mean $\Delta\mathcal J$ & Mean $\Delta R$\\
+\midrule
+20  & 12 & 12 & $5.88\!\times\!10^{-4}$ & $3.63\!\times\!10^{-4}$\\
+40  & 5  & 5  & $3.19\!\times\!10^{-4}$ & $1.84\!\times\!10^{-4}$\\
+100 & 3  & 3  & $5.6\!\times\!10^{-5}$ & $2.9\!\times\!10^{-5}$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The canonical section in Theorem~\ref{thm:universal-ml} supplies the exact ML
+ceiling for these tests: graph selection can move an approximate decoder
+toward that ceiling, but cannot exceed it.  The observed gains decrease with
+length in this random family.  At $m=40$ and $m=100$, some ML tie lists were
+truncated, so the results are lower bounds within the stored candidate pool
+rather than global tie optima.  Direct pair-objective coordinate ascent did
+not improve the compressed lexicographic ML leader on the tested Hamming,
+BCH, cycle, and random-LDPC instances, as the theorem now predicts.  The
+evidence supports finite-length graph and schedule selection for approximate
+decoding, not a nonvanishing random-LDPC claim.
+
+\subsection{Negative controls}
+
+Three controls delimit the interpretation.
+
+\begin{enumerate}
+\item A diagonal DE-NFG embedding reproduces ordinary real BP.  A zero-phase
+rank-one amplitude parameterization reduces to a real prior-temperature
+rescaling.  Neither produced a complex-specific gain against strengthened
+real baselines.
+
+\item For a fixed binary DQI offset, the exact factors can be signed, but
+instance-tailored decoder selection was both slower and worse than directly
+optimizing the corresponding classical Max-XOR objective in the tested
+sizes.  An unrestricted instance-aware decoder can encode a solution that was
+computed beforehand; its design cost cannot be omitted.
+
+\item Loopy Bethe/max-sum was exact after polishing in the five-bit example,
+but its local ranking correlation varied by code and could be poor.  Direct
+paired evaluation was cheaper whenever all syndromes could be enumerated.
+\end{enumerate}
+
+These controls motivate the bounded DE-NFG claim in
+Section~\ref{sec:denfg}: exact compilation is proved, while a general loopy
+approximation advantage remains open.
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{What conventional decoder metrics miss}
+
+The quotient lift holds fixed every one-point statistic normally used to
+compare deterministic ML tie rules.  The representative weight is identical
+for every syndrome, so the likelihood, frame-success probability, complete
+Hamming-layer profile, and expected retry count are identical.  Nevertheless,
+the pair term changes by a weighted cut.  The missing statistic is therefore
+not a finer shell average; it is adjacency among selected representatives.
+Theorem~\ref{thm:universal-ml} sharpens this distinction: the common shell
+profile determines the largest attainable pair term, but it does not determine
+the value of an arbitrary tie rule.  The downward defect measures exactly how
+far that rule lies below the shell-determined ceiling.
+This distinction complements recent work that sharpens shell-weighted DQI
+bounds~\cite{gao2026}.  A shell analysis and a pair analysis answer different
+questions.
+
+\subsection{When graph covers help}
+
+Two cover structures appear and need not coincide.  First, an ML tie field can
+select a section of a covering graph when its candidate compatibilities are
+full bijections.  This is the decoder-design problem.  Second, finite covers
+of a factor graph can characterize or approximate a Bethe partition function.
+This is an inference problem.  The quotient lift solves the first problem
+exactly by gauge alignment.  The DE-NFG compilation maps the DQI pair term to
+the second setting.  Treating the two uses as distinct avoids the unsupported
+claim that a graph transformation automatically improves BP.
+
+\subsection{Implications for code design}
+
+The ambiguity bound identifies a tension.  Large distance suppresses ML ties,
+which is favorable for ordinary reliable decoding but leaves little room for
+objective-aware tie-breaking.  The quotient lift decouples the two roles: an
+arbitrary reliable base supplies error correction, while one weight-two fiber
+supplies controlled ambiguity.  More general designs may distribute a small
+number of low-weight tie fibers through a reliable code and optimize their
+holonomy.  The twisted family in Theorem~\ref{thm:twisted-family} shows that a
+strict gap does not require weight-two codewords, repeated columns, or an
+algebraic direct product.  Theorem~\ref{thm:positive-rate-family} separately
+shows that positive rate, polynomial-time exact ML, nonvanishing acceptance,
+and a strict gap are mutually compatible, albeit in a logarithmic-block
+feasibility construction.  Theorem~\ref{thm:tie-diameter} gives a necessary
+mass budget, and Theorem~\ref{thm:universal-ml} gives the exact ML ceiling.
+
+The open algorithmic problem is not to prove that BP is universally optimal.
+It is to realize the ordered rule $(L,-G_\gamma,\text{key})$ compactly on useful
+code families when exact ML itself is costly.  When both bit probabilities and
+coordinate rewards are uniform, this is minimum weight followed by the fixed
+monomial order.  Trellis,
+junction-tree, and list decoders can carry these secondary keys exactly.  For
+loopy approximate decoders, equivalent factor graphs and schedules can be
+ranked against the canonical ceiling.  A DE-NFG Bethe approximation remains
+an offline surrogate, with Proposition~\ref{prop:paired-sampling} as the
+direct statistical baseline.
+
+\subsection{Quantum-algorithm boundary}
+
+The paper improves one component of a DQI implementation: the coherent effect
+of a classical syndrome decoder.  The result establishes a strict state-quality
+separation at matched classical decoding success and cost.  It does not by
+itself establish quantum supremacy, an end-to-end speedup, or an advantage on
+generic Max-XOR instances.  Those claims additionally require an instance
+family, a complete reversible resource analysis, and comparison with the best
+classical optimizer.  Extensions of DQI to weighted objectives and other
+association schemes broaden the possible application domain
+\cite{bu2026,krajenbrink2026}, while known structural obstructions reinforce
+the need for instance-specific evidence~\cite{anschuetz2025}.
+
+\section{Conclusion}
+
+Maximum-likelihood ties are classically invisible to frame success but can be
+visible to the phase-averaged binary DQI accepted-pair objective.  For
+independent probabilities $0<p_i<1/2$, positive coordinate rewards, and
+deterministic exact-ML sections, the ordered rule based on $L$, $G_\gamma$, and
+a multiplicative monomial order is globally optimal.  Its exact defect splits
+into a fiberwise loss and a missing-boundary loss.  More fundamentally, the
+  optimal DQI interference is an exact directional sensitivity of the classical
+  ML success probability; in the radial setting, the resulting area law links
+  the entire DQI-deficit curve to the normalized log reliability.  Applied to
+  an existential family of full-rank linear syndrome maps at each fixed rate,
+  it gives an explicit Shannon threshold,
+correct-decoding exponent, and limiting optimal DQI score.  A canonical
+section simultaneously maximizes every radial layer coefficient.  The
+selected ambiguous mass gives a quantitative no-gain bound, while explicit
+families show a strict constant separation when that budget persists.  One
+family is connected, coordinate-indecomposable, and linear-time; a
+complementary family has positive rate and polynomial-time exact ML.  The
+DE-NFG construction remains an offline realization of the pair functional,
+not an automatic decoding gain.  Together, these results give an exact
+optimizer, a reliability--interference identity, and matched sharpness and
+stability regimes for objective-aware decoder co-design.
+
+\appendices
+
+\section{The Uniform-Prior Endpoint}
+\label{app:uniform}
+
+At $p=1/2$ with uniform coordinate rewards $\gamma_i=1$, every transversal
+has $2^\rho$ words and common acceptance $2^{\rho-m}$.  The DQI optimization
+becomes an induced-edge problem in the hypercube.  Nonuniform rewards require
+a separate weighted endpoint problem and are not covered by this proposition.
+
+\begin{proposition}[Exact optimum at the uniform endpoint]
+\label{prop:uniform}
+For every binary linear code with redundancy $\rho$,
+\begin{equation}
+ P_D(1)\le\rho2^{\rho-1}.
+ \label{eq:uniform-edge}
+\end{equation}
+Choose any $\rho$ linearly independent columns of $H$.  The coordinate
+$\rho$-subcube supported on those columns is a transversal and attains
+equality.  Hence
+\begin{equation}
+ \max_D\mathcal J_D=\frac12+\frac{\rho}{2m}\qquad(p=1/2).
+ \label{eq:uniform-score}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The edge-isoperimetric inequality for the $m$-cube states that a set $A$
+induces at most $|A|\log_2|A|/2$ edges~\cite{harper1966}.  Substituting
+$|A|=2^\rho$ gives~\eqref{eq:uniform-edge}.  If $I$ indexes $\rho$
+independent columns, the restriction of $H$ to the coordinate subspace on $I$
+is bijective onto $\F_2^\rho$.  That subcube is therefore a transversal and
+attains the isoperimetric bound.  Equation~\eqref{eq:uniform-score} follows
+from Theorem~\ref{thm:section-identity} by continuity at $q=1$.
+\end{proof}
+
+When the code dimension grows linearly, the common acceptance $2^{-(m-\rho)}$
+is exponentially small.  Proposition~\ref{prop:uniform} is an exact
+combinatorial endpoint, not an efficient postselection claim.
+
+\section{Fixed-Instance Signs and a No-Free-Lunch Boundary}
+\label{app:fixed-v}
+
+Before averaging a known binary instance offset $v\in\F_2^m$, a syndrome-edge
+term can carry a sign.  With a reference section $D^0$ and labels $c_s\in C$,
+the sign on the edge $t=s+h_i$ is
+\begin{equation}
+ (-1)^{v\cdot(D^0(s)+e_i+D^0(t)+c_s+c_t)}.
+ \label{eq:fixed-sign}
+\end{equation}
+The label-dependent terms are vertex gauges.  Around a closed syndrome walk,
+the gauge-invariant product is $(-1)^{v\cdot c_\gamma}$, where
+$c_\gamma\in C$ is the physical codeword traced by the walk.  All cycle signs
+can be gauged positive exactly when $v\in C^\perp=\operatorname{row}H$.
+Thus binary fixed-instance models require signed real factors; complex
+characters become intrinsic only over larger alphabets.
+
+There is also an algorithmic quantifier trap.  At the uniform point, consider
+a linear section $D_G(s)=Gs$ with $HG=I_\rho$.  Its Walsh output is the basis
+label
+\begin{equation}
+ x=G^Tv.
+ \label{eq:right-inverse-output}
+\end{equation}
+
+\begin{proposition}[An instance-aware right inverse can hard-code an answer]
+\label{prop:no-free-lunch}
+If $v\notin\operatorname{row}H$, then for every target $x\in\F_2^\rho$ there
+exists a right inverse $G$ with $G^Tv=x$.  If $v=H^Ta$ lies in
+$\operatorname{row}H$, every right inverse satisfies $G^Tv=a$.
+\end{proposition}
+
+\begin{proof}
+If $v\notin\operatorname{row}H$, the augmented matrix
+$\left[\begin{smallmatrix}H\\v^T\end{smallmatrix}\right]$ has rank $\rho+1$.
+For each column $j$, solve
+\begin{equation}
+ \begin{bmatrix}H\\v^T\end{bmatrix}g_j
+ =\begin{bmatrix}e_j\\x_j\end{bmatrix}.
+\end{equation}
+The resulting $G$ obeys both required equations.  If $v=H^Ta$, then
+$G^Tv=G^TH^Ta=(HG)^Ta=a$.
+\end{proof}
+
+Choosing $G(v)$ to output an optimizer first requires knowing that optimizer;
+the linear system then only encodes it in the decoder.  Meaningful
+fixed-instance co-design therefore uses one uniform compact rule for all $v$
+or charges the full cost of constructing the instance-dependent decoder.
+
+\section{Reproducibility Map}
+\label{app:reproducibility}
+
+The accompanying research archive separates theorem certificates from
+exploratory searches.
+
+\begin{table}[h]
+\centering
+\caption{Primary reproducibility artifacts.}
+\label{tab:artifacts}
+\scriptsize
+\begin{tabular}{@{}p{0.43\columnwidth}p{0.50\columnwidth}@{}}
+\toprule
+Artifact & Purpose\\
+\midrule
+\path{asymmetric_ml_downset_certificate.py}
+& Exact product-prior optimizer and two-term defect checks.\\
+\path{dqi_reliability_sensitivity_audit.py}
+& Exact directional-derivative and area identities.\\
+\path{linear_source_dqi_threshold_certificate.py}
+& Finite score bridge, converse, collision bound, and threshold algebra.\\
+\path{adversarial_theorem_audit.py}
+& Independent scope and counterexample search.\\
+\path{ml_downset_optimum_certificate.py}
+& Exhaustive coefficientwise ML optimum and defect checks.\\
+\path{twisted_repetition_ambiguity_certificate.py}
+& Exact robust-family ML, distance, graph, and gap checks.\\
+\path{positive_rate_strict_gain_certificate.py}
+& Exact positive-rate product identity and logarithmic-block exponent audit.\\
+\path{dqi_quotient_lift_validation.py}
+& Independent quotient, ML, cut, asymptotic, and timing checks.\\
+\path{ml_tie_lift_certificate.py}
+& Symbolic and growing-length certificate for the reliable lift.\\
+\path{transversal_exact_certificate.py}
+& Exhaustive $[5,2]$ transversal envelope.\\
+\path{dqi_ml_tie_codesign.py}
+& Equivalent-factor-graph and matched-acceptance tie selection.\\
+\path{dqi_pair_sampling.py}
+& Direct paired Monte Carlo identity and concentration checks.\\
+\path{fixed_v_right_inverse_certificate.py}
+& Exhaustive check of Proposition~\ref{prop:no-free-lunch}.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The generated CSV, JSON, and Markdown summaries record parameter grids,
+finite-length identities, and random seeds.  The principal theorem does not
+depend on floating-point evidence; the numerics independently test its
+implementation and asymptotic interpretation.
+
+\begin{thebibliography}{99}
+
+\bibitem{jordan2025dqi}
+S.~P. Jordan, N.~Shutty, M.~Wootters, \emph{et al.}, ``Optimization by
+decoded quantum interferometry,'' \emph{Nature}, vol.~646, no.~8086,
+pp.~831--836, Oct. 2025, doi: 10.1038/s41586-025-09527-5.
+
+\bibitem{chang2021ties}
+L.-H. Chang, P.-N. Chen, F.~Alajaji, and Y.~S. Han, ``Decoder ties do not
+affect the error exponent of the memoryless binary symmetric channel,''
+\emph{IEEE Trans. Inf. Theory}, vol.~68, no.~6, pp.~3501--3510, Jun. 2022,
+doi: 10.1109/TIT.2022.3150597.
+
+\bibitem{chang2023ties}
+L.-H. Chang, P.-N. Chen, and F.~Alajaji, ``On decoder ties for the binary
+symmetric channel with arbitrarily distributed input,'' \emph{Entropy},
+vol.~25, no.~4, Art.~no.~668, Apr. 2023, doi: 10.3390/e25040668.
+
+\bibitem{kiely1995}
+A.~B. Kiely, J.~T. Coffey, and M.~R. Bell, ``Optimal information bit decoding
+of linear block codes,'' \emph{IEEE Trans. Inf. Theory}, vol.~41, no.~1,
+pp.~130--140, Jan. 1995, doi: 10.1109/18.370113.
+
+\bibitem{margulis1974}
+G.~A. Margulis, ``Probabilistic characteristics of graphs with large
+connectivity,'' \emph{Problems Inf. Transm.}, vol.~10, no.~2, pp.~174--179,
+1974.
+
+\bibitem{russo1981}
+L.~Russo, ``On the critical percolation probabilities,''
+\emph{Z. Wahrscheinlichkeitstheorie Verw. Gebiete}, vol.~56, no.~2,
+pp.~229--237, 1981, doi: 10.1007/BF00535742.
+
+\bibitem{measson2009}
+C.~M\'easson, A.~Montanari, T.~J. Richardson, and R.~L. Urbanke,
+``The generalized area theorem and some of its consequences,''
+\emph{IEEE Trans. Inf. Theory}, vol.~55, no.~11, pp.~4793--4821, Nov. 2009,
+doi: 10.1109/TIT.2009.2030457.
+
+\bibitem{chen2009duality}
+J.~Chen, D.-K. He, A.~Jagmohan, L.~A. Lastras-Monta\~no, and E.-H. Yang,
+``On the linear codebook-level duality between Slepian--Wolf coding and
+channel coding,'' \emph{IEEE Trans. Inf. Theory}, vol.~55, no.~12,
+pp.~5575--5590, Dec. 2009, doi: 10.1109/TIT.2009.2032815.
+
+\bibitem{helleseth2005}
+T.~Helleseth, T.~Kl{\o}ve, and V.~I. Levenshtein, ``Error-correction capability
+of binary linear codes,'' \emph{IEEE Trans. Inf. Theory}, vol.~51, no.~4,
+pp.~1408--1423, Apr. 2005, doi: 10.1109/TIT.2005.844080.
+
+\bibitem{yasunaga2010}
+K.~Yasunaga and T.~Fujiwara, ``On correctable errors of binary linear codes,''
+\emph{IEEE Trans. Inf. Theory}, vol.~56, no.~6, pp.~2537--2548, Jun. 2010,
+doi: 10.1109/TIT.2010.2046209.
+
+\bibitem{bitzer2024}
+S.~Bitzer, A.~Ravagnani, and V.~Weger, ``Weighted-Hamming metric for parallel
+channels,'' in \emph{Proc. IEEE Int. Symp. Inf. Theory (ISIT)}, Athens, Greece,
+2024, pp.~2616--2621, doi: 10.1109/ISIT57864.2024.10619239.
+
+\bibitem{borges2010coset}
+M.~Borges-Quintana, M.~A. Borges-Trenard, and E.~Mart\'inez-Moro,
+``Computing coset leaders of binary codes,'' arXiv:1001.5074, Jan. 2010.
+
+\bibitem{borges2012leaders}
+M.~Borges-Quintana, M.~A. Borges-Trenard, I.~M\'arquez-Corbella, and
+E.~Mart\'inez-Moro, ``Computing coset leaders and leader codewords of binary
+codes,'' \emph{J. Algebra Appl.}, vol.~14, no.~8, Art.~no.~1550128, 2015,
+doi: 10.1142/S0219498815501285.
+
+\bibitem{grochow2018}
+J.~A. Grochow and J.~Tucker-Foltz, ``Computational topology and the Unique
+Games Conjecture,'' in \emph{Proc. 34th Int. Symp. Comput. Geom. (SoCG)},
+vol.~99, 2018, pp.~43:1--43:16, doi: 10.4230/LIPIcs.SoCG.2018.43.
+
+\bibitem{kschischang2001}
+F.~R. Kschischang, B.~J. Frey, and H.-A. Loeliger, ``Factor graphs and the
+sum-product algorithm,'' \emph{IEEE Trans. Inf. Theory}, vol.~47, no.~2,
+pp.~498--519, Feb. 2001, doi: 10.1109/18.910572.
+
+\bibitem{vontobel2013}
+P.~O. Vontobel, ``Counting in graph covers: A combinatorial characterization
+of the Bethe entropy function,'' \emph{IEEE Trans. Inf. Theory}, vol.~59,
+no.~9, pp.~6018--6048, Sep. 2013, doi: 10.1109/TIT.2013.2264715.
+
+\bibitem{loeliger2015}
+H.-A. Loeliger and P.~O. Vontobel, ``Factor graphs for quantum
+probabilities,'' \emph{IEEE Trans. Inf. Theory}, vol.~63, no.~9,
+pp.~5642--5665, Sep. 2017, doi: 10.1109/TIT.2017.2716422.
+
+\bibitem{cao2017}
+M.~X. Cao and P.~O. Vontobel, ``Double-edge factor graphs: Definition,
+properties, and examples,'' in \emph{Proc. IEEE Inf. Theory Workshop (ITW)},
+Kaohsiung, Taiwan, 2017, pp.~136--140, doi: 10.1109/ITW.2017.8277985.
+
+\bibitem{huang2025}
+Y.~Huang and P.~O. Vontobel, ``Graph-cover-based characterization of the
+Bethe partition function of double-edge factor graphs,'' arXiv:2506.16250,
+Jun. 2025.
+
+\bibitem{gao2026}
+M.~Gao and Y.~Chang, ``Hidden quantum advantage near the decoding threshold
+of decoded quantum interferometry,'' arXiv:2604.15025, Apr. 2026.
+
+\bibitem{anschuetz2025}
+E.~R. Anschuetz, D.~Gamarnik, and J.~Z. Lu, ``Spin glass transitions obstruct
+decoded quantum interferometry,'' arXiv:2509.14509v2, Aug. 2026.
+
+\bibitem{bu2026}
+K.~Bu, W.~Gu, and X.~Li, ``Multivariate decoded quantum interferometry for
+weighted optimization,'' arXiv:2605.10666v2, May 2026.
+
+\bibitem{kramer2026}
+M.~J. Kramer, C.~Schubert, and J.~Eisert, ``Approximability limits for
+bounded-degree max-LINSAT and implications for decoded quantum
+interferometry,'' arXiv:2606.13570, Jun. 2026.
+
+\bibitem{krajenbrink2026}
+A.~Krajenbrink, C.~Krawchuk, A.~Rosmanis, and M.~Rosenkranz, ``Decoded
+quantum interferometry beyond Hamming: Rank-metric and translation association
+schemes,'' arXiv:2606.04843, Jun. 2026.
+
+\bibitem{harper1966}
+L.~H. Harper, ``Optimal numberings and isoperimetric problems on graphs,''
+\emph{J. Combin. Theory}, vol.~1, no.~3, pp.~385--393, 1966,
+doi: 10.1016/S0021-9800(66)80059-5.
+
+\end{thebibliography}
+
+\end{document}

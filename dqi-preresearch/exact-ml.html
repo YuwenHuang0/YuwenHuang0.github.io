@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="小码全综合征精确枚举：9x6 与 12x7 达到精确 ML，其他实例仅限有限候选范围。">
+  <title>精确 ML 实验｜DQI 预研材料</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="site-header"><div class="container header-inner">
+  <a class="brand" href="index.html"><span class="brand-mark">DQI</span><span class="brand-copy"><strong>解码协同设计</strong><small>Pre-research dossier</small></span></a>
+  <nav class="site-nav" aria-label="主导航"><ul><li><a href="index.html">首页</a></li><li><a href="theorem.html">定理</a></li><li><a href="bp-osd.html">BP-OSD</a></li><li><a href="exact-ml.html" aria-current="page">精确 ML</a></li><li><a href="code.html">代码与复现</a></li><li><a href="scope.html">适用范围</a></li></ul></nav>
+</div><div class="local-strip"><div class="container"><span>EXPERIMENT 02 · 全综合征精确枚举</span><span>2 EXACT-ML CASES</span></div></div></header>
+
+<section class="page-head"><div class="container">
+  <div class="eyebrow">内部预研实验记录 · Matched-cost finite-code audit</div><h1>内部预研实验记录｜精确 ML 实验</h1>
+  <p>保持接受概率，严格提高接受边加权和。两种 BP-OSD 译码器共享候选列表与最小汉明重量主指标，只改变 ML 并列的次规则；所有综合征均被精确枚举。</p>
+  <div class="head-meta"><span><strong>资料类型：内部预研实验</strong></span><span class="doc-id">ID: exp-exact-ml-matched-cost-v1</span><span>BP 12 次迭代 / OSD-2 / test bits 7</span></div>
+  <div class="actions"><a class="button" href="code/dqi_bp_osd_matched_cost_results/REPORT.md">查看原始报告</a><a class="button secondary" href="code/dqi_bp_osd_matched_cost_results/decoder_metrics.csv">下载精确指标 CSV</a></div>
+</div></section>
+
+<main class="section"><div class="container">
+  <nav class="anchor-links" aria-label="页内导航"><a href="#metric">指标</a><a href="#exact">精确 ML 实例</a><a href="#limited">有限范围实例</a><a href="#reproduce">复现</a></nav>
+  <section id="metric">
+    <div class="eyebrow">01 / Metrics and controls</div><h2>指标与同成本对照</h2>
+    <div class="formula">Z = Σₑ π(e) 1{D(He) = e}
+ℰ = Σ<sub>{e,e′}: accepted, dH=1</sub> √(π(e)π(e′))
+J = 1/2 + ℰ/(mZ),        R = Z(J − 1/2) = ℰ/m</div>
+    <div class="grid-3">
+      <article class="card"><h3>Z · 接受概率</h3><p>也是 BSC 下经典帧成功概率。对照组与 DQI 感知组逐综合征选择相同重量，故 Z 完全相同。</p></article>
+      <article class="card"><h3>J · 条件得分</h3><p>在接受条件下衡量相邻接受错误对的贡献；下表增益记为 ΔJ。</p></article>
+      <article class="card"><h3>R · 尝试加权超额</h3><p>保留后选择成本，是更审慎的译码设计目标；其增益记为 ΔR。</p></article>
+    </div>
+    <div class="callout mt-24"><strong>受控变量：</strong>常规 BP-OSD 使用 BP 后验度量破并列；DQI 感知 BP-OSD 使用固定 <code>0 &lt; 1</code> 字典序。二者的 OSD 列表和最小重量主指标相同，在线 BP 边更新与 OSD 试验数相同。</div>
+  </section>
+
+  <section id="exact" class="mt-36">
+    <div class="section-head"><div><div class="eyebrow">02 / Exact-ML certified</div><h2>达到精确 ML 的两个小码实例</h2><p>两个实例的 OSD 列表均覆盖 100% 精确 ML 纤维，DQI 感知输出与精确规范 ML 上限完全相同。</p></div></div>
+    <div class="table-wrap"><table>
+      <caption>p = 0.14；所有综合征精确枚举。数值显示至 9 位小数。</caption>
+      <thead><tr><th>实例 / 译码器</th><th class="num">Z</th><th class="num">J</th><th class="num">R</th><th class="num">ΔJ</th><th class="num">ΔR</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">9×6 · 常规 BP-OSD</td><td class="num">0.854148239</td><td class="num">0.768658081</td><td class="num">0.229473827</td><td class="num zero">0</td><td class="num zero">0</td></tr>
+        <tr><td class="mono">9×6 · DQI 感知 / 精确 ML</td><td class="num">0.854148239</td><td class="num">0.772595185</td><td class="num">0.232836697</td><td class="num positive">+0.003937104</td><td class="num positive">+0.003362871</td></tr>
+        <tr><td class="mono">12×7 · 常规 BP-OSD</td><td class="num">0.741454363</td><td class="num">0.740333617</td><td class="num">0.178196409</td><td class="num zero">0</td><td class="num zero">0</td></tr>
+        <tr><td class="mono">12×7 · DQI 感知 / 精确 ML</td><td class="num">0.741454363</td><td class="num">0.744551089</td><td class="num">0.181323472</td><td class="num positive">+0.004217472</td><td class="num positive">+0.003127063</td></tr>
+      </tbody>
+    </table></div>
+    <div class="grid-2">
+      <div class="kpi"><strong>0.003937104</strong><span>9×6 的 ΔJ；完整值 0.003937104554…</span></div>
+      <div class="kpi"><strong>0.004217472</strong><span>12×7 的 ΔJ；完整值 0.004217471633…</span></div>
+    </div>
+    <p class="small muted mt-24">矩阵构造种子：9×6 为 173，12×7 为 185。两者的完整 ML 纤维比例均为 1.0；这里的“精确 ML”结论仅属于这两个有限实例。</p>
+  </section>
+
+  <section id="limited" class="mt-36">
+    <div class="section-head"><div><div class="eyebrow">03 / Restricted-list evidence</div><h2>其他实例：仅具有限范围意义</h2><p>下列实例仍有同 Z 的列表内增益，但候选列表未覆盖所有精确 ML 纤维，不能据此声称达到全局精确 ML。</p></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>实例</th><th class="num">p</th><th class="num">ΔJ</th><th class="num">ΔR</th><th class="num">完整 ML 纤维比例</th><th class="wrap">证据范围</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">cycle-rich-16×7</td><td class="num">0.14</td><td class="num">+0.003165538</td><td class="num">+0.001543094</td><td class="num">0.96875</td><td class="wrap">受限 OSD 列表</td></tr>
+        <tr><td class="mono">random-sparse-18×8</td><td class="num">0.13</td><td class="num">+0.006296942</td><td class="num">+0.003047307</td><td class="num">0.4921875</td><td class="wrap">受限 OSD 列表</td></tr>
+        <tr><td class="mono">random-sparse-22×9</td><td class="num">0.12</td><td class="num">+0.006029683</td><td class="num">+0.002309579</td><td class="num">0.361328125</td><td class="wrap">受限 OSD 列表</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout warning"><strong>不可外推：</strong>精确全综合征表是指数规模离线评估器，不是可扩展在线译码器。更大的两个随机稀疏实例还存在明显的 ML 纤维缺失；有限码长增益不蕴含非消失渐近增益。</div>
+  </section>
+
+  <section id="reproduce" class="mt-36">
+    <div class="eyebrow">04 / Reproduction</div><h2>重跑同成本审计</h2>
+    <p>需要 Python 与 NumPy。在网站根目录运行：</p>
+    <pre class="command"><span class="prompt">$ </span>python -m pip install -r code/requirements.txt
+<span class="prompt">$ </span>python code/dqi_bp_osd_matched_cost_audit.py</pre>
+    <p>脚本将重新生成 <code>code/dqi_bp_osd_matched_cost_results/</code> 下的 CSV、JSON 和 Markdown 报告。运行时间会随机器变化，不属于算法指标。</p>
+    <ul class="file-list">
+      <li><div><strong><a href="code/dqi_bp_osd_matched_cost_audit.py">dqi_bp_osd_matched_cost_audit.py</a></strong><small>实验入口与精确指标、配对估计器</small></div><span class="tag">main</span></li>
+      <li><div><strong><a href="code/dqi_bp_osd_matched_cost_results/audit.json">audit.json</a></strong><small>矩阵列、并列比例、完整 ML 纤维比例</small></div><span class="tag">audit</span></li>
+      <li><div><strong><a href="code/dqi_bp_osd_matched_cost_results/paired_difference_estimator.csv">paired_difference_estimator.csv</a></strong><small>共同随机数差值估计；8192 对样本的 RMSE 仍约 0.0017–0.0018</small></div><span class="tag">estimator</span></li>
+      <li><div><strong><a href="code/dqi_bp_osd_matched_cost_results/BP_OSD_DQI_RESEARCH_MEMO.md">研究备忘录</a></strong><small>原始范围讨论、线路成本与后续问题</small></div><span class="tag">memo</span></li>
+    </ul>
+  </section>
+</div></main>
+
+<footer class="site-footer"><div class="container footer-grid"><div><strong>精确 ML 实验</strong><p>两个小码达到精确 ML；其他结果严格标注为受限候选列表证据。</p></div><div class="footer-links"><a href="index.html">首页</a><a href="theorem.html">定理</a><a href="bp-osd.html">BP-OSD</a><a href="code.html">代码与复现</a><a href="scope.html">适用范围</a></div></div><div class="container footer-bottom">PRELIMINARY RESEARCH · NOINDEX, NOFOLLOW, NOARCHIVE</div></footer>
+</body></html>
