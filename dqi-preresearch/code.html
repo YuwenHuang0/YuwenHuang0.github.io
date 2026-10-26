@@ -16,21 +16,21 @@
 
 <section class="page-head"><div class="container">
   <div class="eyebrow">Code and data</div><h1>从源文件重跑，而非只读结论</h1>
-  <p>所有入口均指向本站实际保存的文件。精确证书只依赖 Python 标准库；BP、OSD 与数值协同设计实验另需 NumPy。</p>
+  <p>所有入口均指向本站实际保存的文件。精确证书只依赖 Python 标准库；BP、OSD 与数值协同设计实验另需 NumPy；门限图的绘制另需 Matplotlib。</p>
   <div class="head-meta"><span>Python 3.12 已用于本次验证</span><span>不依赖在线服务</span><span>无 GitHub 或外部仓库假设</span></div>
 </div></section>
 
 <main class="section"><div class="container">
-  <nav class="anchor-links" aria-label="页内导航"><a href="#quickstart">快速复现</a><a href="#scripts">脚本</a><a href="#datasets">数据与报告</a><a href="#manuscript">手稿</a><a href="#notes">运行说明</a></nav>
+  <nav class="anchor-links" aria-label="页内导航"><a href="#quickstart">快速复现</a><a href="#scripts">脚本</a><a href="#datasets">数据与报告</a><a href="#threshold">BP 门限</a><a href="#manuscript">手稿</a><a href="#notes">运行说明</a></nav>
   <section id="quickstart">
     <div class="eyebrow">01 / Quick start</div><h2>快速复现</h2>
     <div class="grid-2">
       <article class="card"><h3>A. 精确定理证书</h3><p>仅需 Python；使用有理数精确运算。</p><pre class="command"><span class="prompt">$ </span>python code/dqi_reliability_sensitivity_audit.py</pre><p class="small">预期：237 个径向、79 个非对称恒等式通过。</p></article>
-      <article class="card"><h3>B. 数值实验环境</h3><p>在网站根目录安装唯一第三方依赖。</p><pre class="command"><span class="prompt">$ </span>python -m pip install -r code/requirements.txt</pre><p class="small">如已有 NumPy，可直接执行后续命令。</p></article>
+      <article class="card"><h3>B. 数值实验环境</h3><p>在网站根目录安装所需第三方依赖。</p><pre class="command"><span class="prompt">$ </span>python -m pip install -r code/requirements.txt</pre><p class="small">如已有 NumPy，可直接执行后续命令。</p></article>
     </div>
     <div class="grid-2 mt-24">
       <article class="card"><h3>C. 72×45 BP-OSD 探针</h3><p>固定 seed 260902、25 次迭代和两组列重。</p><pre class="command"><span class="prompt">$ </span>python code/reproduce_bp_osd_confirm.py</pre><p class="small">默认新建 reproduced CSV，不覆盖原始数据。</p></article>
-      <article class="card"><h3>D. 小码同成本审计</h3><p>重跑 5 个有限码长实例及配对估计。</p><pre class="command"><span class="prompt">$ </span>python code/dqi_bp_osd_matched_cost_audit.py</pre><p class="small">会重生成同名结果目录中的聚合文件。</p></article>
+      <article class="card"><h3>D. 短纠错码同成本审计</h3><p>重跑 5 个有限长度纠错码实例及配对估计。</p><pre class="command"><span class="prompt">$ </span>python code/dqi_bp_osd_matched_cost_audit.py</pre><p class="small">会重生成同名结果目录中的聚合文件。</p></article>
     </div>
   </section>
 
@@ -39,7 +39,7 @@
     <ul class="file-list">
       <li><div><strong><a href="code/dqi_reliability_sensitivity_audit.py">dqi_reliability_sensitivity_audit.py</a></strong><small>独立有理数证书：径向与非对称可靠性—灵敏度恒等式</small></div><span class="tag">stdlib</span></li>
       <li><div><strong><a href="code/dqi_no_duplicate_ml_tie_certificate.py">dqi_no_duplicate_ml_tie_certificate.py</a></strong><small>不可分解固定距离族的确定性 ML 并列分离证书；穷举规模随码长增长</small></div><span class="tag">stdlib</span></li>
-      <li><div><strong><a href="code/dqi_bp_osd_matched_cost_audit.py">dqi_bp_osd_matched_cost_audit.py</a></strong><small>小码精确指标、同成本对照、配对及差值估计</small></div><span class="tag">NumPy</span></li>
+      <li><div><strong><a href="code/dqi_bp_osd_matched_cost_audit.py">dqi_bp_osd_matched_cost_audit.py</a></strong><small>短纠错码精确指标、同成本对照、配对及差值估计</small></div><span class="tag">NumPy</span></li>
       <li><div><strong><a href="code/dqi_ml_tie_codesign.py">dqi_ml_tie_codesign.py</a></strong><small>最小重量并列目录、ML 并列选择与等价因子图实验</small></div><span class="tag">NumPy</span></li>
       <li><div><strong><a href="code/dqi_transversal_codesign.py">dqi_transversal_codesign.py</a></strong><small>BP、OSD、候选截面、精确枚举及协同设计基础实现</small></div><span class="tag">NumPy</span></li>
       <li><div><strong><a href="code/bp_osd_dqi_probe.py">bp_osd_dqi_probe.py</a></strong><small>72×45 探针所用的独立 BP-OSD 实现</small></div><span class="tag">NumPy</span></li>
@@ -52,10 +52,11 @@
     <div class="section-head"><div><div class="eyebrow">03 / Data and reports</div><h2>数据与报告</h2><p>以下均为随材料保存的原始聚合结果，不是网站重新编造的数值。</p></div></div>
     <div class="grid-2">
       <article class="card"><h3>BP-OSD 固定重量探针</h3><ul><li><a href="code/results/bp_osd_dqi_probe_confirm.csv">确认结果 CSV</a>（2 行聚合记录）</li></ul><p class="small"><strong>没有逐次试验日志。</strong>不能从聚合 CSV 还原每次试验。</p></article>
-      <article class="card"><h3>小码同成本审计</h3><ul><li><a href="code/dqi_bp_osd_matched_cost_results/decoder_metrics.csv">译码器精确指标</a></li><li><a href="code/dqi_bp_osd_matched_cost_results/paired_estimator.csv">配对估计器汇总</a></li><li><a href="code/dqi_bp_osd_matched_cost_results/paired_difference_estimator.csv">差值估计器汇总</a></li><li><a href="code/dqi_bp_osd_matched_cost_results/audit.json">矩阵与范围审计 JSON</a></li><li><a href="code/dqi_bp_osd_matched_cost_results/REPORT.md">结果报告</a> · <a href="code/dqi_bp_osd_matched_cost_results/BP_OSD_DQI_RESEARCH_MEMO.md">研究备忘录</a></li></ul></article>
+      <article class="card"><h3>短纠错码同成本审计</h3><ul><li><a href="code/dqi_bp_osd_matched_cost_results/decoder_metrics.csv">译码器精确指标</a></li><li><a href="code/dqi_bp_osd_matched_cost_results/paired_estimator.csv">配对估计器汇总</a></li><li><a href="code/dqi_bp_osd_matched_cost_results/paired_difference_estimator.csv">差值估计器汇总</a></li><li><a href="code/dqi_bp_osd_matched_cost_results/audit.json">矩阵与范围审计 JSON</a></li><li><a href="code/dqi_bp_osd_matched_cost_results/REPORT.md">结果报告</a> · <a href="code/dqi_bp_osd_matched_cost_results/BP_OSD_DQI_RESEARCH_MEMO.md">研究备忘录</a></li></ul></article>
     </div>
   </section>
 
+<section id="threshold" class="mt-36"><div class="eyebrow">BP threshold experiment</div><h2>BP 门限与解质量换算</h2><p>这组实验统计 600、2400、9600 比特纠错码的 BP 恢复率，与 72 比特 BP-OSD 实验分开进行。随机种子 2026，最多 60 次 BP 迭代；每个出错比例分别运行 300、200、100 次。当前仅保留聚合数组，没有原始逐次日志。右图按 DQI 原文条件换算门限，不是仿真的实际 DQI 输出或通用严格界。</p><ul class="file-list"><li><a href="code/bp_threshold/prelim_bp.npz">原始聚合数组</a></li><li><a href="code/bp_threshold/simulate_threshold.py">仿真算法与参数</a></li><li><a href="code/bp_threshold/plot_threshold.py">当前结果图的作图代码</a></li><li><a href="code/bp_threshold/requirements.txt">作图依赖</a></li><li><a href="code/bp_threshold/README.txt">范围与运行说明</a></li></ul></section>
   <section id="manuscript" class="mt-36">
     <div class="eyebrow">04 / Manuscript</div><h2>定理手稿</h2>
     <ul class="file-list">
@@ -67,7 +68,7 @@
   <section id="notes" class="mt-36">
     <div class="eyebrow">05 / Operational notes</div><h2>运行说明</h2>
     <div class="grid-2">
-      <div class="callout"><strong>路径约定</strong><p class="mb-0">命令均以网站根目录为当前目录。小码审计的三个 Python 模块保存在同一 <code>code/</code> 目录，可直接按原导入关系运行。</p></div>
+      <div class="callout"><strong>路径约定</strong><p class="mb-0">命令均以网站根目录为当前目录。短纠错码审计的三个 Python 模块保存在同一 <code>code/</code> 目录，可直接按原导入关系运行。</p></div>
       <div class="callout warning"><strong>结果覆盖与运行成本</strong><p class="mb-0">同成本审计会覆盖其输出目录中的同名聚合结果；如需保留副本请先复制。穷举证书和精确 ML 审计具有指数规模部分，不适用于任意大码。</p></div>
     </div>
     <p class="small muted mt-24">材料分发不包含证件、联系方式或签名文件。本站不声称存在公开代码仓库，也不提供虚构 URL。</p>

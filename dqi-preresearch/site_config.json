@@ -71,6 +71,13 @@
       "page": "exact-ml.html",
       "dataset": "code/dqi_bp_osd_matched_cost_results/decoder_metrics.csv",
       "kind": "exact-finite-code-experiment"
+    },
+    {
+      "id": "exp-bp-threshold-2026",
+      "title": "BP 恢复门限与条件换算",
+      "page": "code.html#threshold",
+      "dataset": "code/bp_threshold/prelim_bp.npz",
+      "kind": "aggregate-experiment"
     }
   ],
   "terminology": {
