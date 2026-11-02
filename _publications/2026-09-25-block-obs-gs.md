@@ -12,6 +12,8 @@ publication_date: '2026-12-01'
 status: To appear
 venue: "Conference on Neural Information Processing Systems (NeurIPS)"
 paperurl: /files/main_huang_pan_neurips2026.pdf
+slidesurl_alt: /files/poster_huang_pan_neurips2026.pdf
+slideslabel_alt: Poster
 topic: machine-learning
 sole_first: true
 corresponding_authors:
