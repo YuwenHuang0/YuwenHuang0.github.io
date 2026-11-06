@@ -2,5 +2,6 @@ User-agent: *
 Disallow: /dqi-preresearch/
 Disallow: /files/slides/dsaa4011-week3.pdf
 Disallow: /dsaa4011/
+Disallow: /cindy/
 
 Sitemap: https://yuwenhuang0.github.io/sitemap.xml
