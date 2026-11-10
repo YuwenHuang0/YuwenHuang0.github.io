@@ -251,3 +251,5 @@ td.wrap, th.wrap { white-space: normal; min-width: 220px; }
   .card, .definition, .table-wrap { break-inside: avoid; box-shadow: none; }
   a { color: inherit; }
 }
+
+.authors{margin-top:.75rem;font-size:.98rem;font-weight:600;opacity:.9}
